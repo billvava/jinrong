@@ -1,0 +1,66 @@
+<header id="header">
+    <div class="top container-full">
+        <div class="container">
+            <p id="top-fast-login" class="<if condition="$visitor['uid'] neq ''">display-none</if>">
+                欢迎登录金融网！请
+                <a href="{:U('members/login')}">登录</a> 或
+                <a href="{:U('members/register')}">免费注册</a>
+            </p>
+            <p style="padding-left:20px;" class="<if condition="$visitor['uid'] eq ''">display-none</if>">
+                <a href="{:U('members/index')}">
+                    <empty name="visitor['realname']">{$visitor['mobile']}
+                        <else />{$visitor['realname']}
+                    </empty>
+                </a>，您好，欢迎光临金融网！
+                <a href="{:U('members/logout')}">[退出]</a>
+            </p>
+            <div>
+                <a href="__ROOT__/">
+                    <i class="iconfont icon-home"></i>
+                    网站首页
+                </a>
+                <span></span>
+                <a href="/help/help_list/id/3">
+                    <i class="iconfont icon-question-mark"></i>
+                    新手指导
+                </a>
+                <span></span>
+                <a href="{:U('Home/Index/shortcut')}">
+                    <i class="iconfont icon-computer"></i>
+                    保存到桌面
+                </a>
+                <span></span>
+                <div class="qrh_mobile">
+                    <i class="iconfont icon-mobile"></i>
+                    手机金融网
+                    <div>
+                        <img src="../public/images/v2/picture/mobile-qrcode.png" alt="">
+                        <p>扫描我，立刻打开触屏站</p>
+                        <p>手机触屏站：</p>
+                        <p>m.jinrong.xiaba666.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main container-full">
+        <div class="container">
+            <div class="logo clearfix">
+                <a href="__ROOT__/">
+                    <img src="../public/images/v2/picture/logo.png" alt="logo">
+                </a>
+                <div>
+                    <a href="/members/register/utype/2">发布项目信息</a>
+                    <a href="/members/register/utype/1">资本机构入驻</a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <nav>
+                <qscms:nav 列表名="nav" 调用名称="QS_top" 数量="9"/>
+                <volist name="nav" id="nav">
+                <a class="<if condition="MODULE_NAME eq C('DEFAULT_MODULE')"><if condition="$nav['tag'] eq strtolower(CONTROLLER_NAME)">select</if><else/><if condition="$nav['tag'] eq strtolower(MODULE_NAME)">select</if></if>" href="{$nav['url']}" target="{$nav.target}">{$nav.title}</a>
+                </volist>
+            </nav>
+        </div>
+    </div>
+</header>

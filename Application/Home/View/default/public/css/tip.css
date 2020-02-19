@@ -1,0 +1,30 @@
+/* 自动消失的提示框 */
+.disappear_tooltip{display:none;position:absolute;top:0;left:0;z-index:1000000;background:rgba(0,0,0,.7);-pie-background:rgba(0,0,0,.7);padding:0 18px;height:70px;line-height:70px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;color:#fff;text-align:center;font-size:16px;-webkit-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:.3s;animation-duration:.3s;}
+.disappear_tooltip .icon{width:29px;height:29px;float:left;margin-top:20px;}
+.disappear_tooltip .content{float:left;padding-left:15px;}
+.disappear_tooltip.remind .icon{background:url(../images/45.png) no-repeat;}
+.disappear_tooltip.success .icon{background:url(../images/45.png) 0 -59px no-repeat;}
+.disappear_tooltip.goldremind{height:110px;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;}
+.disappear_tooltip.goldremind .icon{float:none;display:inline-block;*display:inline;*zoom:1;background:url(../images/92.png) no-repeat;width:30px;height:30px;margin-left:-60px;}
+.disappear_tooltip.goldremind .content{float:none;_width:200px;height:50px;line-height:50px;padding-left:0px;font-size:14px;position:relative;}
+.disappear_tooltip.goldremind .content .point{position:absolute;color:#f0fd3e;font-size:24px;padding-left:15px;line-height:30px;left:50%;top:-28px;margin-left:-24px;}
+@-webkit-keyframes bounceIn{
+    0%{opacity:0;-webkit-transform:scale(.5);transform:scale(.5)}
+    100%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}
+}
+@keyframes bounceIn{
+    0%{opacity:0;-webkit-transform:scale(.5);-ms-transform:scale(.5);transform:scale(.5)}
+    100%{opacity:1;-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}
+}
+.tip_anim{display:block;-webkit-animation-name:bounceIn;animation-name:bounceIn}
+@-webkit-keyframes bounceOut{
+    100%{opacity:0;-webkit-transform:scale(.7);transform:scale(.7)}
+    30%{-webkit-transform:scale(1.03);transform:scale(1.03)}
+    0%{-webkit-transform:scale(1);transform:scale(1)}
+}
+@keyframes bounceOut{
+    100%{opacity:0;-webkit-transform:scale(.7);-ms-transform:scale(.7);transform:scale(.7)}
+    30%{-webkit-transform:scale(1.03);-ms-transform:scale(1.03);transform:scale(1.03)}
+    0%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}
+}
+.tip_anim_close{z-index:-100;background:rgba(0,0,0,0);-pie-background:rgba(0,0,0,0);-webkit-animation-name:bounceOut;animation-name:bounceOut;-webkit-animation-duration:.2s;animation-duration:.2s;}

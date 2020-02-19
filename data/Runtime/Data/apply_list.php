@@ -1,0 +1,1 @@
+<?php	return array ( 'Home' => '金融汇系统核心模块', 'Mobile' => '手机触屏端', ); ?>

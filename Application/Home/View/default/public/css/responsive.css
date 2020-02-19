@@ -1,0 +1,39 @@
+﻿@media (max-width:1920px){
+
+}
+@media (max-width:1367px){
+	.left-menu{margin-left: -250px;}
+}
+@media (max-width:1280px){
+	.left-menu{margin-left: -200px;}
+	.left-menu li a{width: 100px; font-size: 12px;}
+}
+
+@media (max-width:1200px){
+.left-menu{display: none;}
+}
+
+@media (max-width:1170px){
+
+}
+
+@media (max-width:1120px){
+
+
+}
+
+@media (max-width:991px){
+
+}
+
+@media (max-width: 767px) {
+.edit-part form{width:100%;}
+}
+
+@media (max-width:468px){
+
+}
+@media (max-width:360px){
+.page-title .rate{margin: 0px;}
+.menu-list .font .title-bg{width: auto;}
+}

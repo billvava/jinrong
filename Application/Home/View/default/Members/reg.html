@@ -1,0 +1,37 @@
+<include file="public:meta" />
+<link href="../public/css/members/common.css" rel="stylesheet"/>
+</head>
+<body>
+	<include file="header" />
+	<div class="reg_select">
+		<div class="tit">请选择注册类型</div>
+		<div class="sbox">
+			<div class="slisit1 J_hoverbut" onclick="window.location='{:U('members/register',array('utype'=>1,'incode'=>$_GET['incode']))}'">
+				<div class="stitle">资金方</div>
+				<div class="stxt">
+					 √&nbsp;免费约谈项目方<br />
+					√&nbsp;免费参加沙龙路演活动<br />
+					√&nbsp;免费获得机构及投资人展厅<br/>
+					√&nbsp;定期推荐优质项目
+				</div>
+			</div>
+			<div class="slisitc">&nbsp;</div>
+			<div class="slisit2 J_hoverbut" onclick="window.location='{:U('members/register',array('utype'=>2,'incode'=>$_GET['incode']))}'">
+				<div class="stitle">项目方</div>
+				<div class="stxt">
+					√&nbsp;大量资金方入驻<br />
+					√&nbsp;轻松找到项目投资方<br />
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="reg_select_bg">
+		<div class="bl"></div>
+		<div class="br"></div>
+		<div class="clear"></div>
+	</div>
+<include file="public:footer_min" />
+<script src="../public/js/members/jquery.common.js"></script>
+</body>
+</html>

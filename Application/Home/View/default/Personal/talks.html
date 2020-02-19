@@ -1,0 +1,658 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/box.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+<style>
+th, td{
+    margin: 0;
+    padding: 0;
+}
+.select_shelter select {
+    border: 0 none;
+    color: #999;
+}
+.select_shelter select:focus {
+    outline: 0 none;
+}
+.standard_select {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px;
+    vertical-align: middle;
+}
+.select_shelter {
+    border: 0 none;
+    display: inline-block;
+    height: 20px;
+    overflow: hidden;
+}
+.select_shelter select:focus {
+    outline: 0 none;
+}
+address, caption, cite, code, dfn, em, i, th, var {
+    font-style: normal;
+    font-weight: 500;
+}
+.select_shelter {
+    border: 0 none;
+    display: inline-block;
+    height: 20px;
+}
+.standard_select {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px;
+    vertical-align: middle;
+}
+.select_shelter {
+    border: 0 none;
+    display: inline-block;
+    height: 20px;
+    overflow: hidden;
+}
+.select_shelter select:focus {
+    outline: 0 none;
+}
+.select-w246 {
+    width: 246px;
+}
+.select-w264 {
+    width: 264px;
+}
+.select-w126 {
+    width: 126px;
+}
+.part-search-nav-a {
+    background: #f1f1f1 none repeat scroll 0 0;
+    padding: 10px 10px 0;
+}
+caption, th {
+    text-align: left;
+}
+.part-search-nav-a th {
+    text-align: right;
+}
+.part-search-nav-a .fn-tac {
+    padding-right: 5px;
+    text-align: center;
+}
+.part-search-cont-a table {
+    color: #666;
+    margin-top: 10px;
+    width: 100%;
+}
+.part-search-cont-a thead th {
+    background: #f1f1f1 none repeat scroll 0 0;
+    text-align: center;
+}
+.part-search-cont-a tbody th {
+    background: #f5f5f5 none repeat scroll 0 0;
+}
+.part-search-cont-a th {
+    border: 1px solid #f1f1f1;
+    padding: 10px;
+}
+.part-search-cont-a td {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #f1f1f1;
+    overflow-wrap: break-word;
+    padding: 10px;
+    word-break: break-all;
+}
+.part-search-cont-a-msg {
+    border: 1px solid #dedede;
+    margin-top: 10px;
+    position: relative;
+}
+.part-search-cont-a-msg .ui-le-ht24 {
+    padding: 20px 10px;
+}
+.part-search-cont-a-msg i {
+    border: 8px dashed transparent;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+}
+.part-search-cont-a-msg .search-msg-arrow-a {
+    border-bottom: 8px solid #fff;
+    left: 10px;
+    top: -15px;
+    z-index: 10;
+}
+.part-search-cont-a-msg .search-msg-arrow-b {
+    border-bottom: 8px solid #dedede;
+    left: 10px;
+    top: -16px;
+}
+.part-search-cont-a-msg .search-msg-close {
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+.part-search-cont-a-msg .search-msg-close:hover {
+    text-decoration: none;
+}
+.part-aside-information {
+    background: #f5f5f5 none repeat scroll 0 0;
+    border: 1px solid #e2e2e2;
+    width: 180px;
+}
+.part-aside-information h2 {
+    color: #666699;
+    font-family: "宋体";
+    font-weight: bold;
+    padding: 7px;
+}
+.part-aside-information h6 {
+    background: #ededed none repeat scroll 0 0;
+    color: #000;
+    font-family: "微软雅黑";
+    padding: 7px;
+}
+.part-aside-information h6 i {
+    background: rgba(0, 0, 0, 0) url("../../images/icon-information.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 17px;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 16px;
+}
+.part-aside-information .aside-information-icon1 {
+    background-position: -1px 0;
+}
+.part-aside-information .aside-information-icon2 {
+    background-position: -21px 0;
+}
+.part-aside-information .aside-information-icon3 {
+    background-position: -44px 0;
+}
+.part-aside-information .aside-information-icon4 {
+    background-position: -66px 0;
+}
+.part-aside-information p {
+    line-height: 22px;
+    padding: 7px 7px 7px 28px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+th {
+    text-align: inherit;
+}
+.part-not-cont {
+    padding-top: 50px;
+    text-align: center;
+}
+.ui-btn-blue {
+    background-color: #7381ac !important;
+}
+a.ui-btn-blue:hover {
+    background-color: #8fa0d3 !important;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.part-fieldset .t_input {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 5px;
+    padding: 0 10px;
+    position: relative;
+    vertical-align: middle;
+    width: 248px;
+}
+.part-fieldset section label {
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+}
+.part-fieldset section label input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 2px 0;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg em {
+    display: block;
+    margin: 0 0 0 20px;
+    position: relative;
+}
+.part-fieldset .part-fieldset-msg i {
+    left: -20px;
+    position: absolute;
+    top: 2px;
+}
+.part-fieldset textarea {
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 72px;
+    margin-right: 5px;
+    padding: 5px;
+    position: relative;
+    vertical-align: middle;
+    width: 360px;
+}
+body placeholder {
+    white-space: nowrap !important;
+}
+.part-fieldset-code {
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-left: -6px;
+    text-align: center;
+    vertical-align: middle;
+    width: 147px;
+}
+.part-fieldset-code:hover {
+    text-decoration: none;
+}
+.part-fieldset-code-cur, .part-fieldset-code-cur:hover {
+    background: #ccc none repeat scroll 0 0;
+    color: #999;
+}
+.part-fieldset-pic-itimg img {
+    display: block;
+    height: 80px;
+    width: 80px;
+}
+.part-fieldset-pic-ittext {
+    margin-left: 100px;
+}
+.part-fieldset-footer {
+    margin: 40px 0;
+    text-align: center;
+}
+.part-fieldset-all-a {
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+.part-fieldset-all-aside80 aside {
+    width: 80px;
+}
+.part-fieldset .t_input_disabled {
+    background: #f0f0f0 none repeat scroll 0 0;
+}
+.part-footer-ml146 {
+    margin-left: 146px;
+}
+.part-footer-ml96 {
+    margin-left: 96px;
+}
+.part-footer-ml110 {
+    margin-left: 110px;
+}
+.part-fieldset-multi-select {
+    border: 1px solid #ddd;
+    cursor: pointer;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 5px;
+    overflow: hidden;
+    padding: 0 20px 0 10px;
+    position: relative;
+    vertical-align: middle;
+    width: 156px;
+}
+.part-fieldset-multi-select i {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd transparent transparent;
+    border-image: none;
+    border-style: solid dashed dashed;
+    border-width: 6px;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 5px;
+    top: 12px;
+    width: 0;
+}
+.part-search-nav-a th, .part-search-nav-a td {
+    padding-bottom: 10px;
+}
+.part-search-cont-a table {
+    color: #666;
+    margin-top: 10px;
+    width: 100%;
+}
+.part-not-cont span, .part-not-cont a {
+    color: #e93100;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.w60 {
+    width: 60px !important;
+}
+.view-project-list ul {
+    overflow: hidden;
+    width: 850px;
+}
+.view-project-list li {
+    border-top: 1px dotted #c2c2c2;
+    float: left;
+    margin-top: -1px;
+    padding: 10px 10px 10px 0;
+    position: relative;
+    width: 259px;
+}
+.view-project-list ul {
+    overflow: hidden;
+    width: 850px;
+}
+.view-project-box {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    color: #666;
+}
+.view-project-list li .ittext-all {
+    border-bottom: 1px dashed #ddd;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+.view-project-list li .view-project-bd {
+    padding: 10px;
+    position: relative;
+}
+.view-project-list li .ittext-all .fn-left {
+    border: 1px solid #ddd;
+}
+.view-project-list li .ittext-all .fn-left img {
+    display: block;
+    height: 60px;
+    width: 60px;
+}
+.view-project-list li .ittext-all .ittext-box {
+    margin-left: 72px;
+}
+.view-project-list li h6 a {
+    color: #536290;
+    display: block;
+    font-weight: bold;
+    height: 36px;
+    padding: 4px 0 2px;
+}
+.view-project-list li .ittext span {
+    color: #333;
+}
+.view-project-list .view-project-hover .icon-project-close {
+    display: block;
+}
+.view-project-list li .icon-project-close {
+    display: none;
+    position: absolute;
+}
+.icon-project-close:hover {
+    opacity: 0.5;
+}
+.view-project-list li .view-project-bd .icon-project-close {
+    right: 0;
+    top: 3px;
+}
+.view-project-list li .view-project-fd {
+    background: #f5f5f5 none repeat scroll 0 0;
+    border-radius: 0 0 5px 5px;
+    border-top: 1px solid #ddd;
+    overflow: hidden;
+    padding: 10px;
+}
+.view-project-list-s li .ittext-all {
+    height: 78px;
+    overflow: hidden;
+}
+.view-project-list-s li .ittext-all p {
+    height: 40px;
+    overflow: hidden;
+}
+.view-more-part a {
+    background: #e3eaff none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #3b4a82;
+    display: block;
+    font-size: 14px;
+    height: 30px;
+    padding-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+.view-more-part a i {
+    background: rgba(0, 0, 0, 0) url("../public/images/icon.png") no-repeat scroll -25px -105px;
+    display: inline-block;
+    font-size: 0;
+    height: 12px;
+    margin-left: 5px;
+    vertical-align: middle;
+    width: 9px;
+}
+.fn-mr-5 {
+    margin-right: 5px;
+}
+.fn-pt-10 {
+    padding-top: 10px;
+}
+.fn-tac {
+    text-align: center;
+}
+.view-project-list-s li .ittext-all p {
+    height: 40px;
+    overflow: hidden;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 500;
+}
+.fn-mr-15 {
+    margin-right: 15px;
+}
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+.view-project-list-s li .ittext-all p {
+    height: 40px;
+    overflow: hidden;
+}
+.ui-btn-orange {
+    background-color: #f60;
+}
+.icon-project-close {
+    background-position: -2px -102px;
+    height: 16px;
+    text-indent: -1000em;
+    width: 16px;
+}
+.icon-subnav-manage, .icon-subnav-arrow, .icon-subnav-info, .icon-subnav-social, .icon-subnav-order, .icon-subnav-account, .i-tips-info, .i-tips-info-amount, .icon-notice, .icon-user-phone, .icon-user-face, .icon-user-email, .icon-user-post, .icon-user-org, .icon-user-firm, .icon-user-honor, .icon-user-phone-gray, .icon-user-face-gray, .icon-user-email-gray, .icon-user-post-gray, .icon-user-org-gray, .icon-user-firm-gray, .icon-user-honor-gray, .icon-info-deliver, .icon-info-guestbook, .icon-info-private, .icon-info-message, .icon-info-time, .icon-question-mark, .toolbar-info-nav i, .icon-part-bg {
+    background-image: url("../public/images/icon.png");
+    background-repeat: no-repeat;
+}
+.view-more-part a {
+    background: #e3eaff none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #3b4a82;
+    display: block;
+    font-size: 14px;
+    height: 30px;
+    padding-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+</style>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<header class="part-fieldset part-search-nav-a">
+<form method="?" name="frm">
+<table width="100%">
+<tbody><tr>
+<th>发起人：</th>
+<td><input class="t_input" name="uname" value="" type="text"></td>
+<th width="120">发起时间：</th>
+<script type="text/javascript" src="../public/js/DatePicker/WdatePicker.js"></script>
+<td width="137"><span class="part-fieldset-time fn-pr"><i class="icon-part-bg icon-part-calendar"></i><input class="t_input w100" onfocus="WdatePicker()" value="" name="start" type="text"></span></td>
+<th class="fn-tac" width="40">到</th>
+<td width="137"><span class="part-fieldset-time fn-pr"><i class="icon-part-bg icon-part-calendar"></i><input class="t_input w100" onfocus="WdatePicker()" value="" name="end" type="text"></span></td>
+
+</tr>
+<tr>
+<th>处理状态：</th>
+<td>
+<span class="standard_select">
+<span class="select_shelter">
+<select class="select-w264" name="invite_status">
+<option value="">全部</option>
+<option value="0">等待约谈</option>
+<option value="1">约谈成功</option>
+<option value="2">约谈中</option>
+<option value="3">拒绝约谈</option>
+</select>
+</span>
+</span>
+</td>
+<th>评价：</th>
+<td>
+<span class="standard_select">
+<span class="select_shelter">
+<select class="select-w126" name="evaluate">
+<option value="">全部</option>
+<option value="Y">满意</option>
+<option value="N">不满意</option>
+</select>
+</span>
+</span>
+</td>
+</tr>
+<tr>
+<th></th>
+<td><a href="javascript:document.frm.submit()" class="ui-btn-small ui-btn-blue w60">搜&nbsp;&nbsp;索</a></td>
+</tr>
+</tbody></table>
+</form>
+</header>
+
+<!--
+<div class="part-not-cont">
+<i class="icoPro16yellow"></i><a href="/index.php?m=home&c=fund&a=fund_list" class="fn-vam">您还没有收到任何资金方的约谈，马上主动出击，立即投递资金方。</a></div>
+-->
+<div class="view-project-list view-project-list-s">
+<input id="unshow_project" name="unshow_project" value="0" type="hidden">
+<ul id="itemList">
+<if condition="C('visitor.utype') eq 2">
+<volist name="item_list" id="vo">
+<li>
+<div class="view-project-box">
+<div class="view-project-bd">
+<div class="ittext-all">
+<h6><a href="{:U('Fund/show',array('id'=>$vo['info']['id']))}" target="_blank" title="{$vo.info.title}">{$vo.info.title}</a></h6>
+<!--
+<p>山东 债权融资  电器&nbsp;</p>
+-->
+</div>
+<p class="ittext fn-pt-10 fn-tac">浏览：<span class="fn-mr-15">{$vo.info.click}次</span>约谈：<span>{$vo.times}次</span></p>
+<a href="javascript:;" class="icon-part-bg icon-part-bg icon-project-close" _val="563612">关闭</a>
+</div>
+<div class="view-project-fd">
+<a href="javascript:;" data-title="{:U('Fund/show',array('id'=>$vo['info']['id']))}" data-zjxm-id="563612" data-user-id="{$vo['info']['uid']}" class="ui-btn-small ui-btn-orange fn-right btn_dl_invite">&nbsp;约谈&nbsp;</a>
+<a href="{:U('Fund/show',array('id'=>$vo['info']['id']))}" target="_blank" class="ui-btn-small ui-btn-blue fn-mr-5 fn-left">查看详情</a><a href="{:U('Fund/show',array('id'=>$vo['info']['id']))}#i-zjxm-comment" target="_blank" class="ui-btn-small ui-btn-blue fn-left">留言</a>
+</div>
+</div>
+</li>
+</volist>
+</if>
+</ul>
+<div id="egItem" style="display:none">
+<div class="view-project-box">
+<div class="view-project-bd">
+<div class="ittext-all">
+<h6><a href="/detail_{{item_id}}.html" target="_blank" title="{{item_title}}">{{item_title}}</a></h6>
+<p>{{i_keywords}}&nbsp;</p>
+
+</div>
+<p class="ittext fn-pt-10 fn-tac">浏览：<span class="fn-mr-15">{{view_num}}次</span>约谈：<span>{{item_be_invite_num}}次</span></p>
+<a href="javascript:;" class="icon-part-bg icon-part-bg icon-project-close" _val="{{item_id}}">关闭</a>
+</div>
+<div class="view-project-fd"><a href="javascript:;" class="ui-btn-small ui-btn-red fn-right" data-title="{{item_title}}" data-zjxm-id="{{item_id}}" {{item_show}}="" data-user-id="{{item_user_id}}">&nbsp;约谈&nbsp;</a><a href="/detail_{{item_id}}.html" target="_blank" class="ui-btn-small ui-btn-blue fn-mr-5 fn-left">查看详情</a><a href="/detail_{{item_id}}.html#TA-COMMENT" target="_blank" class="ui-btn-small ui-btn-blue fn-left">留言</a></div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!--
+<div class="view-more-part fn-mb-10"><a href="javascript:void(0)" class="moreList">查看更多<i></i></a></div>
+-->
+
+</div>
+</div>
+<include file="index_footer" />
+<script type="text/javascript" src="../public/js/layer/layer.js"></script>
+<script>
+dialog = function (title,msg){
+            layer.open({
+                type: 1,
+                title: '约谈资金方' || '温馨提示',
+                skin: 'layui-layer-rim',
+                area: ['520px','173px'],
+                //move:false,
+                content: '<form class="layerContent fn-tac ui-dialog-body popup-msg">' +
+                '<p class="part-popup-ittext">'+msg+'</p>'+
+                '<footer class="fn-mt-30"><a href="javascript:;" id="dialog_close" class="ui-btn ui-btn-orange layui-layer-close">确定</a></footer>'+
+                '</form>'
+            });
+        }
+
+$('a.btn_dl_invite').click(function(){
+        var user_id = parseInt($(this).attr('data-user-id'));
+        var zjxm_id = $(this).attr('data-zjxm-id') || 0;
+        var title = $(this).attr('data-title') || '';
+        $.ajax({
+                url: "{:U('Personal/talks')}",
+                type: "post",
+                dataType: "json",
+                data:{
+                user_id: user_id,
+                zjxm_id: zjxm_id,
+                title: title,
+                },
+                success: function (result){
+                    if(result.code==1){
+                        dialog('',result.msg);
+                    }else{
+                      dialog('',result.msg);
+                    }
+                }
+        });
+}).removeClass('J_btn_dl_invite');
+</script>
+</body>
+</html>

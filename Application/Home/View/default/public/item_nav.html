@@ -1,0 +1,10 @@
+<div class="container-full" id="nav">
+    <div class="container clearfix">
+        <div>
+            <a <if condition="$Think.get.info_type eq '' || $Think.get.info_type eq 1">class="select"</if> href="{:U('Item/item_list',array('info_type'=>1))}">项目融资</a>
+            <a <if condition="$Think.get.info_type eq 200">class="select"</if> href="{:U('Item/item_list',array('info_type'=>200))}">资产交易</a>
+            <a <if condition="$Think.get.info_type eq 700">class="select"</if> href="{:U('Item/item_list',array('info_type'=>700))}">政府招商</a>
+            <a <if condition="$Think.get.info_type eq 2005">class="select"</if> href="{:U('Item/item_list',array('info_type'=>2005))}">投资理财</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<empty name="visitor['uid']">
+	<span class="link_yellow">欢迎登录{:C('qscms_site_name')}！请 <a href="{:U('members/login')}">登录</a> 或 <a href="{:U('members/register')}">免费注册</a></span>
+<else/>
+	<div class="n welcome link_yellow"><a href="{:U('members/index')}"><empty name="visitor['realname']">{$visitor['mobile']}<else />{$visitor['realname']}</empty></a>，您好，欢迎光临金融网！<span><a style="color:#666;" href="{:U('members/logout')}">[退出]</a></span></div>
+<div class="clear"></div>
+</empty>
+<link href="../public/css/company/company_ajax_dialog.css" rel="stylesheet" type="text/css" />

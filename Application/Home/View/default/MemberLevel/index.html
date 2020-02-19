@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/member_level.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+<style>
+.table-part-all .table-hover td {
+    background: #f1f1f1 none repeat scroll 0 0;
+}
+.userinfo {
+    background: #f1f1f1 none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    height: 150px;
+    overflow: hidden;
+}
+.member-information {
+    overflow: hidden;
+    position: relative;
+    z-index: 11;
+}
+.member-information .userinfo {
+    width: 550px;
+}
+.vip-progress {
+    margin: 0 auto;
+    position: relative;
+}
+.vip-progress.vip-left {
+    margin: 0;
+}
+.vip-progress .vip-progress-font {
+    color: #fff;
+    left: 0;
+    line-height: 12px;
+    position: absolute;
+    top: 0;
+}
+.vip-progress-pillar {
+    background-position: left top;
+    color: #fff;
+    line-height: 12px;
+    margin: 0;
+    text-indent: 3px;
+    vertical-align: top;
+}
+.vip-level-info-text {
+    color: #666;
+    font-size: 14px;
+    padding: 8px 0;
+    text-align: center;
+}
+.vip-level-info .ui-btn-big {
+    width: 188px;
+}
+.vip-progress-small, .vip-progress-pillar-small {
+    background: rgba(0, 0, 0, 0) url("../../images/member/progress-bg.png") no-repeat scroll 0 -41px;
+    display: inline-block;
+    height: 12px;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 50px;
+}
+.vip-progress-pillar-small {
+    background-position: 0 -29px;
+    margin: 0;
+    vertical-align: top;
+}
+.user-level {
+    border: 1px solid #ddd;
+    margin-top: 15px;
+}
+.user-level-box {
+    border-top: 1px solid #ddd;
+    margin-top: -1px;
+    padding: 10px;
+}
+.user-level-box h6 {
+    background: #e9e9e9 none repeat scroll 0 0;
+    color: #666;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 10px;
+}
+.user-level-cont p {
+    color: #666;
+    line-height: 24px;
+    padding: 5px 10px;
+}
+.user-level-cont .level-pic-box {
+    overflow: hidden;
+    padding: 10px 0 20px 26px;
+    width: 720px;
+}
+.user-level-cont .level-pic-box figure {
+    float: left;
+    margin-right: 48px;
+    position: relative;
+    text-align: center;
+    width: 80px;
+}
+.user-level-cont .level-pic-box article {
+    height: 59px;
+    overflow: hidden;
+}
+.user-level-cont .level-pic-box figcaption {
+    font-size: 14px;
+    margin-top: 5px;
+}
+.user-level-cont .level-pic-box div {
+    border-bottom: 1px solid #bdbdbd;
+    left: 80px;
+    position: absolute;
+    top: 30px;
+    width: 48px;
+}
+.user-level-cont .level-pic-box .fn-mr-0 {
+    margin-right: 0;
+}
+.user-level-box .table-part-all {
+    margin: 15px 10px;
+}
+.user-level-box table {
+    color: #666;
+}
+.user-level-box table th {
+    font-weight: bold;
+}
+.user-level-cont .level-pic-box figure {
+    float: left;
+    margin-right: 48px;
+    position: relative;
+    text-align: center;
+    width: 80px;
+}
+.part-head-all-a {
+    background: #f6f6f6 none repeat scroll 0 0;
+    overflow: hidden;
+    padding-right: 10px;
+    position: relative;
+}
+.part-head-all-a h4 {
+    border-bottom: 2px solid #2d395f;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 28px;
+    padding: 0 10px;
+    position: relative;
+}
+.part-head-all-a nav li {
+    float: left;
+    margin: 5px 0 0 5px;
+}
+.part-head-all-a nav li a {
+    background: #e9e9e9 none repeat scroll 0 0;
+    border-radius: 5px 5px 0 0;
+    color: #666;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 15px;
+}
+.part-head-all-a nav li a:hover {
+    text-decoration: none;
+}
+.part-head-all-a nav .ui-tab-head-current a {
+    background: #536290 none repeat scroll 0 0;
+    color: #fff;
+}
+.portrait {
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+    float: left;
+    height: 150px;
+    position: relative;
+    width: 110px;
+}
+.portrait-pic {
+    display: block;
+    height: 100px;
+    overflow: hidden;
+    padding: 10px 5px;
+    width: 100px;
+}
+.portrait-edit {
+    color: #666;
+    display: block;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<include file="Personal:index_header" />
+<div class="user_main">
+<include file="Personal:index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<div class="userinfo fn-clear">
+<div class="portrait">
+<span class="portrait-pic">
+<img id="user_head" src="{$visitor['avatars']}?{:time()}" alt="用户头像" width="100" height="100">
+</span>
+<span id="edit_user_head_span">
+<a href="{:U('personal/user_avatar')}" id="edit_user_head" class="portrait-edit">修改头像</a>
+</span>
+<i class="icon-portrait-arrow-a"></i>
+<i class="icon-portrait-arrow-b"></i>
+</div>
+<div class="baseinfo baseinfo-w">
+<div class="username">欢迎您，<span class="username-nick">{$user_info.realname}<i class="icoLv16_" title=""></i></span><span class="login-time">最近登录时间: {:date('Y-m-d h:s:i',$user_info['last_login_time'])}</span></div>
+
+<div class="fn-font-14 fn-mt-20">
+<h5><span class="fn-vam">会员等级：</span><strong class="ui-text-red fn-vam">注册会员</strong></h5>
+<div class="vip-progress vip-left fn-mt-10">
+<span class="vip-progress-font">1250/1500</span>
+<i class="vip-progress-pillar" style="width: 83.33%"></i>
+</div>
+
+<p class="fn-mt-10">
+差250成长值升级为青铜勋章</p>
+</div>
+</div>
+</div>
+<div class="user-level">
+<header class="part-head-all-a">
+<h4 class="fn-left">会员介绍</h4>
+<nav class="fn-right">
+<ul>
+<li class="ui-tab-head-current"><a href="javascript:void(0)">会员介绍</a></li>
+<li><a href="{:U('MemberLevel/growth')}">成长值</a></li>
+<li><a href="{:U('MemberLevel/growth_record')}">成长值记录</a></li>
+</ul>
+</nav>
+</header>
+<div class="user-level-box">
+<div class="user-level-cont">
+<h6><strong>会员说明</strong></h6>
+<p>1、金融网的会员级别共分为6个等级，分别为：注册会员、青铜勋章、白银勋章、黄金勋章、白金勋章、钻石勋章。<br> 2、会员级别的升降均由系统自动处理，无需申请。<br>3、会员的等级由成长值决定，成长值越高会员等级超高，享受到的会员权益越大。</p>
+<div class="level-pic-box">
+<figure>
+<article><img src="../public/images/member/level/level-pic1.gif"></article>
+<figcaption>注册会员</figcaption>
+<div></div>
+</figure>
+<figure>
+<article><img src="../public/images/member/level/level-pic6.gif"></article>
+<figcaption>青铜勋章</figcaption>
+<div></div>
+</figure>
+
+<figure>
+<article><img src="../public/images/member/level/level-pic2.gif"></article>
+<figcaption>白银勋章</figcaption>
+<div></div>
+</figure>
+<figure>
+<article><img src="../public/images/member/level/level-pic3.gif"></article>
+<figcaption>黄金勋章</figcaption>
+<div></div>
+</figure>
+<figure>
+<article><img src="../public/images/member/level/level-pic4.gif"></article>
+<figcaption>白金勋章</figcaption>
+<div></div>
+</figure>
+<figure class="fn-mr-0">
+<article><img src="../public/images/member/level/level-pic5.gif"></article>
+<figcaption>钻石勋章</figcaption>
+</figure>
+</div>
+</div>
+<div>
+<h6><strong>会员级别规则</strong></h6>
+<div class="table-part-all table-part-hover fn-tac table-part-all-f">
+<table>
+<thead>
+<tr>
+<th>会员级别</th>
+<th>成长值范围</th>
+<th>成长值有效</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>注册会员</td>
+<td>0～1499</td>
+<td>永久有效 </td>
+</tr>
+<tr>
+<td>青铜勋章</td>
+<td>1500～3799</td>
+<td>每年3月1日扣除1000成长值，根据剩余成长值重新计算级别 </td>
+</tr>
+<tr>
+<td>白银勋章</td>
+<td>3800～11999</td>
+<td>每年3月1日扣除2000成长值，根据剩余成长值重新计算级别 </td>
+</tr>
+<tr>
+<td>黄金勋章</td>
+<td>12000～25999</td>
+<td>每年3月1日扣除4000成长值，根据剩余成长值重新计算级别 </td>
+</tr>
+<tr>
+<td>白金勋章</td>
+<td>26000～59999</td>
+<td>每年3月1日扣除8000成长值，根据剩余成长值重新计算级别 </td>
+</tr>
+<tr>
+<td>钻石勋章</td>
+<td>&gt;=60000</td>
+<td>每年3月1日扣除16000成长值，根据剩余成长值重新计算级别 </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<include file="index_footer" />
+</body>
+</html>

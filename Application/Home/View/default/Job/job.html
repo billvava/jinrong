@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>招聘</title>
+<meta name="keywords"
+content="" />
+<meta name="description"
+content="" />
+<!-- 每个页面需要继承并添加的样式 start-->
+<link href="../public/css/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/header.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="../public/job/css/main.2.0.1.css">
+<style>
+.line{border: 0;height: 1px;background-color: #e4e4e4;}
+section{width:940px;margin:0 auto;}
+.section1{width:1020px;margin-top:70px;}
+.section1 .swiper-container{width: 100%;height: 412px;}
+.section1 .swiper-container .swiper-wrapper{}
+.section1 .swiper-container .swiper-wrapper .swiper-slide{width: 100%;height: 412px;overflow: hidden;}
+.section1 .swiper-container .swiper-wrapper .swiper-slide .link{display: block;width: 100%;height: 100%;text-decoration: none;}
+.section1 .swiper-container .swiper-wrapper .swiper-slide img{width: 100%;}
+.section1 .swiper-pagination{width: 1020px;margin: 0 auto;margin-top: 5px;}
+.section1 .swiper-pagination .swiper-pagination-bullet{width: 20px;height: 3px;margin-left: 4px;margin-right: 4px;border-radius: 0;}
+
+.section2 {padding: 100px 0 100px;}
+.section2 p{text-align: center;color:#6f6f6f;font-size:14px;}
+.section2 h1{font-size:22px;color:#6f6f6f;line-height:22px;text-align: center;margin-top:30px;font-weight: 100;}
+.section2 h1.mail{color: #1e78e7;margin-top:15px;}
+.section2 p.email{color:#1e78e7;font-size:24px;}
+
+.section3 ul{width: 940px;border-left:1px solid #e0e0e0;}
+.section3 .fixed{position:fixed;top:0;z-index:1000;_position:absolute;_top:expression(eval(document.documentElement.scrollTop));}
+.section3 li{cursor:pointer;float: left;width: 9.89%;text-align:center;padding:18px 0;color:#727272;font-size:16px;border:1px solid #e0e0e0;border-left:none;position: relative;background-color:#fff;-webkit-transition: all 0.6s;-transition: all 0.6s;-ms-transition: all 0.6s;-moz-transition: all 0.6s;}
+.section3 li#selected{background-color:#1e78e7;}
+.section3 li#selected a{color:#fff;}
+.section3 li.selected a{color:red;}
+.section3 li .tall{display: none;opacity: 0;width: 16px;height: 8px;display: block; background: url('../public/job/images/icon.png') -269px 1px no-repeat;position: absolute;top: 53px;left: 50%;margin-left: -8px;-webkit-transition: all 0.6s;-transition: all 0.6s;-ms-transition: all 0.6s;-moz-transition: all 0.6s;}
+.section3 li.on .tall{display: block;opacity: 1;}
+.section3 a{text-decoration: none;color:#727272;}
+.section3 li.on a{color:#fff;}
+
+.section4{border: 1px solid #e0e0e0;margin-top: 30px;}
+.section4 .cate-title{height: 60px;width: 100%;line-height: 60px;}
+.section4 .cate-title span{font-size: 18px;color: #2e2e2e;}
+.section4 .cate-title .title1{margin-left: 32px;}
+.section4 .cate-title .title2{margin-left: 440px;}
+.section4 .cate-title .title3{margin-left: 128px;}
+.section4 .cate-title .title4{margin-left: 59px;}
+.section4 .jobs-item-big{width:900px;margin: 0 auto;border-top: 1px solid #e0e0e0;}
+.section4 .job-item{height: 70px;width: 100%;position: relative;cursor: pointer;}
+.section4 .job-item span{font-size:16px;color:#727272;}
+.section4 .job-item .carrier{position: absolute;left: 10px;line-height: 70px;}
+.section4 .job-item .carrier span{color: #2e2e2e;float: left;}
+.jobs-icon{display: inline-block; background: url('../public/job/images/icon.png') no-repeat 0 0;}
+.jobs-icon.ji{width:22px;height:22px;background-position: 0 0;margin-left: 6px;float: left;margin-top: 24px;}
+.jobs-icon.xin{width:22px;height:22px;background-position: -30px 0;margin-left: 6px;float: left;margin-top: 24px;}
+
+.section4 .job-item .cate-name{position: absolute;left: 490px;line-height: 70px;}
+.section4 .job-item .addr{position: absolute;left: 660px;line-height: 70px;}
+.section4 .job-item .publish{position: absolute;left: 775px;line-height: 70px;}
+.section4 .job-item .arrow{position: absolute;left: 880px;top: 30px;width: 9px;height: 6px;}
+.jobs-icon.down{background-position: 0 -29px;}
+.jobs-icon.up{background-position: 0 -41px;}
+
+.section4 .job-article{display: none;background-color: #f6f6f6;width: 890px;margin-bottom: 35px;font-size: 16px;color: #2e2e2e;padding-top: 15px;padding-left: 15px;
+transition: display 1s;
+-moz-transition: display 1s;
+-webkit-transition: display 1s;
+-o-transition: display 1s;
+}
+.section4 .job-article.show{}
+.section4 .type_area{display: none}
+.section4 .type_area.on{display: block;}
+.section4 .type_area .type_area_page{height: 25px;width: 100%;text-align: center;margin-top: 15px;margin-bottom: 35px;}
+.section4 .type_area .type_area_page .page-item{display: inline-block;width: 25px;height: 25px;background-color: #f6f6f6;color: #727272;font-size: 16px;text-align: center;line-height: 25px;text-decoration: none;margin-left: 4px;margin-right: 4px;}
+.section4 .type_area .type_area_page .page-item.on{background-color: #6aacff;color: white;}
+h2{color:#2e2e2e;font-size:20px;font-weight:100;}
+.common-footer{margin-top:120px;}
+</style>
+<!-- 每个页面都要引入的脚本 start-->
+<script type="text/javascript" src="../public/job/js/jquery.1.9.1.min.js"></script>
+<script type="text/javascript" src="../public/job/js/baiduTemplate.js"></script>
+<script type="text/javascript">
+    baidu.template.ESCAPE = false;
+</script>
+
+<!--  兼容IE8以下的HTML5 标签-->
+<!-[if lt IE 8]>
+<script src='../public/job/js/html5.js'></script>
+<![endif]–>
+<!-- 每个页面都要引入的脚本 end-->
+</head>
+<body class="white-bg">
+<include file="public:header" />
+<div class="wrapper">
+<p class="line"></p>
+<section class="section1">
+<img src="../public/job/images/xxzs.png" >
+</section>
+
+<section class="section2">
+<p>在这里，你将拥有宽松、愉悦、平等的工作环境，你将收获友爱、尊重、温暖的创业伙伴，更重要的是， </p>
+<p>你有可能实现自己最大的价值。</p>
+</section>
+
+<section class="section3" id="job">
+<ul id="job-nav" class="clearfix">                    
+<script type="text/html" id="job_class">
+<%for(var i=0;i<data['job_class'].length;i++){%>
+<li id="<%if(i == 0){%>selected<%}%>" type_id="<%=data['job_class'][i].class_id%>" >
+<a href="javascript:;"><%=data['job_class'][i].class_name%></a>
+</li>
+<%}%>
+</script>
+
+</ul>
+</section>
+<section class="section4">
+<p class="cate-title">
+<span class="title1">职位</span>
+<span class="title2">类别</span>
+<span class="title3">工作地</span>
+<span class="title4">发布时间</span>
+</p>
+
+<div class="cate_content">
+<script type="text/html" id="job_list">
+<%for(var i=0;i<data['job_list'].length;i++){%>
+<div class="type_area <%if(i == 0){%>on<%}%>" type_id="
+<%=data['job_list'][i][0].class_id%>
+">
+<div class="type_area_content">
+<%for(var j=0;j<data['job_list'][i].length;j++){%>
+<div class="jobs-item-big">
+<div class="job-item">
+<p class="carrier"><span class="carrier-word"><%=data['job_list'][i][j].name%></span><i class="jobs-icon ji"></i></p>
+<p class="cate-name"><span><%=data['job_list'][i][j].class_cn%></span></p>
+<p class="addr"><span><%=data['job_list'][i][j].job_place%></span></p>
+<p class="publish"><span><%=data['job_list'][i][j].addtime%></span></p>
+<i class="arrow jobs-icon down"></i>
+</div>
+<article class="job-article">
+<%=data['job_list'][i][j].content%>
+</article>
+</div>
+<%}%>
+</div>
+</div>
+<%}%>
+</script>
+</div>
+
+<!--end of foreach-->
+</section>
+</div>
+<script>
+$(function(){
+//该事件的dom会有动态生成的，所以绑定事件的时候要注意了
+$(document).on('click','.job-item',function(){
+//打开一个，同时要关掉其他所有打开的。
+//关掉一个，就只是关掉一个。
+var $article = $(this).parent().find('.job-article');
+if($article.hasClass('show')){
+//隐藏
+$(this).find('.arrow').removeClass('up').addClass('down');
+$article.removeClass('show');
+$article.hide('fast');
+}else{
+//显示
+$('.job-article').removeClass('show');
+$('.job-article').hide();
+$('.arrow').removeClass('up').addClass('down');
+$(this).find('.arrow').removeClass('down').addClass('up');
+    $article.addClass('show');
+    $article.show('fast');
+}
+});
+
+//区别：$('#job-nav li').on 当页面动态刷新时，新加载的该id元素便没有事件绑定到上面了。 而下面还可以让事件生效。：
+//$(document).on("click","#job-nav li", function(e){
+//alert("some thing");
+//});
+$(document).on('click','#job-nav li',function(){
+//$('#job-nav li').on('click',function(){
+    
+    if(!($(this).attr('id')=='selected')){
+        
+        $('#job-nav li').attr('id','');
+        $(this).attr('id','selected');
+    var type_id = $(this).attr('type_id');
+        $('.type_area.on').removeClass('on');
+        $('.type_area[type_id='+type_id+']').addClass('on');
+        //对应的下面显示职位列表
+    }
+});
+
+//点击分页事件
+$('.page-item').on('click',function(){
+if(!$(this).hasClass('on')){
+$(this).siblings().removeClass('on');
+$(this).addClass('on');
+var $type_area = $(this).parent().parent();
+var $type_page_content = $type_area.find('.type_area_content');
+var type_id = $type_area.attr('type_id');
+var page = $(this).text();
+$.ajax({
+url:'/jobs/join/ajaxJobs?p='+page+'&type_id='+type_id,
+type:'GET',
+dataType:'json',
+success:function(e){
+change_new_page($type_page_content,e.data);
+}
+});
+
+}
+});
+
+
+function change_new_page($type_area_content,list){
+if(!list)return;
+var html = '';
+$.each(list,function(index,item){
+
+var encode_article = $('<div />').html(item.jobs_desc).text();
+var ji='',xin='';
+if(item.ji ==1){
+ji='<i class="jobs-icon ji"></i>';
+}
+if(item.xin ==1){
+xin='<i class="jobs-icon xin"></i>';
+}
+
+html += '<div class="jobs-item-big">' +
+'<div class="job-item">'+
+'<p class="carrier"><span class="carrier-word">'+item.jobs_name+'</span>'+ji+xin+'</p>'+
+'<p class="cate-name"><span>'+item.type+'</span></p>'+
+'<p class="addr"><span>'+item.jobs_place+'</span></p>'+
+'<p class="publish"><span>'+item.create_time+'</span></p>'+
+'<i class="arrow jobs-icon down"></i>'+
+'</div>'+
+'<article class="job-article">'+encode_article+'</article>'+
+'</div>';
+});
+    $type_area_content.html($(html));
+}
+$('.common-header .join').addClass('on');
+$('#job').on('click','li',function(){
+location.href=$(this).find('a').attr('href');
+});
+var scrollH;
+$(document).scroll(function(){
+scrollH = $(document).scrollTop();
+if(scrollH >= 850){
+$("#job-nav").addClass("fixed");
+}else{
+$("#job-nav").removeClass("fixed");
+}
+}
+)
+});
+
+
+$.get("http://hengduoil.com/job/job/job_list", function(data){
+     $('#job-nav').html(baidu.template('job_class',data));
+     $('.cate_content').html(baidu.template('job_list',data));
+});
+</script>
+<script>
+    
+</script>
+<include file="public:footer" />
+</body>
+</html>

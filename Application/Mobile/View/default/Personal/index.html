@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="public:meta"/>
+    <link rel="stylesheet" href="../public/css/personal.css">
+</head>
+<body>
+<div class="perindextop">
+    <div class="return js-back for-event"></div>
+    <div class="msg for-event" onClick="javascript:location.href='{:url_rewrite('QS_index')}'"></div>
+    <div class="pic">
+        <a href="{:U('personal/user_info')}">
+            <img src="{$visitor['avatars']}?{:time()}" border="0"/>
+        </a>
+    </div>
+    <div class="txt">{$user_info.realname}<br/>
+        <span class="font12">{$resume_info.education_cn} | {$resume_info.experience_cn} | {$resume_info.current_cn}</span>
+    </div>
+</div>
+<div class="perindex_count">
+    <div class="clist for-event" onClick="javascript:location.href='#'">
+        <div class="content"><span class="font16">0</span><br/>待处理</div>
+    </div>
+    <div class="clist for-event" onClick="javascript:location.href=''">
+        <div class="content"><span class="font16">0</span><br/>待评价</div>
+    </div>
+    <div class="clist for-event" onClick="javascript:location.href='#'">
+        <div class="content last"><span class="font16">0</span><br/>消息提醒</div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="split-block"></div>
+
+<!--
+<div class="perbtnx4">
+    <div class="btns font15">
+        <div id="J_create_resume" class="cli t1">创建简历</div>
+        <div class="cli t2" onClick="javascript:location.href='{:url_rewrite('QS_jobslist')}'" }>搜索职位</div>
+        <div id="J_refresh_resume" class="cli t3" pid="{$resume_info['id']}">刷新简历</div>
+        <div class="cli t4" onClick="javascript:location.href='{:U('Personal/resume_list')}'">管理简历</div>
+        <div class="clear"></div>
+    </div>
+</div>
+-->
+
+<!--
+<div class="split-block"></div>
+
+<div class="mygold">
+   <div class="eattitle list_height for-event" onClick="javascript:location.href='{:U('PersonalService/index')}'">我的{:C('qscms_points_byname')}
+       <div class="point font_yellow">{$points}{:C('qscms_points_byname')}</div>
+        <div class="more"></div>
+
+    </div>
+
+
+	    <div class="btns font12">
+        <div class="cli for-event" onClick="javascript:location.href='{:U('PersonalService/service_stick')}'">
+            <div class="pic t1"></div>
+            <div class="txt">简历置顶</div>
+        </div>
+        <div class="cli" onClick="javascript:location.href='{:U('PersonalService/resume_tag',array('resume_id'=>$resume_info['id']))}'">
+        <div class="cli for-event" onClick="javascript:location.href='{:U('PersonalService/service_tag')}'">
+            <div class="pic t2"></div>
+            <div class="txt">醒目标签</div>
+        </div>
+        <div class="cli for-event" onClick="javascript:location.href='{:U('PersonalService/gold_task')}'">
+            <div class="pic t3"></div>
+            <div class="txt">我的任务</div>
+        </div>
+        <div class="cli for-event" onClick="javascript:location.href='{:U('PersonalService/order_list')}'">
+            <div class="pic t4"></div>
+            <div class="txt" onClick="javascript:location.href='{:U('order_list')}'" >我的订单</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</div>
+-->
+
+<div class="split-block"></div>
+<div class="list_height plist-img" onClick="javascript:location.href='{:U('Businesscard/my')}'">
+    <div class="pic t1"></div>
+    <div class="tit font14">商友/人脉</div>
+    <div class="describe font12">查看收藏的商友及人脉</div>
+    <div class="arrow"></div>
+    <div class="clear"></div>
+</div>
+
+
+<!--
+<div class="list_height plist-img" onClick="javascript:location.href='{:U('personal/shield_company')}'" >
+    <div class="pic t2"></div>
+    <div class="tit font14">屏蔽企业</div>
+    <div class="describe font12">可对特定企业进行屏蔽</div>
+    <div class="arrow"></div>
+    <div class="clear"></div>
+</div>
+-->
+
+<div class="list_height plist-img" onClick="javascript:location.href='{:U('personal/per_security')}'">
+    <div class="pic t3"></div>
+    <div class="tit font14">账号管理</div>
+    <div class="describe font12">基本资料、账号安全</div>
+    <div class="arrow"></div>
+    <div class="clear"></div>
+</div>
+<div class="list_height plist-img" onClick="javascript:location.href='{:U('personal/pms_list')}'" >
+    <div class="pic t4"></div>
+    <div class="tit font14">消息提醒</div>
+    <div class="describe font12">留言反馈及系统消息</div>
+    <div class="arrow"></div>
+    <div class="clear"></div>
+</div>
+<!-- <div class="list_height plist-img" onClick="javascript:location.href='{:U('personal/user_safety')}'">
+    <div class="pic t4"></div>
+    <div class="tit font14">微简历</div>
+    <div class="describe font12">专属手机动感简历</div>
+    <div class="arrow"></div>
+    <div class="clear"></div>
+</div> -->
+<div class="list_height plist-img last" onClick="javascript:location.href='{:U('personal/feedback')}'">
+    <div class="pic t5"></div>
+    <div class="tit font14">
+        意见反馈
+    </div>
+    <div class="describe font12">我们非常看重您的建议</div>
+    <div class="arrow"></div>
+    <div class="clear"></div>
+</div>
+
+
+<div class="split-block"></div>
+
+<div class="loginout list_height font14 for-event" id="logout">
+   <a>退出登录</a>
+</div>
+<div class="split-block"></div>
+<include file="public:footer_min" />
+<script type="text/javascript">
+    $('#logout').on('click', function () {
+        var dialog = new QSpopout();
+        dialog.setContent('确定退出吗？');
+        dialog.show();
+        dialog.getPrimaryBtn().on('click', function () {
+            window.location.href = "{:U('Members/logout')}";
+        });
+    });
+</script>
+</body>
+</html>

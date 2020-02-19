@@ -1,0 +1,48 @@
+<include file="public:meta" />
+<link href="../public/css/common.css" rel="stylesheet"/>
+<link href="../public/css/header.css" rel="stylesheet"/>
+<link href="../public/css/bussiness_plan.css" rel="stylesheet"/>
+<script src="../public/js/jquery.common.js"></script>
+</head>
+<body>
+<include file="public:header" />
+
+
+<div class="newslip_topimg">
+<img src="../public/banner/news.jpg" border="0"/>
+</div>
+
+
+<div class="newslip">
+  <div class="l">
+    <div class="newslist">
+      <notempty name="list">
+      <volist name="list" id="vo">
+      <div class="list">
+                <div class="t substring"><a href="{:U('News/show',array('id'=>$vo['id']))}">{$vo['title']}</a></div>
+                <div class="time substring">{:date('Y-m-d',$vo['addtime'])}</div>
+                <div class="summary">{$vo['briefly']}</div>
+            <div class="clear"></div>
+      </div>
+      </volist>
+      <div class="qspage">{$list['page']}</div>
+      <else />
+        <div class="list_empty_group">
+            <div class="list_empty">
+                <div class="list_empty_left"></div>
+                <div class="list_empty_right">
+                    <div class="sorry_box">对不起，暂无商业计划书！</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+      </notempty>
+    </div>
+  </div>
+  <div class="r">
+  </div>
+  <div class="clear"></div>
+</div>
+<include file="public:footer2" />
+</body>
+</html>

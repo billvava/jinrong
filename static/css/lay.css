@@ -1,0 +1,214 @@
+﻿
+.lay-wrap{
+    position: relative;
+    overflow: hidden;
+}
+input,select {
+	display: inline-block;
+	height: 32px;
+	padding: 0px 10px;
+	font-size: 14px;
+	line-height:32px;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	/*border-radius: 4px;*/
+}
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: url(../icon/icon1.png) no-repeat;
+    background-position: 116px -1044px;
+    margin-right: 10px;
+}
+/*input:focus,select:focus {
+	border-color: #66afe9;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+}*/
+label{
+	line-height: 34px;
+}
+input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    box-sizing: border-box;
+    height: 18px;
+    width: 18px;
+    margin-top: 8px;
+    margin-right: 10px;
+    box-sizing: content-box;
+    padding: 0;
+}
+
+.lay-left{
+    width: 90px;
+    text-align: right;
+    overflow: hidden;
+    line-height:34px ;
+}
+.w90{
+	width: 90px;
+}
+.w140{
+	width: 100px;
+}
+.w150{
+	width: 150px;
+}
+.w180{
+	width: 180px;
+}
+.w210{
+	width: 210px;
+}
+.w220{
+	width: 220px !important;
+}
+.w250{ width: 250px;}
+.w315{
+	width: 315px;
+}
+.w330{
+	width: 330px;
+}
+.w425{
+	width: 425px;
+}
+.h34{
+	height: 34px;
+}
+.pt15{padding-top: 15px;}
+.ptb8{
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.ptb6{
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+.lay-wrap .ptb10{
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.m38{
+	margin: 36px;
+}
+.m24{
+	margin: 24px;
+}
+.mr15{
+	margin-right: 15px;
+}
+.pl15{
+	padding-left: 15px;
+}
+.btn1{
+	color: #fff;
+	border: 0;
+	background-color: #7ac33d;
+	cursor: pointer;
+	font: 18px microsoft YaHei;
+}
+.btn2,.btn3{
+	height: 40px;
+	color: #ffffff;
+	background-color: #fe9900;
+	border-radius:6px ;
+	border: 0;
+	font-weight: bold;
+	cursor: pointer;
+	font: 18px microsoft YaHei;
+}
+
+.form-s .valid_message{
+    display: block;
+    margin-top: 10px;
+    color: #fd0202;
+}
+.form-s .success .valid_message{
+	display: none;
+}
+.form-s .error input{
+	border: 1px solid #ccc;
+}
+
+.mlrt10{
+	margin: 10px 10px 0 10px;
+}
+.lab1{
+    border: 1px solid #ccc;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    border-radius: 5px;
+}
+.lab1 input{
+    height: 40px;
+    line-height: 40px;
+    border: 0;
+    padding: 0;
+}
+.lab2{
+    
+    overflow: hidden;
+    position: relative;
+    display: block;
+    border-radius: 5px;
+}
+.lab2 input{
+	border-radius: 5px;
+    height: 40px;
+    line-height: 40px;
+    /*cursor: pointer;*/
+}
+.lay-wrap input.btn-send-sms{
+	font-size: 14px;
+}
+.lab2 input.required{
+	border: 1px solid #ccc !important;
+	    padding-left: 15px;
+}
+.lab2  img{
+	
+	height: 40px;
+	overflow: hidden;
+}
+.lab1 .tubiao {
+    position: relative;
+    color: #999;
+    cursor: text;
+    width: 40px;
+    text-align: center;
+    margin-top: 8px;
+    height: 26px;
+}
+.rez a{
+    height: 20px;
+    display: block;
+    float: left;
+    border-bottom: 1px solid #4ab781;
+    margin-top: 10px;
+    line-height: 20px;
+}
+.plf1{
+    position: relative;
+    left: 50%;
+    float: left;
+}
+.plf2{
+    position: relative;
+    left: -50%;
+    float: left;
+}
+.hang select, .hang select>option {
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
+    display: block;
+    padding: 0 10px;
+    margin-right: 0;
+    background-position: 70px -1045px;
+}

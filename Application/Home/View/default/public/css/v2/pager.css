@@ -1,0 +1,51 @@
+.paging{
+    text-align: right;
+    padding-bottom: 30px;
+}
+.paging {
+    color: #666;
+    font: 12px arial;
+    height: 26px;
+    overflow: hidden;
+}
+.paging a, .paging span {
+    display: inline-block;
+    line-height: 24px;
+    overflow: hidden;
+    vertical-align: top;
+}
+.paging a {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #e8e8e8;
+    color: #999;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 2px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+.paging a:hover {
+    background: #56C6FF none repeat scroll 0 0;
+    border: 1px solid #c1c1c1;
+    color: #666;
+    text-decoration: none;
+}
+.paging .select, .paging .selected {
+    background: #56C6FF none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    color: #fff;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 2px;
+    padding: 0 10px;
+}
+.paging .no {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e8e8e8;
+    color: #ccc;
+    cursor: no-drop;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 2px;
+    padding: 0 10px;
+}

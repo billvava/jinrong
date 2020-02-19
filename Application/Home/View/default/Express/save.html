@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script src="../public/js/jquery_1.12.4.js"></script>
+</head>
+<body>
+
+<div class="edit-part1" id="edit-part1">
+<div class="edit-part">
+<a id="subbtn" class="uk-icon save-part1">保存</a>
+<form action="/index.php?s=/Personal/editprojectinfo.html" class="sign form" id="part1" action="/index.php?s=/bp/editprojectinfo.html"
+enctype ="application/x-www-form-urlencoded">
+<div class="user-info">
+项目LOGO<br />
+<div class="upload-logo">
+<a href="javascript:;" class="files">
+<div id="preview">
+<img id="imghead"  border="0" src="<notempty name="info['projectpicture']">{$info['projectpicture']}<else />../public/images/project-default1.png</notempty>">
+</div>
+<a href="javascript:void(0);" class="file"><span id="filelogo">上传logo</span>
+<input type="file" name="projectpicture" id="projectpicture"  onchange="previewImage(this)">
+</a>
+</a>
+</div>
+</div>
+<div class="user-info">姓名
+<div class="border">
+<input type="text" id="cust_name" name="cust_name" value="<empty name="info['cust_name']">{:contact_hide($info['mobile'],2)}<else />{$info.cust_name}</empty>"/>
+<input type="hidden" id="mobile" name="mobile" value="{$info['mobile']}"/>
+</div>
+</div>
+<div class="user-info">
+公司名称
+<div class="border">
+<input type="text" id="project" name="project" value="<empty name="info['project']">{$info.mobile}<else />{$info.project}</empty>"/>
+</div>
+</div>
+<div class="user-info">
+职位
+<div class="border">
+<input type="text" id="post" name="post" value="<empty name="info['post']">{$info.mobile}<else />{$info.post}</empty>"/>
+</div>
+</div>
+<div class="user-info">
+邮箱
+<div class="border">
+<input type="text" id="email" name="email"  value="<empty name="info['email']">{$info.mobile}<else />{$info.email}</empty>"/>
+</div>
+</div>
+<div class="user-info"><span style="display: block;">上传BP</span>
+<div class="border" style="width: 160px; float: left;" style="overflow:hidden">
+<a href="javascript:void(0);" class="file"><span id="filespan">点击上传BP</span>
+<input type="file" name="files" id="files" value="{$info['files']}" onchange="change(event);">
+</a>
+</div>
+<img id="imgtype" style="height: 40px; margin:8px 5px 7px 20px;" src=""/>
+<span id="filename" style="line-height: 55px; height: 55px; display: inline-block;"> </span>
+<span style="display: block; color: #FD7422;">(仅支持小于10M 的BP上传；若超过10M 请发送BP 至邮箱 services@qq.com 或 使用百度商桥聊天网页版发送给客服人员：网址 http://www.7ronghui.com)</span>
+</div>
+</form>     
+</div>
+</div>
+
+
+<div class="edit-part2" id="edit-part2">
+<div class="edit-part">
+<a id="subbtn2" class="uk-icon save-part2"> 保存</a>
+<form action="/index.php?s=/Personal/editprojectinfo.html" class="sign form" id="update-form" action="/index.php?s=/Personal/editprojectinfo.html">
+<div class="user-info">
+<span style="display: block;">项目名称</span>
+<div class="border">
+<input type="text" id="pro_name" name="pro_name" value="<empty name="info['pro_name']">{$info.mobile}<else />{$info.pro_name}</empty>"/>
+</div>
+</div>
+
+<div class="user-info">
+<span style="display: block;">所属领域</span>
+<div class="border">
+<input type="text" id="category" name="category" value="{$info.category}" readonly="true" />
+<span class="icon-select"></span>
+</div>
+</div>
+
+<div class="user-info">
+<span style="display: block;">发展阶段</span>
+<div class="select-box">
+<div class="border select-focus">
+<input type="text" id="stage" name="stage" value="<empty name="info['stage']">盈亏平衡<else />{$info.stage}</empty>" readonly="true"/>
+<span class="icon-choose"></span>
+</div>
+<ul>
+<li>未上线</li>
+<li>已上线</li>
+<li>有数据</li>
+<li>盈亏平衡</li>
+<li>产生收入</li>
+<li>百万利润</li>
+<li>5百万利润</li>
+<li>1千万以上利润</li>
+<li>5千万利润</li>
+<li>准备上市</li>
+</ul>   
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">所在城市</span>
+<div class="border">
+<input type="text" id="city" name="city" value="<empty name="info['city']">城市<else />{$info.city}</empty>"/>
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">融资需求</span>
+<div class="border">
+<input type="text" id="money" name="money"  value="{$info.money}"/><span id="wan">万</span>
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">融资币种</span>
+<div class="select-box">
+<div class="border select-focus">
+<input type="text" id="currency" name="currency" value="{$info.currency}" readonly="true"/>
+<span class="icon-choose"></span>
+</div>
+<ul>
+<li>美元</li>
+<li>人民币</li>
+</ul>   
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">融资轮次</span>
+<div class="select-box">
+<div class="border select-focus">
+<input type="text" id="times" name="times" value="{$info.fround}" readonly="true"/>
+<span class="icon-choose"></span>
+</div>
+<ul>
+<li>天使轮</li>
+<li>PRE-A轮</li>
+<li>A轮</li>
+<li>B轮</li>
+<li>C轮</li>
+<li>上市前</li>
+<li>其它</li>
+</ul>   
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">网址</span>
+<div class="border">
+<input type="text" id="url" name="url"  value="{$info.url}"/>
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">项目介绍</span>
+<div class="border">
+<textarea name="pro-info" id="pro-info" rows="" cols="">{$info.pro_info}</textarea>
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">核心竞争力</span>
+<div class="border">
+<textarea name="pro-race" id="pro-race" rows="" cols="">{$info.pro_race}</textarea>
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">团队介绍</span>
+<div class="border">
+<textarea name="pro_team" id="pro-team" rows="" cols="">{$info.pro_team}</textarea>
+</div>
+</div>
+</form> 
+</div>
+</div>
+
+
+<div class="edit-part3" id="edit-part3">
+<div class="edit-part">
+<a id="subbtn3" class="uk-icon save-part3"> 保存</a>
+<form action="/index.php?s=/bp/editprojectinfo.html" class="sign form" id="update-form" action="/index.php?s=/bp/editprojectinfo.html">
+<!-- <div class="user-info">
+项目定位
+<div class="border">
+<textarea id="orientation" rows="" cols=""></textarea>
+</div>
+</div> -->
+<div class="user-info">
+<span style="display: block;">商业模式</span>
+<div class="border">
+<textarea id="business_model" rows="" cols="">{$info.business_model}</textarea>
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">市场机会</span>
+<div class="border">
+<textarea id="opportunity" rows="" cols="">{$info.opportunity}</textarea>
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">经营现状</span>
+<div class="border">
+<textarea id="situation" rows="" cols="">{$info.situation}</textarea>
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">发展规划</span>
+<div class="border">
+<textarea id="planning" rows="" cols="">{$info.planning}</textarea>
+</div>
+</div>
+<div class="user-info">
+<span style="display: block;">获投状态</span>
+<div class="border">
+<textarea id="investment_status" rows="" cols="">{$info.investment_status}</textarea>
+</div>
+</div>
+</form>
+</div>
+</div>
+</body>
+</html>

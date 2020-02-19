@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<include file="public:meta" />
+		<link rel="stylesheet" href="../public/css/personal.css">
+		<qscms:load type="category"/>
+	</head>
+	<body>
+		<include file="public:header"/>
+		<div class="split-block-title">只需<strong>30</strong>秒轻松完善信息!</div>
+    
+	<div class="list_height plist-txt notarrow">
+        <div class="pic"></div>
+        <div class="tit font14">姓名</div>
+        <div class="describe font13">
+            <input type="text" id="fullname" id="fullname" placeholder="请输入姓名" value="{$userprofile.realname}">
+        </div>
+        <div class="arrow"></div>
+        <div class="clear"></div>
+    </div>
+	
+	<div class="list_height plist-txt notarrow">
+        <div class="pic"></div>
+        <div class="tit font14">性别</div>
+        <div id="sex" class="describe font13">
+	        <div class="radio-group x2">
+		        <div class="radio-cell">
+			        <label for="radio4">男</label>
+			        <input id="radio4" name="sex" type="radio" value="1" title="男"  <if condition="$userprofile['sex'] eq 1 or $userprofile['sex'] eq 0">checked="checked"</if>>
+		        </div>
+		        <div class="radio-cell">
+			        <label for="radio5">女</label>
+			        <input id="radio5" name="sex" type="radio" value="2" title="女" <if condition="$userprofile['sex'] eq 2">checked="checked"</if>>
+		        </div>
+		        <div class="clear"></div>
+	        </div>
+        </div>
+        <div class="arrow"></div>
+        <div class="clear"></div>
+    </div>
+	
+    <div class="list_height plist-txt notarrow">
+        <div class="pic"></div>
+        <div class="tit font14">手机号码</div>
+        <div class="describe font13">
+            <if condition="$visitor['mobile_audit'] eq 1">
+                <a class="mui-navigate-right">
+                    <i class="mui-pull-right update font14">{$visitor.mobile}</i>
+                </a>
+            <else/>
+                <input type="text" id="telephone" placeholder="请输入手机号码" value="{$visitor.mobile}">
+            </if>
+        </div>
+        <div class="arrow"></div>
+        <div class="clear"></div>
+    </div>
+    <if condition="$visitor['mobile_audit'] eq 0 and C('qscms_login_per_audit_mobile') eq 1">
+      <div class="list_height plist-txt notarrow">
+          <div class="pic"></div>
+          <div class="tit font14">手机验证码</div>
+          <div class="font13 vcode_val">
+              <input id="mobile_vcode" name="mobile_vcode" type="text" placeholder="请输入验证码" value="">
+          </div>
+          <div id="getVerfyCode" class="qs-btn qs-btn-inline qs-btn-medium qs-btn-border-gray font14 vcode_btn">获取验证码</div>
+          <div class="arrow"></div>
+          <div class="clear"></div>
+      </div>
+      <div id="pop" class="qs-hidden"></div>
+      <input type="hidden" id="verify_userlogin" value="<if condition="C('qscms_mobile_captcha_open') eq 1 && C('qscms_wap_captcha_config.varify_mobile') eq 1">1</if>">
+    </if>
+	
+
+  <div class="split-block"></div>
+
+
+		    <div>
+			    <div class="qs-mask" style="display: none"></div>
+			    <div class="qs-actionsheet js-actionsheet">
+				    <div class="qs-actionsheet-menu">
+					    <div class="con-filter">
+						    <div class="f-selected-group f-selected-group-trade">
+							    <div class="s-bar">
+								    <div class="qs-btn qs-btn-inline qs-btn-small qs-btn-border-gray qs-left js-cancelActionSheet">取消</div>
+								    <div class="qs-btn qs-btn-inline qs-btn-small qs-btn-border-orange qs-right js-cancelActionSheet" id="qs-temp-confirm-trade">确定</div>
+								    <div class="clear"></div>
+							    </div>
+							    <div class="s-list qs-hidden"></div>
+						    </div>
+						    <div class="f-box f-box-trade"></div>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+    </div>
+	
+	    <div>
+		    <div class="qs-mask" style="display: none"></div>
+		    <div class="qs-actionsheet js-actionsheet">
+			    <div class="qs-actionsheet-menu">
+				    <div class="con-filter">
+					    <div class="f-selected-group f-selected-group-city">
+						    <div class="s-bar">
+							    <div class="qs-btn qs-btn-inline qs-btn-small qs-btn-border-gray qs-left js-cancelActionSheet">取消</div>
+							    <div class="qs-btn qs-btn-inline qs-btn-small qs-btn-border-orange qs-right js-cancelActionSheet" id="qs-temp-confirm-city">确定</div>
+							    <div class="clear"></div>
+						    </div>
+						    <div class="s-list qs-hidden"></div>
+					    </div>
+					    <div class="f-box f-box-city"></div>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+    </div>
+	<div class="btn-spacing">
+		  <a id="btnSave"  href="javascript:;" class="qs-btn qs-btn-blue font18">保存</a>
+	</div>
+  <div class="split-block"></div>
+  <include file="public:footer_min" />
+	<script src="../public/js/popWin.js"></script>
+  <script type="text/javascript">
+    $(function(){
+	    $(".js-showActionSheet").on("click", function(){
+		    var $iosActionsheet = $(this).closest('.js-actionParent').find('.js-actionsheet');
+		    var $iosMask = $(this).closest('.js-actionParent').find('.qs-mask');
+		    $iosActionsheet.removeClass('qs-actionsheet-toggle');
+		    $iosActionsheet.addClass('qs-actionsheet-toggle');
+		    $iosMask.fadeIn(200);
+		    $iosMask.on('click', hideActionSheet);
+		    $(this).closest('.js-actionParent').find('.js-cancelActionSheet').on('click', hideActionSheet);
+		    $(this).closest('.js-actionParent').find('.qs-actionsheet-cell').on('click', hideActionSheet);
+		    function hideActionSheet() {
+			    $(this).closest('.js-actionParent').find('.js-actionsheet').removeClass('qs-actionsheet-toggle');
+			    $(this).closest('.js-actionParent').find('.qs-mask').fadeOut(200);
+		    }
+	    });
+    });
+    // 验证表单并提交
+    var regularMobile = /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$/;
+    var regularEmail = /^[_\.0-9a-zA-Z-]+[_0-9a-zA-Z-]@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,3}$/;
+        $('#btnSave').on('click', function() {
+          var fullnameValue = $.trim($('#fullname').val());
+          var sexValue = $.trim($('#sex input[name="sex"]:checked').val());
+          var telephoneValue = $.trim($('#telephone').val());
+          var mobile_vcode = $.trim($('#mobile_vcode').val());
+          if (fullnameValue == "") {
+              qsToast({type:2,context: '请填写姓名'});
+              return false;
+          }
+          if (sexValue == "") {
+              qsToast({type:2,context: '请选择性别'});
+              return false;
+          }
+          <if condition="!$visitor['mobile_audit']">
+              if (telephoneValue == "") {
+                  qsToast({type:2,context: '请填写手机'});
+                  return false;
+              }
+              if (telephoneValue != "" && !regularMobile.test(telephoneValue)) {
+                  qsToast({type:2,context: '手机号码格式不正确'});
+                  return false;
+              }
+              <if condition="C('qscms_login_per_audit_mobile') eq 1">
+                  if (mobile_vcode == "") {
+                      qsToast({type:2,context: '请填写手机验证码'});
+                      return false;
+                  }
+              </if>
+          </if>
+          $('#J_saveresume').val('保存中...').addClass('btn_disabled').prop('disabled', !0);
+          // 提交表单
+          $.ajax({
+              url: "{:U('Personal/resume_add')}",
+              type: 'POST',
+              dataType: 'json',
+              data: {fullname: fullnameValue,sex: sexValue, telephone: telephoneValue,mobile_vcode:mobile_vcode},
+              success:function(data){
+                  if (parseInt(data.status)) {
+                      window.location.href = data.data.url;
+                  } else {
+                      qsToast({type:2,context: data.msg});
+                      $('#J_saveresume').val('保存').removeClass('qs-btn-border-disabled');
+                  }
+              },
+              error:function(result){
+                  $('#J_saveresume').val('保存').removeClass('qs-btn-border-disabled');
+                  qsToast({type:2,context: result.msg});
+              }
+          });
+        });
+      <if condition="$visitor['mobile_audit'] eq 0 and C('qscms_login_per_audit_mobile') eq 1">
+      var timer,ountdownVal = 180,
+      ountdown = function(){
+        ountdownVal--;
+        if(ountdownVal<=0){
+          clearInterval(timer);
+          ountdownVal = 180;
+          $('#getVerfyCode').val('获取验证码').removeClass('qs-btn-border-disabled').prop('disabled', 0);
+        }else{
+          $('#getVerfyCode').html('重新发送'+ ountdownVal +'秒').addClass('qs-btn-border-disabled').prop('disabled', !0);
+        }
+      };
+      /**
+       * ajax 登录
+       */
+      function doAjax() {
+        $('#pop').hide();
+        var mobile = $.trim($('#telephone').val());
+        $.post("{:U('Members/send_mobile_code')}",{mobile:mobile},function(result){
+          if(result.status == 1){
+            qsToast({type:1,context: result.msg});
+            timer=setInterval(ountdown,1000);
+          }else{
+            qsToast({type:2,context: result.msg});
+            timer=setInterval(ountdown,1000);
+          }
+        },'json');
+      }
+      
+      /**
+       * 配置极验
+       */
+      $.ajax({
+        url: qscms.root+'?m=Mobile&c=captcha&type=mobile&t=' + (new Date()).getTime(),
+        type: 'get',
+        dataType: 'json',
+        success: function(config) {
+          initGeetest({
+            gt: config.gt,
+            challenge: config.challenge,
+            offline: !config.success
+          }, function(captchaObj) {
+            captchaObj.appendTo("#pop");
+            captchaObj.onSuccess(function() {
+              doAjax();
+            });
+            window.captchaObj = captchaObj
+          });
+        }
+      });
+      $('#getVerfyCode').on('click',function(){
+        if(ountdownVal<180) return false;
+        var mobile = $.trim($('#telephone').val());
+        if (mobile == '') {
+          qsToast({type:2,context: '请输入手机号'});
+          return false;
+        }
+        if (eval($('#verify_userlogin').val())) {
+          window.captchaObj.refresh();
+          $('#pop').show();
+        } else {
+          doAjax();
+        }
+      });
+      </if>
+    </script>
+</body>
+</html>

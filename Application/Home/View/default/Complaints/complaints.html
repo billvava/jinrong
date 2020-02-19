@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>投诉维权-金融网</title>
+<meta name="keywords" content="">
+<meta name="Description" content="">
+<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+});
+</script>
+<link href="../public/css/CatUI.min.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/complaints.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/wyl-header-footer.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="public:header" />
+<div class="registerWrapper">
+        <div class="form form_findPwd">
+            <h2>投诉流程</h2>
+            <div id="step">
+            <ul class="ui_steps_round" style="width:800px">
+            <li style="width:266px" class="active"><div class="tit">用户提交投诉表单</div><i>1</i><b style="left:150px; width:232px;"></b></li>
+            <li style="width:266px" class=""><div class="tit">金融网受理审核</div><i>2</i><b style="left:150px; width:232px;"></b></li>
+            <li style="width:268px" class="last"><div class="tit">公布处罚结果</div><i>3</i><b style="left:151px; width:234px;"></b></li>
+            </ul>
+            </div>
+                <table cellspacing="0" cellpadding="0" id="step1">
+                <tbody>
+
+                <tr>
+                    <th><span>*</span>我要投诉的信息：</th>
+                    <td style="color:#f00;">
+                        {$title}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th><span>*</span>投诉理由：</th>
+                    <td>
+                        <textarea class="form_textarea tsly w460" name="" id="" cols="30" rows="10"></textarea>
+                    </td>
+                </tr>
+                <!--
+                <tr>
+                    <th><span>*</span>短信验证码：</th>
+                    <td>
+                        
+                      input  
+                    </td>
+                </tr>
+                -->
+                <tr>
+                    <th></th>
+                    <td><input type="button" class="btns" id="btn_next" style="font-family:'Microsoft Yahei','微软雅黑',Tahoma,Arial,Helvetica,STHeiti" value="下一步"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+<include file="public:footer1" />
+</body>
+</html>

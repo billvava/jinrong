@@ -1,0 +1,38 @@
+a.bBtn22, a.oBtn22, a.gBtn22 {
+    background: rgba(0, 0, 0, 0) url("http://www.trjcn.com/static/images/user/sprite_repeat.png") no-repeat scroll left -132px;
+    display: inline-block;
+    height: 22px;
+    margin-right: 5px;
+    padding-left: 5px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+a.bBtn22 .bBtn22Inner, a.oBtn22 .oBtn22Inner, a.gBtn22 .gBtn22Inner {
+    background: rgba(0, 0, 0, 0) url("../../images/sprite_repeat.png") no-repeat scroll right -159px;
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+    height: 18px;
+    line-height: 14px;
+    padding-right: 10px;
+    padding-top: 4px;
+    position: relative;
+    right: -5px;
+    text-decoration: none;
+    top: 0;
+}
+a.bBtn22:hover {
+    background-position: left -362px;
+}
+a.bBtn22:hover .bBtn22Inner {
+    background-position: right -389px;
+}
+a.oBtn22 {
+    background-position: left -78px;
+}
+a.gBtn22 .gBtn22Inner {
+    background-position: right -443px;
+}
+a.gBtn22 {
+    background-position: left -416px;
+}

@@ -1,0 +1,811 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="public:meta" />
+<link href="../public/css/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/header.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/area.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/city_select.js" type="text/javascript" language="javascript"></script>
+<link href="../public/css/common_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/jquery.ui.tooltip.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<style>
+.container::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.header_wrapper{background: #fff}
+.part-money-text-list span {
+    display: block;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 180px;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, input, button, textarea, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summargy, time, margk, audio, video {
+    margin: 0;
+    padding: 0;
+}
+div, p, li, dt, dd, h5, h6 {
+    word-break: break-all;
+}
+.ui-text-gray-2 {
+    color: #666;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.part-money-list-a, .part-instituional-list {
+    line-height: 24px;
+}
+div, p, li, dt, dd, h5, h6 {
+    word-break: break-all;
+}
+body {
+    color: #333;
+    font: 12px/150% "微软雅黑";
+}
+body, button, input, select, textarea {
+    font: 12px/1.5 tahoma,arial,"Microsoft Yahei","Hiragino Sans GB",宋体;
+}
+html {
+    color: #333;
+}
+.fn-mt-30 {
+    margin-top: 30px !important;
+}
+.fn-mb-20 {
+    margin-bottom: 20px !important;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 1000px;
+    width: 1000px;
+}
+.m-mainRight {
+    float: right;
+    overflow: hidden;
+    width: 240px;
+}
+.m-mainLeft {
+    display: inline;
+    float: left;
+    overflow: hidden;
+    width: 740px;
+}
+.bgFFF {
+    background-color: #fff;
+}
+.pad30 {
+    padding: 30px;
+}
+.detail-info {
+    padding: 20px;
+}
+.detail-left dl {
+    display: inline-block;
+    float: left;
+    line-height: 1.8em;
+    overflow: hidden;
+    padding: 0 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 320px;
+}
+.detail-left dt {
+    color: #999;
+    float: left;
+    overflow: hidden;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+}
+.detail-left dd {
+    color: #333;
+    float: left;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 220px;
+}
+.detail-left dd a {
+    color: #333;
+}
+.bor_btm_da {
+    border-bottom: 1px dashed #ccc;
+}
+.m-title1 .title-span {
+    border-bottom: 2px solid #e94e38;
+    display: inline-block;
+    font-size: 16px;
+    height: 56px;
+    padding: 0 30px;
+}
+ins, a {
+    text-decoration: none;
+}
+a {
+    color: #666;
+    cursor: pointer;
+}
+.btm20 {
+    margin-bottom: 20px;
+}
+.fn-pb-20 {
+    padding-bottom: 20px !important;
+}
+.fn-pt-20 {
+    padding-top: 20px !important;
+}
+.m-smMenu {
+    background-color: #e94e38;
+    color: #fff;
+    font-size: 14px;
+    padding: 3px 5px;
+}
+.project-pt-fd {
+    background: #f4f0e4 none repeat scroll 0 0;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 30px;
+}
+.fn-pr {
+    position: relative;
+}
+.ui-btn-orange, .ui-btn-red {
+    color: #fff !important;
+}
+.ui-btn-orange {
+    background-color: #f06612 !important;
+}
+.ui-btn-big {
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+}
+.w100 {
+    width: 100px !important;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.project-pt-fd h5 {
+    font-size: 22px;
+    font-weight: bold;
+}
+.m-title1 {
+    border-bottom: 1px solid #ddd;
+    height: 56px;
+    line-height: 56px;
+}
+.m-hyxm {
+    background-color: #76aedf;
+}
+.m-hyxm a {
+    color: #fff !important;
+}
+.colfff, .colfff a {
+    color: #fff;
+    text-decoration: none;
+}
+.pad20 {
+    padding: 20px;
+}
+.top10 {
+    margin-top: 10px;
+}
+.font16 {
+    font-size: 16px;
+}
+.center {
+    text-align: center;
+}
+.m-mainRight .m-title3 .ui-btn-blue {
+    background: #4a9adf none repeat scroll 0 0 !important;
+}
+.ui-btn-small-icon {
+    height: 20px;
+    line-height: 1em;
+    padding-top: 4px;
+}
+.fn-mt-20 {
+    margin-top: 20px !important;
+}
+.m-mainLeft .m-ico5 {
+    color: #fff;
+    font-size: 12px;
+    line-height: 13px;
+    margin-left: 5px;
+    text-align: center;
+    text-indent: 2px;
+}
+body{
+    background-color: #eee;
+}
+.bgFFF {
+    background-color: #fff;
+}
+.verMid {
+    vertical-align: middle;
+}
+.font16b {
+    font-size: 16px;
+    font-weight: bold;
+}
+.ui-text-blue-2 {
+    color: #3b4a82;
+}
+.ui-text-yellow-2 {
+    color: #56C6FF;
+}
+.fn-left {
+    float: left;
+}
+.fn-right {
+    float: right;
+}
+.m-eeesc-box {
+    display: inline-block;
+    float: left;
+    margin: 8px 10px 0 0;
+    position: relative;
+}
+.fn-clear::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 1000px;
+    width: 1000px;
+}
+.fn-mt-30 {
+    margin-top: 30px !important;
+}
+.fn-mb-20 {
+    margin-bottom: 20px !important;
+}
+.col666, .col666 a {
+    color: #666;
+    text-decoration: none;
+}
+.bor_btm_da {
+    border-bottom: 1px dashed #ccc;
+}
+.pad20RL {
+    padding: 0 20px;
+}
+.font14 {
+    font-size: 14px;
+}
+.top20 {
+    margin-top: 20px;
+}
+.m-title1 {
+    border-bottom: 1px solid #ddd;
+    height: 56px;
+    line-height: 56px;
+}
+.bgFa {
+    background-color: #fafafa;
+}
+.top20 {
+    margin-top: 20px;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix::after {
+    clear: both;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix::after {
+    clear: both;
+}
+.fn-mr-30 {
+    margin-right: 30px !important;
+}
+
+.fn-clear::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.fn-mt-10 {
+    margin-top: 10px !important;
+}
+.ui-btn-red {
+    background-color: #e94e38;
+}
+
+.m-hyxm .ui-btn {
+    color: #fff !important;
+}
+.m-hyxm a {
+    color: #fff !important;
+}
+.colfff, .colfff a {
+    color: #fff;
+    text-decoration: none;
+}
+.ui-btn-orange, .ui-btn-red {
+    color: #fff !important;
+}
+.ui-btn {
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 8px;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.w180 {
+    width: 180px !important;
+}
+.btn-hall {
+    background: #5d7992 none repeat scroll 0 0;
+    border: 1px solid #a2a2a2;
+    border-radius: 3px;
+    color: #fff !important;
+    display: block;
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    width: 198px;
+}
+.fn-hide {
+    display: none;
+}
+.m-title3 .title-span {
+    border-bottom: 2px solid #fff;
+    display: inline-block;
+    float: left;
+    font-size: 16px;
+    height: 46px;
+    line-height: 56px;
+    padding: 0 20px;
+}
+.m-hyxm img {
+    border-radius: 49px;
+    height: 98px;
+    width: 98px;
+}
+fieldset, img {
+    border: 0 none;
+}
+.m-title3 {
+    border-bottom: 1px solid #ddd;
+    height: 46px;
+}
+.fn-mt-15 {
+    margin-top: 15px !important;
+}
+.fn-mr-5 {
+    margin-right: 5px !important;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.bor_btm_so {
+    border-bottom: 1px solid #ddd;
+}
+.fn-br-b0 {
+    border-bottom: 0 none !important;
+}
+</style>
+<style media="print" type="text/css">
+.noprint{visibility:hidden}
+</style>
+</head>
+<body>
+<div class="noprint">
+<include file="public:header" />
+</div>
+<div class="container fn-mb-20 fn-mt-30">
+<p class="btm20">
+<i class="small-icon small-icon-12 right10"></i>
+<span class="colblue verMid">
+<a href="">首页</a>&gt;
+<a href="">找资金</a>&gt;<a href="">资金信息</a>
+&gt;{$info.title}</span>
+</p>
+<div class="fn-clear">
+<div class="m-mainRight ">
+<div class="m-hyxm colfff">
+<div class="m-title3">
+<h2 class="title-span">会员名片</h2>
+<div class="fn-right fn-mt-15 fn-mr-5" data-id="1486769">
+<a href="javascript:void(0);" class="ui-btn-small ui-btn-blue ui-btn-small-icon" alt="交换名片" event="click.exchange">
+<i class="small-icon small-icon-21"></i><span class="fn-vam">交换名片</span>
+</a>
+</div>
+</div>
+<p class="center top20">
+<notempty name="info['realname']">
+<a href="/Company/show/company_id/{$info['trj_company_id']}.html"><img src="../public/images/face/{$info.sex_cn}1.gif"></a>
+<else />
+<img src="../public/images/face/{$info.sex_cn}1.gif">
+</notempty>
+</p>
+<p class="top10 font16 center" id="J_view_contact_name"><span class="fn-vab">{$info.realname}</span></p>
+<div class="pad20">
+<p class="line24">
+<notempty name="info['company_name']">
+所在公司：<span id="J_view_company_name">{$info['company_name']}</span><br>
+</notempty>
+<notempty name="info['job']">
+职位：{$info['job']}<br>
+</notempty>
+<notempty name="info['user_area']">
+所在地区：{$info['user_area']}<br>
+</notempty>
+
+<notempty name="info['company_name']">
+关注行业：
+<a href="" target="_blank">节能环保</a>
+<br>
+</notempty>
+</p>
+<p class="top10">
+<a href="javascript:void(0);" class="ui-btn ui-btn-red w180" event="click.getcontact">查看联系方式</a>
+</p>
+<p class="fn-tac fn-pt-10 fn-pb-10 fn-hide">联系时请说明来自金融网</p>
+<notempty name="info['realname']">
+<p class="top10"><a href="/Company/show/company_id/{$info['trj_company_id']}.html" class="btn-hall">进入展厅</a></p>
+<else />
+<p class="top10">咨询客服人员 </p>
+</notempty>
+</div>
+</div>
+<div class=" m-title1 bgFa top20">
+<span class="title-span">相似的资金</span>
+</div>
+<div class="bgFFF pad20RL clearfix col666">
+<foreach name="tag_list" item="vo">
+<div class="bor_btm_da top20">
+<p class="font14"><a href="{:U('Item/show',array('id'=>$vo['id']))}">{$vo.title}</a></p>
+<p class="top10">投资金额：{$vo.amount_interval_min}{$vo.amount_interval_min_unit}<if condition="$vo.amount_interval_max neq ''">-{$vo.amount_interval_max}{$vo.amount_interval_max_unit}</if></p>
+<p class="line20 top10 btm20">股权投资  |  成长期,扩张期,成熟期   |    北京</p>
+</div>
+</foreach>
+</div>
+
+<div class=" m-title1 bgFa top20">
+<span class="title-span">最近浏览的资金</span>
+</div>
+<div class="bgFFF pad20RL clearfix col666">
+<volist name="historys" id="vo">
+<div class="bor_btm_da fn-pt-20 fn-pb-20 fn-clear <if condition='$i eq count($historys)'>fn-br-b0</if>">
+<div class="fn-left">·</div>
+<p class="fn-ml-10 font14"><a href="{:U('Fund/show',array('id'=>$vo['id']))}">{$vo.title}</a></p>
+</div>
+</volist>
+<!--
+<div class="bor_btm_da fn-pt-20 fn-pb-20 fn-clear fn-br-b0">
+<div class="fn-left">·</div>
+<p class="fn-ml-10 font14 "><a href="http://zijin.trjcn.com/detail_613117.html">北京某企业资金300万-3亿元寻能源、医疗等项目合作</a></p>
+</div>
+-->
+</div>
+</div>
+<div class="m-mainLeft">
+<div class="bgFFF clearfix">
+<div class="pad30 bgFFF">
+<p><a href="javascript:void(0);" class="font16b verMid ui-text-yellow-2">{$info.title}</a></p>
+<div class="fn-clear">
+<div class="fn-left fn-mt-10 ui-text-gray"><time class="fn-mr-30">{:date('Y-m-d',$info['addtime'])}
+</time>浏览数：{$info.click}人</div>
+<div class="fn-right">
+<span class="m-eeesc-box">
+<i class="small-icon small-icon-28"></i>
+<a href="javascript:void(0);" id="send_to_email" title="发送至邮箱">发送至邮箱</a>
+</span>
+<span class="m-eeesc-box">
+<i class="m-icoAll m-ico7"></i>
+<a href="javascript:void(0);" data-id="541882" id="J_addfav" title="收藏">收藏</a>
+
+</span>
+<span class="m-eeesc-box">
+<i class="m-icoAll m-ico8"></i>
+<a href="#" target="_blank" rel="nofollow" title="举报">举报</a>
+</span>
+<span class="shareBtn bdsharebuttonbox m-eeesc-box bdshare-button-style1-16" data-bd-bind="1488283054076">
+<i class="m-icoAll m-ico9"></i>
+<a href="#" class="bds_more" data-cmd="more" title="分享">分享</a>
+</span>
+
+</div>
+</div>
+
+</div>
+<p class="bor_btm_so"></p>
+<div class="pad30 detail-info">
+<div class="detail-left">
+<dl class="detail-info-dl">
+<dt>资金主体：</dt>
+<dd title="{$info.funds_body}">
+<a href="/list_1000.html?d94=609" target="_blank">{$info.funds_body}</a>
+</dd>
+</dl>
+<dl class="detail-info-dl">
+<dt>所在地区：</dt>
+<dd id="find_area">
+</dd>
+</dl>
+
+<script type="text/javascript">
+var multiSelect = new MultiSelect('find_area','last_area_id',dataMultiArea,dataAllArea);
+multiSelect.pNames  = 'province_id,city_id,area_id';
+multiSelect.pStart  = 1;
+multiSelect.init(chinese_id);
+multiSelect.select({$info.last_area_id});
+</script>
+
+<script>
+var province=$("#province_id option:selected").text();
+var city=$("#city_id option:selected").text();
+var area=$("#area_id option:selected").text();
+var find_area = province+city+area;
+$('#province_id,#city_id,#area_id').remove();
+$('#find_area').html(find_area).attr('title',find_area);;
+</script>
+
+<dl class="detail-info-dl">
+<dt>投资行业：</dt>
+<dd title="{$info.tz_industry}">
+<!--
+<a href="/list_1000.html?y=13" target="_blank">房地产</a>,
+-->
+{$info.tz_industry}
+</dd>
+</dl>
+<dl class="detail-info-dl">
+<dt>投资地区：</dt>
+<dd title="{$info.tz_area}">
+{$info.tz_area}</dd>
+</dl>
+<dl class="detail-info-dl">
+<dt>投资金额：</dt>
+<dd title="{$info.amount_interval_min}{$info.amount_interval_min_unit}
+<notempty name="$info['amount_interval_max']">
+-{$info.amount_interval_max}{$info.amount_interval_max_unit}
+</notempty>">
+{$info.amount_interval_min}{$info.amount_interval_min_unit}
+<notempty name="$info['amount_interval_max']">
+-{$info.amount_interval_max}{$info.amount_interval_max_unit}
+</notempty>
+</dd>
+</dl>
+<dl class="detail-info-dl">
+<dt>前期费用：</dt>
+<dd title="{$info.s201}">
+{$info.s201}
+</dd>
+</dl>
+<dl class="detail-info-dl">
+<dt>需提供资料：</dt>
+<dd title="{$info.s100}">
+{$info.s100}</dd>
+</dl>
+<div class="fn-clear"></div>
+</div>
+</div>
+<p class="bor_btm_da"></p>
+
+
+<if condition="$info.zjf_tz_type !=''">
+<div class="pad30 detailInf">
+<p>
+<span class="m-smMenu">股权投资</span></p>
+<div class="detail-ul-list-container fn-mt-20">
+<div class="detail-left">
+<dl class="detail-info-dl">
+<dt>股权投资类型：</dt>
+<dd title="{$info.zjf_tz_type}">{$info.zjf_tz_type}</dd>
+</dl>
+<dl class="detail-info-dl">
+<dt>投资阶段：</dt>
+<dd title="{$info.zjf_tz_period}">{$info.zjf_tz_period}</dd>
+</dl>
+
+<notempty name="info['s110_min']">
+<dl class="detail-info-dl">
+<dt>投资期限：</dt>
+<dd title="{$info.s110_min} - {$info.s110_max}{$info.s110_unit}">{$info.s110_min} - {$info.s110_max}
+<switch name="info.s110_unit">
+<case value="M360">年</case>
+<case value="M30">月</case>
+<case value="M1">日</case>
+</switch>
+</dd>
+</dl>
+</notempty>
+
+<!--
+<dl class="detail-info-dl">
+<dt>参股比例：</dt>
+<dd title="20 - 30 %">20 - 30 %</dd>
+</dl>
+-->
+<div class="fn-clear"></div>
+</div>
+</div>
+</div>
+</if>
+
+<div class="project-pt-fd">
+<table width="100%">
+<tbody><tr>
+<td width="120"><img src="../public/images/new-deliver.png" alt="投递项目"></td>
+<td>
+<article>
+<h5>昨日项目方投递项目共计2633次</h5>
+<p class="fn-mt-5">立即投递项目，将信息直接发送到投资人手机，融资更主动！</p>
+</article>
+</td>
+<td class="fn-pr" width="116"><a href="javascript:void(0);" data-title="成都某投资公司400万-9亿元寻化学化工等优质项目合作" data-zjxm-id="541882" data-user-id="1486769" class="ui-btn-big ui-btn-orange w100" title="投资项目">投递项目</a>
+</td>
+</tr>
+</tbody></table>
+</div>
+<!--
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+-->
+</div>
+
+<if condition="$info.i_overview neq ''">
+<div id="i_overview" class="bgFFF top20 j-ret" style="">
+<div class="m-title1">
+<span class="title-span">投资要求概述 </span>
+</div>
+<div class="pad30 line22">
+<div class="txt2em">
+<p>{$info.i_overview}</p>
+</div>
+</div>
+</div>
+</if>
+
+<if condition="$info.i_introduce neq ''">
+<div id="i_introduce" class="bgFFF top20 j-ret">
+<div class="m-title1">
+<span class="title-span">投资案例 </span>
+</div>
+<div class="pad30 line22">
+<div class="txt2em">
+<p>
+{$info.i_introduce}
+</p>
+</div>
+</div>
+</div>
+</if>
+
+<if condition="$info.i_other_remark neq ''">
+<div id="i_other_remark" class="bgFFF top20 j-ret">
+<div class="m-title1">
+<span class="title-span">其他备注 </span>
+</div>
+<div class="pad30 line22">
+<div class="txt2em">
+<p>{$info.i_other_remark}</p>
+</div>
+</div>
+</div>
+</if>
+
+<if condition="$info.i_keywords neq ''">
+<div class="bgFFF top20 clearfix ">
+<div class="m-xxfj clearfix">
+<div class="col999 pad30">标签：
+<volist name="info['i_keywords']" id="vo">
+<a href="{:U('Fund/fund_list',array('k'=>$vo))}" target="_blank">{$vo}</a>&nbsp;&nbsp;
+</volist>
+</div>
+</div>
+</div>
+</if>
+
+<div id="i-zjxm-comment" class="bgFFF top20 clearfix j-ret">
+<a name="comments"></a>
+<div class="pad30">
+<div id="SOHUCS" sid="fund_{$info.id}" ></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cysVg2gQf';
+var conf = 'prod_64ffe413efb0e25139026a13d28861e7';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+</div>
+
+<style>
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a button.btn-fw {
+    background-image: url("../public/images/post-btn.png");
+}
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a button.btn-fw:hover{
+    background-image: url("../public/images/post-btn.png");
+}
+#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main {
+    background-image: url("../public/images/qrh_cy.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid #4398ed;
+    height: 96px;
+    margin: 0 8px;
+}
+#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w, #SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w, #SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w a {
+    display:none!important;
+}
+</style>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="noprint">
+<include file="Home@default/public/footer_min" />
+</div>
+<script>
+$(".detail-info-dl dd").tooltip({track:!0,tooltipClass:"custom-tooltip-style"});
+</script>
+<script type="text/javascript" src="../public/js/jquery.modal.dialog.js"></script>
+<script type="text/javascript" src="../public/js/jquery.listitem.js"></script>
+<script type="text/javascript" src="../public/js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="../public/js/laydate/laydate.js"></script>
+<script type="text/javascript" src="../public/js/personal/jquery.fixed.sidebar.js"></script>
+</body>
+</html>

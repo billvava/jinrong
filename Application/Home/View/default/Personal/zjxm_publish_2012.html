@@ -1,0 +1,630 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/fund_base.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/icon.css" rel="stylesheet" type="text/css" />
+<script src="/static/js/plugin/jquery/1.5.2/jquery.min.js"></script>
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/area.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/multiselect.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/check_repair.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/base.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/zjxm.publish.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.artDialog.js" type="text/javascript" language="javascript"></script>
+<script type="text/javascript" src="../public/js/uploadify/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../public/js/uploadify/uploadify.css">
+<script>window.qrh_Config={page:'publish'};</script>
+<script>
+var $uploadify = {
+    'formData'     : {
+        "token" : "{:md5($info['id'].time())}",
+        "times" : "{:time()}",
+        'PHPSESSID':'{:session_id()}'
+    },
+    'auto':true,
+    'multi'    : false,
+    'removeTimeout' : 0,
+    'fileSizeLimit' : '1024KB',
+    'fileTypeDesc' : '上传文件',
+    'fileTypeExts' : '*.gif;*.jpg;*.png,*.jpeg',
+     'buttonImage' : '../public/js/uploadify/button.png',
+     'height':22,
+     'width':61,
+    'swf': '../public/js/uploadify/uploadify.swf',
+    'uploader' : '',
+    'onUploadSuccess' : function(){}
+};
+function i_attr_del(self,id){
+    var o = $(self).parent().hide().parent().parent().prev();
+    var val = o.val().split(',');
+    var ids = new Array();
+    for(var k in val)
+    {
+        if (val[k] == id)continue;
+        ids.push(val[k]);
+    }
+    o.val(ids.join(','));
+}
+</script>
+<!--
+<style>
+.publicForm dl dd {
+    padding-left: 110px;
+}
+</style>
+-->
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<div class="trjStep_no2">
+<div class="trjStep">
+<ol class="cols2 fn-clear">
+<li class="step_1"><span>1.填写信息类型</span></li>
+<li class="step_2"><span>2.填写详细信息</span></li>
+</ol>
+</div>
+</div>
+<div class="pri_info_ct">
+<a href="#" class="fn-right ui-btn-small ui-btn-blue" target="_blank">发布信息指南</a>
+<i class="icoBul16"></i>温馨提示：
+<p class="pri_info_list">
+1、为了保证您的信息能顺利通过我们的审核，请将信息的真实情况尽可能全面的发布出来！<br>
+2、根据我们的长期跟踪统计，信息完整度越高，越容易获得目标客户的关注！<br>
+3、信息完整度越高，将在我们的平台搜索结果排序靠前、获得推荐机会，以及享受增值服务试用机会！<br>
+</p>
+</div>
+<div id="T-body">
+<div class="p10">
+<div class="publicForm">
+<form action="<if condition="ACTION_NAME=='edit'">{:U('Home/personal/edit')}<else />{:U('Home/personal/publish')}</if>" accept-charset="utf-8" name="publishform" id="publishform" enctype="multipart/form-data" method="post">
+<input type="hidden" name="id" value="{$info.id}"/>
+<input type="hidden" name="info_type" value="2012"/>
+<if condition="ACTION_NAME=='zjxm_publish'">
+<dl>
+<dt class="w150"><i>*</i>信息分类：</dt>
+<dd>
+<label><input onclick='location.href="{:U('Personal/zjxm_publish',array('add'=>2010))}"' value="2010" type="radio"> 股权投资</label>
+<label><input onclick='location.href="{:U('Personal/zjxm_publish',array('add'=>2011))}"' value="2011" type="radio"> 债权投资</label>
+<label><input onclick='location.href="{:U('Personal/zjxm_publish',array('add'=>2012))}"' checked="" value="2012" type="radio"> 金融投资</label>
+<label><input onclick='location.href="{:U('Personal/zjxm_publish',array('add'=>2013))}"' value="2013" type="radio"> BT/BOT 项目投资</label>
+<label><input onclick='location.href="{:U('Personal/zjxm_publish',array('add'=>2014))}"' value="2014" type="radio"> 其它投资</label>
+</dd>
+</dl>
+</if>
+
+<dl>
+<dt><i>*</i>标题：</dt>
+<dd>
+<input name="title" id="title" class="text wb70" value="{$info.title}" data-rule="required|min_length[8]|max_length[30]" maxlength="30" min_length_err="请填写标题，8-30个汉字内" max_length_err="请填写标题，8-30个汉字内" holder="举例：广东某企业资金10万-2000万元寻全国优质房地产项目合作" type="text"> <em class="pl5 hide" etype="error_info">
+<i class="icoPro16"></i>
+请填写标题</em>
+<div style="color:#dc5c5c">标准：地区+某（资金主体/资金类型）+金额+寻某项目+合作</div></dd>
+</dl>
+
+<dl>
+<dt><i>*</i>资金主体：</dt>
+<dd>
+<select name="funds_body" id="sel_funds_body" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['funds_body']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['funds_body'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="funds_body_info"><i class="icoPro16"></i>请选择资金主体</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>所在地区：</dt>
+<dd>
+<span id="last_area_iddivAreaSelect"></span>
+<input class="hidea" id="last_area_id" name="last_area_id" value="{$info.last_area_id}" data-rule="required" btype="change" type="text">
+<em class="hide" etype="error_info" ><i class="icoPro16"></i>请选择所在地区</em>
+<script type="text/javascript">
+var MultiSelectChange = function(cls){
+$('#'+cls.hdId).trigger('blur');
+}
+var multiSelect = new MultiSelect('last_area_iddivAreaSelect','last_area_id',dataMultiArea,dataAllArea);
+multiSelect.pLabels  = '省,市,县/区';
+multiSelect.pClass   = 'mr5';
+multiSelect.pNames  = 'province_id,city_id,area_id';
+multiSelect.pStart  = 1;
+multiSelect.init(chinese_id);
+multiSelect.select({$info.last_area_id});
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt>
+<i>*</i>投资行业：
+</dt>
+<dd>
+<select name="tz_industry" id="sel_tz_industry" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['tz_industry']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['tz_industry'] == $vo['c_id']">
+selected="selected"</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="tz_industry_info"><i class="icoPro16"></i>请选择投资行业</em>
+<script>
+$(function() {
+    var _vinput = $('input[name="atttz_industry_div"]');
+    if (_vinput.filter('[data-unique=1]').length > 0)
+    {
+        _vinput.click(function(){
+            if ($(this).attr('data-unique')=='1')
+            {
+                $(this).attr('checked') ==true ?
+                _vinput.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                : _vinput.removeAttr('disabled');
+            }
+        });
+    }
+    $('#tz_industry_select_dialog').bind('click', function () {
+        qrh.cache.dialog=$.dialog({
+        title: '选择投资行业',
+        width:'240px',
+        lock:true,
+        fixed:true,
+        content: document.getElementById('tz_industry_selectDialog')
+        });
+        checkbox_selected();
+    });
+    $('#tz_industry_selectDialog .btnWrap>.bBtn22').click(function(){
+            var _val = new Array();
+            var _txt = '';
+            $('input[name="atttz_industry_div"]').filter(':checked').each(function(){
+                _val.push($(this).val());
+                _txt += $(this).parent().text()+' ';
+            });
+            $('#tz_industry').val(_val.length>0 ? (',' + _val.join(',') + ',') : '').trigger('blur');
+            $('#tz_industry_span').html(_txt).show();
+            qrh.cache.dialog.close();
+            return false;
+        });
+        $('#tz_industry_selectDialog .btnWrap>.gBtn22').click(function(){checkbox_selected();qrh.cache.dialog.close();return false;});
+        checkbox_selected();
+});
+function checkbox_selected() {
+    var val = $('#tz_industry').val();
+    var _txt = '';
+    _vinput = $('input[name="atttz_industry_div"]');
+    _vinput.each(function(){
+        if ((','+val+',').indexOf(','+$(this).val()+',') >-1) {
+            $(this).attr('checked', true);
+            if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _vinput.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _vinput.removeAttr('disabled');
+                }
+            _txt += $(this).parent().text();
+        }else{
+        $(this).attr('checked', false);
+        }
+    });
+    $('#tz_industry_span').html(_txt).show();
+}
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>投资地区：</dt>
+<dd>
+<a href="javascript:void(0);" id="tz_area_select_dialog" class="gBtn22"><i class="gBtn22Inner">选择投资地区</i></a>
+<span id="tz_area_span" style=""></span>
+<div class="selectDialog hide" id="tz_area_selectDialog">
+<ul class="clearfix">
+<foreach name="category_list['invest_area']" item="vo">
+<li><label for="tz_area_{$vo.c_id}"><input name="tz_area_area[]" id="tz_area_{$vo.c_id}" value="{$vo.c_id}" type="checkbox">{$vo.c_name}</label></li>
+</foreach>
+</ul>
+<div class="btnWrap pt10"><a href="javascript:void(0);" class="bBtn22"><i class="bBtn22Inner">确 定</i></a><a href="#" class="gBtn22 ml10"><i class="gBtn22Inner">取消</i></a></div>
+</div>
+<input class="hidea" id="tz_area" name="tz_area" data-rule="required" value="{$info.tz_area}" type="text">
+
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请选择投资地区</em>
+<script>
+$(function(){
+var _sel_container = $('#tz_area_span');
+var _sel_input = $('#tz_area');
+var _input_indu =  $('input[name="tz_area_area\[\]"]');
+    $('#tz_area_select_dialog').bind('click', function () {
+         qrh.cache.dialog=$.dialog({
+        title: '选择投资地区',
+        width:'240px',
+        lock:true,
+        fixed:true,
+        content: document.getElementById('tz_area_selectDialog')
+        });
+        provSelectDialog();
+    });
+
+    $('#tz_area_selectDialog .btnWrap>.bBtn22').click(function(){
+        var _val = new Array();
+        var _sel = '';
+        _input_indu.each(function(){
+            if ($(this).attr('checked') == true) {
+                _val.push($(this).val());
+                _sel += $(this).parent().text()+'&nbsp;&nbsp;';
+            }
+        });
+        _sel_container.html(_sel).show();
+        _sel_input.val(_val.length>0 ? (',' + _val.join(',') + ',') : '').trigger('blur');
+        qrh.cache.dialog.close();
+        return false;
+    });
+    $('#tz_area_selectDialog .btnWrap>.gBtn22').click(function(){provSelectDialog();qrh.cache.dialog.close();return false;});
+
+function provSelectDialog()
+{
+    _input_indu.removeAttr('checked');
+    var val = _sel_input.val();
+    var html = '';
+    _input_indu.each(function(){
+        if ((','+val+',').indexOf(','+$(this).val()+',') >-1) {
+             $(this).attr('checked', true).trigger('click').attr('checked', true);
+            html += $(this).parent().text()+'&nbsp;&nbsp;';
+        }
+    _sel_container.html(html).show();
+    });
+}
+
+provSelectDialog();
+
+})
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>投资金额：</dt>
+<dd>
+<input name="amount_interval_min" id="amount_interval_min" maxlength="10" class="text w80 mr5" value="{$info.amount_interval_min}" data-rule="required|regexp[num]|greater[0]|greater[min_max]|max_length[18]" data-name="amount_interval" data-merge="amount_interval_max,amount_interval_min" type="text">
+<select name="amount_interval_min_unit" data-rule="require" data-merge="amount_interval_max,amount_interval_min">
+
+<option value="1" <if condition="$info.amount_interval_min_unit eq '1' || $info.amount_interval_min_unit ==''">selected=""</if>>万元</option>
+<option value="10000" <if condition="$info.amount_interval_min_unit eq '10000'">selected=""</if>>亿元</option>
+
+</select>
+-- 
+<input name="amount_interval_max" id="amount_interval_max" maxlength="10" class="text w80 ml5 mr10" value="{$info.amount_interval_max}" data-rule="required|regexp[num]|greater[0]|greater[min_max]|max_length[18]" data-name="amount_interval" iname="投资金额" data-merge="amount_interval_max,amount_interval_min" type="text">
+<select name="amount_interval_max_unit" data-rule="require" data-merge="amount_interval_max,amount_interval_min">
+
+<option value="1" <if condition="$info.amount_interval_max_unit eq '1' || $info.amount_interval_max_unit ==''">selected=""</if>>万元</option>
+<option value="10000" <if condition="$info.amount_interval_max_unit eq '10000'">selected=""</if>>亿元</option>
+
+</select>
+<em class="pl5 hide" etype="error_info">
+<i class="icoPro16"></i>请填写投资金额</em>
+</dd>
+</dl>
+
+<dl>
+<dt>风险偏好：</dt>
+<dd>
+<select name="zjf_fx_like" id="sel_zjf_fx_like" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['zjf_fx_like']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info.zjf_fx_like eq $vo['c_id']">selected=""</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="zjf_fx_like_info">
+<i class="icoPro16"></i>请选择风险偏好</em>
+</dd>
+</dl>
+
+<dl>
+<dt>产品偏好：</dt>
+<dd>
+<foreach name="category_list['zjf_tp_like']" item="vo">
+<label for="zjf_tp_like_{$vo.c_id}">
+<input name="zjf_tp_like[]" id="zjf_tp_like_{$vo.c_id}" value="{$vo.c_id}" class="checkbox" type="checkbox" <if condition="$vo['data_rule'] eq 1">data-rule=""</if>>
+{$vo.c_name}</label>
+</foreach>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>
+请选择或填写产品偏好</em>
+<script>
+$(function(){
+var val = '{$info.zjf_tp_like}';
+$('input[name="zjf_tp_like\[\]"]').each(function(){
+    if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+});
+})
+</script>
+<script>
+$(function(){
+     var _v = $('input[name="zjf_tp_like\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>前期费用：</dt>
+<dd>
+<foreach name="category_list['S201']" item="vo">
+<label for="S201_{$vo.c_id}">
+<input name="S201[]" id="S201_{$vo.c_id}" value="{$vo.c_id}" class="checkbox" <if condition="$vo.data_rule eq 1">data-rule="required"</if> <if condition="$vo.data_unique eq 1">data-unique="1"</if> type="checkbox">
+{$vo.c_name}</label>
+</foreach>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请选择或填写前期费用</em>
+<script>
+$(function(){
+var val = '{$info.s201}';
+$('input[name="S201\[\]"]').each(function(){
+    if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+});
+})
+</script>
+<script>
+$(function(){
+     var _v = $('input[name="S201\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt>需提供资料：</dt>
+<dd>
+<foreach name="category_list['S100']" item="vo">
+<label for="S100_{$vo.c_id}">
+<input name="S100[]" id="S100_{$vo.c_id}" value="{$vo.c_id}" class="checkbox" type="checkbox" <if condition="$vo['ext_form_id']">extra="1" extra_id="{$vo['ext_form_id']}"</if> <if condition="$vo['data_rule'] eq 1">data-rule=""</if>>
+{$vo.c_name}</label>
+</foreach>
+<input id="extra_S100-520" name="extra_S100[520]" style="display:none;" value="{$info.extra_s100}" type="text">
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请选择或填写需提供资料</em>
+<script>
+$(function(){
+var val = '{$info.s100}';
+$('input[name="S100\[\]"]').each(function(){
+    if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+});
+})
+</script>
+<script>
+$(function(){
+     var _v = $('input[name="S100\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>投资要求概述：</dt>
+<dd>
+<textarea name="i_overview" rows="6" class="wb70" id="i_overview" data-rule="required|min_length[50]|max_length[1000]" maxlength="1000" min_length_err="必须大于50个并小于1000个汉字" max_length_err="必须大于50个并小于1000个汉字">{$info.i_overview}</textarea>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>
+请填写投资要求概述</em>
+</dd>
+</dl>
+
+<dl>
+<dt>投资案例：</dt>
+<dd>
+<textarea name="i_introduce" rows="6" class="wb70" id="i_introduce" data-rule="max_length[5000]" maxlength="5000">{$info.i_introduce}</textarea>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请填写投资案例</em>
+</dd>
+</dl>
+
+<dl>
+<dt>其他备注：</dt>
+<dd>
+<textarea name="i_other_remark" rows="6" class="wb70" id="i_other_remark" data-rule="max_length[5000]" maxlength="5000">{$info.i_other_remark}</textarea>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>
+请填写其他备注</em>
+</dd>
+</dl>
+
+<dl><dt>标签：</dt>
+<dd>
+<input name="i_keywords" id="i_keywords" class="text wb70" value="{$info.i_keywords}" data-rule="" type="text"> <em class="pl5 hide" etype="error_info">
+<i class="icoPro16"></i>请填写关键词多个以“，”隔开
+</em>
+</dd>
+</dl>
+
+<dl>
+<dt>缩略图：</dt>
+<dd>
+<div style="float:right;margin-right:450px;display:inline;">
+注：图片大小1M以内
+</div>
+<input type="file" id="i_pic" class="hide">
+<input type="hidden" value="{$info.i_pic}" name="i_pic" id="i_pic_pic"  data-rule="regexp[picture]" >
+<div id="i_pic_div" class="<empty name="info['ext_i_pic']">hide</empty>">
+<span>
+<volist name="info['ext_i_pic']" id="vo">
+<div><a href="{$vo.path}" target="_blank">{$vo.memo}</a><a class="m120" href="javascript:void(0);" onclick="i_attr_del(this,{$vo.id})">删除</a></div>
+</volist>
+</span>
+</div>
+<em class="alert ml10 error_info" etype="error_info" id="i_pic_info"></em>
+<script type="text/javascript">
+var i_picuploadLimit = 10;
+function limiti_pic(){
+  }
+$(function(){
+
+$uploadify.formData.filename = 'i_pic';
+$uploadify.formData.attach_type = 'zjxm_image';
+$uploadify.fileTypeExts = '*.jpg;*.bmp;.gif;*.jpeg;*.png';
+$uploadify.fileSizeLimit='1024KB';
+$uploadify.uploader = "{:U('Upload/attach_upload')}";
+$uploadify.uploadLimit=i_picuploadLimit;
+
+$uploadify.onSWFReady = function(){
+  limiti_pic();
+}
+$uploadify.onUploadSuccess = function(file, data, response) {
+   if (!data) {
+       alert('上传失败');
+       return;
+   }
+   data = $.parseJSON(data);
+   if (data.code == 100) {
+       alert(data.error);
+   } else if (data.code == 200) {
+       $('#i_pic_pic').each(function(){
+            var val = $(this).val();
+            val = val.split(',');
+            val.push(data.aid);
+            html = '<div><a href="'+data.file+'" target="_blank">'+file.name+'</a> <a  class="m120" href="javascript:void(0);" onclick="i_attr_del(this,'+data.aid+');limiti_pic();">删除</a></div>';
+            val = val.join(',');
+            $(this).val(/^[\d|,]+$/.test(val) ? val : '').next().show().find('span').append(html);
+       });
+       limiti_pic();
+   }
+};
+$('#i_pic').uploadify($uploadify);
+
+})
+</script>
+</dd>
+</dl>
+
+
+<dl>
+<dt>附件：</dt>
+<dd>
+<div style="float:right;margin-right:450px;display:inline;">
+注：附件大小2M以内
+</div>
+<input type="file" id="i_att" class="hide">
+<input type="hidden" value="{$info.i_att}" name="i_att" id="i_att_pic"  data-rule="regexp[rar]" >
+<div id="i_att_div" class="<empty name="info['ext_i_att']">hide</empty>">
+<span>
+<volist name="info['ext_i_att']" id="vo">
+<div><a href="{$vo.path}" target="_blank">{$vo.memo}</a><a class="m120" href="javascript:void(0);" onclick="i_attr_del(this,{$vo.id})">删除</a></div>
+</volist>
+</span>
+</div>
+<em class="alert ml10 error_info" etype="error_info" id="i_att_info"></em>
+<script type="text/javascript">
+var i_attuploadLimit = 3;
+function limiti_att(){
+  }
+$(function(){
+
+$uploadify.formData.filename = 'i_att';
+$uploadify.formData.attach_type = 'zjxm_file';
+$uploadify.fileTypeExts = '*.zip;*.rar;.tgz;*.doc;*.docx;*.xls;*.xlsx;*.pdf;*.ppt;*.pptx';
+$uploadify.fileSizeLimit='2048KB';
+$uploadify.uploader = "{:U('Upload/attach_upload')}";
+$uploadify.uploadLimit=i_attuploadLimit;
+
+$uploadify.onSWFReady = function(){
+  limiti_att();
+}
+$uploadify.onUploadSuccess = function(file, data, response) {
+   if (!data) {
+       alert('上传失败');
+       return;
+   }
+   data = $.parseJSON(data);
+   if (data.code == 100) {
+       alert(data.error);
+   } else if (data.code == 200) {
+       $('#i_att_pic').each(function(){
+            var val = $(this).val();
+            val = val.split(',');
+            val.push(data.aid);
+            html = '<div><a href="'+data.file+'" target="_blank">'+file.name+'</a> <a  class="m120" href="javascript:void(0);" onclick="i_attr_del(this,'+data.aid+');limiti_att();">删除</a></div>';
+            val = val.join(',');
+            $(this).val(/^[\d|,]+$/.test(val) ? val : '').next().show().find('span').append(html);
+       });
+       limiti_att();
+   }
+};
+$('#i_att').uploadify($uploadify);
+
+})
+</script>
+</dd>
+</dl>
+
+
+<dl>
+<dt></dt>
+<dd class="mt10 mb10">
+
+<a href="javascript:void(0);" class="ui-btn-big ui-btn-blue fn-mr-10" id="form_publish">立即发布资金信息</a>
+
+<!--
+<a href="javascript:void(0);" id="form_publish_preview" class="ui-btn-big ui-btn-preview fn-mr-10">预 览</a>
+
+<a href="javascript:void(0);" id="form_publish_status" class="ui-btn-big ui-btn-gray">
+保存暂不发布
+</a>
+-->
+</dd>
+</dl>
+<input id="delfiles" name="delfiles" type="hidden">
+</form>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<include file="index_footer" />
+<script src="../public/js/publish.js"></script>
+<script>
+$(function(){
+     frmData=$('#publishform').serialize();
+}); 
+</script>
+</body>
+</html>

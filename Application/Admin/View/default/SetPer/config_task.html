@@ -1,0 +1,37 @@
+<include file="public:header" />
+    <div class="toptip">
+        <h2>提示：</h2>
+        <p>不同的运营阶段您可以选择不同的设置。</p>
+    </div>
+    <div class="toptit">任务设置</div>
+	<form action="{:U('config_task')}" method="post" enctype="multipart/form-data" name="form1" id="form1">
+		<table width="100%" border="0" cellspacing="10" cellpadding="1">
+		<volist name="list" id="vo">
+      <tr>
+        <td width="160" align="right" >{$vo.title}：</td>
+        <td width="5">加</td>
+        <td width="100">
+		<input name="points[]" type="text" class="input_text_50" value="{$vo.points}" maxlength="4"/>
+{:C('qscms_points_byname')}</td>
+        <if condition="$vo['once'] eq '0' && $vo['times'] neq '-1' && $vo['dayly'] eq 0">
+        <td >
+        每天赠送{:C('qscms_points_byname')}上限
+    <input name="times[]" type="text" class="input_text_50" value="{$vo.times}" maxlength="4"/>
+次</td>
+  <else />
+    <input type="hidden" name="times[]" value="{$vo.times}">
+      </if>
+      <input type="hidden" name="id[]" value="{$vo.id}">
+      </tr>
+	  	</volist>
+      <tr>
+        <td align="right"  >&nbsp;</td>
+        <td height="50" colspan="2"  ><input name="submit" type="submit" class="admin_submit"    value="保存"/></td>
+      </tr>
+    </table>    
+	</form>
+	
+</div>
+<include file="public:footer" />
+</body>
+</html>

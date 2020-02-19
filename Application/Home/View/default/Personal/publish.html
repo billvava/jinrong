@@ -1,0 +1,125 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+</style>
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<form>
+<header class="part-head-all-a fn-pl-5 j-tab-all-c-cur">
+<nav class="fn-left">
+<ul>
+<li class="ui-tab-head-current"><a type="button">发布项目信息</a></li>
+</ul>
+</nav>
+</header>
+<div class="part-cont-radio-a j-tab-cont">
+<div class="part-list">
+<aside class="fn-left j-tab-all-c-1">
+
+<ul class="item_select">
+
+<li>
+<label class="label-pointer li J_tab" for="i1">
+<input name="xiangmu" id="i1" _url="/Home/personal/zjxm_publish/add/1" checked="checked" type="radio">项目融资</label>
+</li>
+
+<li><label class="label-pointer J_tab" for="i200">
+<input name="xiangmu" id="i200" _url="/Home/personal/zjxm_publish/add/200" type="radio">资产交易</label>
+</li>
+
+<li><label class="label-pointer J_tab" for="i700">
+<input name="xiangmu" id="i700" _url="/Home/personal/zjxm_publish/add/700" type="radio">政府招商</label>
+</li>
+
+<li><label class="label-pointer J_tab" for="i2005">
+<input name="xiangmu" id="i2005" _url="/Home/personal/zjxm_publish/add/2005" type="radio">投资理财</label>
+</li>
+
+</ul>
+</aside>
+
+<div class="j-tab-cont">
+
+<table class="fn-hide tabshow J_tab_menu" style="display:block;">
+<tbody><tr>
+<td>由您发起和跟进的项目需要融入资金，您可以接受股权融资、债权融资、整体转让、融资租赁等方式进行融资，请选择该类别发布项目信息。<br><br>项目融资是近些年兴起的一种融资手段，是以项目的名义筹措一年期以上的资金，以项目营运收入承担债务偿还责任的融资形式。</td>
+</tr>
+</tbody>
+</table>
+
+
+<table class="fn-hide tabshow J_tab_menu">
+<tbody><tr>
+<td>将您所属的大宗有形（房屋，土地，矿产等）资产或无形资产（知识产权，专利，股权等）以各种方式（协定、拍卖等）方式交易给对方，或是将您手中的在建项目易手，交易给对方，这是一种买卖的过程。但与单纯的出售，售卖并不相同。</td>
+</tr>
+</tbody></table>
+
+
+<table class="fn-hide tabshow J_tab_menu">
+<tbody><tr>
+<td>您手中的项目是由政府主体发起的，或者您是政府主体，需要发起项目，都可以发送至这个分类。</td>
+</tr>
+</tbody></table>
+<table class="fn-hide tabshow J_tab_menu">
+<tbody><tr>
+<td>您手中有通过银行或者基金公司的项目已转化为产品可以发送至这个分类。</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<footer class="fn-tac fn-mt-20"><a href="javascript:void(0);" data-id="xiangmu" class="ui-btn-big ui-btn-blue w100" id="J-next-step" data-label="项目">下一步</a></footer>
+</form>
+<footer class="ui-text-gray-2 fn-mt-20">
+<strong>重要提示：</strong><br>为了保证信息能顺利通过我们的审核，请将信息的真实情况尽可能全面的发布出来，根据我们的长期跟踪统计，信息完整度越高，越容易获得目标客
+户的关注，并能大幅提升投融双方达成合作意向的成功率！
+</footer>
+</div>
+
+
+<div class="clear"></div>
+</div>
+<include file="index_footer" />
+<script type="text/javascript">
+_url = $('.item_select input:radio[name=xiangmu]:eq(0)').attr('_url');
+$('#J-next-step').attr('href',_url);
+        $(function () {
+            $("input").click(function () {
+                if ($(this).attr("checked")){
+                    var _url = $(this).attr("_url");
+                    if(_url){
+                      $('#J-next-step').attr('href',_url);
+                    }
+                }
+            });
+        });
+
+//重置去掉选项
+$('.item_select input:radio[name=xiangmu]:eq(0)').attr('checked','checked').siblings(".J_tab").attr('checked',false);
+
+
+var isDone = true; // 防止重复点击
+$('.J_tab').on('click', function(event) {
+$(this).addClass("select").siblings(".J_tab").removeClass("select");
+var obj = $('.J_tab.select');
+var index = $(".J_tab").index(this);
+$('.J_tab_menu').eq(index).find('.ajax_loading').show();
+$('.J_tab_menu').eq(index).show().siblings(".J_tab_menu").hide();
+});
+</script>
+</body>
+</html>

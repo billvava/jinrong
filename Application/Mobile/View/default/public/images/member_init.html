@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="public:meta" />
+<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<link rel="stylesheet" href="../public/css/personal.css">
+<link rel="stylesheet" href="../public/css/nprogress.css">
+<link rel="stylesheet" href="../public/css/tip.css">
+</head>
+<body>
+<div class="list_height plist-txt notarrow">
+<h3 style="text-align:center;">请选择用户身份</h3> 
+<div class="d4">
+  <div class="alist searchbutton" rel="2">项目方</div>
+  <div class="alist searchbutton" rel="1">资金方</div>
+  <div class="clear"></div>
+</div>
+<style>
+.d4 {
+    margin: 0 auto;
+    padding-top: 12px;
+    width: 80%;
+    padding-bottom:20px;
+}
+.d4 .alist {
+    float: left;
+    width: 42%;
+    background-color: #fff;
+    color: #999;
+    display: block;
+    font-size: 0.2rem;
+    height: 40px;
+    padding: 0 30px;
+    line-height: 40px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #dce4e6;
+    border-radius: 2px;
+    text-decoration: none;
+    margin-right: 20px;
+}
+.d4 .alist.btn_active {
+    border-color: #f60;
+    color: #333;
+}
+</style>
+
+
+            <div class="arrow"></div>
+            <div class="clear"></div>
+        </div>
+
+<div class="clear"></div>
+
+        <div class="split-block"></div>
+
+
+        
+        <div class="btn-spacing">
+        <input type="hidden" val="2" id="utype">
+          <a id="J_saveresume"  href="javascript:;" class="qs-btn qs-btn-blue font18 create_btn">保存</a>
+        </div>
+        <div class="split-block"></div>
+<script type="text/javascript" src="../public/js/jquery.tooltip.js"></script>
+<script type="text/javascript" src="../public/js/jquery.disappear.tooltip.js"></script>
+<script type="text/javascript">
+$(".d4 .alist").click(function(){
+var val = $(this).attr("rel");
+$('#utype').val(val);
+var idx=$(".d4 .alist").index(this);
+$(this).addClass("btn_active").siblings().removeClass("btn_active");
+});
+
+$(".create_btn").live("click",function(){
+    var utype_val = $('#utype').val();
+    $.ajax({
+            url: '/Members/member_init',
+            cache: false,
+            async: false,
+            type: 'post',
+            dataType: 'json',
+            data: {utype: utype_val},
+            success: function(result) {
+                disapperTooltip('success',result.msg);
+                setTimeout(function () {
+                        window.location = "/Personal/index";
+                    }, 2000);
+            }
+    });
+});
+</script>
+    </body>
+</html>

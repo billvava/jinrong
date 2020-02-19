@@ -1,0 +1,130 @@
+<include file="public:header" />
+    <div class="toptit">新增案例</div>
+    <form action="{:U('Case/add')}" method="post" enctype="multipart/form-data" name="FormData" id="FormData" >
+    <table width="100%" border="0" cellpadding="3" cellspacing="0"  class="admin_table">
+      <tr>
+        <td width="70" align="right"  style=" border-top:0px">
+            <span style="color:#FF3300; font-weight:bold">*</span>案例标题：
+        </td>
+        <td width="400" style=" border-top:0px">
+            <input name="title" type="text" id="title" class="input_text_400"/>
+        </td>
+        <td style=" border-top:0px">
+            <div class="color_layer">   
+            <div id="color_box" onclick="color_box_display()" ></div>
+            <input type="hidden" name="tit_color" id="tit_color" >
+            <include file="public:select_color" />
+            </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td align="right">缩&nbsp;&nbsp;略&nbsp;&nbsp;图：</td>
+        <td colspan="2"><input type="file" name="small_img"    onKeyDown="alert('请点击右侧“浏览”选择您电脑上的图片！');return false"   style="height:21px; width:210px; border:1px #999999 solid" /></td>
+      </tr>
+    </table>
+    <table width="700" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="100" >
+            <textarea id="content" name="content" style="width:700px;height:300px;visibility:hidden;"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td height="50" align="center"><input type="submit" name="Submit" value="确定提交" class="admin_submit"/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="reset" name="Submit2" value="重置表单" class="admin_submit"/></td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellpadding="5" cellspacing="0" class="admin_table">
+      <tr>
+        <td width="120" align="right">是否显示：</td>
+        <td width="200" >
+            <label><input name="is_display" type="radio" value="1" checked="checked" />显示</label>
+            <label><input type="radio" name="is_display" value="0" /> 不显示</label>
+        </td>
+        <td width="120" align="right" >文章排序：</td>
+        <td ><input name="article_order" type="text"  class="input_text_150" id="article_order" value="255" style="width:50px;" maxlength="8" onkeyup="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;数字越大越靠前</span></td>
+        <td width="250" >&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right">作者：</td>
+        <td ><input name="author" type="text" class="input_text_150" id="author" value="{$visitor.username}" maxlength="20"/></td>
+        <td align="right">标题加粗：</td>
+        <td ><input name="tit_b" type="checkbox" id="tit_b" value="1" />
+        加粗</td>
+        <td >&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right">来源：</td>
+        <td ><input name="source" type="text" class="input_text_150" id="source" maxlength="50"/></td>
+        <td align="right">外部链接：</td>
+        <td ><input name="is_url" type="text" class="input_text_150" id="is_url" value="" maxlength="100"/></td>
+        <td >&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right" >keywords：</td>
+        <td colspan="4" ><input name="seo_keywords" type="text" class="input_text_400" id="keywords" value="" maxlength="30"/></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" >description：</td>
+        <td colspan="4"><textarea name="seo_description" class="input_textarea_400" id="description"></textarea></td>
+      </tr>
+    </table>
+    </form>
+</div>
+<include file="public:footer" />
+<link rel="stylesheet" href="__ADMINPUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__ADMINPUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="__ADMINPUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    var editor;
+    KindEditor.ready(function(K) {
+        editor = K.create('textarea[name="content"]', {
+          uploadJson : "?m=admin&c=upload&a=index",
+          allowFileManager : true,
+          afterBlur: function(){this.sync();}
+        });
+        K('input[name=Submit2]').click(function(e) {
+          editor.html('');
+        });
+    });
+    $('input[name="focos"]:first').attr('checked','checked');
+    showmenu("#type_id_cn","#menu1","#type_id");
+  $("#FormData").validate({
+    rules:
+    {
+      title:"required",
+      type_id:"required",
+      content:"required"
+    },
+    messages:
+    {
+      title: 
+      {
+        required: "请输入标题"
+      },
+      type_id: 
+      {
+        required: "请选择分类"
+      },
+      content: 
+      {
+        required: "请输入内容"
+      }
+    },
+    errorPlacement: function(error, element)
+    {
+      if ( element.is(":radio") )
+      error.appendTo( element.parent().next().next() );
+      else if ( element.is(":checkbox") )
+      error.appendTo ( element.next());
+      else
+      error.appendTo(element.parent());
+    }
+  });
+});
+</script>
+</body>
+</html>

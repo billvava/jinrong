@@ -1,0 +1,75 @@
+address, caption, cite, code, dfn, em, i, th, var {
+    font-style: normal;
+    font-weight: 500;
+}
+ins, a {
+    text-decoration: none;
+}
+.fl{float: left;}
+.fr{float: right;}
+#investor_list{
+    margin: 0 auto;
+    width: 1000px;
+}
+#investor_list .fl{width: 710px;position: relative;}
+
+#investor_list .fl i {
+    background-color: #ef4349;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    font-weight: bold;
+    height: 24px;
+    left: -10px;
+    position: absolute;
+    text-align: center;
+    top: 60px;
+    width: 24px;
+}
+#investor_list .fl section h3 a {
+    color: #000;
+    font-size: 24px;
+    line-height: 24px;
+    padding-bottom: 7px;
+}
+.clear{clear: both;}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+#investor_list ul li{
+    width: 1000px;
+    padding: 30px;
+}
+.ui-btn-orange {
+    background-color: #f06612 !important;
+}
+#investor_list ul li .ui-btn{
+ font-size: 18px;
+    height: 42px;
+    line-height: 42px;
+    padding: 0;
+    width: 148px;
+}
+.onekey_pull{padding-top: 40px;width: 150px;text-align: center;}
+.fl aside{float: left;}
+#investor_list .fl section {
+    float: right;
+    width: 505px;
+}
+#investor_list .fl section article {
+    color: #000;
+    font-size: 12px;
+    height: 60px;
+    line-height: 22px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 5px 0;
+}

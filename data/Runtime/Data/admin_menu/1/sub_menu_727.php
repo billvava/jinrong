@@ -1,0 +1,1 @@
+<?php	return array ( 'menu' => array ( 0 => array ( 'id' => '728', 'name' => '会员信息', 'menu_type' => '1', 'module_name' => 'Admin', 'controller_name' => 'Personal', 'action_name' => 'member_list', 'data' => '', 'stat' => '', 'para' => '0', ), ), ); ?>

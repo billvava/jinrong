@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+<style>
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+th, td{
+    margin: 0;
+    padding: 0;
+}
+.select_shelter select {
+    border: 0 none;
+    color: #999;
+}
+.select_shelter select:focus {
+    outline: 0 none;
+}
+.standard_select {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px;
+    vertical-align: middle;
+}
+.select_shelter {
+    border: 0 none;
+    display: inline-block;
+    height: 20px;
+    overflow: hidden;
+}
+.select_shelter select:focus {
+    outline: 0 none;
+}
+address, caption, cite, code, dfn, em, i, th, var {
+    font-style: normal;
+    font-weight: 500;
+}
+.select_shelter {
+    border: 0 none;
+    display: inline-block;
+    height: 20px;
+}
+.standard_select {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px;
+    vertical-align: middle;
+}
+.select_shelter {
+    border: 0 none;
+    display: inline-block;
+    height: 20px;
+    overflow: hidden;
+}
+.select_shelter select:focus {
+    outline: 0 none;
+}
+.select-w246 {
+    width: 246px;
+}
+.select-w264 {
+    width: 264px;
+}
+.select-w126 {
+    width: 126px;
+}
+    .part-search-nav-a {
+    background: #f1f1f1 none repeat scroll 0 0;
+    padding: 10px 10px 0;
+}
+caption, th {
+    text-align: left;
+}
+.part-search-nav-a th {
+    text-align: right;
+}
+.part-search-nav-a .fn-tac {
+    padding-right: 5px;
+    text-align: center;
+}
+.part-search-cont-a table {
+    color: #666;
+    margin-top: 10px;
+    width: 100%;
+}
+.part-search-cont-a thead th {
+    background: #f1f1f1 none repeat scroll 0 0;
+    text-align: center;
+}
+.part-search-cont-a tbody th {
+    background: #f5f5f5 none repeat scroll 0 0;
+}
+.part-search-cont-a th {
+    border: 1px solid #f1f1f1;
+    padding: 10px;
+}
+.part-search-cont-a td {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #f1f1f1;
+    overflow-wrap: break-word;
+    padding: 10px;
+    word-break: break-all;
+}
+.part-search-cont-a-msg {
+    border: 1px solid #dedede;
+    margin-top: 10px;
+    position: relative;
+}
+.part-search-cont-a-msg .ui-le-ht24 {
+    padding: 20px 10px;
+}
+.part-search-cont-a-msg i {
+    border: 8px dashed transparent;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+}
+.part-search-cont-a-msg .search-msg-arrow-a {
+    border-bottom: 8px solid #fff;
+    left: 10px;
+    top: -15px;
+    z-index: 10;
+}
+.part-search-cont-a-msg .search-msg-arrow-b {
+    border-bottom: 8px solid #dedede;
+    left: 10px;
+    top: -16px;
+}
+.part-search-cont-a-msg .search-msg-close {
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+.part-search-cont-a-msg .search-msg-close:hover {
+    text-decoration: none;
+}
+.part-aside-information {
+    background: #f5f5f5 none repeat scroll 0 0;
+    border: 1px solid #e2e2e2;
+    width: 180px;
+}
+.part-aside-information h2 {
+    color: #666699;
+    font-family: "宋体";
+    font-weight: bold;
+    padding: 7px;
+}
+.part-aside-information h6 {
+    background: #ededed none repeat scroll 0 0;
+    color: #000;
+    font-family: "微软雅黑";
+    padding: 7px;
+}
+.part-aside-information h6 i {
+    background: rgba(0, 0, 0, 0) url("../../images/icon-information.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 17px;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 16px;
+}
+.part-aside-information .aside-information-icon1 {
+    background-position: -1px 0;
+}
+.part-aside-information .aside-information-icon2 {
+    background-position: -21px 0;
+}
+.part-aside-information .aside-information-icon3 {
+    background-position: -44px 0;
+}
+.part-aside-information .aside-information-icon4 {
+    background-position: -66px 0;
+}
+.part-aside-information p {
+    line-height: 22px;
+    padding: 7px 7px 7px 28px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+th {
+    text-align: inherit;
+}
+.part-not-cont {
+    padding-top: 50px;
+    text-align: center;
+}
+.ui-btn-blue {
+    background-color: #7381ac !important;
+}
+a.ui-btn-blue:hover {
+    background-color: #8fa0d3 !important;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.part-fieldset .t_input {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 5px;
+    padding: 0 10px;
+    position: relative;
+    vertical-align: middle;
+    width: 248px;
+}
+.part-fieldset section label {
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+}
+.part-fieldset section label input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 2px 0;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg em {
+    display: block;
+    margin: 0 0 0 20px;
+    position: relative;
+}
+.part-fieldset .part-fieldset-msg i {
+    left: -20px;
+    position: absolute;
+    top: 2px;
+}
+.part-fieldset textarea {
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 72px;
+    margin-right: 5px;
+    padding: 5px;
+    position: relative;
+    vertical-align: middle;
+    width: 360px;
+}
+body placeholder {
+    white-space: nowrap !important;
+}
+.part-fieldset-code {
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-left: -6px;
+    text-align: center;
+    vertical-align: middle;
+    width: 147px;
+}
+.part-fieldset-code:hover {
+    text-decoration: none;
+}
+.part-fieldset-code-cur, .part-fieldset-code-cur:hover {
+    background: #ccc none repeat scroll 0 0;
+    color: #999;
+}
+.part-fieldset-pic-itimg img {
+    display: block;
+    height: 80px;
+    width: 80px;
+}
+.part-fieldset-pic-ittext {
+    margin-left: 100px;
+}
+.part-fieldset-footer {
+    margin: 40px 0;
+    text-align: center;
+}
+.part-fieldset-all-a {
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+.part-fieldset-all-aside80 aside {
+    width: 80px;
+}
+.part-fieldset .t_input_disabled {
+    background: #f0f0f0 none repeat scroll 0 0;
+}
+.part-footer-ml146 {
+    margin-left: 146px;
+}
+.part-footer-ml96 {
+    margin-left: 96px;
+}
+.part-footer-ml110 {
+    margin-left: 110px;
+}
+.part-fieldset-multi-select {
+    border: 1px solid #ddd;
+    cursor: pointer;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 5px;
+    overflow: hidden;
+    padding: 0 20px 0 10px;
+    position: relative;
+    vertical-align: middle;
+    width: 156px;
+}
+.part-fieldset-multi-select i {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd transparent transparent;
+    border-image: none;
+    border-style: solid dashed dashed;
+    border-width: 6px;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 5px;
+    top: 12px;
+    width: 0;
+}
+.part-search-nav-a th, .part-search-nav-a td {
+    padding-bottom: 10px;
+}
+.part-search-cont-a table {
+    color: #666;
+    margin-top: 10px;
+    width: 100%;
+}
+.part-not-cont span, .part-not-cont a {
+    color: #e93100;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.w60 {
+    width: 60px !important;
+}
+</style>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<header class="part-fieldset part-search-nav-a">
+<form method="?" name="frm">
+<table width="100%">
+<tbody><tr>
+<th>发起人：</th>
+<td><input class="t_input" name="uname" value="" type="text"></td>
+<th width="120">发起时间：</th>
+<script type="text/javascript" src="../public/js/DatePicker/WdatePicker.js"></script>
+<td width="137"><span class="part-fieldset-time fn-pr"><i class="icon-part-bg icon-part-calendar"></i><input class="t_input w100" onfocus="WdatePicker()" value="" name="start" type="text"></span></td>
+<th class="fn-tac" width="40">到</th>
+<td width="137"><span class="part-fieldset-time fn-pr"><i class="icon-part-bg icon-part-calendar"></i><input class="t_input w100" onfocus="WdatePicker()" value="" name="end" type="text"></span></td>
+
+</tr>
+<tr>
+<th>处理状态：</th>
+<td>
+<span class="standard_select">
+<span class="select_shelter">
+<select class="select-w264" name="invite_status">
+<option value="">全部</option>
+<option value="0">等待约谈</option>
+<option value="1">约谈成功</option>
+<option value="2">约谈中</option>
+<option value="3">拒绝约谈</option>
+</select>
+</span>
+</span>
+</td>
+<th>评价：</th>
+<td>
+<span class="standard_select">
+<span class="select_shelter">
+<select class="select-w126" name="evaluate">
+<option value="">全部</option>
+<option value="Y">满意</option>
+<option value="N">不满意</option>
+</select>
+</span>
+</span>
+</td>
+</tr>
+<tr>
+<th></th>
+<td><a href="javascript:document.frm.submit()" class="ui-btn-small ui-btn-blue w60">搜&nbsp;&nbsp;索</a></td>
+</tr>
+</tbody></table>
+</form>
+</header>
+<div class="part-not-cont"><i class="icoPro16yellow"></i>
+<a href="{:U('Item/item_list')}" class="fn-vam">您还没有收到任何项目方的投递，马上主动出击，立即约谈项目方。</a>
+</div>
+
+</div>
+</div>
+<include file="index_footer" />
+</body>
+</html>

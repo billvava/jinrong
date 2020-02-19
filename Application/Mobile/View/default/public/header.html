@@ -1,0 +1,122 @@
+<div class="headernavfixed">
+  <div class="headernav font18">
+    <div class="title">{$page_seo.header_title|default="无标题"}<div class="return js-back for-event"></div>
+    <div class="rbtn for-event"></div>
+    </div>
+  </div>
+	<include file="public:search" />
+<!--未登录显示以下 -->
+<if condition="!C('visitor')">
+	<div class="t-mask"></div>
+    <div class="topnavshow">
+	  <div class="navlis">
+	  	<div class="topnav" onclick="javascript:location.href='{:url_rewrite('QS_index')}'">
+		  <div class="imgbox"><img src="../public/images/198.png" /></div>
+		  <div class="tit">返回首页</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U('Members/login')}'">
+		  <div class="imgbox"><img src="../public/images/192.png" /></div>
+		  <div class="tit">登录/注册</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U("fund/fund_list")}'">
+		  <div class="imgbox"><img src="../public/images/197.png" /></div>
+		  <div class="tit">找资金</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U("item/item_list")}'">
+		  <div class="imgbox"><img src="../public/images/196.png" /></div>
+		  <div class="tit">找项目</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U("Huodong/huodong_list")}'">
+			<div class="imgbox"><img src="../public/images/199.png" /></div>
+			<div class="tit">活动</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:url_rewrite('QS_newslist')}'">
+		  <div class="imgbox"><img src="../public/images/202.png" /></div>
+		  <div class="tit">金融资讯</div>
+		</div>
+		<div class="clear"></div>
+	  </div>
+	  
+      <div class="h-navclose qs-center"><div class="navclose"></div></div>
+    </div>
+<elseif condition="C('visitor.utype') eq 1"/>
+	<div class="t-mask"></div>
+    <div class="topnavshow">
+	   
+	  <div class="navlis">
+	  	
+	  	<div class="topnav" onclick="javascript:location.href='{:url_rewrite('QS_index')}'">
+		  <div class="imgbox"><img src="../public/images/198.png" /></div>
+		  <div class="tit">返回首页</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U('Members/login')}'">
+		  <div class="imgbox"><img src="../public/images/192.png" /></div>
+		  <div class="tit">登录/注册</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U("fund/fund_list")}'">
+		  <div class="imgbox"><img src="../public/images/197.png" /></div>
+		  <div class="tit">找资金</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U("item/item_list")}'">
+		  <div class="imgbox"><img src="../public/images/196.png" /></div>
+		  <div class="tit">找项目</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U("Huodong/huodong_list")}'">
+			<div class="imgbox"><img src="../public/images/199.png" /></div>
+			<div class="tit">活动</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:url_rewrite('QS_newslist')}'">
+		  <div class="imgbox"><img src="../public/images/202.png" /></div>
+		  <div class="tit">金融资讯</div>
+		</div>
+
+		<div class="clear"></div>
+	  </div>
+	  
+      <div class="logout">
+	    <div class="outbtn for-event">退出登录</div>
+	  </div>
+	    <div class="h-navclose qs-center"><div class="navclose"></div></div>
+    </div>	
+	
+
+<else />
+<!--个人已登录显示 -->
+	<div class="t-mask"></div>
+   <div class="topnavshow">
+	  <div class="navlis">
+	  	<div class="topnav" onclick="javascript:location.href='{:url_rewrite('QS_index')}'">
+		  <div class="imgbox"><img src="../public/images/198.png" /></div>
+		  <div class="tit">返回首页</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U('Members/login')}'">
+		  <div class="imgbox"><img src="../public/images/192.png" /></div>
+		  <div class="tit">登录/注册</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U("fund/fund_list")}'">
+		  <div class="imgbox"><img src="../public/images/197.png" /></div>
+		  <div class="tit">找资金</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U("item/item_list")}'">
+		  <div class="imgbox"><img src="../public/images/196.png" /></div>
+		  <div class="tit">找项目</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:U("Huodong/huodong_list")}'">
+			<div class="imgbox"><img src="../public/images/199.png" /></div>
+			<div class="tit">活动</div>
+		</div>
+		<div class="topnav" onclick="javascript:location.href='{:url_rewrite('QS_newslist')}'">
+		  <div class="imgbox"><img src="../public/images/202.png" /></div>
+		  <div class="tit">金融资讯</div>
+		</div>
+		<div class="clear"></div>
+	  </div>
+	  
+      <div class="logout">
+	    <div class="outbtn for-event">退出登录</div>
+	  </div>
+	   <div class="h-navclose qs-center"><div class="navclose"></div></div>
+    </div>	
+</if>
+	<!--搜搜层 -->
+</div>

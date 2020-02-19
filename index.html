@@ -1,0 +1,1308 @@
+<include file="public:meta" />
+<link href="../public/css/common.css" rel="stylesheet" />
+<link href="../public/css/base_main.css" rel="stylesheet" />
+<link href="../public/css/index.css" rel="stylesheet" />
+<link href="../public/css/header.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/slider/themes/default/default.css" rel="stylesheet" />
+<link href="../public/css/banner.css" rel="stylesheet" />
+<link href="../public/css/slider/nivo-slider.css" rel="stylesheet" />
+<script src="../public/js/jquery.common.js"></script>
+<script src="../public/js/jquery.tabs.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/showbox.js"></script>
+<script src="../public/job/js/baiduTemplate.js"></script>
+<link href="../public/css/login.css" rel="stylesheet" />
+<link href="../public/css/main.css" rel="stylesheet" />
+<link href="../public/css/showbox.css" rel="stylesheet" />
+<style>
+    .logobox a {
+        color: #333
+    }
+
+    .js_ad li a {
+        display: block;
+        height: 400px;
+        cursor: pointer;
+    }
+
+    .login_box_wrapper {
+        *zoom: 1;
+        width: 1000px;
+        min-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        z-index: 10;
+    }
+</style>
+</head>
+
+<body>
+    <include file="public:header_min" />
+    <div class="header_wrapper">
+        <div class="index_head">
+            <div class="logobox" style="text-align:center;padding-top:15px;">
+                <a href="__ROOT__/"><img src="../public/images/logo.png" border="0" /></a>
+            </div>
+            <div class="index_nav">
+                <ul class="link_gray6 nowrap">
+                    <qscms:nav 列表名="nav" 调用名称="QS_top" 数量="9" />
+                    <volist name="nav" id="nav">
+                        <li class="nli J_hoverbut <if condition=" MODULE_NAME eq C( 'DEFAULT_MODULE') "><if condition="$nav[ 'tag'] eq strtolower(CONTROLLER_NAME) ">select hover</if><else/><if condition="$nav[ 'tag'] eq strtolower(MODULE_NAME) ">select hover</if></if>"><a href="{$nav['url']}" target="{$nav.target}">{$nav.title}</a></li>
+                    </volist>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="Outbox adKey">
+        <div class="wideBox js_ad">
+            <ul class="ad_top jsimg">
+                <li class="ad000">
+                    <a target="_blank" href="javascript:;"></a>
+                </li>
+                <li class="ad001">
+                    <a target="_blank" href="javascript:;"></a>
+                </li>
+                <li class="ad002">
+                    <a target="_blank" href="javascript:;"></a>
+                </li>
+                <li class="ad003">
+                    <a target="_blank" href="javascript:;"></a>
+                </li>
+                <li class="ad004">
+                    <a target="_blank" href="javascript:;"></a>
+                </li>
+                <li class="ad005">
+                    <a target="_blank" href="javascript:;"></a>
+                </li>
+            </ul>
+            <div class="ad_index">
+                <ul class="jsnum">
+                </ul>
+            </div>
+        </div>
+        <div class="login_box_wrapper">
+            <div class="Infor">
+                <div class="Insub jsKey">
+                    <div class="InforBox">
+                        <div class="loginBox">
+                            <!--未登录-->
+                            <ul class="loginTab">
+                                <li class="on">登录</li>
+                                <li>免费注册</li>
+                            </ul>
+                            <div class="tab-cont">
+                                <!--登录-->
+                                <div>
+                                    <!--登录-->
+                                    <form id="login-form">
+                                        <ul class="fromMain">
+                                            <li>
+                                                <input type="text" id="login_username" class="textBox" name="username" placeholder="手机号/会员号/邮箱" />
+                                                <p class="login-tips fn-hide" id="login-msg"></p>
+                                            </li>
+
+                                            <li>
+                                                <input type="password" id="login_password" class="textBox" name="password" placeholder="密码" />
+                                            </li>
+
+                                            <li style="height:22px;padding-bottom: 0px;">
+                                                <div class="fn-clear"><label class="fn-left label-pointer ui-text-white"><input id="is_auto_login" value="1" class="checkbox" type="checkbox"> 两周内自动登录</label>
+                                                    <p class="login-forget fn-right"><a href="/index.php?m=&c=members&a=user_getpass" target="_blank">忘记密码？</a></p>
+                                                </div>
+                                            </li>
+                                            <input id="logintype" value="0" type="hidden">
+                                        </ul>
+                                        <p class="m_t10 btn-login-p">
+                                            <button id="login" class="btn-login" type="button">登录</button></p>
+                                    </form>
+                                </div>
+                                <!--注册-->
+
+                                <div class="display">
+                                    <form id="register-form" class="form-horizontal" action="/customer/create" method="post">
+                                        <input id="username" type="hidden" name="Customer[username]" />
+                                        <ul class="fromMain">
+                                            <!--注册-->
+                                            <li>
+                                                <input type="text" id="mobile" name="mobile" class="textBox" placeholder="请输入手机号码" />
+                                            </li>
+                                            <li>
+                                                <input type="text" id="img_yzm" style="width:104px;" name="img_yzm" class="textBox" placeholder="请输入图形验证码" />
+                                                <img id="yzimg" src="Home/index/verify" onclick="this.src='Home/index/verify?'+Math.random()" alt="计算结果" style="position: absolute;right: 30px;width:90px;height:30px;cursor:pointer" />
+                                            </li>
+                                            <li>
+                                                <input id="verify_code" type="text" name="yzm" class="textBox halftext" placeholder="请输入验证码" />
+                                                <button type="button" id="verify" class="checkBtn">获取验证码</button>
+                                                <p class="reg-tips" id="reg-tips"></p>
+                                            </li>
+                                            <div class="fn-clear fn-pb-5 ui-text-white agree"><input id="trj_agreement" value="1" class="checkbox" checked="" type="checkbox"> 我已阅读并同意<a href="{:U('index/terms_conditions')}" target="_blank">《金融网服务协议》</a></div>
+                                        </ul>
+                                        <p class="m_t10 btn-login-p"><a id="register" class="btn-login" href="javascript:void(0);">免费注册</a></p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".loginTab li").click(function() {
+            var idx = $(".loginTab li").index(this);
+            $(this).addClass("on").siblings().removeClass("on");
+            $(".tab-cont>div").eq(idx).show().siblings().hide();
+        });
+    </script>
+
+    <style>
+        ins,
+        a {
+            text-decoration: none;
+        }
+
+        .ui-text-white {
+            color: #fff;
+        }
+
+        .fn-right {
+            float: right;
+        }
+
+        .ad010 {
+            background: url(../public/images/banner/img00.jpg) no-repeat;
+        }
+
+        .ad000 {
+            background: url(../public/images/banner/img0.jpg) no-repeat;
+        }
+
+        .ad001 {
+            background: url(../public/images/banner/img1.jpg) no-repeat;
+        }
+
+        .ad002 {
+            background: url(../public/images/banner/img2.jpg) no-repeat;
+        }
+
+        .ad003 {
+            background: url(../public/images/banner/img3.jpg) no-repeat;
+        }
+
+        .ad004 {
+            background: url(../public/images/banner/img4.jpg) no-repeat;
+        }
+
+        .ad005 {
+            background: url(../public/images/banner/img5.jpg) no-repeat;
+        }
+
+        .login-form li a {
+            color: #fff;
+        }
+
+        .agree a {
+            color: #fff;
+        }
+
+        .login-tips {
+            color: #fff;
+            float: none;
+            padding-top: 5px;
+        }
+
+        .login-form li.fn-clear .login-tips {
+            float: left;
+            width: 220px;
+        }
+
+        .login-tips a,
+        .login-tips a:hover {
+            color: #ffd800;
+        }
+
+        .login-form li {
+            padding-bottom: 10px;
+        }
+
+        .reg-tips {
+            color: #fff;
+            float: left;
+            width: 220px;
+            padding-top: 5px;
+        }
+
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            display: table;
+            line-height: 0;
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+
+        .fn-clear::after {
+            clear: both;
+            content: " ";
+            display: block;
+            font-size: 0;
+            height: 0;
+            visibility: hidden;
+        }
+
+        .fn-ow-clear {
+            overflow: hidden;
+        }
+
+        .container::after {
+            clear: both;
+            content: " ";
+            display: block;
+            font-size: 0;
+            height: 0;
+            visibility: hidden;
+        }
+
+        .container {
+            margin-left: auto;
+            margin-right: auto;
+            min-width: 1000px;
+            width: 1000px;
+        }
+
+        .ui-box-head {
+            background-color: #f8f8f8;
+            height: 48px;
+        }
+
+        .ui-box-title {
+            float: left;
+            font-size: 14px;
+            font-weight: bold;
+            height: 48px;
+            line-height: 48px;
+            padding-left: 50px;
+            position: relative;
+        }
+
+        .container {
+            margin-left: auto;
+            margin-right: auto;
+            min-width: 1200px;
+            width: 1200px;
+        }
+
+        .look-tab {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            float: left;
+            height: 308px;
+            overflow: hidden;
+            position: relative;
+            width: 830px;
+        }
+
+        .look-tips {
+            border-top: 1px solid #eee;
+            color: #666;
+            height: 30px;
+            margin-top: 20px;
+            padding-top: 10px;
+            text-align: right;
+        }
+
+        .btn-look-tips {
+            background-color: #56C6FF;
+            border-radius: 3px;
+            color: #fff;
+            display: inline-block;
+            font-size: 14px;
+            height: 28px;
+            line-height: 28px;
+            padding: 0 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        a.btn-look-tips:hover {
+            text-decoration: none;
+        }
+
+        .look-tab-head {
+            height: 308px;
+            overflow: hidden;
+            position: absolute;
+            width: 60px;
+        }
+
+        .look-tab-head li {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+            cursor: pointer;
+            float: left;
+            height: 154px;
+            margin-top: -1px;
+            position: relative;
+            width: 59px;
+        }
+
+        .look-tab-head li.ui-tab-head-current {
+            background-color: #56C6FF;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #56C6FF;
+            border-top: 1px solid #ddd;
+            z-index: 10;
+        }
+
+        .look-tab-head li.ui-tab-head-current span {
+            color: #fff;
+        }
+
+        .look-title {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            height: 60px;
+            left: 50%;
+            line-height: 18px;
+            margin-left: -10px;
+            margin-top: -40px;
+            position: absolute;
+            top: 50%;
+            width: 20px;
+        }
+
+        .look-explain {
+            bottom: 30px;
+            display: block;
+            position: absolute;
+            text-align: center;
+            width: 59px;
+        }
+
+        .look-tab-cont {
+            padding-left: 60px;
+        }
+
+        .look-item {
+            padding: 35px 35px 0;
+        }
+
+        .look-form span {
+            display: block;
+            float: left;
+            margin-left: 10px;
+        }
+
+        .look-form span a {
+            color: #333;
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .ui-case {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            float: right;
+            height: 308px;
+            width: 348px;
+        }
+
+        .ui-case-total {
+            background-color: #f8f8f8;
+            height: 36px;
+            overflow: hidden;
+            padding-bottom: 19px;
+            padding-left: 50px;
+            padding-top: 19px;
+        }
+
+        .ui-case-total ul {
+            height: 36px;
+            overflow: hidden;
+        }
+
+        .ui-case-data {
+            color: #666;
+            float: left;
+            height: 36px;
+            width: 298px;
+        }
+
+        .ui-case-data .figure,
+        .ui-case-data .punctuation {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #56C6FF;
+            display: block;
+            float: left;
+            font: bold 30px/34px "Microsoft Yahei", arial;
+            height: 34px;
+            margin-right: 2px;
+            text-align: center;
+            width: 23px;
+        }
+
+        .ui-case-data .punctuation {
+            background-color: transparent;
+            border: 0 none;
+            width: 12px;
+        }
+
+        .ui-case-data .text {
+            display: block;
+            float: left;
+            font-size: 14px;
+            height: 18px;
+            margin: 0 5px;
+            padding-top: 18px;
+        }
+
+        .ui-case-group {
+            overflow: hidden;
+            padding: 0 24px 10px;
+        }
+
+        .ui-case-title {
+            font-size: 14px;
+            height: 50px;
+            line-height: 50px;
+            position: relative;
+        }
+
+        .ui-case-title .more {
+            float: right;
+        }
+
+        .ui-case-title i.icon-box-anli {
+            background-position: -30px -194px;
+            display: block;
+            height: 16px;
+            left: 62px;
+            position: absolute;
+            top: 16px;
+            width: 16px;
+        }
+
+        .financing-report .ui-case-title i.icon-box-anli {
+            background-position: -47px -194px;
+        }
+
+        .ui-case-pic {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .ui-case-info {
+            float: left;
+            width: 195px;
+        }
+
+        .ui-case-info strong {
+            display: block;
+            font-size: 14px;
+            height: 22px;
+            line-height: 18px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 195px;
+        }
+
+        .ui-case-info p {
+            color: #666;
+            height: 68px;
+            line-height: 20px;
+            margin: 3px 0 8px;
+            overflow: hidden;
+        }
+
+        .btn-case-more {
+            background-color: #e7e7e7;
+            border-radius: 3px;
+            color: #333;
+            display: inline-block;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            width: 80px;
+        }
+
+        .classify {
+            overflow: hidden;
+            width: 1180px;
+        }
+
+        .classify-group {
+            width: 1180px;
+        }
+
+        .classify-item {
+            float: left;
+            margin-right: 10px;
+            padding-top: 10px;
+            width: 382px;
+        }
+
+        .classify-head {
+            background-color: #f8f8f8;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 10px;
+        }
+
+        .classify-title {
+            float: left;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .classify-title a {
+            color: #666;
+        }
+
+        .classify-title span {
+            color: #666;
+            font-size: 12px;
+            font-weight: normal;
+            margin-left: 5px;
+        }
+
+        .classify-title span em {
+            color: #f06612;
+        }
+
+        .classify-more {
+            color: #666;
+            float: right;
+            font-size: 12px;
+        }
+
+        .classify-cont {
+            overflow: hidden;
+            padding: 10px;
+            width: 300px;
+        }
+
+        .classify-info-region,
+        .classify-info-name {
+            display: block;
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .classify-info-region {
+            width: 50px;
+        }
+
+        .classify-info-region a {
+            color: #56C6FF;
+        }
+
+        .classify-info-name {
+            margin-left: 10px;
+            width: 240px;
+        }
+
+        .classify-info-name a {
+            color: #666;
+        }
+
+        .ui-box-cont {
+            padding: 10px;
+        }
+
+        .btn-emphasis-item {
+            background-color: #fff;
+            border: 1px solid #ea4f39;
+            border-radius: 3px;
+            color: #ef4349;
+            display: block;
+            font-size: 12px;
+            font-weight: normal;
+            height: 22px;
+            left: 120px;
+            line-height: 22px;
+            margin-left: 15px;
+            padding: 0 10px;
+            position: absolute;
+            top: 12px;
+            white-space: nowrap;
+        }
+
+        a.btn-emphasis-item:hover {
+            background-color: #ef4349;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        html,
+        body,
+        .ui-case-title a,
+        .ui-case-pic a {
+            color: #333;
+        }
+
+        .ui-box-more {
+            color: #666;
+            display: block;
+            float: right;
+            height: 48px;
+            line-height: 48px;
+            padding-right: 45px;
+            position: relative;
+        }
+
+        .case-repeat {
+            height: 234px;
+            overflow: hidden;
+            width: 348px;
+        }
+
+        .case-repeat ul {
+            height: 234px;
+            width: 696px;
+        }
+
+        .case-repeat li {
+            float: left;
+            height: 234px;
+            width: 348px;
+        }
+
+        .icon-box-more {
+            background-color: #e8e8e8;
+            background-position: -83px -72px;
+            height: 24px;
+            position: absolute;
+            right: 0;
+            top: 12px;
+            width: 36px;
+        }
+
+        .look-sort {
+            height: 132px;
+            overflow: hidden;
+            padding-top: 0px;
+        }
+
+        .look-sort dl {
+            float: left;
+        }
+
+        .look-sort dl dt {
+            display: block;
+            float: left;
+            font-size: 14px;
+            font-weight: bold;
+            padding-bottom: 8px;
+            width: 100%;
+        }
+
+        .look-sort dl dd {
+            float: left;
+            height: 26px;
+            line-height: 28px;
+            overflow: hidden;
+            white-space: normal;
+            width: 100%;
+        }
+
+        .look-sort dl dd a {
+            color: #666;
+        }
+
+        .look-grid-01 {
+            width: 110px;
+        }
+
+        .look-grid-03 {
+            margin-right: 10px;
+            width: 210px;
+        }
+
+        dl.look-grid-03 dd {
+            float: left;
+            width: 33.3%;
+        }
+
+        .look-grid-02 {
+            width: 172px;
+        }
+
+        dl.look-grid-02 dd {
+            width: 50%;
+        }
+
+        .input-look-search {
+            background-color: #fff;
+            border: 2px solid #56C6FF;
+            float: left;
+            font-size: 14px;
+            height: 20px;
+            padding: 8px;
+            width: 300px;
+        }
+
+        .input-look-search.item {
+            width: 380px;
+        }
+
+        .btn-look-search {
+            background-color: #56C6FF;
+            border: 0 none;
+            color: #fff;
+            cursor: pointer;
+            float: left;
+            font-size: 14px;
+            font-weight: bold;
+            height: 40px;
+            text-align: center;
+            width: 98px;
+        }
+
+        .fn-mt-20 {
+            margin-top: 20px !important;
+        }
+
+        .look-tab-head li {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+            cursor: pointer;
+            float: left;
+            height: 154px;
+            margin-top: -1px;
+            position: relative;
+            width: 59px;
+        }
+
+        body .fn-hide {
+            display: none;
+        }
+
+        .ui-case-strategy {
+            border-top: 1px solid #eee;
+            color: #666;
+            line-height: 48px;
+            text-align: center;
+        }
+
+        .ui-case-strategy a {
+            color: #56C6FF;
+            font-size: 14px;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .ui-case-strategy a i.icon-box-help {
+            background-position: 0 -194px;
+            display: block;
+            height: 13px;
+            left: 5px;
+            position: absolute;
+            top: 2px;
+            width: 19px;
+        }
+
+        .ui-case-data .text {
+            display: block;
+            float: left;
+            font-size: 14px;
+            height: 18px;
+            margin: 0 5px;
+            padding-top: 18px;
+        }
+
+        body {
+            background-color: #eee;
+            font-family: "微软雅黑";
+        }
+
+        .ui-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .ui-case-title {
+            font-size: 14px;
+            height: 50px;
+            line-height: 50px;
+            position: relative;
+        }
+
+        .ui-case-title .more {
+            float: right;
+        }
+
+        .ui-case-title i.icon-box-anli {
+            background-position: -30px -194px;
+            display: block;
+            height: 16px;
+            left: 62px;
+            position: absolute;
+            top: 16px;
+            width: 16px;
+        }
+    </style>
+    <div id="content" style="margin-top:20px;">
+        <div class="container">
+            <div class="look-tab" id="look-tab">
+                <div class="ui-tab-head look-tab-head">
+                    <ul>
+                        <li id="look-tab-2" class="ui-tab-head-current"><span class="look-title">找资金</span></li>
+                        <li><span class="look-title">选项目</span></li>
+                    </ul>
+                </div>
+                <div class="ui-tab-cont look-tab-cont">
+                    <div class="look-item ">
+                        <form class="look-form fn-clear" action="Fund/fund_list" method="get">
+                            <input name="k" id="J_keyword_zj" class="input-look-search J_placeholder" maxlength="30" tip="输入你想找的资金，来试试吧…" value="输入你想找的资金，来试试吧…" style="color: rgb(153, 153, 153);" type="text">
+                            <button class="btn-look-search J_search_submit" type="submit">搜资金</button>
+                        </form>
+                        <div class="look-sort fn-clear">
+                            <dl class="look-grid-01">
+                                <dt>投资方式</dt>
+                                <dd><a href="/Fund/fund_list/info_type/2010" target="_blank">股权投资</a></dd>
+                                <dd><a href="/Fund/fund_list/info_type/2011" target="_blank">债权投资</a></dd>
+                                <dd><a href="/Fund/fund_list/info_type/2012" target="_blank">金融投资</a></dd>
+                                <dd><a href="/Fund/fund_list/info_type/2013" target="_blank">BT/BOT投资</a></dd>
+                            </dl>
+                            <dl class="look-grid-03">
+                                <dt>资金主体</dt>
+                                <dd><a href="/Fund/fund_list/funds_body/301" target="_blank">个人资金</a></dd>
+                                <dd><a href="/Fund/fund_list/funds_body/302" target="_blank">企业资金</a></dd>
+                                <dd><a href="/Fund/fund_list/funds_body/303" target="_blank">天使投资</a></dd>
+                                <dd><a href="/Fund/fund_list/funds_body/304" target="_blank">VC投资</a></dd>
+                                <dd><a href="/Fund/fund_list/funds_body/305" target="_blank">PE投资</a></dd>
+                                <dd><a href="/Fund/fund_list/funds_body/306" target="_blank">小额贷款</a></dd>
+                                <dd><a href="/Fund/fund_list/funds_body/310" target="_blank">投资公司</a></dd>
+                                <dd><a href="/Fund/fund_list/funds_body/311" target="_blank">商业银行</a></dd>
+                                <dd><a href="/Fund/fund_list/funds_body/312" target="_blank">基金公司</a></dd>
+                                <dd><a href="/Fund/fund_list/funds_body/313" target="_blank">证券公司</a></dd>
+                                <dd><a href="/Fund/fund_list/funds_body/308" target="_blank">担保公司</a></dd>
+                                <dd><a href="/fund/fund_list" target="_blank">更多</a></dd>
+                            </dl>
+                            <dl class="look-grid-02">
+                                <dt>投资金额</dt>
+                                <dd><a href="/Fund/fund_list/mo/357" target="_blank">1万-10万</a></dd>
+                                <dd><a href="/Fund/fund_list/mo/358" target="_blank">10万-50万</a></dd>
+                                <dd><a href="/Fund/fund_list/mo/359" target="_blank">50万-100万</a></dd>
+                                <dd><a href="/Fund/fund_list/mo/360" target="_blank">100万-500万</a></dd>
+                                <dd><a href="/Fund/fund_list/mo/361" target="_blank">500万-1000万</a></dd>
+                                <dd><a href="/Fund/fund_list/mo/362" target="_blank">1000万-5000万</a></dd>
+                                <dd><a href="/Fund/fund_list/mo/363" target="_blank">5000万-1亿</a></dd>
+                                <dd><a href="/Fund/fund_list/mo/364" target="_blank">1亿以上</a></dd>
+                            </dl>
+                        </div>
+                        <div class="look-tips">
+                            不知道怎么找？
+                            <a href="{:U('Item/item_list')}" id="J_btn_look_fund" class="btn-look-tips fn-ml-10">
+                                <!--填写项目信息，-->帮您找资金</a>
+                        </div>
+                    </div>
+                    <div class="look-item fn-hide">
+                        <form class="look-form fn-clear" action="Item/item_list" method="get">
+                            <input name="k" id="J_keyword_xm" class="input-look-search item J_placeholder" maxlength="30" tip="输入你想找的项目，来试试吧…" value="输入你想找的项目，来试试吧…" style="color: rgb(153, 153, 153);" type="text">
+                            <button class="btn-look-search J_search_submit" type="submit">找项目</button>
+                        </form>
+                        <div class="look-sort fn-clear">
+                            <dl class="look-grid-01">
+                                <dt>融资方式</dt>
+                                <dd><a href="/Item/item_list/xmrz_type/618" target="_blank">债权融资</a></dd>
+                                <dd><a href="/Item/item_list/xmrz_type/619" target="_blank">股权融资</a></dd>
+                                <dd><a href="/Item/item_list/xmrz_type/892" target="_blank">其他融资</a></dd>
+                                <dd><a href="/Item/item_list/xmrz_type/891" target="_blank">整体转让</a></dd>
+                            </dl>
+                            <dl class="look-grid-02">
+                                <dt>热门行业</dt>
+                                <dd><a href="/Item/item_list/industry_id/392" target="_blank">IT互联网</a></dd>
+                                <dd><a href="/Item/item_list/industry_id/373" target="_blank">农林牧渔</a></dd>
+                                <dd><a href="/Item/item_list/industry_id/366" target="_blank">房地产</a></dd>
+                                <dd><a href="/Item/item_list/industry_id/383" target="_blank">餐饮休闲娱乐</a></dd>
+                                <dd><a href="/Item/item_list/industry_id/370" target="_blank">建筑建材</a></dd>
+                                <dd><a href="/Item/item_list/industry_id/382" target="_blank">旅游酒店</a></dd>
+                                <dd><a href="/Item/item_list/industry_id/389" target="_blank">食品饮料烟草</a></dd>
+                                <dd><a href="/Item/item_list/industry_id/369" target="_blank">节能环保</a></dd>
+                            </dl>
+                            <dl class="look-grid-03">
+                                <dt>热门地区</dt>
+                                <dd><a href="/Item/item_list/province_id/507" target="_blank">广东省</a></dd>
+                                <dd><a href="/Item/item_list/province_id/2316" target="_blank">山东省</a></dd>
+                                <dd><a href="/Item/item_list/province_id/5" target="_blank">浙江省</a></dd>
+                                <dd><a href="/Item/item_list/province_id/1105" target="_blank">河南省</a></dd>
+                                <dd><a href="/Item/item_list/province_id/2760" target="_blank">四川省</a></dd>
+                                <dd><a href="/Item/item_list/province_id/1770" target="_blank">江苏省</a></dd>
+                                <dd><a href="/Item/item_list/province_id/6" target="_blank">北京</a></dd>
+                                <dd><a href="/Item/item_list/province_id/1561" target="_blank">湖南省</a></dd>
+                                <dd><a href="/Item/item_list/province_id/917" target="_blank">河北省</a></dd>
+                                <dd><a href="/Item/item_list/province_id/777" target="_blank">贵州省</a></dd>
+                                <dd><a href="/Item/item_list/province_id/1440" target="_blank">湖北省</a></dd>
+                                <dd><a href="/Item/item_list/province_id/3191" target="_blank">云南省</a></dd>
+                            </dl>
+                        </div>
+                        <div class="look-tips">
+                            让项目方主动找您？<a href="{:U('Members/register',array('utype'=>1))}" target="_blank" class="btn-look-tips fn-ml-10">申请成为投资人</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-case">
+                <div class="ui-case-total" id="case-total-roll1">
+                    <ul>
+                        <li class="ui-case-data fn-clear">
+                            <span class="text">今日新增项目&nbsp;</span>
+                            <div class="today_num">
+<!--
+<span class="figure">1</span>
+<span class="punctuation">,</span>
+-->
+                                <script type="text/html" id="case_num">
+                                    <%for(var i=0;i<data.length;i++){%>
+                                        <span class="figure"><%=data[i]%></span>
+                                        <%if(data.length >=4){%>
+                                            <%if(i == 0){%><span class="punctuation">,</span>
+                                                <%}%>
+                                                    <%}%>
+                                                        <%}%>
+                                </script>
+                            </div>
+                            <span class="text">个</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="case-repeat slideCase">
+                    <div class="tempWrap" style="overflow:hidden; position:relative; width:348px">
+                        <ul>
+                            <li class="financing-report">
+                                <div class="ui-case-group">
+                                    <div class="ui-case-title">融资报告
+                                        <i class="icon-box-anli"></i>
+                                    </div>
+                                    <p>
+                                        <a href="{:U('News/news_show',array('id'=>$top_report['id']))}" target="_blank"><img src="{:attach($top_report['small_img'],images)}" width="300" height="129"></a>
+                                    </p>
+                                </div>
+                                <div class="ui-case-strategy">
+                                    融资早知道，创业有方向 快来看看吧 <a href="#" target="_blank">金融网每日融资报告</a>
+                                </div>
+                            </li>
+
+                            <li class="success-case">
+                                <div class="ui-case-group">
+                                    <div class="ui-case-title"><a href="{:U('Case/index')}" target="_blank">成功案例</a>
+                                        <i class="icon-box-anli"></i>
+                                    </div>
+                                    <div class="ui-case-pic">
+                                        <a href="{:U('Case/index')}" title="成功案例" target="_blank">
+                                            <img src="./data/upload/images/402_1491385911.jpg" alt="成功案例" width="90" height="90">
+                                        </a>
+                                    </div>
+                                    <div class="ui-case-info">
+                                        <strong>{$success_case['title']}</strong>
+                                        <p>{:cut_str($success_case['i_overview'],40,0,'...')}</p>
+                                        <a href="#" class="btn-case-more" target="_blank">查看详细 &gt;</a>
+                                    </div>
+                                </div>
+                                <div class="ui-case-strategy">
+                                    想要和他们一样快速成功融资？快来看看<a href="#" target="_blank"><i class="icon-box-help"></i>融资攻略</a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="ui-box fn-mt-20">
+                <div class="ui-box-head">
+                    <h2 class="ui-box-title"><i class="icon-box-money"></i>精选资金</h2>
+                    <a href="/fund/fund_list" target="_blank" class="ui-box-more">查看更多</a>
+                </div>
+                <div class="ui-box-cont fn-clear">
+                    <div class="classify">
+                        <ul class="classify-group">
+
+                            <li class="classify-item">
+                                <div class="classify-head fn-clear">
+                                    <h3 class="classify-title"><a href="/Fund/fund_list/info_type/2010" target="_blank">股权投资</a></h3>
+                                    <a href="/Fund/fund_list/info_type/2010" target="_blank" class="classify-more">更多</a>
+                                </div>
+
+                                <dl class="classify-cont fn-clear">
+                                    <foreach name="fund_list_2010" item="vo">
+                                        <dt class="classify-info-region"><a href="{:U('Fund/fund_show',array('funds_body'=>$vo['funds_body']))}" title="{$category['funds_body'][$vo['funds_body']]}" target="_blank">{$category['funds_body'][$vo['funds_body']]}</a></dt>
+                                        <dd class="classify-info-name"><a href="{:U('Fund/show',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></dd>
+                                    </foreach>
+                                </dl>
+                            </li>
+                            <li class="classify-item">
+                                <div class="classify-head fn-clear">
+                                    <h3 class="classify-title"><a href="/Fund/fund_list/info_type/2011" target="_blank">债权投资</a></h3>
+                                    <a href="/Fund/fund_list/info_type/2011" target="_blank" class="classify-more">更多</a>
+                                </div>
+                                <dl class="classify-cont fn-clear">
+                                    <foreach name="fund_list_2011" item="vo">
+                                        <dt class="classify-info-region"><a href="{:U('Fund/show',array('funds_body'=>$vo['funds_body']))}" title="{$category['funds_body'][$vo['funds_body']]}" target="_blank">{$category['funds_body'][$vo['funds_body']]}</a></dt>
+                                        <dd class="classify-info-name"><a href="{:U('Fund/show',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></dd>
+                                    </foreach>
+                                </dl>
+                            </li>
+                            <li class="classify-item">
+                                <div class="classify-head fn-clear">
+                                    <h3 class="classify-title"><a href="/Fund/fund_list/info_type/2014" target="_blank">其它投资</a></h3>
+                                    <a href="/Fund/fund_list/info_type/2014" target="_blank" class="classify-more">更多</a>
+                                </div>
+                                <dl class="classify-cont fn-clear">
+                                    <foreach name="fund_list_2014" item="vo">
+                                        <dt class="classify-info-region"><a href="{:U('Fund/fund_list',array('funds_body'=>$vo['funds_body']))}" title="{$category['funds_body'][$vo['funds_body']]}" target="_blank">{$category['funds_body'][$vo['funds_body']]}</a></dt>
+                                        <dd class="classify-info-name"><a href="{:U('Fund/show',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></dd>
+                                    </foreach>
+                                </dl>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-box fn-mt-20">
+                <div class="ui-box-head">
+                    <h2 class="ui-box-title">
+                        <i class="icon-box-item"></i>优质项目<a href="javascript:;" class="btn-emphasis-item">重点项目推荐</a></h2>
+                    <a href="/item/item_list" target="_blank" class="ui-box-more">查看更多</a>
+                </div>
+                <div class="ui-box-cont fn-clear" class="visibility:hidden;">
+                    <div class="exhibition" id="exhibition" style="/*visibility:hidden;*/display: none;">
+                        <a class="prev" href="javascript:void(0)"></a>
+                        <a class="next" href="javascript:void(0)"></a>
+                        <div class="exhibition-scroll">
+                            <ul>
+                                <li>
+                                    <div class="flipcard-container">
+                                        <div class="flipcard">
+                                            <div class="back face">
+                                                <a href="" target="_blank" title="黑龙江胚芽米项目股权融资">
+                                                    <h3>黑龙江胚芽米项目股权融资</h3>
+                                                    <p class="text">
+                                                        所属行业：农林牧渔<br> 融资金额：3000万元
+                                                        <br> 所在地区：黑龙江
+                                                    </p>
+                                                </a>
+                                            </div>
+
+
+                                            <div class="front face"></div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="flipcard-container">
+                                        <div class="flipcard">
+                                            <div class="back face">
+                                                <a href="" target="_blank" title="广州咖啡轻社交互动平台建设">
+                                                    <h3>广州咖啡轻社交互动平台建设</h3>
+                                                    <p class="text">
+                                                        所属行业：IT互联网<br> 融资金额：650万元-750万元
+                                                        <br> 所在地区：广东省
+                                                    </p>
+                                                </a>
+                                            </div>
+
+                                            <div class="front face"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="classify">
+                    <ul class="classify-group">
+                        <li class="classify-item">
+                            <div class="classify-head fn-clear">
+                                <h3 class="classify-title"><a href="/Item/item_list/industry_id/392" target="_blank">IT互联网</a></h3>
+                                <a href="/Item/item_list/industry_id/392" target="_blank" class="classify-more">更多</a>
+                            </div>
+                            <dl class="classify-cont fn-clear">
+                                <foreach name="item_list_392" item="vo">
+                                    <dt class="classify-info-region"><a href="{:U('Item/item_list',array('province_id'=>$vo['province_id']))}" title="{$category['province'][$vo['province_id']]}" target="_blank">{$category['province'][$vo['province_id']]}</a></dt>
+                                    <dd class="classify-info-name"><a href="{:U('Item/show',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></dd>
+                                </foreach>
+                            </dl>
+                        </li>
+                        <li class="classify-item">
+                            <div class="classify-head fn-clear">
+                                <h3 class="classify-title"><a href="/Item/item_list/industry_id/373" target="_blank">农林牧渔</a></h3>
+                                <a href="/Item/item_list/industry_id/373" target="_blank" class="classify-more">更多</a>
+                            </div>
+                            <dl class="classify-cont fn-clear">
+                                <foreach name="item_list_373" item="vo">
+                                    <dt class="classify-info-region"><a href="{:U('Item/item_list',array('province_id'=>$vo['province_id']))}" title="{$category['province'][$vo['province_id']]}" target="_blank">{$category['province'][$vo['province_id']]}</a></dt>
+                                    <dd class="classify-info-name"><a href="{:U('Item/show',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></dd>
+                                </foreach>
+                            </dl>
+                        </li>
+                        <li class="classify-item">
+                            <div class="classify-head fn-clear">
+                                <h3 class="classify-title"><a href="/Item/item_list/industry_id/366" target="_blank">房地产</a></h3>
+                                <a href="/Item/item_list/industry_id/366" target="_blank" class="classify-more">更多</a>
+                            </div>
+                            <dl class="classify-cont fn-clear">
+                                <foreach name="item_list_366" item="vo">
+                                    <dt class="classify-info-region"><a href="{:U('Item/item_list',array('province_id'=>$vo['province_id']))}" title="{$category['province'][$vo['province_id']]}" target="_blank">{$category['province'][$vo['province_id']]}</a></dt>
+                                    <dd class="classify-info-name"><a href="{:U('Item/show',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></dd>
+                                </foreach>
+                            </dl>
+                        </li>
+                        <li class="classify-item">
+                            <div class="classify-head fn-clear">
+                                <h3 class="classify-title"><a href="/Item/item_list/industry_id/383" target="_blank">餐饮休闲娱乐</a></h3>
+                                <a href="/Item/item_list/industry_id/383" target="_blank" class="classify-more">更多</a>
+                            </div>
+                            <dl class="classify-cont fn-clear">
+                                <foreach name="item_list_383" item="vo">
+                                    <dt class="classify-info-region"><a href="{:U('Item/item_list',array('province_id'=>$vo['province_id']))}" title="{$category['province'][$vo['province_id']]}" target="_blank">{$category['province'][$vo['province_id']]}</a></dt>
+                                    <dd class="classify-info-name"><a href="{:U('Item/show',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></dd>
+                                </foreach>
+                            </dl>
+                        </li>
+                        <li class="classify-item">
+                            <div class="classify-head fn-clear">
+                                <h3 class="classify-title"><a href="/Item/item_list/industry_id/370" target="_blank">建筑建材</a></h3>
+                                <a href="/Item/item_list/industry_id/370" target="_blank" class="classify-more">更多</a>
+                            </div>
+                            <dl class="classify-cont fn-clear">
+                                <foreach name="item_list_370" item="vo">
+                                    <dt class="classify-info-region"><a href="{:U('Item/item_list',array('province_id'=>$vo['province_id']))}" title="{$category['province'][$vo['province_id']]}" target="_blank">{$category['province'][$vo['province_id']]}</a></dt>
+                                    <dd class="classify-info-name"><a href="{:U('Item/show',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></dd>
+                                </foreach>
+                            </dl>
+                        </li>
+                        <li class="classify-item">
+                            <div class="classify-head fn-clear">
+                                <h3 class="classify-title"><a href="/Item/item_list/industry_id/400" target="_blank">其他行业</a></h3>
+                                <a href="/Item/item_list/industry_id/400" target="_blank" class="classify-more">更多</a>
+                            </div>
+                            <dl class="classify-cont fn-clear">
+                                <foreach name="item_list_400" item="vo">
+                                    <dt class="classify-info-region"><a href="{:U('Item/item_list',array('province_id'=>$vo['province_id']))}" title="{$category['province'][$vo['province_id']]}" target="_blank">{$category['province'][$vo['province_id']]}</a></dt>
+                                    <dd class="classify-info-name"><a href="{:U('Item/show',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></dd>
+                                </foreach>
+                            </dl>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="links link_gray6">
+        <qscms:link 列表名="links" 类型="2" />
+        <volist name="links" id="link">
+            <div class="imglink">
+                <a href="{$link.link_url}" target="_blank"><img src="{:attach($link['link_logo'],'link_logo')}" border="0" /></a>
+            </div>
+        </volist>
+        <div class="clear"></div>
+
+        <qscms:link 列表名="links" 类型="1" />
+        <volist name="links" id="link">
+            <div class="txtlink substring"><a href="{$link.link_url}" target="_blank">{$link.title}</a></div>
+        </volist>
+        <div class="clear"></div>
+    </div>
+
+
+    <include file="public:footer1" />
+    <div id="popup-captcha"></div>
+    <script src="../public/js/jquery.modal.dialog.js"></script>
+    <script src="../public/js/jquery.tooltip.js"></script>
+    <script src="../public/js/jquery.listitem.js"></script>
+    <script src="../public/js/jquery.dropdown.js"></script>
+    <script src="../public/js/jquery.nivo.slider.pack.js"></script>
+
+    <!--[if lt IE 9]>
+<script src="../public/js/PIE.js"></script>
+<![endif]-->
+    <script src="../public/js/jquery.index.js"></script>
+    <script src="../public/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script>
+        $.get("{:U('Item/today_item_num')}", function(data) {
+            $('.today_num').html(baidu.template('case_num', data));
+        });
+    </script>
+    <script type="text/javascript">
+        $(".btn-emphasis-item").click(function() {
+            setTimeout(function() {
+                disapperTooltip("success", "正在汇总精编项目方,请耐心等待!");
+            }, 300);
+        });
+    </script>
+    <script>
+        $(".slideCase").slide({
+            mainCell: "ul",
+            effect: "leftLoop",
+            autoPlay: !0
+        });
+        $('.sdg-sub-city').each(function(index, value) {
+            if ((index + 1) % 4 == 0) {
+                $(this).addClass('no-mr');
+            }
+        });
+    </script>
+    <script src="../public/js/jquery.validate.js"></script>
+    <script src="../public/js/index_login.js"></script>
+    <script src="../public/js/index_reg.js"></script>
+    <script src="../public/js/check.js"></script>
+    <script src="../public/js/jquery.disappear.tooltip.js"></script>
+    <script>
+        $(".ui-tab-head ul li").click(function() {
+            var num = $(this).index();
+            $(".ui-tab-head li").removeClass("ui-tab-head-current").eq(num).addClass("ui-tab-head-current");
+            $(".look-item").hide().eq(num).show();
+        });
+    </script>
+    <script>
+        $("input.J_placeholder").focus(function() {
+            var cur = $(this);
+            cur.val() == cur.attr("tip") && cur.val("").css({
+                color: "#333"
+            })
+        }).blur(function() {
+            var cur = $(this);
+            "" == cur.val() && cur.val(cur.attr("tip")).css({
+                color: "#999"
+            })
+        }).css({
+            color: "#999"
+        });
+        $("button.J_search_submit").click(function() {
+            var b = $(this).prev(".J_placeholder");
+            b.val() == b.attr("tip") && b.val("");
+        });
+    </script>
+</body>
+
+</html>

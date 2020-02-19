@@ -1,0 +1,129 @@
+<div class="foot_lab_bg">
+  <div class="foot_lab">
+    <div class="ylist y1">一对一客服</div>
+    <div class="ylist y2">隐私保护</div>
+    <div class="ylist y3">服务费合理</div>
+    <div class="ylist y4">信息可靠</div>
+    <div class="ylist y5">手机访问</div>
+    <div class="clear"></div>
+  </div>
+</div>
+<div class="foot link_gray9">
+  <div class="service">
+  <div class="tel">{:C('qscms_bootom_tel')}</div>
+  <div class="txt">客服热线(服务时间：09:00-19:00)</div>
+</div>
+  
+  <div class="about">
+  <div class="atit">平台保障</div>
+  <qscms:explain_list 列表名="list" 显示数目="4" />
+  <volist name="list" id="vo">
+  <a target="_blank" href="{$vo['url']}">{$vo['title']}</a><br />
+  </volist>
+  </div>
+ <div class="about last">
+  <div class="atit">新手指导</div>
+    <a target="_blank" href="#">免费注册生成名片</a><br />
+    <a target="_blank" href="#">免费发布投融信息</a><br />
+    <a target="_blank" href="#">常见问题解答</a><br />
+  </div> 
+  <div class="about">
+  <div class="atit">投资服务</div>
+  <a target="_blank" href="#">融资宝</a><br />
+    <a target="_blank" href="{:U('services/refurbish')}">委托刷新</a><br />
+    <a target="_blank" href="#">投递项目</a><br />
+  </div>
+  <div class="about">
+  <div class="atit">关于金融网</div>
+  <a target="_blank" href="/index/about.html">关于金融网</a><br />
+    <a target="_blank" href="/home/explain/explain_show/id/7">联系我们</a><br />
+    <a target="_blank" href="#">网站公告</a><br />
+    <a target="_blank" href="#">隐私条款</a>
+    <a target="_blank" href="#">网站地图</a> 
+  </div>
+   
+  <div class="code"><img src="../public/images/bottom_erweima.png"></div>
+  <div class="clear"></div>
+</div>
+
+<div class="bottom_btn" style="width:600px;margin:0 auto;text-align: left;border: none;margin-top:20px;">
+</div>
+
+
+<div class="foottxt link_gray9 font_gray9">
+联系地址：{:C('qscms_address')} 联系电话：{:C('qscms_bootom_tel')} 网站备案：<a href="http://www.miibeian.gov.cn">{:C('qscms_icp')}</a><br />
+{:C('qscms_bottom_other')}<br />
+</div>
+<div class="floatmenu">
+  <div class="item ask">
+    <a class="blk" target="_blank" href="{:url_rewrite('QS_suggest')}"></a>
+  </div>
+  <div id="backtop" class="item backtop" style="display: none;"><a class="blk"></a></div>
+</div>
+<!--[if lt IE 9]>
+  <script type="text/javascript" src="__HOMEPUBLIC__/js/PIE.js"></script>
+  <script type="text/javascript">
+    (function($){
+        $.pie = function(name, v){
+            // 如果没有加载 PIE 则直接终止
+            if (! PIE) return false;
+            // 是否 jQuery 对象或者选择器名称
+            var obj = typeof name == 'object' ? name : $(name);
+            // 指定运行插件的 IE 浏览器版本
+            var version = 9;
+            // 未指定则默认使用 ie10 以下全兼容模式
+            if (typeof v != 'number' && v < 9) {
+                version = v;
+            }
+            // 可对指定的多个 jQuery 对象进行样式兼容
+            if ($.browser.msie && obj.size() > 0) {
+                if ($.browser.version*1 <= version*1) {
+                    obj.each(function(){
+                        PIE.attach(this);
+                    });
+                }
+            }
+        }
+    })(jQuery);
+    if ($.browser.msie) {
+      $.pie('.pie_about');
+    };
+  </script>
+<![endif]-->
+<!--
+<div id="loader-wrapper">
+<div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+
+<script type="text/javascript">
+$(window).load(function() {
+  $('body').addClass('loaded');
+});
+</script>
+-->
+<script type="text/javascript" src="__HOMEPUBLIC__/js/jquery.disappear.tooltip.js"></script>
+<script>
+  var global = {
+    h:$(window).height(),
+    st: $(window).scrollTop(),
+    backTop:function(){
+      global.st > (global.h*0.5) ? $("#backtop").show() : $("#backtop").hide();
+    }
+  }
+  $('#backtop').on('click',function(){
+    $("html,body").animate({"scrollTop":0},500);
+  });
+  global.backTop();
+  $(window).scroll(function(){
+      global.h = $(window).height();
+      global.st = $(window).scrollTop();
+      global.backTop();
+  });
+  $(window).resize(function(){
+      global.h = $(window).height();
+      global.st = $(window).scrollTop();
+      global.backTop();
+  })
+</script>

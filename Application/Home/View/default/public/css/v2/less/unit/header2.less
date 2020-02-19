@@ -1,0 +1,131 @@
+// 头部
+#header{
+  .top{
+    height: 36px;
+    line-height: 36px;
+    color: #666;
+    font-size: 12px;
+    background-color: #F6F6F6;
+    >div{
+      p{
+        float: left;
+        &:first-child{
+          a{
+            color: @qrhColor;
+          }
+        }
+        &:nth-child(2){
+          a{
+            &:first-child{
+              color: @qrhColor;
+            }
+            &:last-child{
+              color: #666;
+              &:hover{
+                color: #333;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+      >div{
+        float: right;
+        a{
+          color: #666;
+          &:hover{
+            color: @qrhColor;
+          }
+        }
+        i{
+          font-size: 12px;
+        }
+        span{
+          position: relative;
+          top:3px;
+          display: inline-block;
+          width: 1px;
+          height: 14px;
+          margin-left: 16px;
+          margin-right: 16px;
+          background-color: #ccc;
+        }
+      }
+      .qrh_mobile{
+        position: relative;
+        float: right;
+        &:hover{
+          div{
+            display: block;
+          }
+        }
+        div{
+          display: none;
+          position: absolute;
+          top: 30px;
+          left: -87px;
+          z-index: 100;
+          width: 166px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          background-color: #fff;
+          p{
+            line-height: 16px;
+            &:last-child{
+              color: @qrhColor;
+            }
+          }
+        }
+      }
+    }
+  }
+  .main{
+    border-bottom: 1px solid #F0F0F0;
+    .logo{
+      height: 72px;
+      padding-top: 14px;
+      >a{
+        float: left;
+        img{
+          width: 162px;
+        }
+      }
+      div{
+        float: right;
+        margin-top: 7px;
+        a{
+          display: inline-block;
+          width: 122px;
+          height: 32px;
+          line-height: 30px;
+          margin-left: 7px;
+          text-align: center;
+          color: @qrhColor;
+          font-size: 16px;
+          border: 1px solid @qrhColor;
+          border-radius: 2px;
+        }
+      }
+    }
+    nav{
+      height: 52px;
+      line-height: 52px;
+      a{
+        color: #333;
+        font-size: 18px;
+        &:hover{
+          color: @qrhColor;
+        }
+        &:first-child{
+          margin-left: 10px;
+        }
+        &:not(:first-child){
+          margin-left: 62px;
+        }
+      }
+      a.select{
+        color: @qrhColor;
+      }
+    }
+  }
+}

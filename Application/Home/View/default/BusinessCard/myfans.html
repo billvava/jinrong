@@ -1,0 +1,296 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript"></script>
+<style>
+.icon-subnav-manage, .icon-subnav-arrow, .icon-subnav-info, .icon-subnav-social, .icon-subnav-order, .icon-subnav-account, .i-tips-info, .i-tips-info-amount, .icon-notice, .icon-user-phone, .icon-user-face, .icon-user-email, .icon-user-post, .icon-user-org, .icon-user-firm, .icon-user-honor, .icon-user-phone-gray, .icon-user-face-gray, .icon-user-email-gray, .icon-user-post-gray, .icon-user-org-gray, .icon-user-firm-gray, .icon-user-honor-gray, .icon-info-deliver, .icon-info-guestbook, .icon-info-private, .icon-info-message, .icon-info-time, .icon-question-mark, .toolbar-info-nav i, .icon-part-bg {
+    background-image: url("../../images/member/icon.png");
+    background-repeat: no-repeat;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    color: #fff;
+}
+a.ui-btn:hover, a.ui-btn-small:hover, a.ui-btn-big:hover {
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.ui-btn {
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 8px;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.ui-btn-big {
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+}
+.collecting-box .news-info-list {
+    margin-top: 0;
+}
+.news-info-hover .news-info-list {
+    margin: 0;
+    padding: 0;
+}
+.news-info-hover .news-info-item {
+    padding: 15px 30px;
+    width: 738px;
+}
+.news-info-hover .news-info-wrap {
+    width: 588px;
+}
+.news-info-hover .j-See-reply-show {
+    display: block;
+    width: 58%;
+}
+.news-info-hover .j-See-reply-con {
+    display: block;
+    margin-right: 60px;
+}
+.j-See-reply-expansion {
+    color: #e93100;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 230px;
+    top: 0;
+    width: 50px;
+}
+.news-info-hover .news-info-type {
+    left: -101px;
+    position: absolute;
+    top: 36px;
+}
+.news-info-hover .j-hover {
+    background: #f8f8f8 none repeat scroll 0 0;
+}
+.news-info-hover .news-info-message {
+    width: 440px;
+}
+.news-info-hover .news-info-control {
+    margin-top: -10px;
+}
+.news-info-hover .news-info-trends-w {
+    padding-top: 0;
+    width: 94px;
+}
+.collecting-box .news-info-item {
+    width: 788px;
+}
+.collecting-box .news-info-wrap {
+    padding-right: 0;
+    width: 698px;
+}
+.collecting-box .news-info-list {
+    margin-top: 0;
+}
+.fn-mr-15 {
+    margin-right: 15px !important;
+}
+.news-info-relation {
+    color: #999;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 5px;
+    width: 235px;
+}
+.news-info-relation strong {
+    color: #c82a00;
+}
+.news-info-title .news-info-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+.news-info-title .news-info-certification {
+    background: #54618f none repeat scroll 0 0;
+    color: #fff;
+    padding: 0 5px;
+}
+.collecting-box .news-info-item {
+    width: 788px;
+}
+.collecting-box .news-info-wrap {
+    padding-right: 0;
+    width: 698px;
+}
+.news-info-item {
+    border-bottom: 1px dashed #c2c2c2;
+    overflow: hidden;
+    padding: 15px 0;
+    width: 540px;
+}
+.user-avatar {
+    border: 1px solid #ddd;
+    float: left;
+    height: 78px;
+    overflow: hidden;
+    width: 78px;
+}
+.user-avatar img {
+    height: 78px;
+    width: 78px;
+}
+.news-info-wrap {
+    float: left;
+    padding: 0 60px 0 10px;
+    position: relative;
+    width: 390px;
+}
+.news-info-industry {
+    height: 20px;
+    padding-right: 250px;
+    position: relative;
+}
+.news-info-industry .news-info-industry-cont {
+    display: block;
+    float: left;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 200px;
+}
+.news-info-trends {
+    padding-right: 235px;
+    padding-top: 5px;
+    position: relative;
+}
+.news-info-industry .news-info-control {
+    margin-top: -20px;
+    width: 300px;
+}
+.icon-info-time {
+    background-position: -82px -82px;
+    display: inline-block;
+    height: 16px;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 16px;
+}
+.news-info-industry .news-info-control {
+    margin-top: -20px;
+    width: 300px;
+}
+.news-info-control {
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 50%;
+}
+</style>
+</head>
+<body>
+<include file="Personal:index_header" />
+<div class="user_main">
+<include file="Personal:index_left_nav" />
+<div class="mainbox">
+<div class="main ">
+<div class="ui-tab-head-box">
+<div class="ui-tab-head ui-tab-head-p">
+<ul>
+<li><a href="{:U('BusinessCard/my')}">我的商友</a></li>
+<li><a href="{:U('BusinessCard/myfollow')}">已递送名片</a></li>
+<li class="ui-tab-head-current">
+<a href="{:U('BusinessCard/myfans')}">收到的名片</a>
+</li>
+<li><a href="{:U('BusinessCard/contact')}">已查看联系方式</a></li>
+</ul>
+</div>
+</div>
+<div class="ui-tab-cont">
+<form action="" method="get" id="search_form">
+<div class="search-part-nav">
+
+<div class="fn-left fn-mr-15">会员类型：
+<select name="type">
+<option value="">所有会员</option>
+<option value="1">企业会员</option>
+<option value="2">政府会员</option>
+<option value="3">个人会员</option>
+</select>
+</div>
+
+<input name="act" value="myfans" type="hidden">
+<div class="fn-right fn-pr"><a class="ui-btn-small ui-btn-blue" id="seen_me_btn"><i class="icon-part-bg icon-part-search"></i>搜索</a></div>
+<div class="fn-right  fn-mr-15"><input name="keyword" id="keyword" value="" placeholder="输入联系人搜索" type="text"></div>
+
+</div>
+</form>
+
+<div class="collecting-box">
+<ul class="news-info-list news-info-list-guest">
+<volist name="business_card_list" id="business_card">
+<li class="news-info-item">
+<div class="user-avatar">
+<a href="#" target="_blank">
+<if condition="$business_card.sex eq 0">
+<img src="../public/images/face/nan1.gif">
+<else/>
+<img src="../public/images/face/nv1.gif">
+</if>
+</a>
+</div>
+<div class="news-info-wrap">
+<p class="news-info-title">
+<span class="news-info-name">
+<a href="#" target="_blank">{$business_card['realname']}</a>
+</span>
+<i class="icon-auth-p-16-1 fn-mr-5" title="项目"></i>
+<i class="icon-auth-s-16-3 fn-mr-5" title="个人"></i></p>
+<if condition="$business_card.company_name neq ''">
+<if condition="$business_card.job neq ''">
+<p class="news-info-post">公司: {$business_card['company_name']} &nbsp;&nbsp; 职位: {$business_card['job']}</p>
+<else/>
+<p class="news-info-post">公司: {$business_card['company_name']}</p>
+</if>
+<else/>
+<if condition="$business_card.job neq ''">
+<p class="news-info-post"> 职位: {$business_card['job']}</p>
+</if>
+</if>
+<p class="news-info-industry">
+<span class="news-info-industry-cont">所属行业: {$business_card['industry_id']}
+</span>
+<span class="news-info-control" data-id="{$business_card['uid']}">
+<a href="javascript:;" event="click.exchange" class="ui-btn-small ui-btn-blue">加为商友</a>
+</span>
+</p>
+<p class="news-info-trends">
+<span class="news-info-time">{$business_card['addtime']} 申请交换名片</span>
+<span class="news-info-relation">人脉关系：<a href="#" target="_blank">已递送名片(<strong>{$business_card['business_count']}</strong>)</a> | <a href="#" target="_blank">商友(<strong>3</strong>)</a></span></p>
+</div>
+</li>
+</volist>
+
+</ul>
+<footer class="table-page-part ">
+<div class="paging"> </div>
+</footer>
+</div>
+</div>
+</div>
+</div>
+<include file="index_footer" />
+</body>
+</html>

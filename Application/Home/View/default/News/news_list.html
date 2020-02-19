@@ -1,0 +1,80 @@
+<qscms:news_category 列表名="info" 资讯小类="$_GET['id']" />
+<include file="public:meta" />
+<link href="../public/css/common.css" rel="stylesheet"/>
+<link href="../public/css/header.css" rel="stylesheet"/>
+<link href="../public/css/news.css" rel="stylesheet"/>
+<script src="../public/js/jquery.common.js"></script>
+</head>
+<body>
+<include file="public:header" />
+<div class="newslip_topimg">
+<img src="../public/banner/news.jpg" border="0"/>
+</div>
+<qscms:news_category 列表名="category" 显示数目="7" 资讯大类="1" />
+<div class="newslip">
+  <div class="l">
+	<qscms:news_list 列表名="list" 关键字="$_GET['key']" 分页显示="1" 资讯小类="$_GET['id']" 排序="addtime:desc" 填补字符="…" 摘要长度="200"/>
+    <div class="newslist">
+	  <div class="tit link_gray6">
+		<if condition="$Think.get.key neq ''">
+		与<strong>{$Think.get.key|urldecode|urldecode}</strong>有关的资讯
+		<else />
+			<a href="{:url_rewrite('QS_index')}">网站首页</a>
+			<notempty name="list['breadcrumb']">
+				<volist name="list['breadcrumb']" id="vo">
+					<span>></span><a href="{$vo['url']}">{$vo['name']}</a>
+				</volist>
+			</notempty>
+	  	</if>
+	  </div>
+	  <notempty name="list['list']">
+	  <volist name="list['list']" id="vo">
+	  <div class="listb">
+  			<div class="bl">
+			  <div class="pic"><img src="{$vo['img']}" border="0"/></div>
+			</div>
+			<div class="br link_gray6">
+		  		<div class="t substring"><a href="{$vo['url']}">{$vo['title']}</a></div>
+	            <div class="time substring">{:date('Y-m-d',$vo['addtime'])}</div>
+	            <div class="summary">{$vo['briefly']}</div>
+			</div>
+			<div class="clear"></div>
+	  </div>
+	  </volist>
+	  <div class="qspage">{$list['page']}</div>
+	  <else />
+		<div class="list_empty_group">
+			<div class="list_empty">
+				<div class="list_empty_left"></div>
+				<div class="list_empty_right">
+					<div class="sorry_box">对不起，暂无相关资讯！</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	  </notempty>
+    </div>
+  </div>
+  <div class="r">
+  </div>
+  <div class="clear"></div>
+</div>
+<include file="public:footer_min" />
+<script src="../public/js/jquery.lazyload.min.js"></script>
+<script>
+	$(document).ready(function() {
+		// 广告位图片延迟加载
+		$("img.lazy").lazyload({
+	        effect : "fadeIn"
+	    });
+		$('#so_btn').click(function(){
+			var data = $('#form').serialize();
+			if(qscms.keyUrlencode==1){
+				data = encodeURI(data);
+			}
+			window.location.href = qscms.root + $('.f-seach-page').val() + data;
+		});
+	});
+</script>
+</body>
+</html>

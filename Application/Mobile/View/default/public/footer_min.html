@@ -1,0 +1,112 @@
+<!--<div class="bottom-fixed" id="backtop">
+	<a href="javascript:;" class="gotop"></a>
+</div>-->
+<script src="../public/js/fastclick.js"></script>
+<script>
+    window.addEventListener( "load", function() {
+        FastClick.attach(document.body);
+    }, false );
+</script>
+<script src="../public/js/qsToast.js"></script>
+<script src="../public/js/QSpopout.js"></script>
+<script src="../public/js/QSfilter.js"></script>
+<script src="../public/js/zepto.hwSlider.js"></script>
+<script src="../public/js/scrollTo.js"></script>
+<script>
+  $('a[href]').click(function(){
+      var f = $(this).attr('href');
+      var reg = /\#(\w+)/;
+      if(reg.test(f)) return !1
+  });
+  $('.js-back').on('click', function () {
+      history.back();
+  });
+  $('.rbtn').on('click', function() {
+	  forCloseNav();
+  })
+  $('.t-mask').on('click', function () {
+	  forCloseNav();
+  })
+  $('.h-navclose').on('click', function () {
+	  forCloseNav();
+  })
+  function forCloseNav() {
+	  if ($('.topnavshow').hasClass('qs-actionsheet-toggle')) {
+		  $('.t-mask').hide();
+		  $('.topnavshow').removeClass('qs-actionsheet-toggle');
+	  } else {
+		  $('.t-mask').show();
+		  $('.topnavshow').addClass('qs-actionsheet-toggle');
+	  }
+  }
+  /**
+   * 监听鼠标
+   */
+  if ('ontouchstart' in window) {
+      $.EVENT_START = 'touchstart';
+      $.EVENT_END = 'touchend';
+  } else {
+      $.EVENT_START = 'mousedown';
+      $.EVENT_END = 'mouseup';
+  }
+  $('.plist-txt, .qs-btn, .for-event').on($.EVENT_START, function() {
+      $(this).addClass('eventactive');
+  })
+  $('.plist-txt, .qs-btn, .for-event').on($.EVENT_END, function() {
+      $(this).removeClass('eventactive');
+  })
+  $('.logout').on('click', function () {
+        var dialog = new QSpopout();
+        dialog.setContent('确定退出吗？');
+        forCloseNav();
+        dialog.show();
+        dialog.getPrimaryBtn().on('click', function () {
+            window.location.href = "{:U('Members/logout')}";
+        });
+    });
+	// 处理select
+  $('select').on('change', function () {
+	  $(this).prev().text($(this).find('option').not(function(){ return !this.selected }).text());
+  })
+  $('select').each(function () {
+	  $(this).prev().text($(this).find('option').not(function(){ return !this.selected }).text());
+  })
+	// 底部导航栏
+	$('.js-b-nav-bar').on('click', function () {
+		$(this).closest('.bottom-nav-bar-group').find('.bottom-bar-more-group').fadeIn(200);
+	})
+  $('.js-b-nav-bar-active').on('click', function () {
+	  $(this).closest('.bottom-nav-bar-group').find('.bottom-bar-more-group').fadeOut(200);
+  })
+  $("#hwslider-bottom").hwSlider({
+	  autoPlay: false,
+	  dotShow: true,
+	  touch: true,
+	  arrShow: false
+  });
+
+  /**
+   * 返回顶部
+   */
+  var global = {
+	  h:$(window).height(),
+	  st: $(window).scrollTop(),
+	  backTop:function(){
+		  global.st > (global.h*0.5) ? $("#backtop").show() : $("#backtop").hide();
+	  }
+  }
+  global.backTop();
+  $(window).scroll(function(){
+	  global.h = $(window).height();
+	  global.st = $(window).scrollTop();
+	  global.backTop();
+  });
+  $(window).resize(function(){
+	  global.h = $(window).height();
+	  global.st = $(window).scrollTop();
+	  global.backTop();
+  })
+  $("#backtop").on('click', function () {
+	  $("body").scrollTo({toT: 0});
+  })
+</script>

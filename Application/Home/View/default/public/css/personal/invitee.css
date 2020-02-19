@@ -1,0 +1,85 @@
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+th {
+    text-align: inherit;
+}
+.messages-title {
+    background: #f5f8ff none repeat scroll 0 0;
+    border: 1px solid #d9dce8;
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+}
+.fn-mt-10 {
+    margin-top: 10px !important;
+}
+.main h6{margin:0;}
+.copy-link-box {
+    padding: 10px;
+}
+.copy-link-box div {
+    border: 1px solid #ddd;
+    color: #666666;
+    height: 34px;
+    line-height: 34px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+.invi-warm {
+    color: #999;
+    line-height: 26px;
+    margin-top: 15px;
+}
+
+*::-moz-placeholder {
+    border: 0 none;
+    color: gray;
+    cursor: text;
+    opacity: 1;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+}
+.table-part-all-f table {
+    color: #000;
+}
+.table-part-all table {
+    width: 100%;
+}
+.table-part-all table th, .table-part-all table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.table-part-all-f table th {
+    background: #f8f8f8 none repeat scroll 0 0;
+    text-align: center;
+    white-space: nowrap;
+}
+.table-part-all .table-hover td {
+    background: #f1f1f1 none repeat scroll 0 0;
+}
+.table-part-all-f table th {
+    background: #f8f8f8 none repeat scroll 0 0;
+    text-align: center;
+    white-space: nowrap;
+}
+.table-part-all .table-hover td {
+    background: #f1f1f1 none repeat scroll 0 0;
+}
+.table-part-all-f table td {
+    background: #fff none repeat scroll 0 0;
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+.table-part-all .btn-text a {
+    color: #3b4a82;
+    white-space: nowrap;
+}
+.table-part-th-b th {
+    font-weight: bold;
+}

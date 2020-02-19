@@ -1,0 +1,77 @@
+ins, a {
+    text-decoration: none;
+}
+a {
+    color: #3b4a82;
+    cursor: pointer;
+}
+.clearfix {
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix::after {
+    clear: both;
+}
+.fn-clear::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.fn-clear {
+}
+.fn-ow-clear {
+    overflow: hidden;
+}
+.bgFFF {
+    background-color: #fff;
+}
+.top20 {
+    margin-top: 20px;
+}
+.part-nav-tab-a {
+    background: #f8f8f8 none repeat scroll 0 0;
+    border-bottom: 1px solid #ddd;
+}
+.part-nav-tab-a li {
+    border-right: 1px solid #dddddd;
+    float: left;
+}
+.part-nav-tab-a li a {
+    display: block;
+    font-size: 14px;
+    height: 30px;
+    line-height: 1em;
+    padding-top: 14px;
+    text-align: center;
+    width: 100px;
+}
+.part-nav-tab-a li a:hover {
+    text-decoration: none;
+}
+.part-nav-tab-a li.current a {
+    background: #fff none repeat scroll 0 0;
+    border-top: 2px solid #838ba2;
+    color: #000;
+    margin: -1px 0;
+    padding: 13px 0 1px;
+    position: relative;
+    z-index: 11;
+}
+.part-nav-tab-a .fn-right {
+    line-height: 44px;
+    margin-right: 10px;
+}
+
+.fn-pb-50 {
+    padding-bottom: 50px !important;
+}
+.part-not-cont {
+    padding-top: 50px;
+    text-align: center;
+}

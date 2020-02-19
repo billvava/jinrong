@@ -1,0 +1,18 @@
+	<form action="{:U('Ajax/ajax_send_sms')}" method="post"   name="form" id="form">
+  <input type="hidden" name="uid" value="{$uid}">
+	<table width="100%" border="0" cellspacing="10" cellpadding="1" style=" margin-bottom:3px;">
+      
+      <tr>
+        <td width="60" align="right">接收手机:</td>
+        <td>
+		   <input name="mobile" type="text" class="input_text_200"   value="{$mobile}" />
+		       </td>
+      </tr>
+      
+      <tr>
+        <td align="right">&nbsp;</td>
+        <td>
+		<input name="check" type="submit" class="admin_submit" id="check" value="立即发送" /></td>
+      </tr>
+    </table>
+    </form>

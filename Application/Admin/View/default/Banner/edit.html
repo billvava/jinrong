@@ -1,0 +1,25 @@
+<include file="public:header" />
+<div class="toptip">
+  <h2>提示：更换banner图片</h2>
+</div>
+<form action="{:U('banner/edit')}" method="post" enctype="multipart/form-data" name="FormData" id="FormData"  >
+        <table width="100%" border="0" cellspacing="3" cellpadding="3">
+          <tr>
+            <td width="88" align="right">原banner图：</td>
+            <td><img src="{$url}"></td>
+          </tr>
+          <tr>
+            <td width="88" align="right">上传新图：</td>
+            <td><input type="file" name="banner"></td>
+          </tr>
+          <tr>
+            <td align="center">&nbsp;</td>
+            <td align="left"><input type="submit" name="Submit3" value="确定更换" class="admin_submit"   /></td>
+          </tr>
+        </table>
+        <input type="hidden" value="{$url}" name="url">
+      </form>
+</div>
+<include file="public:footer" />
+</body>
+</html>

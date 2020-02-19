@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<qscms:hrtools_category 列表名="category" 分类id="$_GET['id']"/>
+<include file="public:meta" />
+<link href="../public/css/common.css" rel="stylesheet"/>
+<link href="../public/css/header.css" rel="stylesheet"/>
+<link href="../public/css/hrtools.css" rel="stylesheet"/>
+<script src="../public/js/jquery.common.js"></script>
+</head>
+<body>
+<include file="public:header" />
+<div class="hrl link_gray6">
+<div class="tit"><a href="{:url_rewrite('QS_index')}">网站首页</a><span>></span><a href="{:url_rewrite('QS_hrtools')}">活动列表</a><span>></span>{$category['c_name']}</div>
+<div class="txt link_blue">
+<style>
+.activity_list_con ul {
+    padding: 10px 10px;
+}
+.activity_list_con ul li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #eee;
+    float: left;
+    height: 418px;
+    margin-right: 4px;
+    padding: 10px;
+    position: relative;
+    width: 300px;
+}
+.activity_list_con li .pic {
+    height: 185px;
+    position: relative;
+    width: 300px;
+}
+.activity_list_con li .pic img {
+    height: 185px;
+    width: 300px;
+}
+.btn_sl a {
+    background: #f06612 none repeat scroll 0 0;
+    color: #fff;
+    display: block;
+    height: 32px;
+    left: 50%;
+    line-height: 32px;
+    margin-left: -56px;
+    position: absolute;
+    text-align: center;
+    top: 27px;
+    width: 112px;
+}
+.btn_sl a:hover {
+    background: #de5807 none repeat scroll 0 0;
+    text-decoration: none;
+}
+.activity_list_con li .title {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 28px;
+    padding-bottom: 22px;
+    padding-top: 16px;
+}
+.activity_list_con li:hover {
+    background: #fafafa none repeat scroll 0 0;
+}
+.btn_sl {
+    border-bottom: 1px solid #cccccc;
+    bottom: 40px;
+    height: 16px;
+    left: 10px;
+    padding-top: 27px;
+    position: absolute;
+    width: 300px;
+}
+</style>
+<div class="activity_list_con">
+<ul class="bgf clearfix ">
+
+<foreach name="huodong_list" item="vo">
+<li>
+<div class="pic"><img src="/data/upload/images/{$vo.small_img}" width="300" height="185"></div>
+<div class="title">{$vo.title}</div>
+<div class="sl_info">
+{$vo.description}</div>
+<div class="btn_sl">
+<a href="/Home/huodong/show/id/{$vo.id}" target="_blank" title="{$vo.title}“...">查看详情</a>
+</div>
+</li>
+</foreach>
+</ul>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+<include file="public:footer_min" />
+</body>
+</html>

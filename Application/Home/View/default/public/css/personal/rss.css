@@ -1,0 +1,34 @@
+.icon-subnav-manage, .icon-subnav-arrow, .icon-subnav-info, .icon-subnav-social, .icon-subnav-order, .icon-subnav-account, .i-tips-info, .i-tips-info-amount, .icon-notice, .icon-user-phone, .icon-user-face, .icon-user-email, .icon-user-post, .icon-user-org, .icon-user-firm, .icon-user-honor, .icon-user-phone-gray, .icon-user-face-gray, .icon-user-email-gray, .icon-user-post-gray, .icon-user-org-gray, .icon-user-firm-gray, .icon-user-honor-gray, .icon-info-deliver, .icon-info-guestbook, .icon-info-private, .icon-info-message, .icon-info-time, .icon-question-mark, .toolbar-info-nav i, .icon-part-bg {
+    background-image: url("../../images/member/icon.png");
+    background-repeat: no-repeat;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.ui-btn {
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 8px;
+}
+.part-not-cont {
+    padding-top: 50px;
+    text-align: center;
+}
+.part-not-cont span, .part-not-cont a {
+    color: #e93100;
+}
+.fn-mr-15 {
+    margin-right: 15px !important;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}

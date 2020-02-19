@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>金融网</title>
+<meta name="keywords" content="项目融资,融资,天使投资,投资,投资项目,投资公司,项目,股权融资,债权融资,投融资,融资平台,金融网"/>
+<meta name="description"
+          content="金融网（7ronghui.com）是中国最大的融资服务平台，拥有超百万的投融资机构、企业与个人用户入驻。金融网通过线上＋线下、标准化  ＋个性化的服务体系，为客户提供针对性的投融资信息对接和项目撮配服务，成功对接融资千余亿元。金融网凭借其强大、便捷的平台信息整合能力，大大提高企业投融资活动成功率，为中小微企业解决融资难问题。"/>
+<link rel="stylesheet" href="../public/css/v2/font/iconfont.css">
+<link rel="stylesheet/less" type="text/css" href="../public/css/v2/less/combination/successful_cases_list.less"/>
+<script src="../public/css/v2/less/less_all.js"></script>
+<script src="../public/js/v2/lib/jquery-1.12.4.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+</head>
+<body id="app">
+<include file="public:header2"/>
+<div class="container-full" id="successful_cases_list">
+    <nav class="container">
+        <h2>所有案例</h2>
+        <div class="clearfix">
+            <span>所属行业</span>
+<div class="clearfix">
+<p class="J_choose">
+<template v-for="(val, key, index) in industry_id">
+<a :href="'#/newsDetail/' + key ">{{val}}</a>
+</template>
+</p>
+            </div>
+        </div>
+        <div class="clearfix">
+            <span>热门行业</span>
+            <p class="J_choose">
+                <a href="#">金融投资</a>
+                <a href="#">房地产</a>
+                <a href="#">建筑建材</a>
+                <a href="#">医疗保健</a>
+                <a href="#">能源</a>
+            </p>
+            <p>
+                <input type="text" placeholder="请输入搜索内容">
+                <span>
+                    <i class="iconfont icon-search"></i>
+                </span>
+            </p>
+        </div>
+    </nav>
+    <div class="main container">
+        <ul class="clearfix">
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list1.jpg" alt="">
+                </a>
+                <div>
+                    <h3>河北承德某酒店项目成功融资1500万元</h3>
+                    <p>
+                        <span class="J_cases_introduce">该酒店地理位置优越，附近有学校、街道、公园景点，与机场路交汇，交通便利。开业两年以来业绩持续上涨。</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 1000万-3000万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 1500万元</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list2.jpg" alt="">
+                </a>
+                <div>
+                    <h3>山东临沂某新型互联网项目</h3>
+                    <p>
+                        <span class="J_cases_introduce">该项目将搭建一个覆盖全国的“星棋管家”网络，并通过“星棋管家”网络实现商品的批发，零售和售后服务的电覆盖全国的“星棋管家”网络，并通过“星棋管家”网络实现商品的批发，零售和售后服务的电</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 600万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 保密</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list3.jpg" alt="">
+                </a>
+                <div>
+                    <h3>河南某皂角树种植林地开发项目</h3>
+                    <p>
+                        <span class="J_cases_introduce">该项目是一个综合性林地开发项目，开发面积600多亩，目前已经种植皂角树500亩、花椒树70亩，准备进一步种植樱桃前已经种植皂角树500亩、花椒树70亩，准备进一步种植樱桃</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 100万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 20万元</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list4.jpg" alt="">
+                </a>
+                <div>
+                    <h3>浙江某云商消费平台项目</h3>
+                    <p>
+                        <span class="J_cases_introduce">该项目以“提供高性价比的优质产品，为客户创造积分消费增值”为核心理念，依托保险行业和汽车服务业，用全依托保险行业和汽车服务业，用全</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 300万-500万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 保密</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list5.jpg" alt="">
+                </a>
+                <div>
+                    <h3>贵州某医院医疗设备采购项目</h3>
+                    <p>
+                        <span class="J_cases_introduce">该项目公司是一家专业从事一线医疗护理产品、医疗设备、体外试剂等批发销售的医疗器械经营公司。项目顺利中体外试剂等批发销售的医疗器械经营公司。项目顺利中</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 350万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 保密</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list6.jpg" alt="">
+                </a>
+                <div>
+                    <h3>重庆某商住综合体项目</h3>
+                    <p>
+                        <span class="J_cases_introduce">该商住综合体项目，总建筑面积为32690平方，其中商业区2500平方，其余为住宅。总投资7000万元。</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 1000万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 1000万元</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list7.jpg" alt="">
+                </a>
+                <div>
+                    <h3>杭州某日式料理项目</h3>
+                    <p>
+                        <span class="J_cases_introduce">该项目主营日式料理，以外卖加堂食为主，周边的消费人群以高收入年轻群体为主，寿司和主食相对操作较快，符高收入年轻群体为主，寿司和主食相对操作较快，符</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 20万-30万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 30万元</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list8.jpg" alt="">
+                </a>
+                <div>
+                    <h3>甘肃某煤矸石烧结砖项目</h3>
+                    <p>
+                        <span class="J_cases_introduce">该项目位于煤炭资源大县，项目将新建年产3500万块煤矸石烧结砖生产线1条，项目总投资1500万元。</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 200万-300万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 500万元</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list9.jpg" alt="">
+                </a>
+                <div>
+                    <h3>北京某音乐类APP项目</h3>
+                    <p>
+                        <span class="J_cases_introduce">该酒店地理位置优越，附近有学校、街道、公园景点，与机场路交汇，交通便利。开业两年以来业绩持续上涨。</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 500万-1000万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 保密</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list10.jpg" alt="">
+                </a>
+                <div>
+                    <h3>吉林某汽车表面涂装项目</h3>
+                    <p>
+                        <span class="J_cases_introduce">该项目是一个汽车表面涂装项目，采用电泳、静电吸附等国内先进工艺进行汽车表面涂装，除整车外表喷漆外，其电吸附等国内先进工艺进行汽车表面涂装，除整车外表喷漆外，其</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 3100万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 保密</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list11.jpg" alt="">
+                </a>
+                <div>
+                    <h3>安徽某酒店项目</h3>
+                    <p>
+                        <span class="J_cases_introduce">该酒店着力打造安徽第一品牌人文公寓，酒店建筑面积17720平米，规划酒店客房150间，人文公寓130间。</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 3000万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 保密</span>
+                    </p>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">
+                    <img src="../public/images/v2/picture/successful_cases_list12.jpg" alt="">
+                </a>
+                <div>
+                    <h3><a href="">江西某生物质颗粒燃料生产项目</a></h3>
+                    <p>
+                        <span class="J_cases_introduce">该项目公司专业生产、销售清洁替代能源—生物质颗粒燃料，产品主体为纯木质、竹质原料，不含任何粘合剂及添生物质颗粒燃料，产品主体为纯木质、竹质原料，不含任何粘合剂及添</span>
+                        <a href="#">[详细]</a>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-jinrongfuwu"></i>
+                        </span>
+                        <span>资金需求： 300万元</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="iconfont icon-chenggong"></i>
+                        </span>
+                        <span>成功融资金额： 保密</span>
+                    </p>
+                </div>
+            </li>
+        </ul>
+
+        <footer class="table-page-part table-page-part-a">
+            <div class="paging">
+            <span class="select">1</span>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a
+            ><a href="#">7</a>
+            <a href="#">下一页</a>
+            <a class="end" href="#">最后一页</a>
+            </div>
+        </footer>
+
+    </div>
+</div>
+<include file="public:footer2"/>
+<script>
+     new Vue({
+            el:'#successful_cases_list',
+            data:{industry_id:""},
+            created:function(){
+                var url="{:U('Api/api/category',array('cat_name'=>'industry_id'))}";
+                var _self=this;
+                $.get(url,function(data){
+                    //console.log(data);
+                    _self.industry_id=data;
+                })
+                /*
+                this.$http.get(url).then(function(data){
+                    var json=data.body;
+                    this.data=eval("(" + json +")");
+                },function(response){
+                    console.info(response);
+                })*/
+            }
+          });
+</script>
+<script>
+    (function () {
+        // 点击选项
+        $('.J_choose a').click(function () {
+            $(this).addClass('select').siblings('a').removeClass('select');
+            return false;
+        });
+
+        (function () {
+            // 控制成功案例介绍文字个数
+            var length = $('.J_cases_introduce').length;
+            for(var i = 0; i< length; i++){
+                // 获得需要处理的元素
+                var $el = $('.J_cases_introduce').eq(i);
+                // 判断介绍是否过长
+                if ($el.text().length > 60) {
+                    // 将多余的字数换成。。。
+                    $el.text($el.text().substring(0, 60) + '...');
+                }
+            }
+        })();
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content=" must-revalidate">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="static/css/layui.css">
+    <link rel="stylesheet" href="static/css/bootstrap3.3.7.min.css">
+    <link rel="stylesheet" href="static/css/main.css"/>
+    <link rel="stylesheet" href="static/css/list.css"/>
+</head>
+<body>
+<div class="layui-fluid body">
+<style>
+    .tbleft{
+        text-align: left;
+    }
+    .tbright{
+        text-align: right;
+
+    }
+    .table1{
+        margin-top: 15px;
+    }
+    .table1>tbody>tr>td{
+        padding: 6px;
+        line-height: 1.42857143;
+        vertical-align: top;
+        border-bottom: 1px dashed #ccc;
+        border-top: none;
+    }
+</style>
+<div class="layui-container list-cont shadow ">
+    <div class="list-l list-g col-md-9">
+        <div class="cont">
+            <h1 class="masked">QQ等级查询</h1>
+            <div class="input-group  col-md-8 col-md-offset-2 m-cont">
+                <input id="num" type="text" class="form-control input-primary" placeholder="请输入QQ号码" value="" autocomplete="off">
+                <span class="input-group-btn">
+					<button type="button" class="submit btn btn-primary">查询QQ等级</button>
+				</span>
+            </div>
+
+            <table class="col-xs-12 col-sm-8 col-sm-offset-2 table1" >
+                <tbody>
+                <tr class="text-danger masked">
+                    <td class="tbright">QQ号码：</td>
+                    <td class="tbleft qq">277285371
+                    <img src="static/picture/abb408331d834fef8a9b04b1e19e2e4d.gif" style="position: absolute;width: 60px;height: 60px; margin-left: 50px;border-radius: 50%;z-index: 99" alt="QQ头像">
+                    </td>
+                </tr>
+                <tr class="text-danger masked">
+                    <td class="tbright">QQ昵称：</td>
+                    <td class="tbleft">
+                    <span class="masked nicheng" style="position: absolute;">春寒</span>
+                    </a>
+                    </td>
+                </tr>
+                <tr class="text-danger masked">
+                    <td class="tbright">QQ等级：</td>
+                    <td class="tbleft">
+                        66级<span title="66级" style="position: absolute;">&nbsp<img src="static/picture/crown.png" alt="皇冠"><img src="static/picture/star.png" alt="星星"><img src="static/picture/star.png" alt="星星"></span>
+                    </td>
+                </tr>
+
+                <tr class="text-danger masked">
+                    <td class="tbright">活跃天数：</td>
+                    <td class="tbleft">4620天</a>
+                    </td>
+                </tr>
+
+                <tr class="text-danger masked">
+                    <td class="tbright">升级剩余：</td>
+                    <td class="tbleft">137天</a>
+                    </td>
+                </tr>
+
+                <tr class="text-danger masked">
+                    <td class="tbright">会员图标：</td>
+                    <td class="tbleft"><img src="static/picture/vip0.png" alt="会员图标" style="margin-top: -5px;margin-right: 5px;"><img   src="static/picture/yearvip.png" alt="年费图标"></a>
+                    </td>
+                </tr>
+
+                <tr class="text-danger masked">
+                    <td class="tbright">全国排名：</td>
+                    <td class="tbleft">第224375名</a>
+                    </td>
+                </tr>
+
+                <tr class="text-danger masked">
+                    <td class="tbright">更新时间：</td>
+                    <td class="tbleft masked">2019-06-20 15:58:19</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+$('.submit').click(function(){
+        var qq = $.trim($('input[name=qq]').val());
+        if (qq == '') {
+            $('.qq').focus();
+            alert('请输入qq号码');
+            return false;
+        }
+         $.ajax({
+            url: "{:U('check/check')}",
+            cache: false,
+            async: false,
+            type: 'post',
+            dataType: 'json',
+            data: { qq: qq},
+            success: function(result) {
+                if(result.code==1){
+
+                }
+            }
+        });
+});
+
+
+
+</script>
+</body>
+</html>

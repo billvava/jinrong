@@ -1,0 +1,304 @@
+.bold {
+    font-weight: bold;
+}
+body {
+    color: #333;
+}
+body .fn-hide {
+    display: none;
+}
+.part-not-cont span, .part-not-cont a {
+    color: #e93100;
+}
+i.icoPro16yellow {
+    background-position: left -315px;
+}
+i.icoErr32, i.icoWar32, i.icoDou32, i.icoPro32, i.icoBul32, i.icoCor32, i.icoCor32gray, i.icoPro32yellow {
+    background: rgba(0, 0, 0, 0) url("../../default/images/icon-tips.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 32px;
+    margin-right: 3px;
+    vertical-align: middle;
+    width: 32px;
+}
+input, textarea{
+    color: #333;
+}
+body, button, input, select, textarea {
+    font: 12px/1.5 tahoma,arial,"Microsoft Yahei","Hiragino Sans GB",宋体;
+}
+.my_bds_more .bds_more {
+background-image: none !important;
+color: #fff !important;
+float: inherit;
+font-size: 14px !important;
+height: 30px !important;
+line-height: 30px !important;
+margin: 0 !important;
+padding: 0 8px 0 28px !important;
+}
+.ui-btn-blue {
+background-color: #76aedf !important;
+}
+.ui-btn {
+font-size: 14px;
+height: 30px;
+line-height: 30px;
+padding: 0 8px;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+border: 0 none;
+border-radius: 3px;
+color: #fff;
+display: inline-block;
+text-align: center;
+vertical-align: middle;
+white-space: nowrap;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+color: #fff;
+text-decoration: none;
+}
+.biz-card-dl-container {
+float: left;
+padding: 10px 0;
+width: 664px;
+}
+.biz-card-dl-container dl {
+float: left;
+line-height: 24px;
+width: 300px;
+}
+
+.biz-card-dl-container dl dt {
+color: #999;
+float: left;
+overflow: hidden;
+text-align: right;
+white-space: nowrap;
+width: 85px;
+}
+.biz-card-dl-container dl dd {
+float: left;
+font-size: 12px;
+overflow: hidden;
+padding: 0 5px;
+text-align: left;
+text-overflow: ellipsis;
+white-space: nowrap;
+width: 200px;
+}
+.pad30 {
+    padding: 30px;
+}
+.font16 {
+    font-size: 16px;
+}
+.prompt_pass {
+    color: #999;
+    display: none;
+    left: 5px;
+    position: absolute;
+    top: 5px;
+}
+.fn-right {
+    float: right;
+}
+.colye {
+    color: #ea4f39;
+}
+.top20 {
+    margin-top: 20px;
+}
+.fn-left {
+    float: left;
+}
+.col666, .col666 a {
+    color: #666;
+    text-decoration: none;
+}
+.line24 {
+    line-height: 24px;
+}
+.m-dtai .leftArea {
+    float: left;
+    width: 560px;
+}
+.m-rmCont .box {
+    float: left;
+    padding: 0 10px 0 80px;
+    width: 260px;
+}
+.m-dtai {
+    border-bottom: 1px solid #ddd;
+    padding: 30px;
+}
+.ui-le-ht24 {
+    line-height: 24px;
+}
+.m-textArea {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+textarea {
+    resize: none;
+}
+.m-hykj{
+    background: rgba(0, 0, 0, 0) url("../../default/images/hykjBg.png") no-repeat scroll center center;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    padding-left: 5px;
+    position: relative;
+    width: 98px;
+}
+.m-hykj ul {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #fff;
+    border-color: -moz-use-text-color #ddd #ddd;
+    border-image: none;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 24px;
+    width: 101px;
+}
+.m-hykj.cur ul {
+    display: block;
+}
+.m-hykj ul li {
+    height: 24px;
+    line-height: 24px;
+}
+.m-hykj ul li a {
+    display: block;
+    text-decoration: none;
+    text-indent: 5px;
+}
+.m-hykj ul li a:hover {
+    background-color: #76aedf;
+    color: #fff;
+}
+.fn-border-t-gary {
+    border-top: 1px solid #ddd;
+}
+.m-textArea textarea {
+    border: 0 none;
+    height: 95px;
+    margin: 10px 0 0 10px;
+    overflow: auto;
+    width: 660px;
+}
+.m-textArea .inputArea .ui-btn {
+    border-radius: 0 0 3px;
+    float: right;
+    height: 36px;
+    line-height: 36px;
+    margin: -6px -6px 0 5px;
+    width: 100px;
+}
+.m-textArea textarea {
+    border: 0 none;
+    height: 95px;
+    margin: 10px 0 0 10px;
+    overflow: auto;
+    width: 660px;
+}
+.m-textArea textarea:focus {
+    border: medium none;
+    outline: medium none;
+}
+.m-textArea .inputArea {
+    background: #fbfbfb none repeat scroll 0 0;
+    border-radius: 0 0 3px 3px;
+    border-top: 1px solid #ddd;
+    height: 25px;
+    padding: 5px;
+}
+.m-textArea .inputArea .input {
+    border: 1px solid #ddd;
+    height: 17px;
+    line-height: 17px;
+    margin-right: 10px;
+    padding: 3px 8px;
+    vertical-align: middle;
+    width: 80px;
+}
+.m-textArea .inputArea .input.width-name {
+    width: 50px;
+}
+.m-textArea .inputArea .input.width-tel {
+    width: 80px;
+}
+.m-textArea .inputArea .prompt {
+    color: #999999;
+    line-height: 25px;
+}
+.m-textArea .inputArea .ui-btn {
+    border-radius: 0 0 3px;
+    float: right;
+    height: 36px;
+    line-height: 36px;
+    margin: -6px -6px 0 5px;
+    width: 100px;
+}
+.m-textArea .inputArea select {
+    height: 24px;
+    width: 103px;
+}
+.fn-pr {
+    position: relative;
+}
+.col333, .col333 a {
+    color: #333;
+    text-decoration: none;
+}
+.m-dtai .rightArea {
+    float: right;
+}
+.m-rmTit {
+    border-bottom: 2px solid #ddd;
+    height: 35px;
+    margin: 10px 20px 0;
+}
+.m-rmTit span {
+    border-bottom: 2px solid #ddd;
+    cursor: pointer;
+    display: inline;
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: -2px;
+    margin-right: 40px;
+}
+.m-rmTit span.active {
+    border-color: #333;
+    color: #333;
+    font-weight: bold;
+    position: relative;
+}
+.col999, .col999 a {
+    color: #999;
+    text-decoration: none;
+}
+.m-rmCont li {
+    padding: 20px;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.m-rmCont .box img {
+    border-radius: 35px;
+    float: left;
+    height: 70px;
+    margin-left: -80px;
+    width: 70px;
+}

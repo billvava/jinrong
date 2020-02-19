@@ -1,0 +1,654 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/receive.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+<style>
+*::-moz-placeholder {
+    border: 0 none;
+    color: gray;
+    cursor: text;
+    opacity: 1;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+}
+.select_shelter {
+    border: 0 none;
+    display: inline-block;
+    height: 20px;
+}
+.standard_select {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px;
+    vertical-align: middle;
+}
+.select_shelter {
+    border: 0 none;
+    display: inline-block;
+    height: 20px;
+    overflow: hidden;
+}
+.select_shelter select {
+    border: 0 none;
+    color: #999;
+    padding: 2px;
+}
+.select_shelter select:focus {
+    outline: 0 none;
+}
+.select-w246 {
+    width: 246px;
+}
+.select-w264 {
+    width: 264px;
+}
+.select-w126 {
+    width: 126px;
+}
+.part-search-nav-a {
+    background: #f1f1f1 none repeat scroll 0 0;
+    padding: 10px 10px 0;
+}
+.part-search-nav-a th {
+    text-align: right;
+}
+.part-search-nav-a .fn-tac {
+    padding-right: 5px;
+    text-align: center;
+}
+.part-search-nav-a th, .part-search-nav-a td {
+    padding-bottom: 10px;
+}
+.part-search-cont-a table {
+    color: #666;
+    margin-top: 10px;
+    width: 100%;
+}
+.part-search-cont-a thead th {
+    background: #f1f1f1 none repeat scroll 0 0;
+    text-align: center;
+}
+.part-search-cont-a tbody th {
+    background: #f5f5f5 none repeat scroll 0 0;
+}
+.part-search-cont-a th {
+    border: 1px solid #f1f1f1;
+    padding: 10px;
+}
+.part-search-cont-a td {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #f1f1f1;
+    overflow-wrap: break-word;
+    padding: 10px;
+    word-break: break-all;
+}
+.part-search-cont-a-msg {
+    border: 1px solid #dedede;
+    margin-top: 10px;
+    position: relative;
+}
+.part-search-cont-a-msg .ui-le-ht24 {
+    padding: 20px 10px;
+}
+.part-search-cont-a-msg i {
+    border: 8px dashed transparent;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+}
+.part-search-cont-a-msg .search-msg-arrow-a {
+    border-bottom: 8px solid #fff;
+    left: 10px;
+    top: -15px;
+    z-index: 10;
+}
+.part-search-cont-a-msg .search-msg-arrow-b {
+    border-bottom: 8px solid #dedede;
+    left: 10px;
+    top: -16px;
+}
+.part-search-cont-a-msg .search-msg-close {
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+.part-search-cont-a-msg .search-msg-close:hover {
+    text-decoration: none;
+}
+.part-aside-information {
+    background: #f5f5f5 none repeat scroll 0 0;
+    border: 1px solid #e2e2e2;
+    width: 180px;
+}
+.part-aside-information h2 {
+    color: #666699;
+    font-family: "宋体";
+    font-weight: bold;
+    padding: 7px;
+}
+.part-aside-information h6 {
+    background: #ededed none repeat scroll 0 0;
+    color: #000;
+    font-family: "微软雅黑";
+    padding: 7px;
+}
+.part-aside-information h6 i {
+    background: rgba(0, 0, 0, 0) url("../../images/icon-information.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 17px;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 16px;
+}
+.part-aside-information .aside-information-icon1 {
+    background-position: -1px 0;
+}
+.part-aside-information .aside-information-icon2 {
+    background-position: -21px 0;
+}
+.part-aside-information .aside-information-icon3 {
+    background-position: -44px 0;
+}
+.part-aside-information .aside-information-icon4 {
+    background-position: -66px 0;
+}
+.part-aside-information p {
+    line-height: 22px;
+    padding: 7px 7px 7px 28px;
+}
+
+.ui-btn-blue {
+    background-color: #7381ac !important;
+}
+a.ui-btn-blue:hover {
+    background-color: #8fa0d3 !important;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.select_shelter select {
+    border: 0 none;
+    color: #999;
+    padding: 2px;
+}
+.select_shelter select:focus {
+    outline: 0 none;
+}
+.part-fieldset .t_input {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 5px;
+    padding: 0 10px;
+    position: relative;
+    vertical-align: middle;
+    width: 248px;
+}
+.part-fieldset section label {
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+}
+.part-fieldset section label input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 2px 0;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg em {
+    display: block;
+    margin: 0 0 0 20px;
+    position: relative;
+}
+.part-fieldset .part-fieldset-msg i {
+    left: -20px;
+    position: absolute;
+    top: 2px;
+}
+.part-fieldset textarea {
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 72px;
+    margin-right: 5px;
+    padding: 5px;
+    position: relative;
+    vertical-align: middle;
+    width: 360px;
+}
+body placeholder {
+    white-space: nowrap !important;
+}
+.part-fieldset-code {
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-left: -6px;
+    text-align: center;
+    vertical-align: middle;
+    width: 147px;
+}
+.part-fieldset-code:hover {
+    text-decoration: none;
+}
+.part-fieldset-code-cur, .part-fieldset-code-cur:hover {
+    background: #ccc none repeat scroll 0 0;
+    color: #999;
+}
+.part-fieldset-pic-itimg img {
+    display: block;
+    height: 80px;
+    width: 80px;
+}
+.part-fieldset-pic-ittext {
+    margin-left: 100px;
+}
+.part-fieldset-footer {
+    margin: 40px 0;
+    text-align: center;
+}
+.part-fieldset-all-a {
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+.part-fieldset-all-aside80 aside {
+    width: 80px;
+}
+.part-fieldset .t_input_disabled {
+    background: #f0f0f0 none repeat scroll 0 0;
+}
+.part-footer-ml146 {
+    margin-left: 146px;
+}
+.part-footer-ml96 {
+    margin-left: 96px;
+}
+.part-footer-ml110 {
+    margin-left: 110px;
+}
+.part-fieldset-multi-select {
+    border: 1px solid #ddd;
+    cursor: pointer;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 5px;
+    overflow: hidden;
+    padding: 0 20px 0 10px;
+    position: relative;
+    vertical-align: middle;
+    width: 156px;
+}
+.part-fieldset-multi-select i {
+    border-color: #ddd transparent transparent;
+    border-image: none;
+    border-style: solid dashed dashed;
+    border-width: 6px;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 5px;
+    top: 12px;
+    width: 0;
+    border-bottom:0;
+}
+.part-search-nav-a th, .part-search-nav-a td {
+    padding-bottom: 10px;
+}
+.part-search-cont-a table {
+    color: #666;
+    margin-top: 10px;
+    width: 100%;
+}
+.news-info-title {
+    color: #536290;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.news-info-title span {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.news-info-title .news-info-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+.news-info-title .news-info-certification {
+    background: #54618f none repeat scroll 0 0;
+    color: #fff;
+    padding: 0 5px;
+}
+.news-info-post {
+    color: #999;
+    height: 20px;
+    overflow: hidden;
+}
+.news-info-message {
+    min-height: 20px;
+    padding-right: 110px;
+    position: relative;
+    width: 270px;
+}
+.news-info-message-cont {
+    display: block;
+    white-space: normal;
+    width: 260px;
+}
+.news-info-message .fn-text-overflow {
+    height: 20px;
+    white-space: nowrap;
+}
+.news-info-genre {
+    color: #999;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+}
+.news-info-time {
+    color: #999;
+    height: 20px;
+    overflow: hidden;
+}
+.news-info-item {
+    border-bottom: 1px dashed #c2c2c2;
+    overflow: hidden;
+    padding: 15px 0;
+    width: 540px;
+}
+.news-info-hover .news-info-list {
+    margin: 0;
+    padding: 0;
+}
+.news-info-hover .news-info-item {
+    padding: 15px 30px;
+    width: 738px;
+}
+.user-avatar {
+    border: 1px solid #ddd;
+    float: left;
+    height: 78px;
+    overflow: hidden;
+    width: 78px;
+}
+.user-avatar img {
+    height: 78px;
+    width: 78px;
+}
+.news-info-wrap {
+    float: left;
+    padding: 0 60px 0 10px;
+    position: relative;
+    width: 390px;
+}
+.news-info-hover .news-info-control {
+    margin-top: -10px;
+}
+.news-info-control {
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 50%;
+}
+.news-info-control .ui-btn-small {
+    width: 48px;
+}
+.ui-btn-gray {
+    background-color: #ededed;
+    color: #999;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.news-info-form {
+    display: none;
+    padding-right: 110px;
+    padding-top: 5px;
+}
+.news-info-genre {
+    color: #999;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+}
+.news-info-time {
+    color: #999;
+    height: 20px;
+    overflow: hidden;
+}
+.j-See-reply-expansion {
+    color: #e93100;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 230px;
+    top: 0;
+    width: 50px;
+}
+.news-info-hover .j-See-reply-show {
+    display: block;
+    width: 58%;
+}
+.fn-text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.fn-linear {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #fcfcfc, #f1f1f1) repeat scroll 0 0;
+}
+.fn-linear-light {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #fcfcfc, #f9f9f9) repeat scroll 0 0;
+}
+input {
+    position: relative;
+}
+.vip-progress {
+    margin: 0 auto;
+    position: relative;
+}
+.news-info-hover .news-info-type {
+    left: -101px;
+    position: absolute;
+    top: 36px;
+}
+.news-info-hover .j-hover {
+    background: #f8f8f8 none repeat scroll 0 0;
+}
+.news-info-hover .news-info-wrap {
+    width: 588px;
+}
+.news-info-hover .news-info-message {
+    width: 440px;
+}
+.ui-btn-gray {
+    background-color: #ededed;
+    color: #999;
+}
+a.ui-btn-gray:hover {
+    background-color: #d8d8d8;
+    color: #666;
+}
+a:hover {
+    color: #f60;
+    text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<div class="ui-tab-head-box">
+<div class="ui-tab-head ui-tab-head-p">
+<ul>
+<li class="ui-tab-head-current">
+<a href="{:U('Personal/receive')}">收到的消息</a></li>
+<li>
+<a href="{:U('Personal/sent')}">已发送的消息</a></li>
+<li>
+<a href="{:U('Personal/msg_pms')}">系统消息</a></li>
+<li>
+<a href="{:U('Personal/rss')}">订阅信息</a></li>
+</ul>
+</div>
+</div>
+<div class="ui-tab-cont">
+<div class="search-part-nav">
+<form name="frmSearch" id="frmMsgSearch">
+<input name="r" value="" type="hidden">
+<div class="fn-left search-part-link">
+<a href="#" class="search-part-link-first">全部</a>
+<span>|</span>
+<a href="#">未读</a>
+<span>|</span>
+<a href="#">按时间</a>
+</div>
+<div class="fn-left fn-mr-15">会员类型：<select name="u_t">
+<option value="">所有会员</option>
+<option value="1">企业</option>
+<option value="2">政府</option>
+<option value="3">个人</option>
+</select>
+</div>
+<div class="fn-left fn-mr-15">消息类型：<select name="t">
+<option value="">全部</option>
+<option value="1">留言</option>
+<option value="2">私信</option>
+</select>
+</div>
+<div class="fn-left fn-pr">
+<a href="javascript:void(0);" class="ui-btn-small ui-btn-blue" id="btnSearch" data-type="receive"><i class="icon-part-bg icon-part-search"></i>搜索</a>
+</div>
+</form>
+</div>
+<div class="news-info-hover fn-mt-10 j-part-hover  j-See-reply">
+<div>
+
+<notempty name="msg_list['list']">
+<ul class="news-info-list">
+
+<!--
+<li class="news-info-item">
+<div class="user-avatar">
+<a href="#" target="_blank">
+<img src="#" alt="会员头像">
+</a>
+</div>
+<div class="news-info-wrap">
+<p class="news-info-title">
+<span class="news-info-name">
+<a href="#" target="_blank">郭先生</a>
+</span>
+<i class="icon-auth-p-16-2 fn-mr-5" title="资金"></i>
+<i class="icon-auth-s-16-1 fn-mr-5" title="企业"></i>
+<span><i class="userEnterprise" title="企业身份认证会员"></i></span>
+</p>
+<p class="news-info-message">
+<span class="news-info-post">江西省南昌市某公司 总经理</span>
+<span class="news-info-genre">类型：留言</span>
+</p>
+<p class="news-info-message">
+<span class="j-See-reply-show fn-text-overflow"><em class="j-See-reply-info">张总，我对你项目有投资意向，想进一步了解，能否把项目资料发到我的邮箱，谢谢。</em></span>
+<span class="j-See-reply-expansion">【展开】</span>
+</p>
+<p class="news-info-post">来源：会员展厅：<a href="#" target="_blank">张女士</a></p>
+<p class="news-info-time"><i class="icon-info-time"></i>2017年5月3日 16:21</p>
+<div class="news-info-control">
+<a type="button" class="ui-btn-small ui-btn-gray j-See-reply-btn" data-id="9293573" data-reply="1">查看回复</a>
+</div>
+<div class="message-reply-box reply-9293573">
+<form class="news-info-form" action="#">
+<input name="id" value="9293573" type="hidden">
+<input name="message_id" value="730613" type="hidden">
+<input name="type" value="1" type="hidden">
+<textarea class="message-reply" name="content" placeholder="严禁发布含有联系方式或广告性质的内容，违者一律删除！"></textarea>
+<span class="left_word_tip"></span>
+<br>
+<a href="javascript:void(0);" class="ui-btn-small ui-btn-gray btn-replay-message" data-id="9293573">回复</a>
+</form>
+</div>
+<div class="news-info-type"><input name="chkIds" value="730613" _type="1" type="checkbox"></div>
+</div>
+</li>
+-->
+</ul>
+</notempty>
+
+<div class="part-not-cont"><i class="icoPro16yellow"></i><a href="{:U('Home/Fund/fund_list')}" class="fn-vam">您还没有收到消息，马上主动出击，给资金方发消息。</a>
+</div>
+</div>
+<footer class="table-page-part">
+<notempty name="msg_list['count']">
+<div class="fn-left">
+<input id="chk_delete_all" class="fn-vam fn-mr-10" type="checkbox">
+<a href="javascript:void(0);" class="ui-btn-small ui-btn-blue fn-vam" id="btn_delete_all" data-url="{:U('Personal/msg/del')}">删除</a>
+</div>
+</notempty>
+</footer>
+</div>
+</div>
+</div>
+</div>
+<include file="index_footer" />
+<script>
+    //会员中心收件,发件内容展开收缩
+    var L_expansion = $(".j-See-reply-info").length;
+    for(i=0;i<L_expansion;i++)
+    {
+
+        if($(".j-See-reply-info").eq(i).width() > 250)
+        {
+            $(".j-See-reply-info").eq(i).parent().next().removeClass("fn-hide");    
+            $(".j-See-reply-info").eq(i).parent().addClass("fn-text-overflow");
+        }   
+    }
+    $(".j-See-reply-expansion").click(function(){
+        if($(this).prev().hasClass("fn-text-overflow")){
+            $(this).prev().removeClass("fn-text-overflow");
+            $(this).html("【收缩】");   
+        }else{
+            $(this).prev().addClass("fn-text-overflow");
+            $(this).html("【展开】");   
+        }
+        
+    });
+</script>
+</body>
+</html>

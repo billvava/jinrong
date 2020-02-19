@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<style>
+.ui-tab-headd{
+    height: 26px;
+}
+.ui-tab-headd ul{
+    float: left;
+}
+.ui-tab-headd li{
+    padding: 0 15px;
+    float: left;
+    margin-right: 5px;
+    height: 24px;
+    line-height: 24px;
+    color: #666;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    border-radius: 3px 3px 0 0;
+    background-color: #f0f0f0;
+    display:inline-block;
+}
+.ui-tab-headd li.ui-tab-head-current{
+    position: relative;
+    height: 25px;
+    color: #333;
+    background-color: #fff;
+}
+.ui-tab-headd li a{
+    padding:0 15px;
+    margin:0 -15px;
+    white-space: nowrap;
+}
+.ui-tab-headd li a:hover{
+    text-decoration:none;
+}
+.ui-tab-cont {
+    border-top: 1px solid #ccc;
+    margin-top: -1px;
+    padding-top: 10px;
+}
+.fn-tac {
+    text-align: center;
+}
+.table-part-all-f table th {
+    background: #f8f8f8 none repeat scroll 0 0;
+    text-align: center;
+    white-space: nowrap;
+}
+.table-part-all table th, .table-part-all table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+*::-moz-placeholder {
+    border: 0 none;
+    color: gray;
+    cursor: text;
+    opacity: 1;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+</style>
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+
+
+<div class="main" id="news-info-tab">
+
+<div class="ui-tab-headd ui-tab-head-p ui-tab-head-box">
+<ul>
+<li class="ui-tab-head-current"><a type="button" href="{:U('Personal/complaints')}">收到的投诉</a></li>
+<li><a type="button" href="{:U('Personal/complaints_send')}">发出的投诉</a></li>
+</ul>
+</div>
+
+<div class="ui-tab-cont table-part-all table-part-hover fn-tac table-part-all-f">
+<div>
+<table>
+
+<thead>
+<tr>
+<th width="13%">投诉编号</th>
+<th width="26%">投诉理由</th>
+<th width="12%">投诉人</th>
+<th width="14%">发起时间</th>
+<th width="14%">状态</th>
+<th width="17%">倒计时</th>
+<th width="8%">操作</th>
+</tr>
+</thead>
+</table>
+<footer class="table-page-part ">
+<div class="paging"></div>
+</footer>
+</div>  
+
+</div>
+</div>
+
+
+</div>
+<include file="index_footer" />
+</body>
+</html>

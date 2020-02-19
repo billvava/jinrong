@@ -1,0 +1,128 @@
+ins, a {
+    text-decoration: none;
+}
+a {
+    color: #3b4a82;
+    cursor: pointer;
+}
+.container::after, .ui-box-head::after, .main::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
+.part-head-all-a nav li a {
+    background: #e9e9e9 none repeat scroll 0 0;
+    border-radius: 5px 5px 0 0;
+    color: #666;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 15px;
+}
+.part-head-all-a nav li a:hover {
+    text-decoration: none;
+}
+.part-cont-radio-a {
+    background: #f6f6f6 none repeat scroll 0 0;
+    border-top: 1px solid #ddd;
+    padding: 40px 0;
+}
+.part-cont-radio-a .part-list {
+    color: #666666;
+    overflow: hidden;
+}
+.fn-tac {
+    text-align: center !important;
+}
+.fn-mt-20 {
+    margin-top: 20px !important;
+}
+.main {
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+    border-radius: 3px;
+    min-height: 750px;
+    padding: 10px;
+}
+.part-head-all-a {
+    background: #f6f6f6 none repeat scroll 0 0;
+    overflow: hidden;
+    padding-right: 10px;
+    position: relative;
+}
+.fn-left {
+    float: left;
+}
+.fn-right {
+    float: right;
+}
+.part-head-all-a nav .ui-tab-head-current a {
+    background: #536290 none repeat scroll 0 0;
+    color: #fff;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.ui-text-gray-2 {
+    color: #666;
+}
+.ui-btn-big {
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+}
+.ui-btn-blue {
+    background-color: #7381ac !important;
+}
+a.ui-btn-blue:hover {
+    background-color: #8fa0d3 !important;
+}
+.w100 {
+    width: 100px !important;
+}
+
+.part-cont-radio-a .part-list aside {
+    border-right: 1px dashed #c2c2c2;
+    margin-left: 80px;
+    width: 162px;
+}
+.part-cont-radio-a .part-list aside li {
+    padding: 15px 0;
+}
+.part-cont-radio-a .part-list aside input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.part-cont-radio-a .part-list table {
+    height: 192px;
+    margin-left: 242px;
+}
+.part-cont-radio-a .part-list table td {
+    line-height: 24px;
+    padding: 0 80px;
+}
+
+*::-moz-placeholder {
+    border: 0 none;
+    color: gray;
+    cursor: text;
+    opacity: 1;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,264 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/account.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/init.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript"></script>
+<script src="../public/js/jquery.form.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/area.js" type="text/javascript"></script>
+<script src="../public/js/multiselect.js" type="text/javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript"></script>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<form id="afrm" method="post" action="{:U('Personal/account')}" novalidate="novalidate">
+<div class="perfect-information">
+<div class="fn-clear ui-le-ht24"><i class="fn-left icoBul16 fn-mt-5"></i>
+<div class="fn-ml-20">完善资料之后，系统将自动给您生成一张名片，名片可以和金融网会员交换。完整的基本资料是会员搜索到您的重要保证，更是让对方能够初步了解您的基础。</div>
+</div>
+<div class="fn-clear" style="margin-top:-24px;"><a href="/zt/wszl.html" class="ui-btn-small ui-btn-blue fn-right" target="_blank">教你完善会员资料</a></div>
+<nav class="fn-mt-15">
+<empty name="userinfo['type']">
+<span class="ui-text-red font-simsun">*</span>会员身份：
+<em for="type">
+<input name="type" id="type1" value="1" type="radio"><label for="type1">企业</label>
+<input name="type" id="type2" value="3" type="radio"><label for="type2">个人</label>
+<input name="type" id="type3" value="2" checked="" type="radio"><label for="type3">政府</label>
+</em>
+<span class="ui-text-red font-simsun">*</span> 提交后不可更改
+<else />
+会员身份：政府
+</empty>                            
+</nav>            
+</div>
+
+<div class="fieldsetMod">
+<h2>政府资料<i class="icoDot"></i></h2>
+<div class="fieldsetBd">
+<article class="part-fieldset">
+<aside><span class="ui-text-red font-simsun">*</span>单位名称：</aside>
+<section class="part-fieldset-section">
+<input name="company" id="company" class="t_input" value="{$userinfo.company}" maxlength="50" placeholder="请输入真实名称，保存后不可修改" type="text">
+
+</section>
+</article>                                  
+<article class="part-fieldset part-fieldset-min-textarea">
+<aside>单位简介：</aside>
+<section>
+<span class="fn-pr fn-herit">
+<textarea name="introduce" class="prompt-pass-style">{$userinfo.introduce}</textarea>
+<span class="prompt_pass">请输入单位简介</span>
+</span>
+
+</section>
+</article> 
+<article class="part-fieldset">
+<aside>去年财政收入：</aside>
+<section class="part-fieldset-section">
+<span class="standard_select">
+<span class="select_shelter">
+<select name="last_fiscal_revenue" id="last_fiscal_revenue" class="select-w126">
+<option value="">请选择</option>
+<volist name="category['last_fiscal_revenue']" id="vo">
+<option value="{$key}" <if condition="$userinfo.last_fiscal_revenue eq $key">selected=""</if>>{$vo}</option>
+</volist>
+</select>
+</span>
+</span>
+</section>
+</article> 
+
+
+<article class="part-fieldset">
+<aside>单位地址：</aside>
+<section class="part-fieldset-section">
+<span id="divAreaSelectCompany"></span>
+<input id="company_area_id" name="company_area_id" value="{$userinfo.company_area_id}" type="hidden">
+</section>
+</article>
+
+<article class="part-fieldset">
+<aside></aside>
+<section>
+<input name="company_address" value="{$userinfo.company_address}" class="t_input" placeholder="请输入详细街道地址。" type="text">
+</section>
+</article>
+
+</div>
+</div>
+<div class="fieldsetMod">
+<h2>联系人资料<i class="icoDot"></i></h2>
+<div class="fieldsetBd">
+<article class="part-fieldset">
+<aside><span class="ui-text-red font-simsun">*</span>姓名：</aside>
+<section class="part-fieldset-text">
+<span class="fn-pr fn-herit">
+<input name="realname" id="contact_name" value="{$userinfo.realname}" class="t_input prompt-pass-style" maxlength="10" type="text">
+<span class="prompt_pass"></span>
+</span>
+<label><input name="sex" value="0" <if condition="$userinfo['sex'] == 0 || $userinfo['sex'] == ''">checked</if> type="radio"><span class="fn-vam">先生</span></label>
+<label><input name="sex" value="1" type="radio" <if condition="$userinfo['sex'] == 1">checked</if>><span class="fn-vam">女士</span></label>
+</section>
+</article>
+<article class="part-fieldset part-fieldset-text">
+<aside>联系手机：</aside>
+<section class="part-fieldset-text">
+{:contact_hide($userinfo['mobile'],2)}<span class="ui-text-red fn-ml-10">[已认证]</span>
+</section>
+</article>
+<article class="part-fieldset">
+<aside>职务：</aside>
+<section class="part-fieldset-section">
+<span class="standard_select">
+<span class="select_shelter">
+<select name="contact_job" id="contact_job" class="select-w100">
+<option value="">请选择职务</option>
+<volist name="category['contact_job']['government']" id="vo">
+<option value="{$key}" <if condition="$userinfo.contact_job eq $key">selected=""</if>>{$vo}</option>
+</volist>
+</select>
+</span>
+</span>
+<input name="contact_job_name" id="contact_job_name" value="{$userinfo.contact_job_name}" maxlength="6" class="text w160 fn-hide t_input ac_input" style="display: none;" autocomplete="off" type="text">
+</section>
+</article>
+<article class="part-fieldset">
+<aside>所在部门：</aside>
+<section class="part-fieldset-text">
+<span class="fn-pr fn-herit">
+<input name="department_name" class="t_input prompt-pass-style" value="{$userinfo.department_name}" type="text">
+<span class="prompt_pass">请输入所在部门</span>
+</span>
+</section>
+</article>
+
+
+<article class="part-fieldset">
+<aside>电话号码：</aside>
+<section class="part-fieldset-section">
+<input name="phone_cr" value="<empty name='phone_cr'>086<else />{$userinfo.phone_cr}</empty>" class="t_input w20" maxlength="3" type="text"><span class="fn-mr-5">-</span>
+<input name="phone_qh" value="{$userinfo.phone_qh}" maxlength="4" class="t_input w35" type="text"><span class="fn-mr-5">-</span>
+<input name="phone" value="{$userinfo.phone}" class="t_input w120" maxlength="8" type="text">
+</section>
+</article>
+<article class="part-fieldset">
+<aside>QQ号码：</aside>
+<section class="part-fieldset-section">
+<span class="fn-pr fn-herit">
+<input name="qq" value="{$userinfo.qq}" maxlength="15" class="t_input prompt-pass-style" type="text">
+<span class="prompt_pass">请输入常用的QQ号码</span>
+</span>
+</section>
+</article>
+<article class="part-fieldset">
+<aside><span class="ui-text-red font-simsun">*</span>邮箱地址：</aside>
+<section class="part-fieldset-section">
+<empty name="userinfo['email']">
+<span class="fn-pr fn-herit">
+<input class="t_input prompt-pass-style" name="email" value="" type="text">
+<span class="prompt_pass">请输入常用的邮箱地址</span>
+</span>
+<else />
+<section class="part-fieldset-text">{$userinfo.email}</section>
+</empty>
+</section>
+</article>
+<article class="part-fieldset">
+<aside>联系地址：</aside>
+<section class="part-fieldset-section select-height">
+<span id="divAreaSelect">
+</span>
+<input id="last_area_id" name="last_area_id" value="{$userinfo.last_area_id}" type="hidden">
+</section>
+</article>
+<article class="part-fieldset">
+<aside></aside>
+<section>
+<span class="fn-pr fn-herit">
+<input name="reg_address" value="{$userinfo.reg_address}" maxlength="200" class="t_input prompt-pass-style" type="text">
+<span class="prompt_pass">请输入详细街道地址</span>
+</span>
+</section>
+</article>
+</div>
+</div>
+<div class="part-fieldset-footer">
+<a id="J-submit" class="ui-btn-big ui-btn-blue fn-mr-10 w100">保存资料</a>
+<a id="J-preview-businesscard" class="ui-btn-big ui-btn-red w100">预览名片</a>
+</div>
+</form>
+
+</div>
+</div>
+<include file="index_footer" />
+<!--
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery-validate/1.16.0/jquery.validate.js"></script>
+-->
+<link href="../public/css/ui-dialog.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/jquery.validate.js" type="text/javascript"></script>
+<script src="../public/js/popup.js" type="text/javascript"></script>
+<script src="../public/js/dialog-config.js" type="text/javascript"></script>
+<script src="../public/js/artDialog.js" type="text/javascript"></script>
+<script>
+    var dialog = artDialog;
+</script>
+<script src="../public/js/dialog_show.js" type="text/javascript"></script>
+<script src="../public/js/personal/account.js" type="text/javascript"></script>
+<script>
+    if(typeof($('#company_area_id').val())!="undefined"){
+                var multiSelect = new MultiSelect('divAreaSelectCompany','company_area_id',dataMultiArea,dataAllArea);
+                multiSelect.pLabels  = '省,市,县/区';
+                //multiSelect.pClass   = 'w70 mr5';
+                multiSelect.pNames  = 'province_id_com,city_id_com,area_id_com';
+                multiSelect.pStart  = 1;
+                multiSelect.init(chinese_id);
+                var initId = $('#company_area_id').val();
+                if(initId=='' || initId==0)
+                    initId = chinese_id;
+                multiSelect.select(initId);
+                $("#divAreaSelectCompany select").each(function(){
+                    $(this).addClass("select-style");
+                    //$(this).wrap('<span class="standard_select"><span class="select_shelter"></span></span></div>');
+                });
+            }
+</script>
+<script>
+    if(typeof($('#last_area_id').val())!="undefined")
+            {
+                var multiSelect         = new MultiSelect('divAreaSelect','last_area_id',dataMultiArea,dataAllArea);
+                multiSelect.pLabels  = '省,市,县/区';
+                //multiSelect.pClass   = 'w70 mr5';
+                multiSelect.pNames  = 'province_id,city_id,area_id';
+                multiSelect.pStart  = 1;
+                multiSelect.init(chinese_id);
+                var initId = $('#last_area_id').val();
+                if(initId=='' || initId==0)
+                    initId = chinese_id;
+                multiSelect.select(initId);
+                $("#divAreaSelect select").each(function(){
+                    $(this).addClass("select-style");
+                    //$(this).wrap('<span class="standard_select"><span class="select_shelter"></span></span></div>');
+                });
+            }
+</script>
+<!--
+<script type="text/javascript">
+var form_publish = $('#afrm');
+form_publish.click(function(){
+$('#afrm').attr('target','_self').attr('action',"{:U('Personal/account')}");
+});
+</script>
+-->
+<script type="text/javascript">
+    $('input[name="type"]').bind('click', function(){
+        window.location.href='/Personal/account.html?type='+$(this).val();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>金融网</title>
+<meta name="keywords" content="项目融资,融资,天使投资,投资,投资项目,投资公司,项目,股权融资,债权融资,投融资,融资平台,金融网"/>
+<meta name="description"
+          content="金融网（7ronghui.com）是中国最大的融资服务平台，拥有超百万的投融资机构、企业与个人用户入驻。金融网通过线上＋线下、标准化  ＋个性化的服务体系，为客户提供针对性的投融资信息对接和项目撮配服务，成功对接融资千余亿元。金融网凭借其强大、便捷的平台信息整合能力，大大提高企业投融资活动成功率，为中小微企业解决融资难问题。"/>
+<link rel="stylesheet" href="../public/css/v2/font/iconfont.css">
+<link rel="stylesheet/less" type="text/css" href="../public/css/v2/less/combination/fund_list2.less"/>
+<script src="../public/css/v2/less/less_all.js"></script>
+</head>
+<body>
+<include file="public:header2"/>
+<include file="public:fund_nav"/>
+<div class="item_list2 container-full">
+    <div class="container">
+        <div class="choose">
+            <div class="result clearfix">
+                <span>已选条件：</span>
+                <p result="result">
+                </p>
+                <span class="J_clear">清除 <i class="iconfont icon-qingchu"></i></span>
+            </div>
+            <div class="investment-way">
+                <span>投资方式：</span>
+                <p choose="investment-way">
+                    <a class="select" href="#">不限</a>
+                    <a href="#">股权投资</a>
+                    <a href="#">金融投资</a>
+                    <a href="#">BT/BOT 项目投资</a>
+                    <a href="#">其它投资</a>
+                </p>
+
+            </div>
+            <div class="money-type">
+                <span>资金类型：</span>
+                <p choose="money-type">
+                    <a class="select" href="#">不限</a>
+                    <a href="#">个人资金</a>
+                    <a href="#">企业资金</a>
+                    <a href="#">天使投资</a>
+                    <a href="#">VC投资</a>
+                    <a href="#">PE投资</a>
+                    <a href="#">小额贷款</a>
+                </p>
+            </div>
+            <div class="investment-industry">
+                <span>投资行业：</span>
+                <p choose="investment-industry">
+                    <a class="select" href="#">不限</a>
+                    <a href="#">金融投资</a>
+                    <a href="#">房地产</a>
+                    <a href="#">能源</a>
+                    <a href="#">化学化工</a>
+                    <a href="#">节能环保</a>
+                    <a href="#">建筑建材</a>
+                </p>
+            </div>
+            <div class="investment-area">
+                <span>投资地区：</span>
+                <p choose="investment-area">
+                    <a class="select" href="#">不限</a>
+                    <a href="#">安徽省</a>
+                    <a href="#">北京市</a>
+                    <a href="#">重庆市</a>
+                    <a href="#">福建省</a>
+                    <a href="#">甘肃省</a>
+                    <a href="#">广东省</a>
+                </p>
+            </div>
+            <div class="financing-money">
+                <span>融资金额：</span>
+                <p choose="financing-money">
+                    <a class="select" href="#">不限</a>
+                    <a href="#">1万-10万</a>
+                    <a href="#">10万-50万</a>
+                    <a href="#">50万-100万</a>
+                    <a href="#">100万-500万</a>
+                    <a href="#">500万-1000万</a>
+                    <a href="#">1000万-5000万</a>
+                    <a href="#">5000万-1亿</a>
+                    <a href="#">1亿以上</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="item_title clearfix">
+            <div>
+                <a class="select" href="#">
+                    综合排序
+                    <i class="iconfont icon-jiantou"></i>
+                </a>
+                <a href="#">
+                    更新时间
+                    <i class="iconfont icon-jiantoujiantou"></i>
+                </a>
+                <div>
+                    <form id="fund_form" action="Fund/fund_list">
+                    <a href="#">
+                        <i class="iconfont icon-sousuo_sousuo"></i>
+                    </a>
+                    <input type="text" class="placeholder" tip="请输入搜索内容" value="请输入搜索内容">
+                    </form>
+                </div>
+            </div>
+            <div>优质资金推荐</div>
+        </div>
+
+        <div class="item_main clearfix">
+            <ul>
+                <volist name="fund_list" id="vo">
+                <li>
+                    <div class="motif clearfix">
+                        <div>
+                            <h3>{$vo.title}</h3>
+                            <p>投资资金： 
+                            <span><if condition="$vo['amount_interval_min'] eq $vo['amount_interval_max']">{$vo.amount_interval_min}
+{$vo.amount_interval_min_unit}
+<else />
+{$vo.amount_interval_min}
+{$vo.amount_interval_min_unit}-{$vo.amount_interval_max}
+{$vo.amount_interval_max_unit}
+</if></span>
+                            </p>
+                        </div>
+                        <div>
+                            <p><empty name="vo['updatetime']">{$vo.addtime}<else />{$vo.updatetime}</empty></p>
+                            <a href="#">投递项目</a>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <span><i class="iconfont icon-diqu"></i>投资地区：{$vo.tz_area}</span>
+                        <span><i class="iconfont icon-suoshuhangye"></i>投资行业：{$vo.tz_industry}</span>
+                        <span><i class="iconfont icon-rongzi"></i>投资方式：{$vo.info_type}</span>
+                        <span><i class="iconfont icon-zijin"></i>资金类型：企业资金</span>
+                    </div>
+                </li>
+</volist>
+
+
+                <footer class="table-page-part table-page-part-a">
+                    <p class="fn-left ui-le-ht26">
+                        共有&nbsp;<span class="ui-text-orange">
+                {$count}</span>&nbsp;个符合要求的项目信息
+                    </p>
+                    <div class="page_wrap clearfix">
+                        {$page}
+                    </div>
+                </footer>
+            </ul>
+
+            <ul>
+
+                <li>
+                    <a class="recommend" href="#">
+                        <img src="../public/images/v2/picture/item_list_recommend1.png" alt="">
+                        <span>北京某资产管理500万-5亿元寻优质项...</span>
+                        <span>
+                            <span>投资地区：安徽省</span>
+                            <span>投资行业：金融投资</span>
+                        </span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<include file="public:footer2"/>
+
+
+<script src="../public/js/v2/lib/jquery-1.12.4.min.js"></script>
+<script>
+    $(function () {
+
+        (function () {
+            // 添加更多按钮
+            // 获得需要添加的数组
+            var $div = $('.choose>div:not(.result)');
+            for (var i = 0; i < $div.length; i++) {
+                var current_height = $div.eq(i).children('p').height();
+                var auto_height = $div.eq(i).children('p').css('height', 'auto').height();
+                $div.eq(i).children('p').height(current_height + 'px');
+                if (auto_height > current_height) {
+                    $div.eq(i).append('<span class="J_more">更多 <i class="iconfont icon-wodedingdan18"></i></span>')
+                }
+            }
+        })();
+
+        // 点击更多
+        $('.J_more').click(function () {
+            // 获得需要动画的盒子原始高度和最终高度
+            var $p = $(this).prev('p');
+            var auto_height = $p.css('height', 'auto').height();
+            if ($(this).text() == '更多 ') {
+                $(this).text('收起 ').append('<i class="iconfont icon-arror-top1"></i>');
+                // 显示全部
+                $p.height('40px').animate({height: auto_height}, 300);
+                // 将别的数据收起
+                $('.J_more').not($(this))
+                        .text('更多 ').append('<i class="iconfont icon-wodedingdan18"></i>')
+                        .prev('p').animate({height: '40px'}, 300);
+            } else {
+                $(this).text('更多 ').append('<i class="iconfont icon-wodedingdan18"></i>');
+                // 显示全部
+                $p.height(auto_height).animate({height: '40px'}, 300);
+            }
+        });
+
+        // 点击过滤条件
+        $('.choose>div:not(.result) a').click(function () {
+            // 添加选中样式
+            $(this).addClass('select').siblings('a').removeClass('select');
+            // 获得选中的文本
+            var a_text = $(this).text();
+            // 获取父级choose属性值
+            var p_choose = $(this).parent('p').attr('choose');
+            // 如果点击的是不限 那么结果栏的选项内容消失
+            if ($(this).text() == '不限') {
+                $('a[choose=' + p_choose + ']').detach();
+            } else {
+                // 判断是否已经选择条件
+                if ($('a[choose=' + p_choose + ']').length > 0) {
+                    $('a[choose=' + p_choose + ']').text(a_text).append('<i class="iconfont icon-error"></i>');
+                } else {
+                    $('p[result="result"]').append(
+                            '<a choose=' + p_choose + ' href="#">' + a_text + '<i class="iconfont icon-error"></i></a>'
+                    );
+                }
+            }
+            // 将结果栏显示
+//            $('.result').removeClass('display-none');
+        });
+
+        // 点击单个删除
+        $('p[result="result"]').on('click', 'a>i', function () {
+            // 触发 不限的点击事件
+            var a_choose = $(this).parent('a').attr('choose');
+            $('p[choose=' + a_choose + '] a').eq(0).click();
+            return false;
+        });
+
+        // 点击清除
+        $('.J_clear').click(function () {
+            // 将选择元素清除
+            $(this).prev('p').text('');
+            // 触发 不限的点击事件
+            $('p[choose] a:first-child').click();
+            // 将结果栏隐藏
+//            $('.result').addClass('display-none');
+        });
+
+
+    });
+</script>
+</body>
+</html>

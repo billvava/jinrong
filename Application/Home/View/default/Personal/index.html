@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="userbox">
+<div class="td1 substring" style="width: 205px;"><strong><if condition="date('a') eq 'am'">上午<else/>下午</if>好，{$user_info['username']}</strong></div>
+<div class="update_time">上次登录时间:
+<!--{:fdate($user_info['last_login_time'])}-->{:date('Y-m-d H:i:s',$visitor['last_login_time'])}
+</div>
+<notempty name="wx_status">
+<empty name="qrcode">
+<div class="td4 ok link_blue"><a href="{:U('personal/user_safety')}">已绑定微信</a></div>
+<else/>
+<div class="td4 link_gray6">
+<a href="javascript:;" class="bind_wx">未绑定微信</a>
+<div class="popWeixin" id="J_popWeixin">
+<div><div class="qrarrow"></div></div>
+<div><a class="close" href="javascript:void(0)">×</a></div>
+<div class="qrimg">{$qrcode}</div>
+<div class="clear"></div>
+</div>
+</div>
+</empty>
+</notempty>
+<div class="clear"></div>
+</div>
+<!--结束 -->
+
+<div class="infobox">
+<div class="picbox">
+<div class="photo"><a href="{:U('personal/user_avatar')}"><img src="{$visitor['avatars']}?{:time()}" border="0"/></a></div>
+<div class="txt link_blue">头像修改</div>
+</div>
+<div class="clear"></div>
+
+<div class="fl w300">
+<ul>
+<li><label class="baseinfo-label">资料完整度：</label>
+<span class="baseinfo-value baseinfo-integrity">
+<strong class="popover-part ui-text-blue" id="Data-integrity" cont=" 低于8%的同行，请尽快完善资料。">
+73分</strong>
+<a href="{:U('home/personal/account')}">完善</a>
+</li>
+<!--
+<li><label class="baseinfo-label">认证状态：</label><span class="baseinfo-value baseinfo-authenticate">
+<a href="{:U('home/UserCert/index')}" class="icon-auth-16-2" title="手机认证"></a>
+<a href="/manage/user_cert/index.html" class="icon-auth-16-3-no" title="个人身份认证"></a>
+<a href="/manage/user_cert/index.html" class="icon-auth-16-4-no" title="企业身份认证"></a>
+<a href="/manage/user_cert/index.html" class="icon-auth-16-7-no" title="个人职务证明"></a>
+<a href="/manage/user_cert/index.html" class="icon-auth-16-10-no" title="成功案例"></a>
+<a href="/manage/user_cert/index.html" class="icon-auth-16-1-no" title="邮箱认证"></a>
+<a href="/manage/user_cert/index.html" class="icon-auth-16-11-no" title="名片认证"></a>
+-->
+</span></li>
+<li><label class="baseinfo-label">增值服务：</label><span class="baseinfo-value baseinfo-services" title="">
+<a href="{:U('Services/index')}">升级为VIP</a>
+
+</span></li>
+<li><label class="baseinfo-label">消息提醒：</label><span class="baseinfo-value baseinfo-message">
+<a href="{:U('Personal/talks')}"><i class="icon-info-deliver"></i>收到的约谈(<strong><notempty name="user_talk_num">{$user_talk_num}<else />0</notempty></strong>)</a>
+<a href="{:U('Personal/msg_pms')}"><i class="icon-info-message"></i>系统消息(<strong><notempty name="user_message_num">{$user_message_num}<else />{$msgtip['unread']}</notempty></strong>)
+</a>
+</span></li>
+<li></li>
+</ul>
+</div>
+
+<!--
+<div class="td5 J_hoverbut" onclick="window.location='{:U('personal/attention_me',array('resume_id'=>$resume_info['id']))}'"><div class="val">{$resume_info['views']}</div>已发布信息</div>
+<div class="td5 J_hoverbut" onclick="window.location='{:U('personal/attention_me',array('resume_id'=>$resume_info['id']))}'"><div class="val">{$resume_info['views']}</div>投递次数</div>
+<div class="td5 J_hoverbut" onclick="window.location='{:U('personal/attention_me',array('resume_id'=>$resume_info['id']))}'"><div class="val">{$resume_info['views']}</div>最近30天浏览</div>
+-->
+
+<div class="fr">
+<div class="td5 J_hoverbut" onclick="window.location='{:U('personal/talks')}'"><div class="val"><notempty name="user_talk_num">{$user_talk_num}<else />0</notempty></div>收到的约谈</div>
+<div class="td5 J_hoverbut" onclick="window.location='{:U('personal/receive')}'"><div class="val"><notempty name="user_message_num">{$user_message_num}<else />0</notempty></div>收到留言</div>
+</div>
+<div class="clear"></div>
+</div>
+
+
+<!--
+<div class="resumeinfo">
+<div class="linfo">	
+<div class="td1">
+审核状态：<switch name="resume_info['_audit']">
+<case value="1">
+<span class="font_green">审核通过</span>			          </case>
+<case value="2">
+<span class="font_yellow">审核中</span>			          </case>
+<case value="3">
+<span class="font_red">审核未通过</span>			          </case>
+</switch>
+<br />
+更新时间：{:fdate($resume_info['refreshtime'])}<br />
+</div>
+<div class="td2">
+
+
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
+
+<div class="rinfo">
+<div class="goldtxt link_blue">
+我的{:C('qscms_points_byname')}：<span class="my_points_num">{$points|default=0}</span><br />
+<notempty name="apply['Mall']"><a href="{:url_rewrite('QS_mall_index')}" target="_blank">兑换礼品</a><br /></notempty>
+<a href="{:U('PersonalService/task')}" target="_blank">做任务赚{:C('qscms_points_byname')}</a>
+</div>
+<div class="sign"><a id="J_sign_in" href="javascript:;" class="J_hoverbut btn_inline <if condition="$issign">btn_lightgray<else />	btn_yellow</if>"><if condition="$issign">已签到<else />未签到</if></a></div>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
+-->
+
+<!--
+<div class="tabindex">
+<div class="li J_tab select" data-ajaxtype="recommend_jobs" ajaxpage="2">收到的消息</div>
+<div class="li J_tab" data-ajaxtype="nearby_jobs" ajaxpage="2">谁看过我</div>
+<div class="li J_tab" data-ajaxtype="new_jobs" ajaxpage="2">谁收藏我</div>
+
+<div class="li J_tab" data-ajaxtype="new_jobs" ajaxpage="2">收到的名片</div>
+
+<div class="clear"></div>
+</div>
+
+<div class="tabshow J_tab_menu" style="display:block" >
+<div class="ajax_loading"><div class="ajaxloadtxt"></div></div>
+<div class="J_tab_menu_html">
+<notempty name="jobs_list">
+<volist name="jobs_list" id="jobs">
+<div class="list_cell_box">
+<div class="td1">
+<div class="jobname link_blue substring"><a target="_blank" href="{$jobs.jobs_url}" title="{$jobs.jobs_name}">{$jobs.jobs_name}</a></div>
+<div class="edu_wage substring">
+<div class="education">经验{$jobs.experience_cn} / {$jobs.education_cn}</div>
+<div class="wage font_yellow">{$jobs.wage_cn}</div>
+<div class="clear"></div>
+</div>
+
+
+<div class="cname link_gray9 substring"><a target="_blank" href="{$jobs.company_url}" title="{$jobs.companyname}">{$jobs.companyname}</a></div>
+
+
+<div class="cname link_gray9 substring"><a target="_blank" href="{$jobs.company_url}" title="{$jobs.companyname}">{$jobs.companyname}</a></div>
+</div>
+</div>
+</volist>
+<div class="clear"></div>
+<else />
+<div class="empty_tipstxt link_blue"></div>
+</notempty>
+</div>
+</div>
+<div class="tabshow J_tab_menu"><div class="ajax_loading"><div class="ajaxloadtxt"></div></div><div class="J_tab_menu_html"></div></div>
+<div class="tabshow J_tab_menu"><div class="ajax_loading"><div class="ajaxloadtxt"></div></div><div class="J_tab_menu_html"></div></div>
+</div>
+<div class="clear"></div>
+</div>
+-->
+<include file="index_footer" />
+</body>
+</html>

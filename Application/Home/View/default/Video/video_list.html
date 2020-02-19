@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>金融网</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="项目融资,融资,天使投资,投资,投资项目,投资公司,项目,股权融资,债权融资,投融资,融资平台,金融网"/>
+    <meta name="description"
+          content="金融网（7ronghui.com）是中国最大的融资服务平台，拥有超百万的投融资机构、企业与个人用户入驻。金融网通过线上＋线下、标准化  ＋个性化的服务体系，为客户提供针对性的投融资信息对接和项目撮配服务，成功对接融资千余亿元。金融网凭借其强大、便捷的平台信息整合能力，大大提高企业投融资活动成功率，为中小微企业解决融资难问题。"/>
+<link rel='icon' href='../img/icon/logo.ico' type='image/x-ico'/>
+<link rel="stylesheet" href="../public/css/v2/base.css">
+<link rel="stylesheet" href="../public/css/common.css">
+<link rel="stylesheet" href="../public/css/v2/component.css">
+<link rel="stylesheet" href="../public/css/v2/module.css">
+<link rel="stylesheet" href="../public/css/v2/all.css">
+<link rel="stylesheet" href="../public/css/v2/font/iconfont.css">
+<link rel="stylesheet/less" type="text/css" href="../public/css/v2/less/combination/platform_query.less"/>
+<script src="../public/css/v2/less/less_all.js"></script>
+<style>
+.logo a img{width: 162px;}
+</style>
+</head>
+<body>
+<include file="public:header2"/>
+<div class="banner video-list-banner">
+    <a href="#"></a>
+</div>
+<div class="video-list">
+    <div class="div1">
+        <div class="div2">
+            <p>
+                <span>首页</span>
+                <span>资讯</span>
+                <span>金融网视频</span>
+            </p>
+            <p class="p1">
+                <span class="orange select-title switch1">全部视频</span>
+                <!--
+                <span class=" switch2">推介视频</span>
+                <span class=" switch3">沙龙视频</span>
+                <span class=" switch4">精选视频</span>
+                -->
+            </p>
+        </div>
+    </div>
+    <div class="div3">
+        <div class="div4 switch1">
+            <foreach name="video_list" item="vo">
+                <a href="javascript:void(0)" class="show_video" rel="{$vo['id']}">
+                    <img src="{:attach($vo['small_img'],'images')}" style="width:285px;height:140px;" alt="{$vo.title}">
+                    <p>{$vo.title}</p>
+                    <p>
+                        <span>{$vo.click}次播放</span>
+                        <!--
+                        <span>125次评论</span>
+                        -->
+                    </p>
+                    <span class="span1"></span>
+                    <span class="span2"></span>
+                </a>
+            </foreach>
+            <div class="clear-bo"></div>
+        </div>
+
+        <div class="div4 switch2 display-no">
+
+            <a href="#">
+                <img src="../public/images/v2/picture/list92.png" alt="">
+                <p>湖北省某O2O娱乐平台项目融资500万-1000万元</p>
+                <p>
+                    <span>2500次播放</span>
+                    <span>125次评论</span>
+                </p>
+                <span class="span1"></span>
+                <span class="span2"></span>
+            </a>
+            <div class="clear-bo"></div>
+        </div>
+
+        <div class="div4 switch3 display-no">
+            <a href="#">
+                <img src="../public/images/v2/picture/list92.png" alt="">
+                <p>湖北省某O2O娱乐平台项目融资500万-1000万元</p>
+                <p>
+                    <span>2500次播放</span>
+                    <span>125次评论</span>
+                </p>
+                <span class="span1"></span>
+                <span class="span2"></span>
+            </a>
+
+            <div class="clear-bo"></div>
+        </div>
+
+        <div class="div4 switch4 display-no">
+            <a href="#">
+                <img src="../public/images/v2/picture/list92.png" alt="">
+                <p>湖北省某O2O娱乐平台项目融资500万-1000万元</p>
+                <p>
+                    <span>2500次播放</span>
+                    <span>125次评论</span>
+                </p>
+                <span class="span1"></span>
+                <span class="span2"></span>
+            </a>
+            <div class="clear-bo"></div>
+        </div>
+
+        <div class="div5 overflow-hid">
+            {$page}
+        </div>
+    </div>
+</div>
+<div class="introduce">
+    <ul>
+        <li>
+            <img src="../public/images/v2/picture/list15.png" alt="">
+            <span>一对一客服</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list16.png" alt="">
+            <span>隐私保护</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list17.png" alt="">
+            <span>服务费合理</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list18.png" alt="">
+            <span>信息可靠</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list19.png" alt="">
+            <span>手机访问</span>
+        </li>
+    </ul>
+</div>
+<include file="public:new_footer"/>
+<style type="text/css">
+    .paging {
+        color: #666;
+        font: 12px arial;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .paging a, .paging span {
+        display: inline-block;
+        line-height: 24px;
+        overflow: hidden;
+        vertical-align: top;
+    }
+
+    .paging a {
+        background: #ffffff none repeat scroll 0 0;
+        border: 1px solid #e8e8e8;
+        color: #999;
+        height: 24px;
+        line-height: 24px;
+        margin: 0 2px;
+        padding: 0 10px;
+        text-decoration: none;
+    }
+
+    .paging a:hover {
+        background: #e9e9e9 none repeat scroll 0 0;
+        border: 1px solid #c1c1c1;
+        color: #666;
+        text-decoration: none;
+    }
+
+    .paging .select, .paging .selected {
+        background: #f06612 none repeat scroll 0 0;
+        border: 1px solid #ccc;
+        color: #fff;
+        height: 24px;
+        line-height: 24px;
+        margin: 0 2px;
+        padding: 0 10px;
+    }
+
+    .paging .no {
+        background: #fff none repeat scroll 0 0;
+        border: 1px solid #e8e8e8;
+        color: #ccc;
+        cursor: no-drop;
+        height: 24px;
+        line-height: 24px;
+        margin: 0 2px;
+        padding: 0 10px;
+    }
+
+    .popup-msg .part-popup-ittext {
+        color: #333;
+        font-size: 14px;
+        line-height: 32px;
+    }
+
+    .fn-mt-30 {
+        margin-top: 30px;
+    }
+
+    .popup-msg .ui-btn, .popup-msg .ui-btn {
+        width: 130px;
+    }
+
+    .fn-tac {
+        text-align: center;
+    }
+
+    .ui-btn {
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 8px;
+    }
+
+    .ui-btn, .ui-btn-small, .ui-btn-big {
+        color: #fff;
+    }
+
+    .ui-btn, .ui-btn-small, .ui-btn-big {
+        border: 0 none;
+        border-radius: 3px;
+        color: #fff;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+
+    .ui-btn-orange {
+        background-color: #f06612;
+    }
+
+    .modal_body {
+        text-align: center;
+    }
+
+    .modal_dialog {
+        width: 500px;
+    }
+</style>
+<script src="../public/js/v2/lib/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../public/js/jquery.modal.dialog.js"></script>
+<script type="text/javascript" src="../public/js/layer/layer.js"></script>
+<script src="../public/js/v2/video-list.js"></script>
+<script type="text/javascript">
+    $('.show_video').on('click', function () {
+        var rel_id = $(this).attr("rel");
+        $.getJSON("/index.php?m=&c=Video&a=show&id=" + rel_id + '&' + 'type=' + 1, function (result) {
+            if (result.code === 0) {
+                var qsDialog = $(this).dialog({
+                    title: '温馨提示',
+                    loading: true,
+                    //showFooter: true,
+                    yes: function () {
+                    }
+                });
+                qsDialog.setContent(result.msg);
+            } else {
+                window.location.href = "/index.php?m=&c=Video&a=show&id=" + rel_id;
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/published.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+</style>
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<div class="detection-data">
+<div class="fn-clear ui-le-ht24"><i class="fn-left icoBul16 fn-mt-5"></i><div class="fn-ml-20 ui-text-gray-2">说明：<br>1、刷新：相当于新发一条信息，在按时间排序的情况下信息将靠前显示。每天可免费刷新一次。<br>2、审核中：审核中的信息除了您自己外，其他人无法看到，工作人员会在24小时内为您审核。</div></div>
+</div>
+<div>
+<foreach name="info_list" item="vo">
+<div class="part-info-a-all">
+<header>
+<span class="fn-left"></span>
+<span class="fn-right">最后更新：<span>{:date('Y-m-d',$vo['updatetime'])}</span></span>
+</header>
+<div class="part-info-a-box">
+<table width="100%">
+<tbody><tr>
+<td>
+<p class="news-info-title">
+<span class="news-info-name">{$vo.title}</span>
+</p>
+<p class="fn-mt-5 fn-text-overflow w330">{$vo.i_overview}</p>
+<p>{$info_type[$vo['info_type']]} <if condition="$vo['info_type'] neq 200">{$vo.amount_interval_min}<if condition="$vo.amount_interval_min_unit ==1">万<else />亿</if>～{$vo.amount_interval_max}<if condition="$vo.amount_interval_max_unit ==1">万<else />亿</if>
+   </if></p> 
+</td>
+<td width="160">
+<p class="ui-text-black">
+<if condition="$vo.is_open eq 2">
+等待审核
+<elseif condition="$vo.is_open eq 1" />
+已发布
+<else />
+审核未通过
+</if>
+</p>
+</td>
+<td class="fn-pr" width="168">
+<span class="ui-text-black fn-vam">完整度评分：</span>
+<span class="info-guide-item-part">
+<span class="vip-progress-small fn-mr-5 info-guide-title">
+<i class="vip-progress-pillar-small" style="width: 89%"></i>
+</span>
+</span>
+<span class="ui-text-red  fn-vam">89分</span>
+<br>
+还不错哦，再接再厉！
+<div class="delivery-times-msg">
+<div class="ui-dialog-arrow-a"></div>
+<div class="ui-dialog-arrow-b"></div>
+<div class="delivery-times-boxbg"></div>
+<p>信息完整度:
+<strong class="ui-text-red">89%</strong>, 高于全网<strong class="ui-text-red">13%</strong>, 再完善一下信息，就成抢手信息了！<br><a href="/Personal/edit/info_type/{$vo.info_type}/id/{$vo.id}">去完善信息</a>
+</p>
+</div>
+</td>
+<td data-id="#" title="{$vo.title}" width="88" align="right">
+未委托<br>刷新</td>
+</tr>
+</tbody></table>
+<footer class="fn-clear">
+<span class="fn-left">
+浏览：{$vo.click} 
+留言：<a href="/Personal/receive" target="_blank" class="fn-font-b ui-text-red fn-mr-10">{$vo.count}</a>
+收藏：<a href="/Personal/manage_rss" target="_blank" class="fn-font-b ui-text-red fn-mr-10">0</a>
+收到约谈：<a href="/Personal/talks" target="_blank" class="fn-font-b ui-text-red fn-mr-10">0</a>
+</span>
+<span class="fn-right"><a href="javascript:;" id="OP-592013" data-id="592013645c63eaaac157da41151da64a59b3c3" data-auth="0" class="T-permiss-set">权限设置</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/Personal/edit/info_type/{$vo.info_type}/id/{$vo.id}">修改</a>/<a href="javascript:;" data-id="{$vo.id}" class="T-hand-del">删除</a></span>
+</footer>
+</div>
+</div>
+</foreach>
+<footer class="table-page-part ">
+<div class="paging"></div>
+</footer>
+</div>
+</div>
+</div>
+<script src="../public/js/publish.js" type="text/javascript" language="javascript"></script>
+<script>
+    $('.fn-text-overflow').find('br').remove();
+</script>
+</body>
+</html>

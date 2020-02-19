@@ -1,0 +1,13 @@
+.exhibition_room{
+    background: rgba(0, 0, 0, 0) url("../../images/sp.png") no-repeat scroll 0 0;
+    display: block;
+    height: 44px;
+    padding-top: 5px;
+    position: absolute;
+    right: 30px;
+    text-align: center;
+    top: 0;
+    width: 51px;
+    background-position: 0 -148px;
+    color: #fff;
+}

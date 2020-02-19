@@ -1,0 +1,398 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/receive.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+<style>
+*::-moz-placeholder {
+border: 0 none;
+color: gray;
+cursor: text;
+opacity: 1;
+overflow: hidden;
+padding: 0;
+text-overflow: ellipsis;
+}
+.select_shelter {
+border: 0 none;
+display: inline-block;
+height: 20px;
+}
+.standard_select {
+background: #fff none repeat scroll 0 0;
+border: 1px solid #ddd;
+display: inline-block;
+margin-right: 5px;
+padding: 2px;
+vertical-align: middle;
+}
+.select_shelter {
+border: 0 none;
+display: inline-block;
+height: 20px;
+overflow: hidden;
+}
+.select_shelter select {
+border: 0 none;
+color: #999;
+padding: 2px;
+}
+.select_shelter select:focus {
+outline: 0 none;
+}
+.select-w246 {
+width: 246px;
+}
+.select-w264 {
+width: 264px;
+}
+.select-w126 {
+width: 126px;
+}
+.part-search-nav-a {
+background: #f1f1f1 none repeat scroll 0 0;
+padding: 10px 10px 0;
+}
+.part-search-nav-a th {
+text-align: right;
+}
+.part-search-nav-a .fn-tac {
+padding-right: 5px;
+text-align: center;
+}
+.part-search-nav-a th, .part-search-nav-a td {
+padding-bottom: 10px;
+}
+.part-search-cont-a table {
+color: #666;
+margin-top: 10px;
+width: 100%;
+}
+.part-search-cont-a thead th {
+background: #f1f1f1 none repeat scroll 0 0;
+text-align: center;
+}
+.part-search-cont-a tbody th {
+background: #f5f5f5 none repeat scroll 0 0;
+}
+.part-search-cont-a th {
+border: 1px solid #f1f1f1;
+padding: 10px;
+}
+.part-search-cont-a td {
+background: #fff none repeat scroll 0 0;
+border: 1px solid #f1f1f1;
+overflow-wrap: break-word;
+padding: 10px;
+word-break: break-all;
+}
+.part-search-cont-a-msg {
+border: 1px solid #dedede;
+margin-top: 10px;
+position: relative;
+}
+.part-search-cont-a-msg .ui-le-ht24 {
+padding: 20px 10px;
+}
+.part-search-cont-a-msg i {
+border: 8px dashed transparent;
+height: 0;
+overflow: hidden;
+position: absolute;
+width: 0;
+}
+.part-search-cont-a-msg .search-msg-arrow-a {
+border-bottom: 8px solid #fff;
+left: 10px;
+top: -15px;
+z-index: 10;
+}
+.part-search-cont-a-msg .search-msg-arrow-b {
+border-bottom: 8px solid #dedede;
+left: 10px;
+top: -16px;
+}
+.part-search-cont-a-msg .search-msg-close {
+font-size: 18px;
+position: absolute;
+right: 10px;
+top: 0;
+}
+.part-search-cont-a-msg .search-msg-close:hover {
+text-decoration: none;
+}
+.part-aside-information {
+background: #f5f5f5 none repeat scroll 0 0;
+border: 1px solid #e2e2e2;
+width: 180px;
+}
+.part-aside-information h2 {
+color: #666699;
+font-family: "宋体";
+font-weight: bold;
+padding: 7px;
+}
+.part-aside-information h6 {
+background: #ededed none repeat scroll 0 0;
+color: #000;
+font-family: "微软雅黑";
+padding: 7px;
+}
+.part-aside-information h6 i {
+background: rgba(0, 0, 0, 0) url("../../images/icon-information.png") no-repeat scroll 0 0;
+display: inline-block;
+height: 17px;
+margin-right: 5px;
+vertical-align: middle;
+width: 16px;
+}
+.part-aside-information .aside-information-icon1 {
+background-position: -1px 0;
+}
+.part-aside-information .aside-information-icon2 {
+background-position: -21px 0;
+}
+.part-aside-information .aside-information-icon3 {
+background-position: -44px 0;
+}
+.part-aside-information .aside-information-icon4 {
+background-position: -66px 0;
+}
+.part-aside-information p {
+line-height: 22px;
+padding: 7px 7px 7px 28px;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+th {
+text-align: inherit;
+}
+.part-not-cont {
+padding-top: 50px;
+text-align: center;
+}
+.ui-btn-blue {
+background-color: #7381ac !important;
+}
+a.ui-btn-blue:hover {
+background-color: #8fa0d3 !important;
+}
+.ui-btn-small {
+height: 24px;
+line-height: 24px;
+padding: 0 6px;
+}
+.select_shelter select {
+border: 0 none;
+color: #999;
+padding: 2px;
+}
+.select_shelter select:focus {
+outline: 0 none;
+}
+.part-fieldset .t_input {
+background: #fff none repeat scroll 0 0;
+border: 1px solid #ddd;
+display: inline-block;
+height: 28px;
+line-height: 28px;
+margin-right: 5px;
+padding: 0 10px;
+position: relative;
+vertical-align: middle;
+width: 248px;
+}
+.part-fieldset section label {
+color: #666;
+cursor: pointer;
+display: inline-block;
+margin-right: 10px;
+}
+.part-fieldset section label input {
+margin-right: 3px;
+vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg {
+display: inline-block;
+padding: 2px 0;
+vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg em {
+display: block;
+margin: 0 0 0 20px;
+position: relative;
+}
+.part-fieldset .part-fieldset-msg i {
+left: -20px;
+position: absolute;
+top: 2px;
+}
+.part-fieldset textarea {
+border: 1px solid #ddd;
+display: inline-block;
+height: 72px;
+margin-right: 5px;
+padding: 5px;
+position: relative;
+vertical-align: middle;
+width: 360px;
+}
+body placeholder {
+white-space: nowrap !important;
+}
+.part-fieldset-code {
+border: 1px solid #ddd;
+display: inline-block;
+height: 28px;
+line-height: 28px;
+margin-left: -6px;
+text-align: center;
+vertical-align: middle;
+width: 147px;
+}
+.part-fieldset-code:hover {
+text-decoration: none;
+}
+.part-fieldset-code-cur, .part-fieldset-code-cur:hover {
+background: #ccc none repeat scroll 0 0;
+color: #999;
+}
+.part-fieldset-pic-itimg img {
+display: block;
+height: 80px;
+width: 80px;
+}
+.part-fieldset-pic-ittext {
+margin-left: 100px;
+}
+.part-fieldset-footer {
+margin: 40px 0;
+text-align: center;
+}
+.part-fieldset-all-a {
+border: 1px solid #ddd;
+padding: 20px;
+}
+.part-fieldset-all-aside80 aside {
+width: 80px;
+}
+.part-fieldset .t_input_disabled {
+background: #f0f0f0 none repeat scroll 0 0;
+}
+.part-footer-ml146 {
+margin-left: 146px;
+}
+.part-footer-ml96 {
+margin-left: 96px;
+}
+.part-footer-ml110 {
+margin-left: 110px;
+}
+.part-fieldset-multi-select {
+border: 1px solid #ddd;
+cursor: pointer;
+display: inline-block;
+height: 28px;
+line-height: 28px;
+margin-right: 5px;
+overflow: hidden;
+padding: 0 20px 0 10px;
+position: relative;
+vertical-align: middle;
+width: 156px;
+}
+.part-fieldset-multi-select i {
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+border-color: #ddd transparent transparent;
+border-image: none;
+border-style: solid dashed dashed;
+border-width: 6px;
+height: 0;
+overflow: hidden;
+position: absolute;
+right: 5px;
+top: 12px;
+width: 0;
+}
+.part-search-nav-a th, .part-search-nav-a td {
+padding-bottom: 10px;
+}
+.part-search-cont-a table {
+color: #666;
+margin-top: 10px;
+width: 100%;
+}
+</style>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<div class="ui-tab-head-box">
+<div class="ui-tab-head ui-tab-head-p">
+<ul>
+<li>
+<a href="{:U('Personal/receive')}">收到的消息</a></li>
+<li>
+<a href="{:U('Personal/sent')}">已发送的消息</a></li>
+<li>
+<a href="{:U('Personal/system')}">系统消息</a></li>
+<li class="ui-tab-head-current">
+<a href="{:U('Personal/rss')}">订阅信息</a></li>
+</ul>
+</div>
+</div>
+<div class="ui-tab-cont">
+<div class="search-part-nav">
+<form name="frmSearch" id="frmMsgSearch">
+<input name="r" value="" type="hidden">
+<div class="fn-left search-part-link">
+<a href="#" class="search-part-link-first">全部</a>
+<span>|</span>
+<a href="#">未读</a>
+<span>|</span>
+<a href="#">按时间</a>
+</div>
+<div class="fn-left fn-mr-15">会员类型：<select name="u_t">
+<option value="">所有会员</option>
+<option value="1">企业</option>
+<option value="2">政府</option>
+<option value="3">个人</option>
+</select>
+</div>
+<div class="fn-left fn-mr-15">消息类型：<select name="t">
+<option value="">全部</option>
+<option value="1">留言</option>
+<option value="2">私信</option>
+</select>
+</div>
+<div class="fn-left fn-pr">
+<a href="javascript:void(0);" class="ui-btn-small ui-btn-blue" id="btnSearch" data-type="receive"><i class="icon-part-bg icon-part-search"></i>搜索</a>
+</div>
+</form>
+</div>
+<div class="news-info-hover fn-mt-10 j-part-hover  j-See-reply">
+
+<div>
+<div class="part-not-cont"><i class="icoPro16yellow"></i><a href="javascript:void(0);" id="nodata_setting" class="fn-vam">您还没有收到订阅消息，马上进行订阅设置。</a></div>
+</div>
+<footer class="table-page-part">
+</footer>
+</div>
+</div>
+</div>
+</div>
+<include file="index_footer" />
+</body>
+</html>

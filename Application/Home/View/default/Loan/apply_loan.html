@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>金融网</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="项目融资,融资,天使投资,投资,投资项目,投资公司,项目,股权融资,债权融资,投融资,融资平台,金融网"/>
+<meta name="description" content="金融网（7ronghui.com）是中国最大的融资服务平台，拥有超百万的投融资机构、企业与个人用户入驻。金融网通过线上＋线下、标准化  ＋个性化的服务体系，为客户提供针对性的投融资信息对接和项目撮配服务，成功对接融资千余亿元。金融网凭借其强大、便捷的平台信息整合能力，大大提高企业投融资活动成功率，为中小微企业解决融资难问题。"/>
+<link rel='icon' href='../public/images/v2/icon/logo.ico' type='image/x-ico'/>
+<link rel="stylesheet" href="../public/css/v2/base.css">
+<link rel="stylesheet" href="../public/css/common.css">
+<link rel="stylesheet" href="../public/css/v2/component.css">
+<link rel="stylesheet" href="../public/css/v2/module.css">
+<link rel="stylesheet" href="../public/css/v2/all.css">
+<link rel="stylesheet" href="../public/css/tip.css">
+<style type="text/css">
+#last_area_iddivAreaSelect{
+    background: none;margin-left:0px;padding-left: 0px;
+}
+</style>
+<script type="text/javascript">
+    var qrh = {
+        base : "",
+        domain : "http://7ronghui.com",
+        root : "/index.php",
+        last_area_id:"{$userinfo['last_area_id']}",
+        uid:"{:C('visitor.uid')}"
+    };
+</script>
+</head>
+<body>
+<include file="public:new_header"/>
+<div class="banner apply-loan-banner">
+<a href="#"></a>
+</div>
+<div class="apply-loan">
+<div>
+<ul class="apply-loan-nav">
+<li>
+<img src="../public/images/v2/picture/list102.png" alt="">
+<p>放款快</p>
+</li>
+<li>
+<img src="../public/images/v2/picture/list103.png" alt="">
+<p>利率低</p>
+</li>
+<li>
+<img src="../public/images/v2/picture/list104.png" alt="">
+<p>额度高</p>
+</li>
+<li>
+<img src="../public/images/v2/picture/list105.png" alt="">
+<p>门槛低</p>
+</li>
+</ul>
+</div>
+<div class="apply-loan-main">
+<div class="apply-loan-content">
+<div>
+<p>专业顾问</p>
+<p>一站式服务省心省力</p>
+</div>
+<div>
+<p>更快放款</p>
+<p>时刻帮您跟进融资进度</p>
+</div>
+</div>
+<div class="apply-loan-steps">
+<h2>资产融资步骤</h2>
+<img src="../public/images/v2/picture/list108.png" alt="">
+<p>
+<span class="span3">提交申请</span>
+<span class="span4">电话初审</span>
+<span class="span3">提交材料</span>
+<span class="span4">审核放款</span>
+</p>
+<button id="J_getLoan">申请资产融资</button>
+</div>
+</div>
+</div>
+
+<div class="apply-loan-table" style="display: none">
+<div class="apply-loan-table-content">
+<span class="close" id="J_close"></span>
+<h2>申请资产融资</h2>
+<ul id="J_loanList">
+<li class="select">基本资料</li>
+<li>补充材料</li>
+<li>查看结果</li>
+</ul>
+
+<div class="basics">
+<ul class="ul1">
+<li>地区：</li>
+<li>姓名：</li>
+<li>手机号码：</li>
+<li>手机验证码：</li>
+</ul>
+
+<ul class="ul2">
+<form id="publishform">
+<li>
+<span id="last_area_iddivAreaSelect"></span>
+<input class="hidea" id="last_area_id" name="last_area_id" value="{$userinfo['last_area_id']}" data-rule="required" btype="change" type="text">
+<em class="hide" etype="error_info">请选择所在地区</em>
+</li>
+
+<li>
+<input id="realname" data-rule="required|regexp[chinese]" type="text" name="realname" value="{$userinfo.realname}">
+<label>
+<input type="radio" name="sex" value="male" checked>先生
+</label>
+<label>
+<input type="radio" name="sex" value="female">女士
+</label>
+<em class="hide" etype="error_info">请输入您的名字</em>
+</li>
+
+<li>
+<input id="mobile" data-rule="required|regexp[mobile]" name="mobile" type="text" value="{$userinfo['mobile']}">
+<em class="hide" etype="error_info">请输入您的手机号码</em>
+</li>
+
+<li>
+<input id="yzm" name="yzm" data-rule="required|regexp[num1]" type="text">
+<input type="hidden" name="step" value="1">
+<em class="hide" etype="error_info">请输入验证码</em>
+<p id="getcode" class="code">获取验证码</p>
+</li>
+<a id="J_basicsNextStep" href="#">下一步</a>
+</form>
+</ul>
+</div>
+
+<div class="additional-information">
+<ul class="ul1">
+<li>身份证号码：</li>
+<li>是否有车：</li>
+<li>补充说明：</li>
+</ul>
+
+<ul class="ul2">
+<form id="publishform2">
+<!--
+<li>
+<select name="cars">
+<option>请选择</option>
+<option value="1">抵押贷款</option>
+<option value="2">质押贷款</option>
+<option value="3">信用贷款</option>
+<option value="4">担保贷款</option>
+</select>
+<span>请选择类型</span>
+<p class="p1">期限：</p>
+<select name="cars">
+<option>请选择</option>
+<option value="1">3个月以下</option>
+<option value="2">3个月-1年</option>
+<option value="3">1-3年</option>
+<option value="4">3-5年</option>
+<option value="5">5年以上</option>
+</select>
+<span>请选择类型</span>
+</li>
+<li>
+<select name="cars">
+<option>请选择</option>
+<option value="1">投资公司</option>
+<option value="2">扩展公司</option>
+<option value="3">创业</option>
+<option value="4">购房</option>
+<option value="5">购车</option>
+<option value="6">旅游</option>
+<option value="7">求学</option>
+<option value="8">其他</option>
+</select>
+<span>请选择用途</span>
+<p class="p1">额度：</p>
+<select name="cars">
+<option>请选择</option>
+<option value="1">5万以下</option>
+<option value="2">5-10万</option>
+<option value="3">10-50万</option>
+<option value="4">50-100万</option>
+<option value="5">100-300万</option>
+<option value="6">300-500万</option>
+<option value="7">500-1000万</option>
+<option value="8">1000万以上</option>
+</select>
+<p>万元</p>
+<span>请选择用途</span>
+</li>
+-->
+
+
+
+<li>
+<input id="idcard" class="input w360" data-rule="required|regexp[idcard]" name="idcard" type="text">
+<em class="hide" etype="error_info">身份证号码</em>
+</li>
+
+
+<li>
+<label>
+<input type="radio" name="has_car" value="1" checked>有
+</label>
+<label>
+<input type="radio" name="has_car" value="0">无
+</label>
+<em class="hide" etype="error_info">是否有车</em>
+</li>
+
+
+
+<li class="li1">
+<textarea name="notes" id="" cols="30" rows="8"></textarea>
+<input type="hidden" name="step" value="2">
+</li>
+<a id="J_informationNextStep">下一步</a>
+</form>
+</ul>
+</div>
+
+<div class="view-results">
+<img src="../public/images/v2/picture/list116.png" alt="">
+<br>
+<img src="../public/images/v2/picture/list117.png" alt="">
+<h3>提交成功</h3>
+<p>工作人员会在1-2个工作日联系您！</p>
+<p>请保持电话畅通！</p>
+<a href="#">完成</a>
+</div>
+
+</div>
+</div>
+
+<div class="introduce">
+<ul>
+<li>
+<img src="../public/images/v2/picture/list15.png" alt="">
+<span>一对一客服</span>
+</li>
+<li>
+<img src="../public/images/v2/picture/list16.png" alt="">
+<span>隐私保护</span>
+</li>
+<li>
+<img src="../public/images/v2/picture/list17.png" alt="">
+<span>服务费合理</span>
+</li>
+<li>
+<img src="../public/images/v2/picture/list18.png" alt="">
+<span>信息可靠</span>
+</li>
+<li>
+<img src="../public/images/v2/picture/list19.png" alt="">
+<span>手机访问</span>
+</li>
+</ul>
+</div>
+<include file="public:new_footer" />
+<script src="/static/js/plugin/require/2.2.0/require.min.js" data-main="/static/js/config.min"></script>
+<script>
+require(['app/apply-loan']);
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<include file="public:header" />
+	<div class="toptip">
+		<h2>提示：</h2>
+		<p>你可以用HTML美化邮件内容模板。</p>
+	</div>
+	<div class="toptit">邮件发送规则</div>
+	<table width="100%" border="0" cellspacing="0" cellpadding="5">
+		<tr>
+			<td height="30" style="font-size:12px;padding-left:20px;">
+				<form action="admin_mail.php?act=email_config_save" method="post"   name="form1" id="form1">
+					<table width="242" border="0" cellspacing="7" cellpadding="1" style=" margin-bottom:3px;" class="link_lan">
+						<volist name="list" id="list">
+							<tr>
+								<td width="137" align="right">{$list.name}：</td>
+								<td width="80"><a href="{:U('MailTemplates/edit',array('id'=>$list['id']))}">[编辑模板]</a></td>
+							</tr>
+						</volist>
+					</table>
+				</form>
+			</td>
+		</tr>
+	</table>
+</div>
+<include file="public:footer" />
+</body>
+</html>

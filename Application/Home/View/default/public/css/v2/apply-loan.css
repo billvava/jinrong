@@ -1,0 +1,196 @@
+* {
+    outline: 0
+}
+em,i {
+    font-style: normal
+}
+ul li{list-style: none;}
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Hiragino Sans GB","Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica;
+    color: #333;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased
+}
+.apply-loan-table h2 {
+    height: 120px;
+    line-height: 120px;
+    background: url("../../images/v2/picture/list113.png") no-repeat center;
+    text-align: center;
+    color: #333;
+    font-size: 20px;
+}
+#content_container {
+    min-width: 1200px;
+    margin: 0 auto
+}
+#create_project {
+    position: relative;
+    width: 545px;
+    padding-left: 35px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #333
+}
+#create_project .form_item {
+    margin-top: 30px
+}
+
+#create_project .form_label {
+    text-indent: -35px;
+    margin: 30px 0 8px
+}
+
+#create_project .serial_number {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 10px;
+    background-color: #2b2d2e;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 50%;
+    text-indent: 0;
+    text-align: center
+}
+
+#create_project .star {
+    color: #ee7b70;
+    font-size: 18px
+}
+
+#create_project .category_root {
+    zoom:1}
+
+#create_project .category_root:before,#create_project .category_root:after {
+    content: "";
+    display: table
+}
+
+#create_project .category_root:after {
+    clear: both
+}
+
+#create_project .category_root li {
+    width: 119px;
+    height: 60px;
+    float: left;
+    margin-left: 20px;
+    cursor: pointer;
+    border: 1px solid #dce0e0;
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    line-height: 60px
+}
+
+#create_project .category_root li.active {
+    color: #fff;
+    border-color: #3dca99;
+    background-color: #3dca99
+}
+
+#create_project .category_root li:first-child {
+    margin-left: 0
+}
+
+#create_project .invalid .form_input,#create_project .invalid .form_input.active {
+    border-color: #ed7266
+}
+#create_project textarea.form_input {
+    resize: none;
+    height: 184px;
+    line-height: 20px
+}
+#create_project .form_desc {
+    position: relative
+}
+#create_project .form_desc p.error {
+    margin-top: 0
+}
+#create_project .form_desc .tips {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    pointer-events: none;
+    color: #999;
+    font-size: 12px;
+    line-height: 26px
+}
+#create_project .form_desc .tips span {
+    font-size: 14px;
+    margin-bottom: 10px
+}
+#create_project .form_input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 52px;
+    padding: 10px 16px;
+    line-height: 30px;
+    border: 1px solid #dce0e0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    font-size: 14px
+}
+
+#create_project .form_input.active {
+    border-color: #3dca99
+}
+
+#create_project .form_input .tips {
+    color: #999
+}
+
+#create_project .form_selected {
+    position: relative;
+    cursor: pointer;
+    padding-right: 36px;
+    height: auto;
+    min-height: 52px
+}
+
+#create_project .form_selected .arrow {
+    position: absolute;
+    right: 16px;
+    top: 22px;
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #7d7d7d transparent transparent
+}
+#create_project .create_btn {
+    display: block;
+    width: 212px;
+    height: 46px;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    border-radius: 24px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    margin: 104px auto 0;
+    text-align: center;
+    line-height: 46px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #f60;
+    border: 0;
+    cursor: pointer
+}

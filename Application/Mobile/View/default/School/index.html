@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>投融学院</title>
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name = "format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel='icon' href='../public/img/icon/logo.ico' type='image/x-ico'/>
+<link rel="stylesheet" href="../public/css/base.css">
+<link rel="stylesheet" href="../public/css/mobile_common.css">
+<link rel="stylesheet" href="../public/css/common.css">
+<!--<link rel="stylesheet" href="../css/all.css">-->
+<link rel="stylesheet" href="../public/css/all-rem.css">
+<script src="../public/js/rem.js"></script>
+<script src="../public/js/zepto.min.js"></script>
+<script src="http://cdn.bootcss.com/vue/2.1.10/vue.js"></script>
+<script src="http://cdn.bootcss.com/vue-router/2.2.0/vue-router.js"></script>
+</head>
+<body>
+<include file="public:header" />
+<!--
+<div class="all-header">
+    投融学院
+    <span class="float-l return js-back for-event"></span>
+    <span class="float-r rbtn for-event"></span>
+</div>
+-->
+<div class="all-banner">
+    <img src="../public/img/picture/banner1.jpg" alt="">
+</div>
+
+<div class="qrcollege">
+    <div class="div1">
+        <a href="#">
+            <img src="../public/img/picture/list24.png" alt="">
+            <span>金融百科</span>
+        </a>
+        <a href="{:U('News/news_list',array('id'=>95))}">
+            <img src="../public/img/picture/list25.png" alt="">
+            <span>商业计划书</span>
+        </a>
+        <a href="{:U('News/news_list',array('id'=>25))}">
+            <img src="../public/img/picture/list26.png" alt="">
+            <span>案例分析</span>
+        </a>
+        <a href="{:U('News/news_list',array('id'=>27))}">
+            <img src="../public/img/picture/list27.png" alt="">
+            <span>研究指导</span>
+        </a>
+    </div>
+    <div class="div1">
+        <a href="#">
+            <img src="../public/img/picture/list28.png" alt="">
+            <span>投资机构</span>
+        </a>
+        <a href="#">
+            <img src="../public/img/picture/list29.png" alt="">
+            <span>投资人</span>
+        </a>
+        <a href="{:U('News/news_list',array('id'=>29))}">
+            <img src="../public/img/picture/list30.png" alt="">
+            <span>合同范本协议</span>
+        </a>
+        <a href="#">
+            <img src="../public/img/picture/list31.png" alt="">
+            <span>法律法规</span>
+        </a>
+    </div>
+    <div class="segmentation"></div>
+    <div class="div2">
+        <h2 class="vertical-line">金融百科</h2>
+        <div class="div3">
+            <span class="orange switch" switch="1">投资百科</span>
+            <span class="switch" switch="2">融资百科</span>
+            <span class="switch" switch="3">资金百科</span>
+            <span class="switch" switch="4">担保百科</span>
+        </div>
+    </div>
+    <ul class="ul1">
+        <li class="effect" effect="1">
+            <a href="#">
+                <i class="float-r"></i>
+                <span>投资公司注册</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>风险投资公司排行榜</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>PE投资</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>间接投资</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>PIPE</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>金融投资</span>
+            </a>
+        </li>
+        <li class="display-no effect" effect="2">
+            <a href="#">
+                <i class="float-r"></i>
+                <span>投资公司注册2</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>风险投资公司排行榜2</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>PE投资2</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>间接投资2</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>PIPE2</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>金融投资2</span>
+            </a>
+        </li>
+        <li class="display-no effect" effect="3">
+            <a href="#">
+                <i class="float-r"></i>
+                <span>投资公司注册3</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>风险投资公司排行榜3</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>PE投资3</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>间接投资3</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>PIPE3</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>金融投资3</span>
+            </a>
+        </li>
+        <li class="display-no effect" effect="4">
+            <a href="#">
+                <i class="float-r"></i>
+                <span>投资公司注册4</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>风险投资公司排行榜4</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>PE投资4</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>间接投资4</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>PIPE4</span>
+            </a>
+            <a href="#">
+                <i class="float-r"></i>
+                <span>金融投资4</span>
+            </a>
+        </li>
+    </ul>
+    <div class="div4">
+        <a href="#">查看更多</a>
+    </div>
+    <div class="segmentation"></div>
+    <div class="div5">
+        <h2 class="vertical-line">
+            <a class="view-more float-r" href="{:U('News/news_list',array('id'=>25))}">查看更多</a>
+            成功案例
+        </h2>
+        <div class="div6">
+            <a href="#">
+                <img src="../public/img/picture/list32.png" alt="">
+                <span class="non-breaking">广东某创新型互联网联盟平广东某创新型互联网联盟平</span>
+                <span>[查看详细]</span>
+            </a>
+            <a href="#">
+                <img src="../public/img/picture/list33.png" alt="">
+                <span class="non-breaking">黑龙江某国际共享互联网门黑龙江某国际共享互联网门</span>
+                <span>[查看详细]</span>
+            </a>
+            <a href="#">
+                <img src="../public/img/picture/list34.png" alt="">
+                <span class="non-breaking">上海某轻物流平台项目</span>
+                <span>[查看详细]</span>
+            </a>
+            <a href="#">
+                <img src="../public/img/picture/list35.png" alt="">
+                <span class="non-breaking">河南某智能照明台灯项目</span>
+                <span>[查看详细]</span>
+            </a>
+        </div>
+    </div>
+    <div class="div7">
+        <h2 class="vertical-line">行业发展趋势分析</h2>
+        <div>
+            <a href="#">
+                <img class="float-l" src="../public/img/picture/list36.png" alt="">
+                <span>金融网2017一季度融资报告：读创投研报，看风云热点，抓融资机遇。</span>
+                <br>
+                <span>[查看详情]</span>
+            </a>
+            <a href="#">
+                <img class="float-l" src="../public/img/picture/list37.png" alt="">
+                <span>金融网年终盘点系列之【2016创投年报】</span>
+                <br>
+                <span>[查看详情]</span>
+            </a>
+        </div>
+        <p>
+            <a class="view-more" href="#">查看更多</a>
+        </p>
+    </div>
+    <div class="segmentation"></div>
+    <div class="div8">
+        <span class="orange switch" switch="5">商业计划书</span>
+        <span class="switch" switch="6">相关法律法规</span>
+        <span class="switch" switch="7">研究指导</span>
+        <span class="switch" switch="8">合同范本协议</span>
+    </div>
+    <ul class="ul2">
+        <li class="effect" effect="5">
+            <a href="#">健康管理服务项目融资商业计划书</a>
+            <a href="#">网络视频项目融资商业计划书</a>
+            <a href="#">内衣项目融资商业计划书</a>
+            <a href="#">健康床垫项目融资商业计划书</a>
+            <a href="#">畜牧业项目融资商业计划书</a>
+        </li>
+        <li class="display-no effect" effect="6">
+            <a href="#">健康管理服务项目融资商业计划书2</a>
+            <a href="#">网络视频项目融资商业计划书2</a>
+            <a href="#">内衣项目融资商业计划书2</a>
+            <a href="#">健康床垫项目融资商业计划书2</a>
+            <a href="#">畜牧业项目融资商业计划书2</a>
+        </li>
+        <li class="display-no effect" effect="7">
+            <a href="#">健康管理服务项目融资商业计划书3</a>
+            <a href="#">网络视频项目融资商业计划书3</a>
+            <a href="#">内衣项目融资商业计划书3</a>
+            <a href="#">健康床垫项目融资商业计划书3</a>
+            <a href="#">畜牧业项目融资商业计划书3</a>
+        </li>
+        <li class="display-no effect" effect="8">
+            <a href="#">健康管理服务项目融资商业计划书4</a>
+            <a href="#">网络视频项目融资商业计划书4</a>
+            <a href="#">内衣项目融资商业计划书4</a>
+            <a href="#">健康床垫项目融资商业计划书4</a>
+            <a href="#">畜牧业项目融资商业计划书4</a>
+        </li>
+        <p>
+            <a class="view-more" href="#">查看更多</a>
+        </p>
+    </ul>
+    <div class="div9">
+        <h2 class="vertical-line">金融网专题</h2>
+        <div class="div10">
+            <a class="position-rel" href="#">
+                <img src="../public/img/picture/list38.png" alt="">
+                <span class="position-abs">创业风险投资案例</span>
+            </a>
+            <a class="position-rel" href="#">
+                <img src="../public/img/picture/list39.png" alt="">
+                <span class="position-abs">期货融资</span>
+            </a>
+        </div>
+        <p>
+            <a class="view-more" href="#">查看更多</a>
+        </p>
+    </div>
+</div>
+
+<div class="all-footer">
+    <p>
+        <a class="orange" href="#">触屏版</a>
+        <a href="#">电脑版</a>
+        <a href="#">关于金融网</a>
+    </p>
+    <p>联系地址：上海市杨浦区国安路星汇广场9号楼9楼</p>
+    <p>联系电话：400-662-5160</p>
+    <p>沪ICP备15057977号-3</p>
+</div>
+
+<script src="../public/js/fastclick.js"></script>
+<script>
+    window.addEventListener( "load", function() {
+        FastClick.attach(document.body);
+    }, false );
+</script>
+<script src="../public/js/jquery-1.12.4.min.js"></script>
+<script src="../public/js/qrcollege.js"></script>
+<script src="../public/js/zepto.hwSlider.js"></script>
+<script>
+  $('a[href]').click(function(){
+      var f = $(this).attr('href');
+      var reg = /\#(\w+)/;
+      if(reg.test(f)) return !1
+  });
+  $('.js-back').on('click', function () {
+      history.back();
+  });
+  $('.rbtn').on('click', function() {
+      forCloseNav();
+  })
+  $('.t-mask').on('click', function () {
+      forCloseNav();
+  })
+  $('.h-navclose').on('click', function () {
+      forCloseNav();
+  })
+  function forCloseNav() {
+      if ($('.topnavshow').hasClass('qs-actionsheet-toggle')) {
+          $('.t-mask').hide();
+          $('.topnavshow').removeClass('qs-actionsheet-toggle');
+      } else {
+          $('.t-mask').show();
+          $('.topnavshow').addClass('qs-actionsheet-toggle');
+      }
+  }
+  /**
+   * 监听鼠标
+   */
+  if ('ontouchstart' in window) {
+      $.EVENT_START = 'touchstart';
+      $.EVENT_END = 'touchend';
+  } else {
+      $.EVENT_START = 'mousedown';
+      $.EVENT_END = 'mouseup';
+  }
+  $('.plist-txt, .qs-btn, .for-event').on($.EVENT_START, function() {
+      $(this).addClass('eventactive');
+  })
+  $('.plist-txt, .qs-btn, .for-event').on($.EVENT_END, function() {
+      $(this).removeClass('eventactive');
+  })
+  $('.logout').on('click', function () {
+        var dialog = new QSpopout();
+        dialog.setContent('确定退出吗？');
+        forCloseNav();
+        dialog.show();
+        dialog.getPrimaryBtn().on('click', function () {
+            window.location.href = "/index.php?m=Mobile&c=Members&a=logout";
+        });
+    });
+    // 处理select
+  $('select').on('change', function () {
+      $(this).prev().text($(this).find('option').not(function(){ return !this.selected }).text());
+  })
+  $('select').each(function () {
+      $(this).prev().text($(this).find('option').not(function(){ return !this.selected }).text());
+  })
+    // 底部导航栏
+    $('.js-b-nav-bar').on('click', function () {
+        $(this).closest('.bottom-nav-bar-group').find('.bottom-bar-more-group').fadeIn(200);
+    })
+  $('.js-b-nav-bar-active').on('click', function () {
+      $(this).closest('.bottom-nav-bar-group').find('.bottom-bar-more-group').fadeOut(200);
+  })
+  /*
+  $("#hwslider-bottom").hwSlider({
+      autoPlay: false,
+      dotShow: true,
+      touch: true,
+      arrShow: false
+  });
+  */
+
+  /**
+   * 返回顶部
+   */
+  var global = {
+      h:$(window).height(),
+      st: $(window).scrollTop(),
+      backTop:function(){
+          global.st > (global.h*0.5) ? $("#backtop").show() : $("#backtop").hide();
+      }
+  }
+  global.backTop();
+  $(window).scroll(function(){
+      global.h = $(window).height();
+      global.st = $(window).scrollTop();
+      global.backTop();
+  });
+  $(window).resize(function(){
+      global.h = $(window).height();
+      global.st = $(window).scrollTop();
+      global.backTop();
+  })
+  $("#backtop").on('click', function () {
+      $("body").scrollTo({toT: 0});
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+/*用于放置 共通的组件*/
+.float-l{
+    float: left;
+}
+.float-r{
+    float: right;
+}
+.clear-bo{
+    clear:both;
+}
+.overflow-hid{
+    overflow: hidden;
+}
+
+.position-rel{
+    position: relative;
+}
+.position-abs{
+    position: absolute;
+}
+
+.line-left, .line-right {
+    display: inline-block;
+    width: 200px;
+    height: 1px;
+    background-repeat: no-repeat;
+}
+
+.display-no{
+    display: none;
+}
+
+/*按钮*/
+.btn{
+    width: 145px;
+    height: 40px;
+    display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    background-color: #56C6FF;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.btn:hover{
+    background-color: #ff8533;
+}
+
+.substring {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.font-yellow{
+    color: #56C6FF;
+}
+
+.font-gray3{
+    color: #333;
+}
+
+.font-gray6{
+    color: #666;
+}
+
+.font-gray9{
+    color: #999;
+}

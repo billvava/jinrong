@@ -1,0 +1,58 @@
+/*用于页面公用部分*/
+body {
+    font-family: Tahoma, "Hiragino Sans GB", "Microsoft YaHei", arial, simsun;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.float-l {
+    float: left;
+}
+
+.float-r {
+    float: right;
+}
+
+/* 清除浮动*/
+.clear-bo {
+    clear: both;
+}
+
+.overflow-hid {
+    overflow: hidden;
+}
+
+.position-rel {
+    position: relative;
+}
+
+.position-abs {
+    position: absolute;
+}
+
+.non-breaking {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.display-no {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

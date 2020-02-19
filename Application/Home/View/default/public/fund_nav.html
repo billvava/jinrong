@@ -1,0 +1,11 @@
+<div class="container-full" id="nav">
+    <div class="container clearfix">
+        <div>
+            <a <if condition="$Think.get.info_type eq '' || $Think.get.info_type eq 2010">class="select"</if> href="{:U('Fund/fund_list',array('info_type'=>2010))}">股权投资</a>
+            <a <if condition="$Think.get.info_type eq 2011">class="select"</if> href="{:U('Fund/fund_list',array('info_type'=>2011))}">债权投资</a>
+            <a <if condition="$Think.get.info_type eq 2012">class="select"</if> href="{:U('Fund/fund_list',array('info_type'=>2012))}">金融投资</a>
+            <a <if condition="$Think.get.info_type eq 2013">class="select"</if> href="{:U('Fund/fund_list',array('info_type'=>2013))}">BT/BOT 项目投资</a>
+            <a <if condition="$Think.get.info_type eq 2014">class="select"</if> href="{:U('Fund/fund_list',array('info_type'=>2014))}">其它投资</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<form method="POST" id="J_deliver_frm" style="width: 700px;">
+<div class="fn-tac">
+<img src="../public/images/drop_in_box_step.png" alt="通过短信发送给对方,对方查阅后联系你" width="453" height="53">
+</div>
+<div class="popup-msg-b fn-pt-10">
+<h6 class="part-popup-pot"><i class="icoBul16"></i><span class="fn-vam">已经是会员可 <a href="javascript:;" id="J_btn_fdl_login" class="ui-text-blue-2">登录</a> 后投递</span></h6>
+<article class="part-fieldset">
+<aside><span>*</span>联系人：</aside>
+<section>
+<div class="part-fieldset-section">
+<input name="contact_name" id="J_contact_name" maxlength="10" class="t_input w370" data-rule="required" bind-event="1" type="text">
+<span class="part-fieldset-msg"></span>
+</div>
+</section>
+</article>
+<article class="part-fieldset">
+<aside><span>*</span>手机号码：</aside>
+<section>
+<div class="part-fieldset-section">
+<input name="mobile" id="J_mobile" maxlength="11" class="t_input w370" data-rule="required|regexp[mobile]" bind-event="1" type="text">
+<span class="part-fieldset-msg"></span>
+</div>
+</section>
+</article>
+<article class="part-fieldset">
+<aside><span>*</span>项目标题：</aside>
+<section class="part-fieldset-section">
+<input name="invite_title" maxlength="30" class="t_input w370" data-rule="required" bind-event="1" type="text">
+<span class="part-fieldset-msg"></span>
+</section>
+</article>
+<article class="part-fieldset part-fieldset-min-textarea" style="min-height:114px;">
+<aside><span>*</span>项目描述：</aside>
+<section>
+<textarea name="invite_content" tip="请简单介绍项目情况、项目优势及融资用途。字数20-500之间" maxlength="500" data-rule="required|minlength[20]|maxlength[500]" class="J_tip" style="color: rgb(153, 153, 153);" bind-event="1"></textarea>
+<span class="part-fieldset-msg"></span>
+</section>
+</article>
+<article class="part-fieldset">
+<aside>商业计划书：</aside>
+<section class="part-fieldset-section">
+<div class="fn-clear part-fieldset-obj">
+
+<div id="J_upload_file" class="uploadify" style="height: 22px; width: 61px;display:none;"><div id="J_upload_file-button" class="uploadify-button" style="display:none;"><input type="file"/></div></div>
+
+<div id="J_upload_file-queue" class="uploadify-queue"></div>
+<input value="" name="invite_attach" id="F_att" class="ignore" type="hidden">
+<span class="fn-vam ui-le-ht30">为了提升资金方的回复率，请上传您的商业计划书</span>
+</div>
+<span class="pl10" id="J_upload_file_view" style="display:none;"></span>
+</section>
+</article>
+
+
+<article class="part-fieldset" id="J_captcha_art">
+<aside><span>*</span>图片验证：</aside>
+<section class="part-fieldset-section">
+<input class="t_input w140 J_tip" name="mobilecaptcha" tip="输入计算结果" id="J_mobile_captcha" maxlength="4" style="color: rgb(153, 153, 153);" type="text">
+<img id="J_mobile_captcha_img" style="vertical-align:middle;border-radius:5px;" src="#" onclick="#" alt="验证码">
+<span class="part-fieldset-msg" id="J_mobile_captcha_msg" style="color:red"></span>
+</section>
+</article>
+<article class="part-fieldset">
+<aside><span>*</span>手机验证：</aside>
+<section class="part-fieldset-section">
+<input name="mobilecode" id="J_mobile_code" maxlength="6" class="t_input J_tip" tip="请输入手机验证码" value="" data-rule="required" style="color: rgb(153, 153, 153);" bind-event="1" type="text">
+<a href="javascript:;" class="ui-btn ui-btn-gray fn-vam w100" id="T-reg-mobile-code" onclick="document.getElementById('J_captcha_art').style.display='block'">发送验证码</a>
+<span class="part-fieldset-msg" id="J_mobile_info"></span>
+</section>
+</article>
+<article class="part-fieldset">
+<aside></aside>
+<span class="part-fieldset-msg" id="J_deliver_msg"></span>
+</article>
+<article class="part-fieldset">
+<aside></aside>
+<section class="part-fieldset-section"><a href="###" id="J_btn_send_deliver" class="ui-btn ui-btn-red w130">投递</a></section>
+</article>
+</div>
+</form>

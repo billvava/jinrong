@@ -1,0 +1,1500 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/public.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/icon.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/tzlc.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/fund_base.css" rel="stylesheet" type="text/css" />
+<script src="/static/js/plugin/jquery/1.5.2/jquery.min.js"></script>
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/area.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/multiselect.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/check_repair.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/base.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.artDialog.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/zjxm.publish.js" type="text/javascript" language="javascript"></script>
+<script type="text/javascript" src="../public/js/uploadify/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../public/js/uploadify/uploadify.css">
+<script>window.qrh_Config={page:'publish'};</script>
+<script>
+var $uploadify = {
+    'formData'     : {
+        "token" : "{:md5($info['id'].time())}",
+        "times" : "{:time()}",
+        'PHPSESSID':'{:session_id()}'
+    },
+    'auto':true,
+    'multi'    : false,
+    'removeTimeout' : 0,
+    'fileSizeLimit' : '1024KB',
+    'fileTypeDesc' : '上传文件',
+    'fileTypeExts' : '*.gif;*.jpg;*.png,*.jpeg',
+     'buttonImage' : '../public/js/uploadify/button.png',
+     'height':22,
+     'width':61,
+    'swf': '../public/js/uploadify/uploadify.swf',
+    'uploader' : '',
+    'onUploadSuccess' : function(){}
+};
+function i_attr_del(self,id)
+{
+    var o = $(self).parent().hide().parent().parent().prev();
+    var val = o.val().split(',');
+    var ids = new Array();
+    for(var k in val)
+    {
+        if (val[k] == id)continue;
+        ids.push(val[k]);
+    }
+    o.val(ids.join(','));
+}
+</script>
+<!--
+<style>
+.publicForm dl dd {
+    padding-left: 110px;
+}
+</style>
+-->
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<div class="trjStep_no2">
+<div class="trjStep">
+<ol class="cols2 fn-clear">
+<li class="step_1"><span>1.填写信息类型</span></li>
+<li class="step_2"><span>2.填写详细信息</span></li>
+</ol>
+</div>
+</div>
+<div class="pri_info_ct">
+<a href="#" class="fn-right ui-btn-small ui-btn-blue" target="_blank">发布信息指南</a>
+<i class="icoBul16"></i>温馨提示：
+<p class="pri_info_list">
+1、为了保证您的信息能顺利通过我们的审核，请将信息的真实情况尽可能全面的发布出来！<br>
+2、根据我们的长期跟踪统计，信息完整度越高，越容易获得目标客户的关注！<br>
+3、信息完整度越高，将在我们的平台搜索结果排序靠前、获得推荐机会，以及享受增值服务试用机会！<br>
+</p>
+</div>
+<div id="T-body">
+<div class="p10">
+<div class="publicForm">
+<form action="<if condition="ACTION_NAME=='edit'">{:U('Home/personal/edit')}<else />{:U('Home/personal/publish')}</if>" accept-charset="utf-8" name="publishform" id="publishform" enctype="multipart/form-data" method="post">
+<input type="hidden" name="id" value="{$info.id}"/>
+<input type="hidden" name="info_type" value="2005"/>
+<if condition="ACTION_NAME=='zjxm_publish'">
+<dl>
+<dt class="w150"><i>*</i>信息分类：</dt>
+<dd>
+<label><input onclick='location.href="{:U('Personal/zjxm_publish',array('add'=>1))}"' value="1" type="radio"> 项目融资</label>
+<label><input onclick='location.href="{:U('Personal/zjxm_publish',array('add'=>200))}"' value="200" type="radio"> 资产交易</label>
+<label><input onclick='location.href="{:U('Personal/zjxm_publish',array('add'=>700))}"' value="700" type="radio"> 政府招商</label>
+<label>
+<input onclick='location.href="{:U('Personal/zjxm_publish',array('add'=>2005))}"' value="2005" type="radio" checked=""> 投资理财</label>
+</dd>
+</dl>
+</if>
+
+<dl>
+<dt><i>*</i>标题：</dt>
+<dd>
+<input name="title" id="title" class="text wb70" value="{$info.title}" data-rule="required|min_length[8]|max_length[30]" maxlength="30" min_length_err="请填写标题，8-30个汉字内" max_length_err="请填写标题，8-30个汉字内" holder="举例：广东某公司稳健型信托产品30万元起投，年化收益率9.7%" type="text"> <em class="pl5 hide" etype="error_info">
+<i class="icoPro16"></i>请填写标题</em>
+<div style="color:#dc5c5c">标准：地区+某公司+风险偏好+理财产品+产品投资门槛，预期收益</div></dd>
+</dl>
+
+<dl>
+<dt><i>*</i>产品类型：</dt>
+<dd>
+<select name="tzlc_type" id="sel_tzlc_type" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['tzlc_type']" item="vo">
+<option value="{$vo.c_id}" form_category_id="{$vo.ext_form_id}" <if condition="$info['tzlc_type'] == $vo['c_id']">
+selected=""
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="tzlc_type_info">
+<i class="icoPro16"></i>请选择产品类型</em>
+<script>
+$(function(){
+$('#sel_tzlc_type').trigger('change');
+})
+</script>
+</dd>
+</dl>
+
+<dl style="display:none;" id="cat_36">
+<dt></dt>
+<dd>
+<div class="itemCase">
+<dl>
+<dt><i>*</i>发行时间：</dt>
+<dd>
+<script type="text/javascript" src="../public/js/DatePicker/WdatePicker.js"></script>
+<input name="S141_min" data-rule="required" class="text w80 mr10" readonly="" onclick="WdatePicker()" value="{$info.s141_min}" type="text">--<input name="S141_max" data-rule="required" class="text w80 mr10" readonly="" onclick="WdatePicker()" value="{$info.s141_max}" type="text">
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请选择发行时间</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>发行机构：</dt>
+<dd>
+<select name="S142" id="sel_S142" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S142']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s142'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+<option value="921" extra="1" extra_id="extra_S142-921">
+其它信托
+</option>
+</select>
+
+<input id="extra_S142-921" name="extra_S142[921]" style="display:none;" value="{$info.extra_s142}" type="text">
+<em class="hide" etype="error_info" id="S142_info">
+<i class="icoPro16"></i>请选择发行机构</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>预期收益率：</dt>
+<dd>
+<label for="S145_691">
+<input name="S145[]" id="S145_691" have_relative="1" relative_id="rel-145-289" value="691" class="checkbox" type="checkbox">固定值</label>
+<label for="S145_692">
+<input name="S145[]" id="S145_692" have_relative="1" relative_id="rel-145-290" value="692" class="checkbox" data-rule="required" type="checkbox">浮动范围</label>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请选择或填写预期收益率</em>
+<if condition="$info.s145 neq ''">
+<script>
+$(function(){
+var val = '{$info.s145}';
+$('input[name="S145\[\]"]').each(function(){
+    if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+});
+})
+</script>
+</if>
+<script>
+$(function(){
+     var _v = $('input[name="S145\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+<div style="display:none;" id="rel-145-289">
+<dl>
+<dt><i>*</i>固定值：</dt>
+<dd>
+<input name="S143" id="S143" class="text w80 mr10" value="{$info.s143}" data-rule="required|regexp[num]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+%/年<em class="pl5 hide" etype="error_info" id="S143_info">
+<i class="icoPro16"></i>请填写固定值</em>
+</dd>
+</dl>
+</div>
+
+<div style="display:none;" id="rel-145-290">
+<dl>
+<dt><i>*</i>浮动范围：</dt>
+<dd>
+<input name="S144_min" class="text w80 mr5" value="{$info.s144_min}" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+-- 
+<input name="S144_max" class="text w80 ml5 mr10" value="{$info.s144_max}" data-merge="S144_max,S144_min" iname="浮动范围" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text">
+<input name="S144_unit" value="%/年" type="hidden">%/年
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请填写浮动范围</em>
+</dd>
+</dl>
+</div>
+
+<dl>
+<dt>托管银行：</dt>
+<dd>
+<input name="S150" id="bank-S150" class="text wb30 ac_input" value="{$info.s150}" data-rule="max_length[20]" maxlength="20" autocomplete="off" type="text"> 
+<em class="pl5 hide" etype="error_info">
+<i class="icoPro16"></i>请填写托管银行</em>
+<script type="text/javascript" src="../public/js/personal/jquery.autocomplete.js"></script>
+<link rel="stylesheet" type="text/css" href="../public/css/personal/jquery.autocomplete.css">
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>发行规模：</dt>
+<dd>
+<select name="S151" id="sel_S151" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S151']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s151'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="S151_info">
+<i class="icoPro16"></i>请选择发行规模</em>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+
+<dl style="display:none;" id="cat_38">
+<dt></dt>
+<dd>
+<div class="itemCase">
+<dl>
+<dt><i>*</i>发行机构：</dt>
+<dd>
+<select name="S152" id="sel_S152" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S142']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s152'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="S152_info">
+<i class="icoPro16"></i>请选择发行机构</em>
+<script>
+$(function(){
+$('#sel_S152').trigger('change');
+})
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>产品类型：</dt>
+<dd>
+<select name="S153" id="sel_S153" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S153']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s153'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="S153_info">
+<i class="icoPro16"></i>请选择产品类型</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>投资方式：</dt>
+<dd>
+<select name="S154" id="sel_S154" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S154']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s154'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="S154_info">
+<i class="icoPro16"></i>请选择投资方式</em>
+</dd>
+</dl>
+
+<dl>
+<dt>资金投向：</dt>
+<dd>
+<foreach name="category_list['S155']" item="vo">
+<label for="S155_{$vo.c_id}">
+<input name="S155[]" id="S155_{$vo.c_id}" value="{$vo.c_id}" class="checkbox" <if condition="$vo.data_rule eq 1">data-rule=""</if> type="checkbox">{$vo.c_name}</label>
+</foreach>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请选择或填写资金投向</em>
+<if condition="$info.s155 neq ''">
+<script>
+$(function(){
+var val = '{$info.s155}';
+$('input[name="S155\[\]"]').each(function(){
+    if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+});
+})
+</script>
+</if>
+<script>
+  $(function(){
+     var _v = $('input[name="S155\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>预期收益：</dt>
+<dd>
+<label for="S156_691">
+<input name="S156[]" id="S156_691" have_relative="1" relative_id="rel-156-379" value="691" class="checkbox" type="checkbox">
+固定值</label>
+<label for="S156_692">
+<input name="S156[]" id="S156_692" have_relative="1" relative_id="rel-156-380" value="692" class="checkbox" data-rule="required" type="checkbox">
+浮动范围</label>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请选择或填写预期收益</em>
+<if condition="$info.s156 neq ''">
+<script>
+  $(function(){
+  var val = '{$info.s156}';
+  $('input[name="S156\[\]"]').each(function(){
+      if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+  });
+  })
+</script>
+</if>
+<script>
+  $(function(){
+     var _v = $('input[name="S156\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+<div style="display:none;" id="rel-156-379">
+<dl>
+<dt><i>*</i>固定值：</dt>
+<dd>
+<input name="S188" id="S188" class="text w80 mr10" value="{$info.s188}" data-rule="required|regexp[intege1]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+%/年<em class="pl5 hide" etype="error_info" id="S188_info">
+<i class="icoPro16"></i>请填写固定值</em>
+</dd>
+</dl>
+</div>
+
+<div style="display:none;" id="rel-156-380">
+<dl>
+<dt><i>*</i>浮动范围：</dt>
+<dd>
+<input name="S189_min" class="text w80 mr5" value="{$info.s189_min}" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+-- 
+<input name="S189_max" class="text w80 ml5 mr10" value="{$info.s189_max}" data-merge="S189_max,S189_min" iname="浮动范围" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+
+<input name="S189_unit" value="%/年" type="hidden">%/年
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请填写浮动范围</em>
+</dd>
+</dl>
+</div>
+
+<dl>
+<dt><i>*</i>发行规模：</dt>
+<dd>
+<select name="S200" id="sel_S200" data-rule="required" class="select">
+<foreach name="category_list['S160']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s200'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="S200_info">
+<i class="icoPro16"></i>请选择发行规模</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>发行时间：</dt>
+<dd>
+<input name="S157_min" data-rule="required" class="text w80 mr10" readonly="" onclick="WdatePicker()" value="{$info.s157_min}" type="text">
+--
+<input name="S157_max" data-rule="required" class="text w80 mr10" readonly="" onclick="WdatePicker()" value="{$info.s157_max}" type="text">
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请选择发行时间</em>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+
+<dl style="display:none;" id="cat_39">
+<dt></dt>
+<dd>
+<div class="itemCase">
+<dl>
+<dt><i>*</i>发行时间：</dt>
+<dd>
+<input type="text" name="S158_min" data-rule="required" class="text w80 mr10" readonly="" onClick="WdatePicker()" value="{$info.s158_min}">
+--
+<input type="text" name="S158_max" data-rule="required" class="text w80 mr10" readonly="" onClick="WdatePicker()" value="{$info.s158_max}">
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请选择发行时间</em></dd>
+</dl>
+
+<dl>
+<dt><i>*</i>预期收益率：</dt>
+<dd>
+<label for="S159_691">
+<input name="S159[]" id="S159_691" type="checkbox" have_relative="1" relative_id="rel-159-385" value="691" class="checkbox"/> 固定值</label>
+<label for="S159_692">
+<input name="S159[]" id="S159_692" type="checkbox" have_relative="1" relative_id="rel-159-386" value="692" class="checkbox" data-rule="required"/> 浮动范围</label>
+<em class="hide" etype="error_info" >
+<i class="icoPro16"></i>请选择或填写预期收益率</em>
+<script>
+  $(function(){
+    var val = '{$info.s159}';
+    $('input[name="S159\[\]"]').each(function(){
+        if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+    });
+  })
+</script>
+<script>
+$(function(){
+     var _v = $('input[name="S159\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+
+<div style="display:none;" id="rel-159-385">
+<dl>
+<dt><i>*</i> 固定值：</dt>
+<dd>
+<input type="text" name="S190" id="S190" class="text w80 mr10" value="{$info.s190}"  data-rule="required|regexp[num]|max_length[8]|valmin[0]|valmax[100]" maxlength=8> 
+%/年<em class="pl5 hide" etype="error_info" id="S190_info">
+<i class="icoPro16"></i>请填写固定值</em>
+</dd>
+</dl>
+</div>
+
+<div style="display:none;" id="rel-159-386">
+<dl>
+<dt><i>*</i>浮动范围：</dt>
+<dd>
+<input type='text' name="S191_min" class="text w80 mr5" value="{$info.s191_min}"  data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength=8 /> 
+-- 
+<input type="text" name="S191_max" class="text w80 ml5 mr10" value="{$info.s191_max}"  data-merge="S191_max,S191_min" iname="浮动范围"  data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength=8 /> 
+
+<input type="hidden" name="S191_unit" value="%/年" />%/年
+<em class="hide" etype="error_info" >
+<i class="icoPro16"></i>请填写浮动范围</em>
+</dd>
+</dl>
+</div>
+            
+<dl>
+<dt>发行规模：</dt>
+<dd>
+<select name="S160" id="sel_S160"  class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S160']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s160'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="S160_info">
+<i class="icoPro16"></i>请选择发行规模</em>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+
+<dl style="display:none;" id="cat_40">
+<dt></dt>
+<dd>
+<div class="itemCase">
+<dl>
+<dt><i>*</i>发行时间：</dt>
+<dd>
+<input name="S161_min" data-rule="required" class="text w80 mr10" readonly="" onclick="WdatePicker()" value="<notempty name="info['s161_min']">{$info.s161_min}</notempty>" type="text">
+--
+<input name="S161_max" data-rule="required" class="text w80 mr10" readonly="" onclick="WdatePicker()" value="{$info.s161_max}" type="text">
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请选择发行时间</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>产品种类：</dt>
+<dd>
+<select name="S162" id="sel_S162" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S162']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s162'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="S162_info">
+<i class="icoPro16"></i>请选择产品种类</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>发行机构：</dt>
+<dd>
+<select name="S163" id="sel_S163" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S142']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s163'] == $vo['c_id']">
+selected=""
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="S163_info">
+<i class="icoPro16"></i>请选择发行机构</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>管理形式：</dt>
+<dd>
+<select name="S164" id="sel_S164" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S164']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s164'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="S164_info">
+<i class="icoPro16"></i>请选择管理形式</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>投资策略：</dt>
+<dd>
+<select name="S165" id="sel_S165" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S165']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s165'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+
+<em class="hide" etype="error_info" id="S165_info">
+<i class="icoPro16"></i>请选择投资策略</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>封闭期：</dt>
+<dd>
+<input name="S166" id="S166" class="text w80 mr10" value="{$info.s166}" data-rule="required|regexp[intege1]|max_length[4]" maxlength="4" type="text">
+
+<select name="S166_unit">
+<option value="M30" <if condition="$info.s166_unit eq '' || $info.s66 eq 'M30'">selected=""</if>>月</option>
+<option value="M360" <if condition="$info.s166_unit eq 'M360'"></if>>年</option>
+</select>
+
+<em class="pl5 hide" etype="error_info" id="S166_info">
+<i class="icoPro16"></i>请填写封闭期</em>
+</dd>
+</dl>
+
+<dl>
+<dt>管理费率：</dt>
+<dd>
+<input name="S167" id="S167" class="text w80 mr10" value="{$info.s167}" data-rule="regexp[num]|max_length[4]" maxlength="4" type="text"> 
+%<em class="pl5 hide" etype="error_info" id="S167_info">
+<i class="icoPro16"></i>请填写管理费率</em>
+</dd>
+</dl>
+
+<dl>
+<dt>托管银行：</dt>
+<dd>
+<input name="S168" id="S168" class="text w80 mr10" value="{$info.s168}" data-rule="max_length[20]" maxlength="20" type="text"> 
+<em class="pl5 hide" etype="error_info" id="S168_info">
+<i class="icoPro16"></i>请填写托管银行</em>
+</dd>
+</dl>
+
+<dl>
+<dt>银行保管费率：</dt>
+<dd>
+<input name="S169" id="S169" class="text w80 mr10" value="{$info.s169}" data-rule="regexp[num]|max_length[4]" maxlength="4" type="text"> 
+%<em class="pl5 hide" etype="error_info" id="S169_info">
+<i class="icoPro16"></i>请填写银行保管费率</em>
+</dd>
+</dl>
+
+<dl>
+<dt>认购费率：</dt>
+<dd>
+<input name="S170" id="S170" class="text w80 mr10" value="{$info.s170}" data-rule="regexp[num]|max_length[4]" maxlength="4" type="text"> 
+%<em class="pl5 hide" etype="error_info" id="S170_info">
+<i class="icoPro16"></i>请填写认购费率</em>
+</dd>
+</dl>
+
+<dl>
+<dt>赎回费率：</dt>
+<dd>
+<input name="S171" id="S171" class="text w80 mr10" value="{$info.s171}" data-rule="regexp[num]|max_length[4]" maxlength="4" type="text"> 
+%<em class="pl5 hide" etype="error_info" id="S171_info">
+<i class="icoPro16"></i>请填写赎回费率</em>
+</dd>
+</dl>
+
+<dl>
+<dt>浮动管理费用：</dt>
+<dd>
+<input name="S172" id="S172" class="text w80 mr10" value="{$info.s172}" data-rule="regexp[num]|max_length[4]" maxlength="4" type="text"> 
+%<em class="pl5 hide" etype="error_info" id="S172_info">
+<i class="icoPro16"></i>请填写浮动管理费用</em>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+
+<dl style="display:none;" id="cat_41">
+<dt></dt>
+<dd>
+<div class="itemCase">
+
+<dl>
+<dt><i>*</i>发行时间：</dt>
+<dd>
+<input name="S173_min" data-rule="required" class="text w80 mr10" readonly="" onclick="WdatePicker()" value="{$info.s173_min}" type="text">
+--
+<input name="S173_max" data-rule="required" class="text w80 mr10" readonly="" onclick="WdatePicker()" value="{$info.s173_max}" type="text">
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请选择发行时间</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>预期收益率：</dt>
+<dd>
+<label for="S174_691">
+<input name="S174[]" id="S174_691" have_relative="1" relative_id="rel-174-474" value="691" class="checkbox" type="checkbox">
+    固定值</label>
+<label for="S174_692">
+    <input name="S174[]" id="S174_692" have_relative="1" relative_id="rel-174-475" value="692" class="checkbox" data-rule="required" type="checkbox">
+    浮动范围</label>
+<em class="hide" etype="error_info" data-msg="
+请选择或填写预期收益率" style="display: none;"><i class="icoPro16"></i>请选择或填写预期收益率</em>
+<script>
+$(function(){
+var val = '{$info.s174}';
+$('input[name="S174\[\]"]').each(function(){
+    if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+});
+})
+</script>
+<script>
+$(function(){
+     var _v = $('input[name="S174\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+
+<div style="display: none;" id="rel-174-474">
+<dl>
+<dt><i>*</i>固定值：</dt>
+<dd>
+<input name="S192" id="S192" class="text w80 mr10" value="{$info.s192}" data-rule="required|regexp[num]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+%/年<em class="pl5 hide" etype="error_info" id="S192_info">
+<i class="icoPro16"></i>请填写固定值</em>
+ </dd>
+</dl>
+</div>
+
+<div style="display: none;" id="rel-174-475">
+<dl>
+<dt><i>*</i>浮动范围：</dt>
+ <dd>
+<input name="S193_min" class="text w80 mr5" value="{$info.s193_min}" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+-- 
+<input name="S193_max" class="text w80 ml5 mr10" value="{$info.s193_max}" data-merge="S193_max,S193_min" iname="浮动范围" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+<input name="S193_unit" value="%/年" type="hidden">%/年
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请填写浮动范围</em></dd>
+</dl>
+</div>
+
+<dl>
+<dt><i>*</i>基金规模：</dt>
+<dd>
+<input iname="基金规模" name="S175" class="text w80 mr10" value="{$info.s175}" data-rule="required|regexp[num]|greater[0]|max_length[18]" maxlength="18" type="text">
+<select name="S175_unit" data-rule="require" data-merge="S175">
+<option value="1" <if condition="$info.s175_unit eq 1 || $info.s175_unit eq ''">selected=""</if>>万元</option>
+<option value="10000" <if condition="$info.s175_unit eq 10000">selected=""</if>>亿元</option>
+</select><em class="pl5 hide" etype="error_info"><i class="icoPro16"></i>请填写基金规模</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>投资类型：</dt>
+<dd>
+<foreach name="category_list['S176']" item="vo">
+<label for="S176_{$vo.c_id}">
+<input name="S176[]" id="S176_{$vo.c_id}" value="{$vo.c_id}" class="checkbox" type="checkbox" <if condition="$vo['data_rule'] eq 1">
+data-rule="required"
+</if>>
+{$vo.c_name}</label>
+</foreach>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请选择或填写投资类型</em>
+<script>
+$(function(){
+var val = '{$info.s176}';
+$('input[name="S176\[\]"]').each(function(){
+    if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+});
+})
+</script>
+<script>
+$(function(){
+     var _v = $('input[name="S176\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>投资行业：</dt>
+<dd>
+<a href="javascript:void(0);" id="S177_select_dialog" class="gBtn22"><i class="gBtn22Inner">选择投资行业</i></a>
+<span id="S177_span"></span>
+<div class="selectDialog hide" id="S177_selectDialog">
+<ul class="clearfix">
+<foreach name="category_list['industry_id']" item="vo">
+<li><label for="{$vo.c_id}_">
+<input name="attS177_div" id="{$vo.c_id}_" value="{$vo.c_id}" class="checkbox" type="checkbox">{$vo.c_name}</label>
+</li>
+</foreach>
+</ul>
+
+<div class="btnWrap pt10"><a href="javascript:void(0);" class="bBtn22"><i class="bBtn22Inner">确 定</i></a><a href="#" class="gBtn22 ml10"><i class="gBtn22Inner">取消</i></a></div>
+</div>
+<input class="hidea" data-rule="required" name="S177" id="S177" value="{$info.s177}" type="text">
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请选择投资行业</em>
+<script>
+$(function() {
+    var _vinput = $('input[name="attS177_div"]');
+    if (_vinput.filter('[data-unique=1]').length > 0)
+    {
+        _vinput.click(function(){
+            if ($(this).attr('data-unique')=='1')
+            {
+                $(this).attr('checked') ==true ?
+                _vinput.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                : _vinput.removeAttr('disabled');
+            }
+        });
+    }
+    $('#S177_select_dialog').bind('click', function () {
+        qrh.cache.dialog=$.dialog({
+        title: '选择投资行业',
+        width:'240px',
+        lock:true,
+        fixed:true,
+        content: document.getElementById('S177_selectDialog')
+        });
+        checkbox_selected();
+    });
+    $('#S177_selectDialog .btnWrap>.bBtn22').click(function(){
+            var _val = new Array();
+            var _txt = '';
+            $('input[name="attS177_div"]').filter(':checked').each(function(){
+                _val.push($(this).val());
+                _txt += $(this).parent().text()+' ';
+            });
+            $('#S177').val(_val.length>0 ? (',' + _val.join(',') + ',') : '').trigger('blur');
+            $('#S177_span').html(_txt).show();
+            qrh.cache.dialog.close();
+            return false;
+        });
+        $('#S177_selectDialog .btnWrap>.gBtn22').click(function(){checkbox_selected();qrh.cache.dialog.close();return false;});
+        checkbox_selected();
+});
+
+function checkbox_selected() {
+    var val = $('#S177').val();
+    var _txt = '';
+    _vinput = $('input[name="attS177_div"]');
+    _vinput.each(function(){
+        if ((','+val+',').indexOf(','+$(this).val()+',') >-1) {
+            $(this).attr('checked', true);
+            if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _vinput.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _vinput.removeAttr('disabled');
+                }
+            _txt += $(this).parent().text();
+        }else{
+            $(this).attr('checked', false);
+        }
+    });
+    $('#S177_span').html(_txt).show();
+}
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>投资地区：</dt>
+<dd>
+<a href="javascript:void(0);" id="S178_select_dialog" class="gBtn22"><i class="gBtn22Inner">选择投资地区</i></a>
+<span id="S178_span" style=""></span>
+<div class="selectDialog hide" id="S178_selectDialog">
+<ul class="clearfix">
+<foreach name="category_list['invest_area']" item="vo">
+<li><label for="S178_{$vo.c_id}"><input name="S178_area[]" id="S178_{$vo.c_id}" value="{$vo.c_id}" type="checkbox">{$vo.c_name}</label></li>
+</foreach>
+</ul>
+<div class="btnWrap pt10"><a href="javascript:void(0);" class="bBtn22"><i class="bBtn22Inner">确 定</i></a><a href="#" class="gBtn22 ml10"><i class="gBtn22Inner">取消</i></a></div>
+</div>
+<input class="hidea" id="S178" name="S178" data-rule="required" value="{$info.s178}" type="text">
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请选择投资地区</em>
+<script>
+$(function(){
+var _sel_container = $('#S178_span');
+var _sel_input = $('#S178');
+var _input_indu =  $('input[name="S178_area\[\]"]');
+
+    $('#S178_select_dialog').bind('click', function () {
+         qrh.cache.dialog=$.dialog({
+        title: '选择投资地区',
+        width:'240px',
+        lock:true,
+        fixed:true,
+        content: document.getElementById('S178_selectDialog')
+        });
+        provSelectDialog();
+    });
+
+    $('#S178_selectDialog .btnWrap>.bBtn22').click(function(){
+        var _val = new Array();
+        var _sel = '';
+        _input_indu.each(function(){
+            if ($(this).attr('checked') == true) {
+                _val.push($(this).val());
+                _sel += $(this).parent().text()+'&nbsp;&nbsp;';
+            }
+        });
+        _sel_container.html(_sel).show();
+        _sel_input.val(_val.length>0 ? (',' + _val.join(',') + ',') : '').trigger('blur');
+        qrh.cache.dialog.close();
+        return false;
+    });
+    $('#S178_selectDialog .btnWrap>.gBtn22').click(function(){provSelectDialog();qrh.cache.dialog.close();return false;});
+
+function provSelectDialog()
+{
+    _input_indu.removeAttr('checked');
+    var val = _sel_input.val();
+    var html = '';
+    _input_indu.each(function(){
+        if ((','+val+',').indexOf(','+$(this).val()+',') >-1) {
+             $(this).attr('checked', true).trigger('click').attr('checked', true);
+            html += $(this).parent().text()+'&nbsp;&nbsp;';
+        }
+    _sel_container.html(html).show();
+    });
+}
+provSelectDialog();
+})
+</script>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+
+<dl style="display:none;" id="cat_42">
+<dt></dt>
+<dd>
+<div class="itemCase">
+<dl>
+<dt><i>*</i>产品类型：</dt>
+<dd>
+<select name="S179" id="sel_S179" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S179']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s179'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="S179_info"><i class="icoPro16"></i>请选择产品类型</em>
+</dd>
+</dl>
+
+<dl>
+<dt>管理公司：</dt>
+<dd>
+<input name="S180" id="S180" class="text wb70" value="{$info.s180}" data-rule="max_length[30]" maxlength="30" type="text"> <em class="pl5 hide" etype="error_info">
+<i class="icoPro16"></i>请填写管理公司</em>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+
+<dl style="display:none;" id="cat_43">
+<dt></dt>
+<dd>
+<div class="itemCase">
+<dl>
+<dt><i>*</i>预期收益率：</dt>
+<dd>
+<label for="S181_691">
+<input name="S181[]" id="S181_691" have_relative="1" relative_id="rel-181-491" value="691" class="checkbox" type="checkbox">
+固定值</label>
+<label for="S181_692">
+<input name="S181[]" id="S181_692" have_relative="1" relative_id="rel-181-492" value="692" class="checkbox" data-rule="required" type="checkbox">
+浮动范围</label>
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请选择或填写预期收益率</em>
+<script>
+$(function(){
+var val = '{$info.s181}';
+$('input[name="S181\[\]"]').each(function(){
+    if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+});
+})
+</script>
+<script>
+  $(function(){
+     var _v = $('input[name="S181\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+
+<div style="display:none;" id="rel-181-491">
+<dl>
+<dt><i>*</i>固定值：</dt>
+<dd>
+<input name="S198" id="S198" class="text w80 mr10" value="{$info.s198}" data-rule="required|regexp[num]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+%/年<em class="pl5 hide" etype="error_info" id="S198_info">
+<i class="icoPro16"></i>请填写固定值</em>
+</dd>
+</dl>
+</div>
+
+<div style="display:none;" id="rel-181-492">
+<dl>
+<dt><i>*</i>浮动范围：</dt>
+<dd>
+<input name="S199_min" class="text w80 mr5" value="{$info.s199_min}" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+-- 
+<input name="S199_max" class="text w80 ml5 mr10" value="{$info.s199_max}" data-merge="S199_max,S199_min" iname="浮动范围" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text">
+<input name="S199_unit" value="%/年" type="hidden">%/年
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请填写浮动范围</em>
+</dd>
+</dl>
+</div>
+
+<dl>
+<dt><i>*</i>产品类型：</dt>
+<dd>
+<select name="S182" id="sel_S182" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['S182']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['s182'] == $vo['c_id']">
+selected=""
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="S182_info">
+<i class="icoPro16"></i>请选择产品类型</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>托管费：</dt>
+<dd>
+<input name="S183" id="S183" class="text w80 mr10" value="{$info.s183}" data-rule="required|regexp[num]|max_length[8]" maxlength="8" type="text"> 
+%<em class="pl5 hide" etype="error_info" id="S183_info">
+<i class="icoPro16"></i>请填写托管费</em>
+</dd>
+</dl>
+
+<dl>
+<dt>客户服务费用：</dt>
+<dd>
+<input name="S184" id="S184" class="text w80 mr10" value="{$info.s184}" data-rule="regexp[num]|max_length[8]" maxlength="8" type="text"> 
+%<em class="pl5 hide" etype="error_info" id="S184_info">
+<i class="icoPro16"></i>请填写客户服务费用</em>
+</dd>
+</dl>
+
+<dl>
+<dt>产品管理人：</dt>
+<dd>
+<input name="S185" id="S185" class="text w80 mr10" value="{$info.s185}" data-rule="max_length[10]" maxlength="10" type="text"> 
+<em class="pl5 hide" etype="error_info" id="S185_info">
+<i class="icoPro16"></i>请填写产品管理人</em>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+
+<dl style="display:none;" id="cat_44">
+<dt></dt>
+<dd>
+<div class="itemCase">
+<dl>
+<dt><i>*</i>预期收益率：</dt>
+<dd>
+<label for="S186_691">
+<input name="S186[]" id="S186_691" have_relative="1" relative_id="rel-186-493" value="691" class="checkbox" type="checkbox">
+固定值</label>
+<label for="S186_692">
+<input name="S186[]" id="S186_692" have_relative="1" relative_id="rel-186-494" value="692" class="checkbox" data-rule="required" type="checkbox">
+浮动范围</label>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请选择或填写预期收益率</em>
+<script>
+$(function(){
+var val = '{$info.s186}';
+$('input[name="S186\[\]"]').each(function(){
+    if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+});
+})
+</script>
+<script>
+  $(function(){
+     var _v = $('input[name="S186\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+
+<div style="display:none;" id="rel-186-493">
+<dl>
+<dt><i>*</i>固定值：</dt>
+<dd>
+<input name="S194" id="S194" class="text w80 mr10" value="{$info.s194}" data-rule="required|regexp[num]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> %/年
+<em class="pl5 hide" etype="error_info" id="S194_info"><i class="icoPro16"></i>请填写固定值</em>
+</dd>
+</dl>
+</div>
+
+
+<div style="display:none;" id="rel-186-494">
+<dl>
+<dt><i>*</i>浮动范围：</dt>
+<dd>
+<input name="S195_min" class="text w80 mr5" value="{$info.s195_min}" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+-- 
+<input name="S195_max" class="text w80 ml5 mr10" value="{$info.s195_max}" data-merge="S195_max,S195_min" iname="浮动范围" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+
+<input name="S195_unit" value="%/年" type="hidden">%/年
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请填写浮动范围</em>
+</dd>
+</dl>
+</div>
+</div>
+</dd>
+</dl>
+
+<dl style="display:none;" id="cat_45">
+<dt></dt>
+<dd>
+<div class="itemCase">
+<dl>
+<dt><i>*</i>预期收益率：</dt>
+<dd>
+<label for="S187_691">
+<input name="S187[]" id="S187_691" have_relative="1" relative_id="rel-187-495" value="691" class="checkbox" type="checkbox">
+固定值</label>
+<label for="S187_692">
+<input name="S187[]" id="S187_692" have_relative="1" relative_id="rel-187-496" value="692" class="checkbox" data-rule="required" type="checkbox">
+浮动范围</label>
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请选择或填写预期收益率</em>
+<script>
+  $(function(){
+  var val = '{$info.s187}';
+  $('input[name="S187\[\]"]').each(function(){
+    if ((','+val+',').indexOf(','+$(this).val()+',') >-1)$(this).attr('checked', true).trigger('click').attr('checked', true);
+  });
+  })
+</script>
+<script>
+  $(function(){
+     var _v = $('input[name="S187\[\]"]');
+     if (_v.filter('[data-unique=1]').length > 0)
+     {
+           _v.click(function(){
+                if ($(this).attr('data-unique')=='1')
+                {
+                    $(this).attr('checked') ==true ?
+                    _v.not('[data-unique=1]').attr('checked',false).attr('disabled', true)
+                    : _v.removeAttr('disabled');
+                }
+           });
+      }
+})
+</script>
+</dd>
+</dl>
+
+<div style="display:none;" id="rel-187-495">
+<dl>
+<dt><i>*</i>固定值：</dt>
+<dd>
+<input name="S196" id="S196" class="text w80 mr10" value="{$info.s196}" data-rule="required|regexp[num]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+%/年<em class="pl5 hide" etype="error_info" id="S196_info">
+<i class="icoPro16"></i>请填写固定值</em></dd>
+</dl>
+</div>
+
+<div style="display:none;" id="rel-187-496">
+<dl>
+<dt><i>*</i>浮动范围：</dt>
+<dd>
+<input name="S197_min" class="text w80 mr5" value="{$info.s197_min}" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text"> 
+-- 
+<input name="S197_max" class="text w80 ml5 mr10" value="{$info.s197_max}" data-merge="S197_max,S197_min" iname="浮动范围" data-rule="required|regexp[num]|greater[min_max]|max_length[8]|valmin[0]|valmax[100]" maxlength="8" type="text">
+<input name="S197_unit" value="%/年" type="hidden">%/年
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请填写浮动范围</em>
+
+</dd>
+</dl>
+</div>
+</div>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>所在地区：</dt>
+<dd>
+<span id="last_area_iddivAreaSelect"></span>
+<input class="hidea" id="last_area_id" name="last_area_id" value="{$info.last_area_id}" data-rule="required" btype="change" type="text">
+<em class="hide" etype="error_info"><i class="icoPro16"></i>请选择所在地区</em>
+<script type="text/javascript">
+var MultiSelectChange = function(cls){
+$('#'+cls.hdId).trigger('blur');
+}
+var multiSelect         = new MultiSelect('last_area_iddivAreaSelect','last_area_id',dataMultiArea,dataAllArea);
+multiSelect.pLabels  = '省,市,县/区';
+multiSelect.pClass   = 'mr5';
+multiSelect.pNames  = 'province_id,city_id,area_id';
+multiSelect.pStart  = 1;
+multiSelect.init(chinese_id);
+multiSelect.select({$info.last_area_id});
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>风险偏好：</dt>
+<dd>
+<select name="xmlc_fxph" id="sel_xmlc_fxph" data-rule="required" class="select">
+<option value="">请选择</option>
+<option value="676" <if condition="$info.xmlc_fxph eq 676">selected=""</if>>稳健性</option>
+<option value="677" <if condition="$info.xmlc_fxph eq 677">selected=""</if>>进取型</option>
+</select>
+<em class="hide" etype="error_info" id="xmlc_fxph_info">
+<i class="icoPro16"></i>请选择风险偏好</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>投资门槛：</dt>
+<dd>
+<input iname="投资门槛" name="xmlc_tzmk" class="text w80 mr10" value="{$info.xmlc_tzmk}" data-rule="required|regexp[intege1]|greater[0]|max_length[18]" maxlength="18" type="text">
+<select name="xmlc_tzmk_unit" data-rule="require" data-merge="xmlc_tzmk">
+
+<option value="1" <if condition="$info.xmlc_tzmk_unit eq 1 || $info.xmlc_tzmk_unit eq ''">selected=""</if>>万元</option>
+<option value="10000" <if condition="$info.xmlc_tzmk_unit eq 10000">selected=""</if>>亿元</option>
+
+</select>
+<em class="pl5 hide" etype="error_info"><i class="icoPro16"></i>请填写投资门槛</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>投资期限：</dt>
+<dd>
+<input name="xmlc_tzqx" id="xmlc_tzqx" class="text w80 mr10" value="{$info.xmlc_tzqx}" data-rule="required|regexp[intege1]" type="text"> 
+<select name="xmlc_tzqx_unit">
+<option value="M1" <if condition="$info.xmlc_tzqx_unit eq 'M1' || $info.xmlc_tzqx_unit eq ''">selected=""</if>>天</option>
+<option value="M30" <if condition="$info.xmlc_tzqx_unit eq 'M30'">selected=""</if>>月</option>
+<option value="M360" <if condition="$info.xmlc_tzqx_unit eq 'M360'">selected=""</if>>年</option>
+</select>
+<em class="pl5 hide" etype="error_info" id="xmlc_tzqx_info">
+<i class="icoPro16"></i>请填写投资期限</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>产品概述：</dt>
+<dd>
+<textarea name="i_overview" rows="6" class="wb70" id="i_overview" data-rule="required|min_length[50]|max_length[1000]" maxlength="1000" min_length_err="必须大于50个并小于1000个汉字" max_length_err="必须大于50个并小于1000个汉字">{$info.i_overview}</textarea>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>
+请填写产品概述</em>
+<div style="color:#dc5c5c">产品规模+年化收益+资金用途+还款来源+风控措施</div></dd>
+</dl>
+
+<dl>
+<dt>其它信息：</dt>
+<dd>
+<textarea name="i_other_remark" rows="6" class="wb70" id="i_other_remark" data-rule="max_length[5000]" maxlength="5000">{$info.i_other_remark}</textarea>
+<em class="hide" etype="error_info">
+<i class="icoPro16"></i>请填写其它信息</em>
+</dd>
+</dl>
+
+<dl>
+<dt>标签：</dt>
+<dd>
+<input name="i_keywords" id="i_keywords" class="text wb70" value="{$info.i_keywords}" data-rule="max_length[50]" maxlength="50" type="text">
+<em class="pl5 hide" etype="error_info">
+<i class="icoPro16"></i>请填写关键词多个以“，”隔开
+</em>
+</dd>
+</dl>
+
+<dl>
+<dt>缩略图：</dt>
+<dd>
+<div style="float:right;margin-right:450px;display:inline;">
+注：图片大小1M以内
+</div>
+<input type="file" id="i_pic" class="hide">
+<input type="hidden" value="{$info.i_pic}" name="i_pic" id="i_pic_pic"  data-rule="regexp[picture]" >
+<div id="i_pic_div" class="<empty name="info['ext_i_pic']">hide</empty>">
+<span>
+<volist name="info['ext_i_pic']" id="vo">
+<div><a href="{$vo.path}" target="_blank">{$vo.memo}</a><a class="m120" href="javascript:void(0);" onclick="i_attr_del(this,{$vo.id})">删除</a></div>
+</volist>
+</span>
+</div>
+<em class="alert ml10 error_info" etype="error_info" id="i_pic_info"></em>
+<script type="text/javascript">
+var i_picuploadLimit = 10;
+function limiti_pic(){
+  }
+$(function(){
+
+$uploadify.formData.filename = 'i_pic';
+$uploadify.formData.attach_type = 'zjxm_image';
+$uploadify.fileTypeExts = '*.jpg;*.bmp;.gif;*.jpeg;*.png';
+$uploadify.fileSizeLimit='1024KB';
+$uploadify.uploader = "{:U('Upload/attach_upload')}";
+$uploadify.uploadLimit=i_picuploadLimit;
+
+$uploadify.onSWFReady = function(){
+  limiti_pic();
+}
+$uploadify.onUploadSuccess = function(file, data, response) {
+   if (!data) {
+       alert('上传失败');
+       return;
+   }
+   data = $.parseJSON(data);
+   if (data.code == 100) {
+       alert(data.error);
+   } else if (data.code == 200) {
+       $('#i_pic_pic').each(function(){
+            var val = $(this).val();
+            val = val.split(',');
+            val.push(data.aid);
+            html = '<div><a href="'+data.file+'" target="_blank">'+file.name+'</a> <a  class="m120" href="javascript:void(0);" onclick="i_attr_del(this,'+data.aid+');limiti_pic();">删除</a></div>';
+            val = val.join(',');
+            $(this).val(/^[\d|,]+$/.test(val) ? val : '').next().show().find('span').append(html);
+       });
+       limiti_pic();
+   }
+};
+$('#i_pic').uploadify($uploadify);
+
+})
+</script> 
+</dd>
+</dl>
+
+<dl><dt>附件：</dt>
+<dd>
+<div style="float:right;margin-right:450px;display:inline;">
+注：附件大小2M以内
+</div>
+<input type="file" id="i_att" class="hide">
+<input type="hidden" value="{$info.i_att}" name="i_att" id="i_att_pic"  data-rule="regexp[rar]" >
+<div id="i_att_div" class="<empty name="info['ext_i_att']">hide</empty>">
+<span>
+<volist name="info['ext_i_att']" id="vo">
+<div><a href="{$vo.path}" target="_blank">{$vo.memo}</a><a class="m120" href="javascript:void(0);" onclick="i_attr_del(this,{$vo.id})">删除</a></div>
+</volist>
+</span>
+</div>
+<em class="alert ml10 error_info" etype="error_info" id="i_att_info"></em>
+<script type="text/javascript">
+var i_attuploadLimit = 3;
+function limiti_att(){
+  }
+$(function(){
+
+$uploadify.formData.filename = 'i_att';
+$uploadify.formData.attach_type = 'zjxm_file';
+$uploadify.fileTypeExts = '*.zip;*.rar;.tgz;*.doc;*.docx;*.xls;*.xlsx;*.pdf;*.ppt;*.pptx';
+$uploadify.fileSizeLimit='2048KB';
+$uploadify.uploader = "{:U('Upload/attach_upload')}";
+$uploadify.uploadLimit=i_attuploadLimit;
+
+$uploadify.onSWFReady = function(){
+  limiti_att();
+}
+$uploadify.onUploadSuccess = function(file, data, response) {
+   if (!data) {
+       alert('上传失败');
+       return;
+   }
+   data = $.parseJSON(data);
+   if (data.code == 100) {
+       alert(data.error);
+   } else if (data.code == 200) {
+       $('#i_att_pic').each(function(){
+            var val = $(this).val();
+            val = val.split(',');
+            val.push(data.aid);
+            html = '<div><a href="'+data.file+'" target="_blank">'+file.name+'</a> <a  class="m120" href="javascript:void(0);" onclick="i_attr_del(this,'+data.aid+');limiti_att();">删除</a></div>';
+            val = val.join(',');
+            $(this).val(/^[\d|,]+$/.test(val) ? val : '').next().show().find('span').append(html);
+       });
+       limiti_att();
+   }
+};
+$('#i_att').uploadify($uploadify);
+
+})
+</script>
+</dd>
+</dl>
+
+<dl>
+<dt></dt>
+<dd class="mt10 mb10">
+<a href="javascript:void(0);" class="ui-btn-big ui-btn-blue fn-mr-10" id="form_publish">立即发布项目信息</a>
+<!--
+<a href="javascript:void(0);" id="form_publish_preview" class="ui-btn-big ui-btn-preview fn-mr-10">
+预 览
+</a>
+<a href="javascript:void(0);" id="form_publish_status" class="ui-btn-big ui-btn-gray">
+保存暂不发布
+</a>
+-->
+</dd>
+</dl>
+<input id="delfiles" name="delfiles" type="hidden">
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<include file="index_footer" />
+<script src="../public/js/publish.js"></script>
+<script type="text/javascript">
+$(function(){
+     frmData=$('#publishform').serialize();
+});
+$("#av_more").click(function (){
+if ($(this).attr("class") == "av-more") {
+    $("#ul_list").addClass("av-expand");
+    $(this).addClass("av-less").text("收起");
+}
+else {
+    $("#ul_list").removeClass("av-expand");
+    $(this).removeClass("av-less").text("更多");
+}
+});
+</script>
+</body>
+</html>

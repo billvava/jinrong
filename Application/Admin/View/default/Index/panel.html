@@ -1,0 +1,55 @@
+<include file="public:header" />
+<span id="version"></span>
+<volist name="message" id="message">
+  <if condition="$message['type'] eq 'warning'">
+    <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#990000"  style=" margin-bottom:6px; color:#FFFFFF">
+    <tr>
+      <td bgcolor="#CC0000">&nbsp;{$message.content}</td>
+    </tr>
+  </table>
+  <else/>
+    <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#FF9900"  style=" margin-bottom:6px;">
+      <tr>
+        <td bgcolor="#FFFFCC">&nbsp;{$message.content}</td>
+      </tr>
+    </table>
+  </if>
+</volist>
+<script type="text/javascript">
+		var tsTimeStamp= new Date().getTime();
+		$.getJSON("{:U('index/total')}",function(result){
+				for(var i in result.data){
+				if(result.data[i]==0)
+				{
+				 $("#"+i).html(result.data[i]);
+				}
+				else
+				{
+				 $("#"+i).html('+'+result.data[i]);
+				}
+         
+        }
+		});
+</script>
+</td>
+  </tr>
+</table>
+<div class="toptit">系统信息</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+  <tr>
+    <td style="  color:#666666; padding-left:15px;line-height:220%;">
+	<table width="600" border="0" cellpadding="0" cellspacing="0" class="link_lan">
+      <tr>
+        <td width="300"  >操作系统：{$system_info.server_os}</td>
+        <td  >PHP 版本：{$system_info.php_version}</td>
+      </tr>
+      <tr>
+        <td  >服务器软件：{$system_info.web_server}<br /></td>
+        <td  >MySQL 版本：{$system_info.mysql_version}</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<include file="public:footer" />
+</body>
+</html>

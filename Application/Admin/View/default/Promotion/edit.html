@@ -1,0 +1,65 @@
+<include file="public:header" />
+  <div class="toptip">
+    <h2>提示：</h2>
+    <p>
+      系统将自动取消到期的企业推广。<br />
+    </p>
+  </div>
+  <div class="toptit">修改企业推广</div>
+  <form id="form1" name="form1" method="post" action="{:U('edit')}">
+    <table width="100%" border="0" cellpadding="4" cellspacing="0"  class="link_lan" >
+      <tr>
+        <td width="120" height="30" align="right"  style="border:0px;"  >推广职位：</td>
+        <td    >
+          <a href="{$info['jobs']['jobs_url']}" target="_blank">{$info['jobs']['jobs_name']}</a>
+        </td>
+      </tr>
+      <tr>
+        <td height="30" align="right"  >职位所属企业：</td>
+        <td   ><a href="{$info['jobs']['company_url']}" target="_blank">{$info['jobs']['companyname']}</a></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"  >会员ID：</td>
+        <td   >{$info['jobs']['uid']}</td>
+      </tr>
+      <tr>
+        <td height="30" align="right"   width="120" style="border:0px;" >推广方案：</td>
+        <td   ><span style="color:#FF0000"><if condition="$info['cp_ptype'] eq 'stick'">置顶<else />紧急</if></span></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"   width="120" style="border:0px;" >推广期限：</td>
+        <td  >
+          <if condition="$info['cp_endtime'] lt $now">
+          <span style="color:#56C6FF">已经到期</span>
+          <else />
+          {$info.cp_starttime|date="Y年m月d日",###} ≈ {$info.cp_endtime|date="Y年m月d日",###}
+         </if>
+        </td>
+      </tr>
+      <tr>
+        <td height="30" align="right"  >延长推广时间：</td>
+        <td   >
+          <input name="cp_endtime" type="hidden" value="{$info.cp_endtime}" />
+          <input name="cp_days"  id="days" type="text" class="input_text_200"   maxlength="3" value=""/>
+          天
+        </td>
+      </tr>
+      
+      <tr>
+        <td height="30" align="right"  >&nbsp;</td>
+        <td height="50"  >
+          
+          <input name="cp_jobid" type="hidden" value="{$info.cp_jobid}" />
+          <input name="cp_ptype" type="hidden" value="{$info.cp_ptype}" />
+          <input name="cp_id" type="hidden" value="{$info.cp_id}" />
+          <input name="submit3" type="submit" class="admin_submit"    value="修改"/>
+          
+          <input name="submit22" type="button" class="admin_submit"    value="返回" onclick="Javascript:window.history.go(-1)"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<include file="public:footer" />
+</body>
+</html>

@@ -1,0 +1,208 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+<style type="text/css">
+.ui-box-head {
+background-color: #f6f6f6;
+border-bottom: 1px solid #ddd;
+height: 30px;
+}
+.ui-box-head-title {
+border-bottom: 2px solid #2d395f;
+color: #2d395f;
+float: left;
+font-size: 14px;
+font-weight: bold;
+line-height: 29px;
+padding: 0 10px;
+}
+.ui-box-cont {
+padding-top: 10px;
+}
+.ui-tab-head {
+height: 26px;
+}
+.ui-tab-head ul {
+float: left;
+}
+.ui-tab-head li {
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+background-color: #f0f0f0;
+border-color: #ccc #ccc -moz-use-text-color;
+border-image: none;
+border-radius: 3px 3px 0 0;
+border-style: solid solid none;
+border-width: 1px 1px 0;
+color: #666;
+cursor: pointer;
+display: inline-block;
+float: left;
+height: 24px;
+line-height: 24px;
+margin-right: 5px;
+padding: 0 15px;
+}
+.ui-tab-head li.ui-tab-head-current {
+background-color: #fff;
+color: #333;
+height: 25px;
+position: relative;
+}
+.ui-tab-head li a {
+display: inline-block;
+margin: 0 -15px;
+padding: 0 15px;
+white-space: nowrap;
+}
+.ui-tab-head li a:hover {
+text-decoration: none;
+}
+.ui-tab-cont {
+border-top: 1px solid #ccc;
+margin-top: -1px;
+padding-top: 10px;
+}
+.security-table {
+color: #666;
+padding: 15px 40px;
+}
+.security-table th {
+padding: 15px 0;
+text-align: right;
+width: 68px;
+}
+.security-table td, .security-table p {
+padding: 15px 0;
+}
+.security-table td input {
+margin-right: 3px;
+vertical-align: middle;
+}
+.security-table .ui-btn-blue {
+width: 100px;
+}
+.fn-font-14 {
+font-size: 14px;
+}
+.ui-btn-red {
+background-color: #e94e38;
+}
+</style>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<div>
+<div class="ui-box-head">
+<h2 class="ui-box-head-title">修改信息</h2>
+</div>
+<div class="security-table">
+<table>
+<tbody>
+<tr>
+<th>登录帐号：</th>
+<td width="180">{$info.username}</td>
+<td width="120"><a href="javascript:void(0);" id="changePassword_dialog" class="j-changePassword j-btn-security">[修改密码]</a></td>
+<td><i class="icoPro16"></i>请定期修改密码，提高帐号的安全性</td>
+</tr>
+<!--
+<tr>
+<th>联系邮箱：</th>
+<td>{$info.email}</td>
+<td><a href="javascript:void(0);" id="changeMail_dialog" class="j-changeMail j-btn-security">[修改邮箱]</a></td>
+<td><i class="icoPro16"></i>修改邮箱后，需要重新认证</td>
+</tr>
+-->
+<!--
+<tr>
+<th>手机号码：</th>
+<td>{$info.mobile}</td>
+<td><a href="javascript:void(0);" id="changeOldPhone_dialog" class="j-changePhone j-btn-security"> [修改手机号码]</a></td>
+<td><i class="icoPro16"></i>修改手机号码后，需要重新认证</td>
+</tr>
+-->
+</tbody>
+</table>
+</div>
+</div>
+<div>
+
+
+<!--
+<div class="ui-box-head">
+<h2 class="ui-box-head-title">隐私设置</h2>
+</div>
+<div class="security-table">
+
+<p class="fn-font-14"><strong>会员资料查看权限设置：</strong></p>
+
+<table>
+<tbody><tr>
+<td width="30%"><label class="j-btn-security j-btn-login-no"><input name="personal_info" value="0" checked="" type="radio">对所有人开放</label></td>
+<td width="30%"><label class="j-btn-security j-btn-login-no"><input name="personal_info" value="1" type="radio">对所有会员开放</label></td>
+<td width="30%"><label class="j-btn-security"><input name="personal_info" value="2" type="radio">对认证会员开放</label>
+</td></tr>
+<tr>
+<td><label class="j-btn-security"><input name="personal_info" value="3" type="radio">对我的商友开放</label></td>
+<td><label class="j-btn-security"><input name="personal_info" value="-1" type="radio">完全保密</label></td>
+</tr>
+
+
+<td><label class="j-btn-security  j-btn-login-no "><input type="radio"   disabled="disabled" name="personal_info" value="4">联系方式每天被查看上线50次（资金方）</label></td>
+</tr>
+
+-->
+</tbody></table>
+<!--
+<div class="fn-tac"><a href="#" id="J-permission-save" class="ui-btn-big ui-btn-red j-security j-btn-security w100">&nbsp;保&nbsp;&nbsp;存&nbsp;</a></div>
+-->
+</div>
+</div>
+</div>
+</div>
+<include file="index_footer" />
+
+<script>
+    $('#changePassword_dialog').click(function(){
+            var qsDialog = $(this).dialog({
+                title: '修改密码',
+                loading: true,
+                showFooter: false,
+                yes: function() {
+                    var options = {};
+                    options['oldpassword'] = $('#J_passwordWrap').find('input[name="oldpassword"]').val();
+                    options['password'] = $('#J_passwordWrap').find('input[name="password"]').val();
+                    options['password1'] = $('#J_passwordWrap').find('input[name="password1"]').val();
+                    $.post("/index.php?m=&c=members&a=save_password",options,function(r){
+                        if(r.status == 1){
+                            disapperTooltip('success',r.msg);
+                            qsDialog.hide();
+                        }else{
+                            disapperTooltip("remind", r.msg);
+                        }
+                    },'json');
+                }
+            });
+            $.getJSON("/index.php?m=&c=members&a=save_password",function(result){
+                if(result.status == 1){
+                    qsDialog.setCloseDialog(false);
+                    qsDialog.setContent(result.data.html);
+                    qsDialog.showFooter(true);
+                }else{
+                    qsDialog.setContent('<div class="confirm">' + result.msg + '</div>');
+                }
+            });
+            });
+</script>
+</body>
+</html>

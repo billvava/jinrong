@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>金融网-项目方信息</title>
+<meta name="keywords" content="">
+<meta name="Description" content="">
+<style>
+html{
+    background-color: #fff;
+    color: #333;
+}
+a {
+    color: #3b4a82;
+    cursor: pointer;
+}
+.ui-dialog-body {
+    padding: 20px;
+    text-align: center;
+}
+a:hover {
+    color: #f60;
+    text-decoration: underline;
+}
+ins, a {
+    text-decoration: none;
+}
+.ui-text-gray-2{
+    color: #666;
+}
+.ui-text-gray-3 {
+    color: #333;
+}
+.fn-font-18 {
+    font-size: 18px;
+}
+.ui-text-orange {
+    color: #f60;
+}
+.ui-header {
+    background-color: #f60;
+    color:#fff;
+    border-bottom: 1px solid #fff;
+    border-radius: 5px 5px 0 0;
+    white-space: nowrap;
+}
+.ui-title {
+    cursor: default;
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.preview-all {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #999;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    /*height: 500px;*/
+    line-height: 30px;
+    margin: 10px 0;
+    padding: 0 30px;
+    position: relative;
+}
+.preview-box {
+    border-top: 1px dashed #c2c2c2;
+    margin-top: -1px;
+    padding: 22px 0;
+}
+.preview-box-list {
+    overflow: hidden;
+}
+.preview-box-list li {
+    display: block;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 49%;
+}
+.preview-box-list li .ittext {
+    margin-left: 70px;
+}
+.project-course li {
+    height: 30px;
+    line-height: 30px;
+}
+.project-course .small-radius {
+    background: #536290 none repeat scroll 0 0;
+    border-radius: 15px;
+    display: inline-block;
+    font-size: 0;
+    height: 10px;
+    left: 50%;
+    margin-left: -5px;
+    margin-top: -5px;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+}
+.project-course .br-preview {
+    border-left: 1px solid #536290;
+    font-size: 0;
+    height: 30px;
+    left: 15px;
+    position: absolute;
+    top: -27px;
+}
+.project-course .fn-pr {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+}
+.preview-img-all {
+    margin: 22px auto 0;
+    width: 800px;
+}
+.preview-img-box img {
+    display: block;
+    height: 400px;
+    width: 800px;
+}
+.preview-img-list {
+    margin: 20px auto 5px;
+    position: relative;
+    width: 500px;
+}
+.preview-img-list li {
+    cursor: pointer;
+    float: left;
+    margin-right: 10px;
+}
+.preview-img-list img {
+    display: block;
+    height: 80px;
+    width: 160px;
+}
+.preview-img-list .sPrev {
+    background: rgba(0, 0, 0, 0) url("../../src/images/icon-arrow-big.jpg") no-repeat scroll right center;
+    display: inline-block;
+    height: 27px;
+    left: -40px;
+    position: absolute;
+    top: 28px;
+    width: 14px;
+    z-index: 11;
+}
+.preview-img-list .sNext {
+    background: rgba(0, 0, 0, 0) url("../../src/images/icon-arrow-big.jpg") no-repeat scroll left center;
+    display: inline-block;
+    height: 27px;
+    left: 527px;
+    position: absolute;
+    top: 28px;
+    width: 14px;
+    z-index: 11;
+}
+</style>
+</head>
+<body class="ui-dialog-body">
+<div class="container">
+<div class="ui-header">
+<div class="ui-title">项目方信息</div>
+</div>
+<div class="preview-all">
+<div class="preview-box">
+<h1 class="fn-font-24 ui-text-gray-3">{$info.title}</h1>
+<!--<p class="ui-text-gray-2 fn-mt-10">一句话</p>-->
+</div>
+<div class="preview-box">
+<ul class="preview-box-list">
+<li>
+项目类型：
+<span class="ui-text-gray-2">{$info.info_type}</span>
+</li>
+
+<li>
+所在地区：
+<span class="ui-text-gray-2">{$info.area}</span>
+</li>
+
+<if condition="$info.xmrz_body neq ''">
+<li>
+融资主体：
+<span class="ui-text-gray-2">{$info.xmrz_body}</span>
+</li>
+</if>
+
+<if condition="$info.industry_id neq ''">
+<li>
+所属行业：
+<span class="ui-text-gray-2">{$info.industry_id}</span>
+</li>
+</if>
+
+<if condition="$info.xmrz_usage neq ''">
+<li>
+融资用途：
+<span class="ui-text-gray-2">{$info.xmrz_usage} </span>
+</li>
+</if>
+
+<li>
+融资金额：
+<span class="fn-font-18 ui-text-orange">
+{$info.amount_interval_min}
+{$info.amount_interval_min_unit}
+<if condition="$info.amount_interval_max neq ''">
+-{$info.amount_interval_max}{$info.amount_interval_max_unit}
+</if>
+</span>
+</li>
+
+<if condition="$info.s11 neq ''">
+<li>
+可提供资料：
+<span class="ui-text-gray-2">{$info.s11} </span>
+</li>
+</if>
+
+<if condition="$info.zjf_tz_type !=''">
+<li>
+股权投资类型：
+<span class="ui-text-gray-2">{$info.zjf_tz_type} </span>
+</li>
+
+<li>
+投资阶段：
+<span class="ui-text-gray-2">{$info.zjf_tz_period} </span>
+</li>
+
+<li>
+投资期限：
+<span class="ui-text-gray-2">{$info.s110_max} - {$info.s110_min}{$info.s110_unit}</span>
+</li>
+</if>
+
+</ul>                            
+</div>
+<div class="preview-box">
+<h4 class="fn-font-18 ui-text-gray-3">项目概述：</h4>
+<div style="text-indent:2em;">{$info.i_overview}</div>
+</div>
+
+<if condition="$info.i_introduce neq ''">
+<div class="preview-box">
+<h4 class="fn-font-18 ui-text-gray-3">项目优势：</h4>
+<div style="text-indent:2em;">{$info.i_introduce}</div>
+</div>
+</if>
+
+<if condition="$info.i_other_remark neq ''">
+<div class="preview-box">
+<h4 class="fn-font-18 ui-text-gray-3">其它备注：</h4>
+<div style="text-indent:2em;">{$info.i_other_remark}</div>
+</div>
+</if>
+
+<notempty name="info['i_keywords']">
+<div class="preview-box">
+<h4 class="fn-font-18 ui-text-gray-3">标签：</h4>
+<div style="text-indent:2em;">
+<volist name="info['i_keywords']" id="vo">
+<a href="http://www.7ronghui.com/index.php?m=Home&c=Item&a=item_list&k={$vo}" target="_blank">{$vo}</a>&nbsp;&nbsp;   
+</volist>                        
+</div>
+</div>
+</notempty>
+
+
+<!--
+<div class="preview-box">
+<h4 class="fn-font-18 ui-text-gray-3">项目附件</h4>
+<div><a href="http://www.trjcn.com/upfile/mtmp/2017/04/29/55c5bc5af52f9719c5db2c7663b86b5e.xlsx" target="_blank"><i class="icon-part-bg icon-part-word"></i><i class="fn-vam">商业计划书333.xlsx</i></a></div>
+</div>
+-->
+</div>
+</div>
+</body>
+</html>

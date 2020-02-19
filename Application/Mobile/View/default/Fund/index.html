@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="public:meta" />
+<link rel="stylesheet" href="../public/css/jobs.css">
+<qscms:load type="category" search="1"/>
+</head>
+<body>
+<include file="public:header" />
+<div class="split-block-title">
+    <div class="sbox js-show-qspageso">
+	    {$Think.get.k|default="请输入要搜索的关键词"}
+	    <script>
+		    // 显示搜索层
+		    $('.js-show-qspageso').on('click', function(){
+			    $('.qspageso').toggle();
+		    });
+	    </script>
+    </div>
+</div>
+<div class="filter-group x4 filter-outer">
+    <div id="f-mask"></div>
+    <div class="filter-outer">
+      <div class="filter-list js-filter" data-tag="0">
+      <div class="filter-cell"><div class="filter-cell-txt">
+      {$category['province'][$_GET['province_id']]|default="地区"}
+      </div>
+      </div></div>
+      <div class="filter-list js-filter" data-tag="1"><div class="filter-cell"><div class="filter-cell-txt">{$category['range'][$_GET['mo']]|default="金额"}</div></div></div>
+      <div class="filter-list js-filter" data-tag="2"><div class="filter-cell"><div class="filter-cell-txt f-normal-txt-exp">{$category['info_type'][$_GET['info_type']]|default="投资方式"}</div></div></div>
+      <div class="filter-list js-filter" data-tag="3"><div class="filter-cell"><div class="filter-cell-txt">更多</div></div></div>
+      <div class="clear"></div>
+      <div class="qs-actionmore"></div>
+	    <form id="searchForm">
+		    <input type="hidden" class="f-normal-code-k" name="key" value="{$Think.get.k}">
+		    <input type="hidden" class="f-normal-code-province_id" name="province_id" value="{$Think.get.province_id}">
+		    <input type="hidden" class="f-normal-code-mo" name="mo" value="{$Think.get.mo}">
+		    <input type="hidden" class="f-normal-code-info_type" name="info_type" value="{$Think.get.info_type}">
+            <input type="hidden" class="f-more-l-code-atttz_industry" name="atttz_industry" value="{$Think.get.atttz_industry}">
+	    </form>
+	    <input type="hidden" class="f-seach-page" value="?m=Mobile&c=fund&a=fund_list&">
+    </div>
+    <div class="con-filter">
+        <div class="f-box f-box-city">
+        <div class="f-box-inner">
+            <volist name="category['province']" id="vo">
+            <li><a class="f-item f-item-normal <if condition="$Think.get.province_id eq $key">select</if>" href="javascript:;" data-type="province_id" data-code="{$key}" data-title="{$province_id}">{$vo}</a></li>
+            </volist>
+            </div>
+        </div>
+		    <div class="f-box f-box-mo">
+			<div class="f-box-inner">
+			<li><a class="f-item f-item-normal <if condition="$Think.get.mo eq 0">select</if>" href="javascript:;" data-type="mo" data-code="0" data-title="不限">不限</a></li>
+            <volist name="category['range']" id="vo" offset="0" length='4'>
+            <li><a class="f-item f-item-normal <if condition="$Think.get.mo eq $key">select</if>" href="javascript:;" data-type="mo" data-code="{$key}" data-title="{$mo}">{$vo}</a></li>
+            </volist>
+			    </div>
+		    </div>
+		    <div class="f-box f-box-exp">
+			<div class="f-box-inner">
+            <!--
+			<li><a class="f-item f-item-normal <if condition="$Think.get.info_type eq 0">select</if>" href="javascript:;" data-type="exp" data-code="0" data-title="不限">不限</a></li>
+            -->
+            <volist name="category['invest_style']" id="vo">
+            <li><a class="f-item f-item-normal <if condition="$Think.get.info_type eq $key">select</if>" href="javascript:;" data-type="info_type" data-code="{$key}" data-title="{$info_type}">{$vo}</a></li>
+            </volist>
+			</div>
+		    </div>
+		    <div class="f-box f-box-more">
+			    <div class="f-box-inner">
+				    <ul class="arrow">
+                         <li><a href="javascript:;" data-id="filter-atttz_industry" class="js-more-l">投资行业<span class="choice f-more-l-txt-atttz_industry">{$category['tz_industry'][$_GET['atttz_industry']]|default="不限"}</span></a></li>
+				    </ul>
+			    </div>
+			    <div class="f-btn-submit qs-center"><div href="javascript:;" class="qs-btn qs-btn-inline qs-btn-small qs-btn-orange" id="f-do-filter"> 筛 选 </div></div>
+			    <div class="f-btn-back qs-center"><div href="javascript:;" class="qs-btn qs-btn-inline qs-btn-small qs-btn-orange f-more-back-btn"> 返 回 </div></div>
+		    </div>
+
+            <div class="f-box f-more-content" id="filter-atttz_industry">
+            <div class="f-box-inner">
+                <ul>
+                    <volist name="category['tz_industry']" id="vo">
+                        <li class="selected"><a href="javascript:;" class="f-more-back-a <if condition="$Think.get.atttz_industry eq $key">select</if>" data-type="atttz_industry" data-title="{$vo}" data-code="{$key}">{$vo}</a></li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="list-split-block lower"></div>
+<if condition="$Think.get.jobcategory neq ''">
+	<div class="list-jobcategory-block font13">
+		<div class="l-recover-job-txt">当前在  <span class="l-cetgory">{$jobs_cate_info['spell'][$_GET['jobcategory']]['categoryname']}</span> 分类下</div>
+		<div class="l-recover-close js-clearjob-jobcategory">清空分类</div>
+	</div>
+</if>
+
+<notempty name="fund_list">
+<volist name="fund_list" id="vo">
+<div class="job-list-item for-event" onclick="javascript:location.href='{:U("fund/fund_show",array('id'=>$vo['id']))}'">
+    <div class="info">
+        <div class="line-one">
+            <div class="job-name substring font16">{$vo.title}
+            <if condition="$jobs['emergency'] eq 1">
+                <img src="../public/images/231.png"/>
+            </if>
+            </div>
+            <if condition="$jobs['stick'] eq 1 && (($_GET['search_type'] eq 'jobs' or $_GET['search_type'] eq 'company' or $_GET['key'] eq '') && !$_GET['sort'])">
+            <div class="refresh-time font12 font_red_light">置顶</div>
+            <else />
+            <div class="refresh-time font12">{$jobs['refreshtime_cn']}</div>
+            </if>
+            <div class="clear"></div>
+        </div>
+        <div class="line-two font14">
+           投资金额:{$vo.amount_interval_min}{$vo.amount_interval_min_unit}<notempty name="vo['amount_interval_max']">-{$vo.amount_interval_max}{$vo.amount_interval_max_unit}
+           </notempty>
+            <div class="clear"></div>
+        </div>
+
+        <div class="line-three font12">
+         投资方式：{$vo.info_type}
+         <div class="clear"></div>
+         </div>
+
+         <div class="line-three font12">
+         资金类型：{$vo.funds_body}
+         <div class="clear"></div>
+         </div>
+
+         <div class="line-three font12">
+         投资地区：{$vo.tz_area}
+         <div class="clear"></div>
+         </div>
+
+          <div class="line-four font12 substring">
+        投资行业：{$vo.tz_industry}
+         <div class="clear"></div>
+         </div>
+
+        <!--
+        <div class="line-five font12">
+          投资类型：{$vo.zjf_tz_type}
+         <div class="clear"></div>
+         </div>
+
+         <div class="line-five font12">
+          投资阶段：{$vo.zjf_tz_period}
+         <div class="clear"></div>
+         </div>
+         -->
+        <div class="apply-btn apply_jobs btn-yellow" data-jid="{$jobs['id']}" onClick="event.cancelBubble = true">投递项目</div>
+        <div class="apply-btn apply_jobs btn-blue" data-jid="{$jobs['id']}" onClick="event.cancelBubble = true">查看联系方式</div>
+    </div>
+    <div class="company font13">
+        <div class="company-name substring">{$jobs.companyname}</div>
+        <div class="district <if condition="$Think.get.range neq ''">range</if> substring"><if condition="$Think.get.range neq ''">{$jobs.map_range}<else />{$jobs.district_cn}</if></div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="list-split-block"></div>
+</volist>
+<div class="qspage">{$page}</div>
+<else />
+    <div class="list-split-block"></div>
+    <div class="list-empty link_blue">
+        抱歉，没有找到符合条件的查询结果。！<br />
+        放宽搜索条件也许有更多合适的资金信息哦~
+    </div>
+</notempty>
+<include file="public:footer_min" />
+<!--<script src="../public/js/inobounce.js"></script>-->
+<script src="../public/js/QSfilter.js"></script>
+<script src="../public/js/qsCategory.js"></script>
+</body>
+<script>
+	// 过滤已投递恢复
+	var recoverDeliver = '{$Think.get.deliver}';
+	if (eval(recoverDeliver)) {
+		$('.js-clickedbox').addClass('clickedchoice');
+	}
+	// 更多列表左右切换
+	 $('.js-more-l').on('click', function () {
+		 var targetId = $(this).data('id');
+		 $('.f-box-more').toggleClass('qs-actionsheet-toggle-left');
+		 $('#' + targetId).toggleClass('qs-actionsheet-toggle');
+	 })
+	 $('.f-more-back-btn').on('click', function () { // 更多列表切换返回
+		 $('.f-box-more').toggleClass('qs-actionsheet-toggle-left');
+		 $('.f-more-content').removeClass('qs-actionsheet-toggle');
+	 })
+	 $('.f-more-back-a').on('click', function () { // 更多列表项点击
+	 	 var thisType = $(this).data('type');
+		 var thisTitle = $(this).data('title');
+		 var thisCode = $(this).data('code');
+		 $('.f-more-l-code-' + thisType).val(thisCode);
+		 $('.f-more-l-txt-' + thisType).text(thisTitle);
+		 $('.f-box-more').toggleClass('qs-actionsheet-toggle-left');
+		 $('.f-more-content').removeClass('qs-actionsheet-toggle');
+	 })
+		// 除更多和读取缓存之外的下拉列表
+	 $('.f-item-normal').on('click', function () {
+		 var thisType = $(this).data('type');
+		 var thisTitle = $(this).data('title');
+		 var thisCode = $(this).data('code');
+		 $('.f-normal-code-' + thisType).val(thisCode);
+		 $('.f-normal-txt-' + thisType).text(thisTitle);
+		 $('body').removeClass('filter-fixed');
+		 $('.f-box-' + thisType).addClass('qs-hidden');
+		 $('.js-filter').removeClass('active');
+		 $('#f-mask').hide();
+		 goPage();
+	 })
+	 // 过滤已投递
+	 $('.js-clickedbox').on('click', function () {
+		 if ($(this).hasClass('clickedchoice')) {
+		 	 $(this).removeClass('clickedchoice');
+			 $('.f-deliver').val('0');
+		 } else {
+			 $(this).addClass('clickedchoice');
+			 $('.f-deliver').val('1');
+		 }
+	 })
+	// 清空已选分类
+	$('.js-clearjob-jobcategory').on('click', function () {
+		$('.qs-recover-code-job').val('');
+		goPage();
+	})
+	 // 跳转方法
+	 function goPage() {
+		 var toSearchPage = $('.f-seach-page').val();
+		 window.location.href = qscms.root + toSearchPage + $('#searchForm').serialize();
+	 }
+		// 点击筛选
+		$('#f-do-filter').on('click', function () {
+			goPage();
+		});
+    var isVisitor = "{:C('visitor.uid')}";
+    $('.js-filter').on('click', function () {
+      var filter = new QSfilter($(this));
+	    document.getElementById('f-mask').ontouchstart = function(e){ e.preventDefault(); }
+    });
+</script>
+</html>

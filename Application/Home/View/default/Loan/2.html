@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>金融网</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="项目融资,融资,天使投资,投资,投资项目,投资公司,项目,股权融资,债权融资,投融资,融资平台,金融网"/>
+<meta name="description" content="金融网（7ronghui.com）是中国最大的融资服务平台，拥有超百万的投融资机构、企业与个人用户入驻。金融网通过线上＋线下、标准化  ＋个性化的服务体系，为客户提供针对性的投融资信息对接和项目撮配服务，成功对接融资千余亿元。金融网凭借其强大、便捷的平台信息整合能力，大大提高企业投融资活动成功率，为中小微企业解决融资难问题。"/>
+<link rel='icon' href='../public/images/v2/icon/logo.ico' type='image/x-ico'/>
+<!--
+<link rel="stylesheet" type="text/css" href="css/base_1fab9d1.css" />
+<link rel="stylesheet" type="text/css" href="css/layout_603fe42.css" />
+<link rel="stylesheet" type="text/css" href="css/main.html_aio_828e191.css" />
+-->
+<link rel="stylesheet" type="text/css" href="../public/css/v2/apply-loan.css" />
+<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<body>
+<div id="content_container" class="apply-loan-table">
+        <h2>申请贷款</h2>
+    <div id="create_project">
+    <div id="category_sub" class="form_item">
+        <div class="form_label"><i class="serial_number"></i> 选择项目的二级类型<i class="star">*</i></div>
+        <div class="form_selected form_input">
+            <div class="result tips">
+                <b style="display: none;"></b>
+                <b>请选择二级类型</b>
+            </div>
+            <i class="arrow"></i>
+        </div>
+        <ul class="slide_down category_sub dn">
+            <li></li>
+        </ul>
+        <input id="secondType" field="second_type" type="hidden">
+    </div>
+
+    
+    <div id="technique_list" class="form_item">
+        <div class="form_label"><i class="serial_number"></i> 选择所需技能</div>
+        <div class="form_selected form_input">
+            <div class="result tips">
+            <b>请选择所需技能</b>
+            </div>
+            <i class="arrow"></i>
+        </div>
+        <ul class="slide_down technique_list dn">
+            <li class="tips">请先选择“项目类型”及其二级类型</li>
+        </ul>
+        <input value="" class="valid untouched pristine" type="hidden">
+        
+        
+    </div>
+
+    <!-- 项目名称 -->
+    <div class="form_item">
+        <div class="form_label"><i class="serial_number"></i> 项目名称<i class="star">*</i></div>
+        <input id="projectName" class="form_input" placeholder="输入项目名称，如：电商web网站设计" field="project_name" type="text">
+    </div>
+
+
+    <div class="form_item valid untouched pristine">
+        <div class="form_label"><i class="serial_number"></i> 项目描述<i class="star">*</i><span class="show_template">查看范例</span></div>
+        <div class="slide_down desc_template dn">
+            <span class="down_tips"></span>
+            <h4><i></i>一、项目描述：</h4>
+            <p>直播产品的手机App开发，包括iOS和Android两端，电视节目的同品牌产品，延伸到手机屏幕，为主播们开拓第二个活动现场，为用户简历更多元的观看互动方式。主播门可以开始直播，用户观看及互动，支持在线购买商品，完成闭环支付。</p>
+            <h4><i></i>二、主要功能点：</h4>
+            <p>直播预告功能、启动直播、参与直播、商品列表、支付功能、消息通知与推送、登录注册</p>
+            <h4><i></i>三、可参考产品：</h4>
+            <p>咸鱼直播： www.xianyu.com <br>拉勾博客：www.lagou.com</p>
+            <h4><i></i>四、人员要求：</h4>
+            <p>1、有直播App产品的开发经验；<br>2、精通Java或PHP，熟悉jQuery、Javascript、Maven、Redis等技术，熟练使用MySQL等关系型数据库等；<br>3、良好的沟通能力和契约精神。</p>
+        </div>
+        <div class="form_desc">
+            <textarea id="projectDesc" class="form_input"></textarea>
+            <div class="tips">
+                <span>详细描述你的项目需求以及对人员的期望，让专家更全面的了解你想要什么。</span><br>
+                一、项目描述：<br>
+                二、主要功能点：<br>
+                三、可参考产品：<br>
+                四、人员要求
+            </div>
+            
+        </div>
+    </div>
+
+  
+    <div id="project_price" class="form_item valid untouched pristine">
+        <div class="form_label"><i class="serial_number"></i> 价格预算<i class="star">*</i></div>
+        <div class="form_selected form_input">
+            <div class="result tips">
+                <b style="display: none;"></b>
+                <b>请选择项目的价格预算区间</b>
+            </div>
+            <i class="arrow"></i>
+        </div>
+        <ul class="slide_down category_sub dn">
+            <li>3000元以下</li><li>3000-5000元</li><li>5000-10000元</li><li>10000-20000元</li><li>20000-30000元</li><li>30000-50000元</li><li>50000元以上</li>
+        </ul>
+        <input id="projectPrice" value="" type="hidden">
+
+    </div>
+
+
+    <div id="project_times" class="form_item valid untouched pristine">
+        <div class="form_label"><i class="serial_number"></i> 项目周期<i class="star">*</i></div>
+        <div class="form_selected form_input">
+            <div class="result tips">
+                <b style="display: none;"></b>
+                <b>请选择项目的时间周期</b>
+            </div>
+            <i class="arrow"></i>
+        </div>
+        <ul class="slide_down category_sub dn">
+            <li>小于1周</li><li>1-2周</li><li>2-4周</li><li>1-3个月</li><li>3个月以上</li>
+        </ul>
+        <input id="projectCycle" value="" type="hidden">
+
+    </div>
+
+    <div class="form_item valid untouched pristine">
+        <div class="form_label"><i class="serial_number">8</i> 公司名称</div>
+        <input id="companyName" class="form_input" placeholder="输入你的公司名称" type="text">
+    </div>
+
+    <div id="prefer" class="form_item">
+        <div class="form_label"><i class="serial_number">9</i> 倾向让谁完成项目<i class="star">*</i></div>
+        <ul class="liked">
+            <li class="active"><i></i>没有倾向</li><li><i></i>个人</li><li><i></i>团队 / 工作室</li>
+        </ul>
+        <input id="teamRequire" value="没有倾向" type="hidden">
+    </div>
+    <p class="error submit_error"></p>
+    <input class="create_btn" value="提交申请" type="button">
+</div>
+</div>
+<script type="text/javascript"> 
+    $(".form_item").each(function(){
+        var sum = 1;
+        $(this).children('.form_label').children('i:first-child').html(sum+$(this).index());
+    });
+</script>
+</body>
+</html>

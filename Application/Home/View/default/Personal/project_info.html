@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript" src="../public/js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<div class="edit-part1" id="edit-part1">
+<a class="uk-icon uk-icon-edit" id="icon-edit-part1">编辑</a>
+<div class="photo" id="photo">
+<img src="<notempty name="info['projectpicture']">{$info['projectpicture']}<else />../public/images/project-default1.png</notempty>"/>
+<input type="hidden" id="percent" name="percent" value="31.82">
+<input type="hidden" id="industryList" name="industryList" value='[{"id":1,"name":"TMT","child":[{"id":88,"name":"家装O2O"},{"id":95,"name":"工具软件"},{"id":12,"name":"其他电商"},{"id":13,"name":"社区电商"},{"id":14,"name":"创意电商"},{"id":15,"name":"生鲜电商"},{"id":16,"name":"跨境电商"},{"id":17,"name":"其他O2O"},{"id":18,"name":"校园O2O"},{"id":19,"name":"餐饮O2O"},{"id":20,"name":"货物O2O"},{"id":21,"name":"在线教育"},{"id":23,"name":"在线旅游"},{"id":25,"name":"社交网络"},{"id":31,"name":"房产服务"},{"id":81,"name":"会展O2O"},{"id":84,"name":"广告"},{"id":85,"name":"B2B交易平台"},{"id":195,"name":"公共出行工具"},{"id":196,"name":"共享经济"},{"id":227,"name":"通信"},{"id":228,"name":"军工"},{"id":234,"name":"物联网"}]},{"id":2,"name":"大数据","child":[{"id":115,"name":"大数据管理平台"},{"id":116,"name":"大数据分析平台"},{"id":36,"name":"量化分析"},{"id":201,"name":"大数据应用平台"}]},{"id":3,"name":"企业服务","child":[{"id":169,"name":"办公OA"},{"id":168,"name":"财务税务"},{"id":167,"name":"法律服务"},{"id":166,"name":"行业及技术解决方案"},{"id":165,"name":"客服"},{"id":164,"name":"其他企业服务"},{"id":162,"name":"数据服务"},{"id":161,"name":"销售营销"},{"id":160,"name":"综合企业服务"},{"id":97,"name":"企业安全"},{"id":40,"name":"人力资源"},{"id":41,"name":"IT服务"}]},{"id":4,"name":"医疗健康","child":[{"id":188,"name":"其他医疗服务"},{"id":184,"name":"医生服务"},{"id":183,"name":"医药电商"},{"id":189,"name":"健康保健"},{"id":42,"name":"移动医疗"},{"id":43,"name":"医疗器械"},{"id":44,"name":"生物制药"},{"id":45,"name":"基因检测"},{"id":46,"name":"医院专科服务"},{"id":47,"name":"养老院"},{"id":48,"name":"可穿戴设备"},{"id":83,"name":"医疗信息化"},{"id":225,"name":"生物技术"},{"id":226,"name":"医药商业"}]},{"id":5,"name":"大消费","child":[{"id":49,"name":"旅游"},{"id":50,"name":"快消品"},{"id":51,"name":"餐饮"},{"id":52,"name":"美业"},{"id":53,"name":"母婴行业"},{"id":193,"name":"零售"},{"id":202,"name":"农业"},{"id":203,"name":"其他消费"}]},{"id":6,"name":"高端制造","child":[{"id":111,"name":"人工智能"},{"id":54,"name":"机器人"},{"id":55,"name":"无人机"},{"id":56,"name":"其他高端制造"},{"id":204,"name":"智能家居"},{"id":205,"name":"芯片半导体"},{"id":206,"name":"3D打印"}]},{"id":7,"name":"金融","child":[{"id":96,"name":"众筹"},{"id":87,"name":"风控"},{"id":153,"name":"消费金融"},{"id":154,"name":"外汇期货贵金属"},{"id":155,"name":"投融资"},{"id":156,"name":"其他金融"},{"id":157,"name":"金融综合服务"},{"id":159,"name":"彩票"},{"id":192,"name":"Fintech金融科技"},{"id":152,"name":"虚拟货币"},{"id":58,"name":"保险"},{"id":59,"name":"理财"},{"id":60,"name":"分期"},{"id":61,"name":"借贷"},{"id":62,"name":"信用及征信"},{"id":63,"name":"支付"},{"id":66,"name":"股票"},{"id":67,"name":"社交金融"},{"id":229,"name":"区块链"}]},{"id":8,"name":"文化娱乐","child":[{"id":180,"name":"知识产权"},{"id":70,"name":"媒体及阅读"},{"id":71,"name":"游戏"},{"id":72,"name":"文娱动漫"},{"id":73,"name":"VR\/AR"},{"id":200,"name":"网红经济"},{"id":208,"name":"影视"},{"id":209,"name":"音乐演艺"},{"id":210,"name":"视频直播"},{"id":211,"name":"其他文娱"}]},{"id":9,"name":"物流","child":[{"id":89,"name":"同城配送"},{"id":90,"name":"城际"},{"id":91,"name":"货运物流"},{"id":92,"name":"仓储"},{"id":94,"name":"冷链物流"},{"id":74,"name":"快递"},{"id":75,"name":"其他物流"},{"id":77,"name":"跨境物流"},{"id":86,"name":"供应链"}]},{"id":10,"name":"环保节能","child":[{"id":103,"name":"环保"},{"id":78,"name":"新能源"},{"id":79,"name":"新材料"}]},{"id":11,"name":"信息安全","child":[{"id":109,"name":"应用安全"},{"id":110,"name":"工控安全"},{"id":106,"name":"物理安全"},{"id":107,"name":"网络安全"},{"id":108,"name":"系统安全"},{"id":212,"name":"其他信息安全"}]},{"id":12,"name":"本地生活","child":[{"id":119,"name":"休闲娱乐"},{"id":129,"name":"宠物服务"},{"id":128,"name":"婚礼婚庆"},{"id":127,"name":"家政服务"},{"id":126,"name":"美食餐饮"},{"id":125,"name":"美业服务"},{"id":124,"name":"其他生活服务"},{"id":123,"name":"商户服务及信息化"},{"id":122,"name":"维修服务"},{"id":121,"name":"小区服务"},{"id":120,"name":"校园服务"},{"id":130,"name":"本地综合生活"}]},{"id":13,"name":"广告营销","child":[{"id":132,"name":"整合营销传播"},{"id":134,"name":"其他广告"},{"id":135,"name":"广告平台"},{"id":136,"name":"广告技术"},{"id":137,"name":"传统广告"},{"id":138,"name":"出海营销"},{"id":213,"name":"数字营销"}]},{"id":14,"name":"教育","child":[{"id":141,"name":"职业培训"},{"id":150,"name":"出国留学"},{"id":149,"name":"儿童早教"},{"id":148,"name":"高等教育"},{"id":147,"name":"教辅设备"},{"id":146,"name":"教育信息化"},{"id":145,"name":"教育综合服务"},{"id":144,"name":"其他教育"},{"id":143,"name":"兴趣教育"},{"id":142,"name":"语言学习"},{"id":151,"name":"K12"}]},{"id":15,"name":"体育运动","child":[{"id":173,"name":"综合体育"},{"id":174,"name":"体育设施及场馆"},{"id":175,"name":"体育媒体及社区"},{"id":176,"name":"赛事运营及经纪"},{"id":177,"name":"其他体育服务"},{"id":178,"name":"户外及极限运动"},{"id":179,"name":"大众健身"}]},{"id":214,"name":"汽车交通","child":[{"id":215,"name":"汽车电商"},{"id":216,"name":"二手车"},{"id":217,"name":"汽车后服务"},{"id":218,"name":"交通出行"},{"id":219,"name":"车主工具及服务"},{"id":220,"name":"汽车金融"},{"id":221,"name":"汽车综合服务"},{"id":222,"name":"车联网及硬件"},{"id":223,"name":"其他汽车服务"}]},{"id":230,"name":"云计算","child":[{"id":231,"name":"SaaS"},{"id":232,"name":"PaaS"},{"id":233,"name":"IaaS"}]},{"id":16,"name":"其他","child":[{"id":80,"name":"其他"}]}]'>
+</div>
+<div class="real-name name-card">
+<span class="percent"><empty name="info['cust_name']">{:contact_hide($info['mobile'],2)}<else />{$info.cust_name}</empty></span>
+</div>
+<div class="company name-card percent">
+<empty name="info['project']">{$info.mobile}<else />{$info.project}</empty>
+</div>
+<div class="e-mail name-card percent">
+{$info.post}
+</div>
+<div class="e-mail name-card percent">
+<empty name="info['email']">{$info.mobile}<else />{$info.email}</empty></div>
+</div>  
+
+<div class="edit-part2" id="edit-part2">
+<a class="uk-icon uk-icon-edit" id="icon-edit-part2"> 编辑</a>
+<div class="project uk-grid" id="project">
+<div class="uk-width-medium-1-2 project-show">
+<h3>项目名称</h3>
+<p class="percent"><empty name="info['pro_name']">{$info.mobile}<else />{$info.pro_name}</empty></p>
+</div>
+<div class="uk-width-medium-1-2 project-show">
+<h3>所属领域</h3>
+<p class="percent">{$info.category}</p>
+</div>
+<div class="uk-width-medium-1-2 project-show">
+<h3>发展阶段</h3>
+<p class="percent"><empty name="info['stage']">盈亏平衡<else />{$info.stage}</empty></p>
+</div>
+<div class="uk-width-medium-1-2 project-show">
+<h3>所在城市</h3>
+<p class="percent"><empty name="info['city']">城市<else />{$info.city}</empty></p>
+</div>
+<div class="uk-width-medium-1-2 project-show">
+<h3>融资需求</h3>
+<p class="percent"><empty name="info['money']"> 万<else />{$info.money}</empty></p>
+</div>
+<div class="uk-width-medium-1-2 project-show">
+<h3>融资单位</h3>
+<p class="percent">{$info.currency}</p>
+</div>
+<div class="uk-width-medium-1-2 project-show">
+<h3>融资轮次</h3>
+<p class="percent">{$info.fround}</p>
+</div>
+<div class="uk-width-medium-1-2 project-show">
+<h3>网址</h3>
+<p class="percent">{$info.url}</p>
+</div>
+<div class="uk-width-1-1 project-show">
+<h3>项目介绍</h3>
+<p class="percent">{$info.pro_info}</p>
+</div>
+<div class="uk-width-1-1 project-show">
+<h3>核心竞争力</h3>
+<p class="percent">{$info.pro_race}</p>
+</div>
+<div class="uk-width-1-1 project-show">
+<h3>团队介绍</h3>
+<p class="percent">{$info.pro_team}</p>
+</div>
+</div>
+</div>
+<div class="edit-part3" id="edit-part3">
+<a class="uk-icon uk-icon-edit" id="icon-edit-part3"> 编辑</a>
+<div class="project-supply uk-grid" id="project-supply">
+<!-- <div class="uk-width-1-1 project-supply-show">
+<h3>项目定位</h3>
+<p class="percent"></p>
+</div> -->
+<div class="uk-width-1-1 project-supply-show">
+<h3>商业模式</h3>
+<p class="percent">{$info.business_model}</p>
+</div>
+<div class="uk-width-1-1 project-supply-show">
+<h3>市场机会</h3>
+<p class="percent">{$info.opportunity}</p>
+</div>
+<div class="uk-width-1-1 project-supply-show">
+<h3>经营现状</h3>
+<p class="percent">{$info.situation}</p>
+</div>
+<div class="uk-width-1-1 project-supply-show">
+<h3>发展规划</h3>
+<p class="percent">{$info.planning}</p>
+</div>
+<div class="uk-width-1-1 project-supply-show">
+<h3>获投状态</h3>
+<p class="percent">{$info.investment_status}</p>
+</div>
+</div>
+</div>
+</body>
+</html>

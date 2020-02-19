@@ -1,0 +1,440 @@
+<include file="public:meta" />
+<link href="../public/css/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/header.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/help.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/base.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/reset2.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/service.css" rel="stylesheet" type="text/css" />
+<!--
+<link rel="stylesheet/less" type="text/css" href="../public/css/v2/less/combination/common.less"/>
+<script src="../public/js/jquery.common.js" type="text/javascript"></script>
+<script src="../public/css/v2/less/less_all.js"></script>
+-->
+</head>
+<body>
+<include file="public:header" />
+<div class="help_banner"></div>
+<style>
+a{
+    color: #666;
+    cursor: pointer;
+}
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+ins, a {
+    text-decoration: none;
+}
+.header_wrapper{
+    background: #fff
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 1000px;
+    width: 1000px;
+}
+.container::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.part-nav-tab-a{
+    background: #f8f8f8 none repeat scroll 0 0;
+    border-bottom: 1px solid #ddd;
+}
+.rzb{
+    width: 1000px;
+    margin:0 auto;
+    border: 1px solid #ddd;
+}
+.rzb_ul li{
+    float: left;
+}
+.rzb_ul li.current a {
+    background: #fff none repeat scroll 0 0;
+    border-top: 2px solid #838ba2;
+    color: #000;
+    margin: -1px 0;
+    padding: 13px 0 1px;
+    position: relative;
+    z-index: 11;
+}
+.rzb_ul li{
+    border-right: 1px solid #dddddd;
+    float: left;
+}
+.rzb_ul li a {
+    width: 140px;
+}
+.rzb_ul li a {
+    display: block;
+    font-size: 14px;
+    height: 30px;
+    line-height: 1em;
+    padding-top: 14px;
+    text-align: center;
+}
+.fn-mt-20 {
+    margin-top: 20px !important;
+}
+.fn-hide{
+    display: none;
+}
+.service-cont-all {
+    background: #fff none repeat scroll 0 0;
+    border-top: 1px solid #ddd;
+    margin-top: -1px;
+}
+.service-cont-box {
+    padding: 15px 20px;
+}
+.single-service article {
+    border-top: 1px dashed #c9c9c9;
+    overflow: hidden;
+    padding: 20px 0 20px 30px;
+}
+.single-service article.cur,.single-service article:hover{
+    background: #f8f8f8 none repeat scroll 0 0;
+}
+.single-service section {
+    margin: 0 155px 0 135px;
+}
+.single-service aside {
+    float: right;
+    width: 145px;
+}
+.single-service aside span {
+    color: #ea4f39;
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 5px;
+}
+.icon_wrapper{
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 6px 9px;
+}
+.icon-Business-Plan-Book{
+position: absolute;
+background: #3385FF;
+width: 50px;
+height:90px;
+line-height: 55px;
+border-radius: 22px;
+padding: 0 20px 0px 20px;
+font-size:50px;
+color:#fff;
+}
+.icon-Recommend{
+    position: absolute;
+    background: #EA4F39;
+    width: 50px;
+    height:90px;
+    line-height: 55px;
+    border-radius: 22px;
+    padding: 0 20px 0px 20px;
+    font-size:50px;
+    color:#fff;  
+}
+</style>
+<div class="rzb fn-mt-20">
+<ul class="rzb_ul container part-nav-tab-a">
+<li class="current" data-id="0"><a href="#">项目方服务介绍</a></li>
+<li data-id="1"><a href="#">资金方服务介绍</a></li>
+<li data-id="2"><a href="#">如何购买</a></li>
+</ul>
+
+<div class="service-cont-all">
+<div class="single-service fn-mb-5">
+<article class="j-hover-all">
+<div class="fn-left fn-ml-10"><img src="../public/images/rong1.png" height="90" width="90"></div>
+<aside class="fn-pt-15"><span>15000.00元/3个月</span></aside>
+<section class="fn-pt-10">
+<h6><a href="#" class="fn-font-14b ui-text-blue-2">金融宝</a></h6>
+<div>
+<span>联系方式查看</span>
+<span>金融特刊</span>
+<span>信息精编展示</span>
+<br>
+<span>信息精编推送</span>
+</div>
+</section>
+</article>
+<!--
+<article class="j-hover-all">
+<div class="fn-left fn-ml-10"><img src="../public/images/rong2.png" height="90" width="90"></div>
+<aside class="fn-pt-15"><span>30000.00元/3个月</span></aside>
+<section class="fn-pt-10">
+<h6><a href="#" class="fn-font-14b ui-text-blue-2">金融宝黄金版</a></h6>
+<div>
+<span>联系方式查看</span>
+<span>金融特刊</span>
+<span>信息精编展示</span>
+<span>在线投融洽谈会</span>
+<br>
+<span>信息精编推送</span>
+<span>委托刷新</span>
+<span>商业计划书编写</span>
+<br>
+</div>
+</section>
+</article>
+-->
+<article class="j-hover-all">
+<div class="fn-left fn-ml-10"><img src="../public/images/rong3.png" height="90" width="90"></div>
+<aside class="fn-pt-15"><span>45000.00元/3个月</span></aside>
+<section class="fn-pt-10">
+<h6><a href="#" class="fn-font-14b ui-text-blue-2">金融宝白金版</a></h6>
+<div>
+<span>联系方式查看</span>
+<span>金融特刊</span>
+<span>信息精编展示</span>
+<br>
+<span>信息精编推送</span>
+<span>委托刷新</span>
+<span>商业计划书编写</span>
+<br>
+</div>
+</section>
+</article>
+<article class="j-hover-all">
+<div class="fn-left fn-ml-10"><img src="../public/images/rong4.png" height="90" width="90"></div>
+<aside class="fn-pt-15"><span>58000.00元/3个月</span></aside>
+<section class="fn-pt-10">
+<h6><a href="#" class="fn-font-14b ui-text-blue-2">金融宝钻石版</a></h6>
+<div>
+<span>联系方式查看</span>
+<span>金融特刊</span>
+<span>信息精编展示</span>
+<span>参加线下投融洽谈会</span>
+<br>
+<span>信息精编推送</span>
+<span>委托刷新</span>
+<span>创刻秀路演</span>
+<span>头条宝</span>
+<br>
+</div>
+</section>
+</article>
+</div>
+<header class="service-cont-title service-cont-title-f8"><h3 id="fw">单项增值服务</h3></header>
+<div class="single-service">
+
+
+<article class="j-hover-all">
+<div class="single-icon single-icon6"></div>
+<aside class="fn-pt-30"><span>12000.00元/1次</span></aside>
+<section class="fn-pt-20">
+<h6><a href="#" class="fn-font-14b ui-text-blue-2">头条宝</a></h6>
+<p class="ui-text-gray-2 ui-le-ht22">对您的企业/项目进行重点包装和推广，提升企业/项目的知名度及品牌价值</p>
+<div class="headline"><span class="w330">项目专访，并撰写采访稿件</span><span>专项推广，多方位宣传企业、项目及产品</span></div>
+<div class="headline"><span class="w330">新媒体首发，覆盖10W+企业主及投资人，拓展您的人脉圈 </span><span>媒体联盟互推，提升企业/项目品牌价值</span></div>
+</section>
+</article>
+
+
+<article class="j-hover-all">
+<div class="icon_wrapper"><i class="icon iconfont icon-Business-Plan-Book"></i></div>
+<aside class="fn-pt-30"><span>10000.00元/1次</span></aside>
+<section class="fn-pt-20">
+<h6><a href="#" class="fn-font-14b ui-text-blue-2">商业计划书</a></h6>
+<p class="ui-text-gray-2 ui-le-ht22">每一个创业公司都有一个独特的故事，每一个故事有被人阅读的时候，这个故事的展现方式有很多，商业计划书就是一种，你要怎么利用商业计划书讲好你的故事呢？交给我们吧,制作商业计划书我们更专业!</p>
+</section>
+</article>
+
+
+<article class="j-hover-all">
+<div class="icon_wrapper"><i class="icon iconfont icon-Recommend"></i></div>
+<aside class="fn-pt-30"><span>6000.00元/1个月</span></aside>
+<section class="fn-pt-20">
+<h6><a href="#" target="_blank" class="fn-font-14b ui-text-blue-2">重点项目推荐</a></h6>
+<p class="ui-text-gray-2 ui-le-ht22">将您的信息收录至金融网重点项目库内进行重点推荐</p>
+<div><span>专业设计师设计</span><span>固定推广位精准展示</span></div>
+</section>
+</article>
+<article class="j-hover-all">
+<div class="single-icon single-icon5"></div>
+<aside class="fn-pt-30"><span>6000.00元/1次</span></aside>
+<section class="fn-pt-20">
+<h6 class="fn-font-14b ui-text-blue-2">优质项目现场推荐</h6>
+<p class="ui-text-gray-2 ui-le-ht22">将您的项目推荐给现场几十家资金方，让您的项目可以直接被投资决策人所阅读了解</p>
+<div><span>直接面呈几十个投资人　　</span><span>投资决策人亲阅您的项目资料</span><br><span>专业团队为您整理项目资料</span><span>让金融网的品牌为您的项目增光</span></div>
+</section>
+</article>
+
+<!--
+<article class="j-hover-all">
+<div class="single-icon single-icon2"></div>
+<aside class="fn-pt-10"><span>45.00元/1条<br>300.00元/10条</span></aside>
+<section>
+<h6><a href="#" target="_blank" class="fn-font-14b ui-text-blue-2">投递项目</a></h6>
+<p class="ui-text-gray-2 ui-le-ht22">无论您是不是会员，主动出击，将您的项目信息通过短信方式发送给对方，提升融资成功率！<br>按条收费，简单便捷快速！</p>
+<div><span>非会员也可以投递，畅投无阻</span><span>按条收费，无任何其他费用</span><span>短信秒发通知对方</span><br><span>开放联系方式，以便对方联系</span><span>便捷，精准的发出合作意向信息</span></div>
+</section>
+</article>-->
+
+<article class="j-hover-all">
+<div class="single-icon single-icon3"></div>
+<aside class="fn-pt-10"><span>300.00元/7天<br>900.00元/30天</span></aside>
+<section>
+<h6><a href="{:U(services/refurbish)}" target="_blank" class="fn-font-14b ui-text-blue-2">委托刷新</a></h6>
+<p class="ui-text-gray-2 ui-le-ht22">保证每天排名，保持一段时间的排名优势。不用您动手做刷新操作了。<br>委托给我们，不会出错，不会遗忘，定点刷新</p>
+<div><span>固定时间，准确无误的完成刷新</span><span>不需要您上网，不需要您操作</span><span>不浪费您的时间，腾出时间做其他事情</span><br><span>系统自动完成，准时准点，不出任何差错</span></div>
+</section>
+</article>
+</div>
+</div>
+<div class="service-cont-all fn-hide">
+<div class="service-cont-box">
+<ul class="service-icon-list">
+<li>
+<aside class="icon-service1"><i></i></aside>
+<p>查看项目方联系方式</p>
+</li>
+<li>
+<aside class="icon-service3"><i></i></aside>
+<p>委托刷新</p>
+</li>
+<li>
+<aside class="icon-service7"><i></i></aside>
+<p>优质项目推送</p>
+</li>
+<li>
+<aside class="icon-service5"><i></i></aside>
+<p>信息排名靠前</p>
+</li>
+</ul>
+<footer class="service-btn-box fn-mb-30"><a href="#" target="_blank" title="了解金融宝更多专属特权">了解金融宝更多专属特权</a></footer>
+</div>
+
+<header class="service-cont-title service-cont-title-f8"><h3>申请实地认证</h3></header>
+
+<div class="fn-p-20">
+<h6 class="service-title-child">资金方申请实地认证获得更多服务</h6>
+<div class="certification-service-list fn-clear">
+<article>
+<aside class="certification-radius1">全程免费</aside>
+<ul>
+<li>免费参加沙龙路演活动</li>
+<li class="cur">免费获得机构及投资人展厅</li>
+</ul>
+</article>
+<article>
+<aside class="certification-radius2">优质高效</aside>
+<ul>
+<li>免费参加沙龙路演活动</li>
+<li class="cur">免费获得机构及投资人展厅</li>
+</ul>
+</article>
+</div>
+<footer class="service-btn-box fn-mb-15"><a href="#" target="_blank" title="了解实地认证更多专属特权">了解实地认证更多专属特权</a></footer>
+</div>
+
+
+</div>
+<div class="service-cont-all fn-hide">
+<div class="service-cont-box">
+<h6 class="part-title-red"><span>购买流程</span></h6>
+<div class="buy-process"><span>选择服务</span><span>服务下单</span><span>支付费用</span><span>立即开通</span></div>
+</div>
+
+<header class="service-cont-title service-cont-title-f8"><h3>付款方式</h3></header>
+
+<div class="fn-p-20">
+
+<h6 class="service-title-child">支付宝账户转账，实时到帐实时开通（推荐）</h6>
+<div class="taobao-way">
+<aside><img src="../public/images/taobao-pic.jpg"></aside>
+<section>支付宝特约商户是指与支付宝公司合作，采用支付宝作为交易方式，参加支付宝信任计划，<br>并愿意接受所有用户监督的商户。<br>支付宝账号：zhifubao@qq.com<br>验证人：金融网</section>
+</div>
+
+<h6 class="service-title-child">柜台汇款方式</h6>
+<div class="counter-way">
+<p><i class="icoHor16"></i>友情提示：银行转账一般1-2个工作日到账，邮局汇款一般1-5个工作日到账。</p>
+<table width="100%">
+<tbody>
+
+<tr class="j-hover-all">
+<td>建设银行</td>
+<td>8888 8888 8888 8888 8888</td>
+<td>建行上海万源城支行</td>
+<td>金融网</td>
+<td>
+<span class="way-input-box fn-hide" id="J_sms0">
+<input id="mobile0" value="" class="way-input" maxlength="11" type="text">
+<a href="javascript:;" class="J_btn_sendsms" value="发送" data-id="0">发送</a>
+</span>
+<a href="javascript:;" data-id="0" class="J_send_bankaccount">发送该账号到手机</a></td>
+</tr>
+
+
+<tr class="way-even j-hover-all">
+<td>中国银行</td>
+<td>8888 8888 8888</td>
+<td>中国银行上海市国和路支行</td>
+<td>金融网</td>
+<td>
+<span class="way-input-box fn-hide" id="J_sms1">
+<input id="mobile1" value="" class="way-input" maxlength="11" type="text">
+<a href="javascript:;" class="J_btn_sendsms" value="发送" data-id="1">发送</a>
+</span>
+<a href="javascript:;" data-id="1" class="J_send_bankaccount">发送该账号到手机</a></td>
+</tr>
+
+
+<tr class="j-hover-all">
+<td>工行中原支行</td>
+<td>8888 8888 8888 8888 888</td>
+<td>中国工商银行上海市杨浦区中原支行</td>
+<td>金融网</td>
+<td>
+<span class="way-input-box fn-hide" id="J_sms1">
+<input id="mobile1" value="" class="way-input" maxlength="11" type="text">
+<a href="javascript:;" class="J_btn_sendsms" value="发送" data-id="1">发送</a>
+</span>
+<a href="javascript:;" data-id="1" class="J_send_bankaccount">发送该账号到手机</a></td>
+</tr>
+
+
+
+</tbody>
+</table>
+</div>
+<div class="ui-text-gray-2 ui-le-ht24 fn-mt-20">
+<p><i class="icoBul16"></i>提示：请您汇款后将汇款信息（<span class="ui-text-red">汇款方式、日期、金额、购买的服务名称、汇款人真实姓名</span>）通过以下任一方式告之金融网。</p>
+<p class="fn-ml-50 fn-pl-5">（1）周一至周五致电 <br>（2）将汇款信息发送至<br>（3）将汇款底单并附上汇款信息发传真至<br>如果收到您的款项，我们会电话联系您，并发通知信到您的站内信箱中，同时我们将为您开通所购买的对应服务。</p>
+</div>
+</div>
+</div>
+<script>
+$('.rzb_ul li').click(function(){
+var id = $(this).attr('data-id');
+if (id.length>0)
+{
+$(this).addClass('current').siblings().removeClass('current');
+$('div.service-cont-all').eq(parseInt(id)).show().siblings('.service-cont-all').hide();
+}
+});
+</script>
+<script type="text/javascript">
+jQuery.jqhover = function(tabtit) {
+    $(tabtit).hover(function(){
+        $(this).addClass("cur")
+    },function(){
+        $(this).removeClass("cur")
+    });
+};
+$.jqhover('.j-hover-all');
+</script>
+</div>
+<include file="public:footer_min" />
+</body>
+</html>

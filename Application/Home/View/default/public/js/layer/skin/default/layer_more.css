@@ -1,0 +1,80 @@
+.layerContent {
+    height: 230px;
+    padding: 40px;
+    width: 420px;
+}
+.layui-layer-title {
+    font-weight: bold;
+}
+.layerContent .lists {
+    height: 190px;
+    width: 100%;
+}
+.layerContent .lists .list {
+    float: left;
+    height: 40px;
+    width: 100%;
+}
+.layerContent .lists .attention {
+    height: 20px;
+    margin-bottom: 0;
+}
+.layerContent .lists .attention p {
+    color: red;
+    padding-left: 80px;
+}
+.layerContent .list span {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    width: 80px;
+}
+.layerContent .list input {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    float: left;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 15px;
+    width: 256px;
+}
+.layerContent .finalRow input {
+    width: 60px;
+}
+.layerContent .finalRow .getMobileCode {
+    background-color: #00b38b;
+    border-radius: 5px;
+    color: #fff;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 20px;
+    text-align: center;
+    width: 130px;
+}
+.layerContent .finalRow .getMobileCode:hover {
+    cursor: pointer;
+}
+.layerContent #showContButton {
+    background-color: #00b38b;
+    border-radius: 5px;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    text-align: center;
+    width: auto;
+}
+.layerContent #showContButton:hover {
+    background-color: #02a37f;
+    cursor: pointer;
+}
+.warmPrompt {
+    height: auto;
+    padding: 40px;
+    width: 320px;
+}
+.warmPrompt > p {
+    line-height: 30px;
+    width: 100%;
+}

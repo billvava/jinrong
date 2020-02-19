@@ -1,0 +1,226 @@
+<!--
+<div i="content" class="ui-dialog-content" style="display: block; width: 600px;"><div class="popup-msg fn-tac">
+<p class="part-popup-ittext">暂时无法投递，请购买VIP会员后获取联系方式</p>
+<p class="fn-mt-10"><a href="{:U('services/index')}" class="ui-text-orange fn-font-14">了解VIP会员&gt;&gt;</a></p>
+<footer class="fn-mt-20"><a href="javascript:;" id="dialog_close" class="close J_dismiss_modal ui-btn ui-btn-orange">确定</a></footer>
+</div>
+</div>
+-->
+
+<empty name="visitor['uid']">
+<div i="content" class="ui-dialog-content" style="display: block; ">
+<div class="popup-msg">
+<form  method="post">
+<article class="part-fieldset">
+<aside>手机号：</aside>
+<section class="part-fieldset-section">
+<input class="t_input w260" name="username" maxlength="200" id="login_username" type="text">
+<span class="part-fieldset-msg"></span>
+</section>
+</article>
+<article class="part-fieldset">
+<aside>密码：</aside>
+<section class="part-fieldset-section">
+<input class="t_input w260" name="password" maxlength="20" id="login_password" type="password">
+<span class="part-fieldset-msg"></span>
+</section>
+</article>
+<article class="part-fieldset fn-hide">
+<aside></aside> 
+<section class="part-fieldset-section">
+<div class="part-fieldset-msg"><em class="ui-text-red" id="login-msg">账号或密码错误，请重新输入！</em></div>
+</section>
+</article>
+<article class="part-fieldset">
+<aside></aside>
+<section class="part-fieldset-section">
+<div><a href="javascript:;" id="btn-login" class="ui-btn ui-btn-orange w130 fn-mr-25">登录</a>
+<a href="{:U('Members/user_getpass')}" class=" fn-ml-50">忘记密码？</a></div>
+<p class=" fn-mt-20">还不是会员？<a href="{:U('Members/register')}" class="ui-text-blue-2">立即注册</a></p>
+</section>
+</article>
+</form>  
+</div>
+</div>
+<script>
+$('body').on('click','#btn-login',function(){
+username = $('#login_username').val();
+password = $('#login_password').val();
+$.ajax({
+url: qscms.root + '?m=&c=Members&a=show_login',
+cache: false,
+async: false,
+type: 'post',
+dataType: 'json',
+data: {username:username,password:password},
+success: function(json) {               
+console.log(json.msg);
+if(json.status == 1){
+window.location.href=json.data;
+}else{
+$('.fn-hide').attr("style","display: block");
+}
+}
+});
+});
+</script>
+<else />
+<form method="POST" id="J_deliver_frm" style="width: 700px;">
+<div class="fn-tac">
+<img src="../public/images/drop_in_box_step.jpg" alt="通过短信发送给对方,对方查阅后联系你" width="453" height="53">
+</div>
+<notempty name="item_list">
+<div class="popup-msg-c fn-pt-30">
+<article class="part-fieldset">
+<aside><span>*</span>选择投递的项目：</aside>
+<section class="part-fieldset-section">
+<span class="fieldset-select-arrow-box j-fieldset-select" id="J-fieldset-select">
+<span class="t_input w280">请选择项目</span><i class="fieldset-select-arrow"></i>
+<ul>
+
+<volist name="item_list" id="vo">
+<li><a href="javascript:;" data-domain="http://www.7ronghui.com" data-id="{$vo.id}" type-id="{$vo.info_type}" data-idkey="#">{$vo.title}</a></li>
+</volist>
+</ul>
+</span>
+
+<input type="text" style="width:0;height:0;opacity: 0;filter: alpha(opacity=0);" data-rule="required" value="" name="itemer_id" id="itemer_id" bind-event="1">
+
+<a href="#" target="_blank" data-domain="http://www.7ronghui.com" id="J_zjxm_edit" class="ui-text-blue-2 fn-hide">修改</a>
+
+<span class="part-fieldset-msg" id="J_deliver_msg">
+<em class="ui-text-red"></em>
+</span>
+</section>
+</article>
+<else/>
+<div class="popup-msg-c fn-tac fn-mt-20">
+<article>
+暂无项目,请<a href="{:U('Members/login')}">登录</a>后台发布项目
+</article>
+</div>
+</notempty>
+
+<!--
+<div class="popup-msg-b fn-pt-10">
+<h6 class="part-popup-pot"><i class="icoBul16"></i><span class="fn-vam">已经是会员可 <a href="javascript:;" id="J_btn_fdl_login" class="ui-text-blue-2">登录</a> 后投递</span></h6>
+<article class="part-fieldset">
+<aside><span>*</span>联系人：</aside>
+<section>
+<div class="part-fieldset-section">
+<input name="contact_name" id="J_contact_name" maxlength="10" class="t_input w370" data-rule="required" bind-event="1" type="text">
+<span class="part-fieldset-msg"></span>
+</div>
+</section>
+</article>
+<article class="part-fieldset">
+<aside><span>*</span>手机号码：</aside>
+<section>
+<div class="part-fieldset-section">
+<input name="mobile" id="J_mobile" maxlength="11" class="t_input w370" data-rule="required|regexp[mobile]" bind-event="1" type="text">
+<span class="part-fieldset-msg"></span>
+</div>
+</section>
+</article>
+<article class="part-fieldset">
+<aside><span>*</span>项目标题：</aside>
+<section class="part-fieldset-section">
+<input name="invite_title" maxlength="30" class="t_input w370" data-rule="required" bind-event="1" type="text">
+<span class="part-fieldset-msg"></span>
+</section>
+</article>
+<article class="part-fieldset part-fieldset-min-textarea" style="min-height:114px;">
+<aside><span>*</span>项目描述：</aside>
+<section>
+<textarea name="invite_content" tip="请简单介绍项目情况、项目优势及融资用途。字数20-500之间" maxlength="500" data-rule="required|minlength[20]|maxlength[500]" class="J_tip" style="color: rgb(153, 153, 153);" bind-event="1"></textarea>
+<span class="part-fieldset-msg"></span>
+</section>
+</article>
+
+<article class="part-fieldset">
+<aside>商业计划书：</aside>
+<section class="part-fieldset-section">
+<div class="fn-clear part-fieldset-obj">
+<input type="file" id="J_upload_file" class="ignore">
+<input type="hidden" value="" name="invite_attach" id="F_att" class="ignore">
+<span class="fn-vam ui-le-ht30">为了提升资金方的回复率，请上传您的商业计划书</span>
+</div>
+<span class="pl10" id="J_upload_file_view" style="display:none;"></span>
+</section>
+</article>
+
+<article class="part-fieldset">
+<aside></aside>
+<span class="part-fieldset-msg" id="J_deliver_msg"></span>
+</article>
+<article class="part-fieldset">
+<aside></aside>
+<section class="part-fieldset-section"><a href="###" id="J_btn_send_deliver" class="ui-btn ui-btn-red w130">投递</a></section>
+</article>
+-->
+<notempty name="item_list">
+<article class="part-fieldset fn-mt-30">
+<aside></aside>
+<input type="hidden" value="{$user_id}" name="user_id">
+<input type="hidden" value="{$funder_id}" name="funder_id">
+<input type="hidden" value="{:C('visitor.uid')}" name="uid">
+<section><a href="###" id="J_btn_send_deliver" class="ui-btn ui-btn-red w130">确定</a></section>
+</article>
+<else />
+<article class="part-fieldset fn-mt-30 fn-tac">
+<section><a href="###" id="J_btn_send_deliver" class="ui-btn ui-btn-red w130 close J_dismiss_modal btn-cancel">确定</a></section>
+</article>
+</notempty>
+</div>
+</form>
+<script>
+//表单下拉
+$('.j-fieldset-select .t_input').bind('click',function(){
+if($(this).parent().addClass("cur")){
+    return false;
+}
+$(this).parent().addClass("cur");
+});
+
+$(".j-fieldset-select a").bind('click', function(){
+var data_id = $(this).attr("data-id");
+var type_id = $(this).attr("type-id");
+$('.t_input').text($(this).text());
+$('#J_zjxm_edit').removeClass('fn-hide');
+$('.part-fieldset-msg em').empty();
+$('#J_zjxm_edit').attr("href",$(this).attr("data-domain")+"/Personal/edit/"+'info_type/'+type_id+'/id/'+data_id+".html");
+$("#itemer_id").val(data_id);
+$(this).parents(".j-fieldset-select").removeClass("cur");
+});
+
+$('body').on('click','.btn-cancel',function(){
+    layer.closeAll('page');
+});
+
+$("#J_btn_send_deliver").click(function(){
+    if($("input[name='itemer_id']").val()==''){
+        msg ='请选择项目!';
+        $('.part-fieldset-msg').html('<em class="ui-text-red"><i class="icoErr16"></i>' + msg + "</em>");
+        return false;
+    }
+    var deliver_form = $("#J_deliver_frm").serialize();
+    $.ajax({
+        url: "/AjaxPersonal/deliver_save",
+        type: "POST",
+        dataType: "json",
+        data: deliver_form,
+        success: function(res) {
+            console.log(res);
+            if (res.code  == 200) {
+                if (res.forward_url) return location.href = res.forward_url,void 0;
+                $('.modal,.modal_backdrop').remove();
+                disapperTooltip("success", res.msg);
+            }else{
+                $("#J_deliver_msg").html('<em class="ui-text-red"><i class="icoErr16"></i>' + res.msg + "</em>").show();
+            } 
+        }
+    })
+});
+</script>
+</empty>
+

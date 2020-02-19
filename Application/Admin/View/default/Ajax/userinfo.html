@@ -1,0 +1,78 @@
+<div class="admin_management">
+<if condition="$userinfo[utype] eq 1">
+	<div style="height:60px;">对 <strong  style="color:#56C6FF">{$company_profile['companyname']}</strong>进行以下操作&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="{$manage_url}">进入会员中心>></a><br />
+<span class="admin_note"><br />
+用户名：{$userinfo['username']}，uid:{$userinfo['uid']}，</span></div>
+
+	<div class="clear"></div>
+	<div class="mantit">资料管理</div>
+	<div class="manitem"><a href="{:U('Home/persoanal/published',array('key'=>$userinfo['uid']))}">资金信息</a></div>
+	<div class="manitem"><a href="{:U('CompanyMembers/edit',array('uid'=>$userinfo['uid']))}">会员资料</a></div>
+	<div class="manitem"><a href="{:U('Personal/member_edit',array('uid'=>$userinfo['uid']))}">修改密码</a></div>
+<div class="manitem"><a href="javascript:;" class="ajax_distribution_customer" parameter="mobile={$userinfo['mobile']}&uid={$userinfo['uid']}">分配客服</a></div>
+<div class="manitem"><a href="javascript:;" class="ajax_discard" parameter="mobile={$userinfo['mobile']}&uid={$userinfo['uid']}">丢进公海</a></div>
+	<div class="clear"></div>
+
+	<div class="mantit">联系会员<span>（手机:<notempty name="userinfo['mobile']">{$userinfo['mobile']}<else />未填写</notempty>）</span></div>
+	<div class="manitem"><a class="ajax_send_sms" href="javascript:;" parameter="mobile={$userinfo['mobile']}&uid={$userinfo['uid']}">发送短信</a></div>
+	<div class="manitem"><a class="ajax_send_email" href="javascript:;" parameter="email={$userinfo['email']}&uid={$userinfo['uid']}">发送邮件</a></div>
+	<div class="manitem"><a class="ajax_send_pms" href="javascript:;" parameter="tousername={$userinfo['username']}">发站内信</a></div>
+	<div class="clear"></div>
+<else />
+
+	<div style="height:30px;">对 <strong  style="color:#56C6FF">{$userinfo.realname|default=$userinfo['username']}</strong>进行以下操作<span class="admin_note">用户名：{$userinfo['username']}，uid:{$userinfo.uid}</span>&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="{$manage_url}">进入会员中心>></a></div>
+	<div class="mantit">会员管理</div>
+	<div class="manitem"><a target="_blank" href="{:U('Home/personal/published')}">项目信息</a></div>
+	<div class="manitem"><a target="_blank" href="
+	{:U('Home/Personal/account')}">个人资料</a></div>
+	<div class="manitem"><a href="{:U('Personal/member_edit',array('uid'=>$userinfo['uid'],'_k_v'=>$userinfo['uid']))}">修改密码</a></div>
+	<div class="manitem"><a href="javascript:;" class="ajax_distribution_customer" parameter="mobile={$userinfo['mobile']}&uid={$userinfo['uid']}">分配客服</a></div>
+	<div class="manitem"><a href="javascript:;" class="ajax_discard" parameter="mobile={$userinfo['mobile']}&uid={$userinfo['uid']}">丢进公海</a></div>
+	<div class="clear"></div>
+
+	<div class="mantit">联系会员<span>（手机:<notempty name="userinfo['mobile']">{$userinfo['mobile']}<else />未填写</notempty>，邮箱:<notempty name="userinfo['email']">{$userinfo['email']}<else/>未填写</notempty>）</span></div>
+	<div class="manitem"><a class="ajax_send_sms" href="javascript:;" parameter="mobile={$userinfo['mobile']}&uid={$userinfo['uid']}">发送短信</a></div>
+	<div class="manitem"><a class="ajax_send_email" href="javascript:;" parameter="email={$userinfo['email']}&uid={$userinfo['uid']}">发送邮件</a></div>
+	<div class="manitem"><a class="ajax_send_pms" href="javascript:;" parameter="tousername={$userinfo['username']}">发站内信</a></div>
+	<div class="manitem"><a class="ajax_send_talks" href="javascript:;" parameter="tousername={$userinfo['username']}">发送约谈</a></div>
+    <div class="manitem"><a class="ajax_send_talks_inner" href="javascript:;" parameter="tousername={$userinfo['username']}">内部约谈</a></div>
+	<div class="clear"></div>
+</if>
+</div>
+<script type="text/javascript">
+	$(".ajax_send_sms").QSdialog({
+	  DialogTitle:"发送短信",
+	  DialogContentType:"url",
+	  DialogContent:"{:U('Ajax/ajax_send_sms')}&"
+	  });
+	$(".ajax_send_email").QSdialog({
+	  DialogTitle:"发送邮件",
+	  DialogContentType:"url",
+	  DialogContent:"{:U('Ajax/ajax_send_email')}&"
+	  });
+	$(".ajax_discard").QSdialog({
+	  DialogTitle:"丢进公海",
+	  DialogContentType:"url",
+	  DialogContent:"{:U('Ajax/ajax_discard')}&"
+	  });
+	$(".ajax_send_pms").QSdialog({
+	  DialogTitle:"发送站内信",
+	  DialogContentType:"url",
+	  DialogContent:"{:U('Ajax/ajax_send_pms')}&"
+	  });
+	$(".ajax_send_talks").QSdialog({
+	  DialogTitle:"发送约谈",
+	  DialogContentType:"url",
+	  DialogContent:"{:U('Ajax/ajax_send_talks')}&"
+	  });
+    $(".ajax_send_talks_inner").QSdialog({
+      DialogTitle:"内部约谈",
+      DialogContentType:"url",
+      DialogContent:"{:U('Ajax/ajax_send_talks_inner')}&"
+      });
+	$(".ajax_distribution_customer").QSdialog({
+	  DialogTitle:"分配专职客服",
+	  DialogContentType:"url",
+	  DialogContent:"{:U('Ajax/ajax_distribution_customer')}&"
+	  });
+</script>

@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<include file="public:meta" />
+	<link href="../public/css/company/common.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/company/company_index.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/common_ajax_dialog.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/company/company_ajax_dialog.css" rel="stylesheet" type="text/css" />
+	<script src="../public/js/company/jquery.common.js" type="text/javascript" language="javascript"></script>
+	<style type="text/css">
+	.subnav {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 179px;
+}
+.subnav-header {
+    background-color: #536290;
+    border-top-left-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    height: 37px;
+    line-height: 37px;
+    padding-left: 35px;
+    position: relative;
+}
+.subnav-group {
+    padding-bottom: 10px;
+}
+.subnav-title {
+    background-color: #e3eaff;
+    border-bottom: 1px solid #e7e7e7;
+    color: #333;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 35px;
+    position: relative;
+}
+.subnav-item {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.subnav-item a {
+    border-bottom: 1px dashed #c2c2c2;
+    border-top: 1px dashed #fff;
+    color: #666;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 25px;
+    position: relative;
+}
+.subnav-item-first {
+    border-top: 1px solid #fff;
+    margin: 0;
+    padding: 5px 10px 0;
+}
+.subnav-item-first a {
+    border-top: 0 none;
+}
+.subnav-item-last {
+    border-bottom: 1px dashed #fff;
+}
+.icon-nav-dot {
+    background-color: #d6d6d6;
+    display: block;
+    height: 4px;
+    left: 10px;
+    margin-top: -2px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    width: 4px;
+}
+.subnav-item a:hover, .subnav-item-current a {
+    background-color: #ebebeb;
+    color: #333;
+    text-decoration: none;
+}
+</style>
+</head>
+<body>
+<include file="index_header" />
+<div class="index_main">
+<include file="left" />
+<div class="mainbox">
+</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<include file="index_footer" />
+<script type="text/javascript" src="../public/js/company/fusioncharts/fusioncharts.js"></script>
+<script type="text/javascript" src="../public/js/company/fusioncharts/fusioncharts.theme.fint.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".J_bind_wx").click(function(){
+			$('#J_popWeixin').show();
+		});
+		// 关闭微信绑定提示
+        $('#J_popWeixin .close').on('click', function(){
+            $('#J_popWeixin').hide();
+        });
+        $('.J_companyinfo').click(function(){
+        	$(this).closest('.cominfotip').remove();
+        });
+		$('#J_sign_in').click(function(){
+			var f = $(this);
+	    	$.getJSON("{:U('members/sign_in')}",function(result){
+	    		if(result.status == 1){
+	    			disapperTooltip("goldremind", '每天签到增加'+result.data+'{:C('qscms_points_byname')}<span class="point">+'+result.data+'</span>');
+					f.addClass('btn_gray9').text('已签到');
+	    			$(".my_points_num").html(parseInt($(".my_points_num").html())+parseInt(result.data));
+	    		}else{
+	    			disapperTooltip('remind',result.msg);
+	    		}
+	    	});
+	    });
+		get_statistics_data();
+		$(".statistics_select").click(function(){
+			var data_k = $(this).attr('data_k');
+			var data_val = $(this).attr('data_val');
+			$(".statistics_"+data_k).val(data_val);
+			get_statistics_data();
+		});
+		function get_statistics_data(){
+			var type = $(".statistics_type").val();
+			var settr = $(".statistics_settr").val();
+			$.getJSON("{:U('company/ajax_get_statistics')}",{type:type,settr:settr},function(result){
+				$(".statistics_wrap").html(result.data);
+			});
+		}
+        var isDone = true; // 防止重复点击
+		// 换一批
+        $('.J_refresh').on('click', function(event) {
+        	var obj = $(this);
+        	var ajaxtype = obj.data('ajaxtype');
+        	var ajaxpage = parseInt(obj.attr('ajaxpage')); // 记录页数
+        	if (isDone) {
+        		isDone = false;
+	        	$.getJSON("{:U('company/ajax_get_interest_resume')}", {type: ajaxtype, p: ajaxpage}, function(data) {
+		        		$('.resumelist').html(data.data.html);
+		        		if(data.data.page==ajaxpage){
+		        			obj.attr('ajaxpage', 1);
+		        		}else{
+		        			obj.attr('ajaxpage', ajaxpage+1);
+		        		}
+		        		isDone = true;
+	        	});
+        	};
+        });
+        $("#refresh_jobs_all").click(function(){
+        	$.getJSON("{:U('CompanyService/jobs_refresh_all')}",function(result){
+        		if(result.status==1){
+        			disapperTooltip('success',result.msg);
+        		}
+        		else if(result.status==2)
+        		{
+        			var qsDialog = $(this).dialog({
+		                title: '批量刷新职位',
+		                loading: true,
+		                border: false,
+		                yes: function () {
+		                	window.location.href=result.data;
+		                }
+		            });
+		            qsDialog.setBtns(['单条刷新', '取消']);
+		            qsDialog.setContent('<div class="refresh_jobs_all_confirm">' + result.msg + '</div>');
+        		}
+        		else
+        		{
+        			disapperTooltip('remind',result.msg);
+        		}
+        	});
+        });
+        $(".btn_complaint").click(function(){
+        	var url = "{:U('Company/complaint_consultant')}";
+            var qsDialog = $(this).dialog({
+                title: '投诉客服',
+                loading: true,
+                border: false,
+                yes: function () {
+                	var notes = $("#notes").val();
+                    $.post(url, {notes:notes},function (result) {
+		                if (result.status == 1) {
+		                	disapperTooltip('success', result.msg);
+		                    qsDialog.setCloseDialog(true);
+		                } else {
+		                    disapperTooltip('remind', result.msg);
+		                    qsDialog.setCloseDialog(false);
+		                }
+		            },'json');
+                }
+            });
+            $.getJSON(url, function (result) {
+                if (result.status == 1) {
+                    qsDialog.setContent(result.data);
+                } else {
+                    disapperTooltip('remind', result.msg);
+                }
+            });
+        });
+		<if condition="$confirm_setmeal eq 1">
+			var confirmDialog = $(this).dialog({
+        		title: '温馨提示',
+				loading: true,
+				btns: ['立即缴费', '残忍拒绝'],
+				yes: function () {
+                    location.href="{:U('companyService/index')}";
+                }
+			});
+			$.getJSON("{:U('company/confirm_setmeal')}",function(result){
+				confirmDialog.setContent(result.data.html);
+			});
+		</if>
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<form>
+<header class="part-head-all-a fn-pl-5 j-tab-all-c-cur">
+<nav class="fn-left">
+<ul>
+<li class="ui-tab-head-current"><a type="button">发布资金信息</a></li>
+</ul>
+</nav>
+</header>
+<div class="part-cont-radio-a j-tab-cont">
+<div class="part-list">
+<aside class="fn-left j-tab-all-c-1">
+<ul class="fund_select">
+<li><label class="label-pointer J_tab" for="i2010">
+<input name="xiangmu" id="i2010" _url="/Home/personal/zjxm_publish/add/2010" checked="" type="radio">股权投资</label>
+</li>
+
+<li><label class="label-pointer J_tab" for="i2011">
+<input name="xiangmu" id="i2011" _url="/Home/personal/zjxm_publish/add/2011" type="radio">债权投资</label>
+</li>
+
+<li><label class="label-pointer J_tab" for="i2012">
+<input name="xiangmu" id="i2012" _url="/Home/personal/zjxm_publish/add/2012" type="radio">金融投资</label>
+</li>
+
+<li><label class="label-pointer J_tab" for="i2013">
+<input name="xiangmu" id="i2013" _url="/Home/personal/zjxm_publish/add/2013" type="radio">BT/BOT 项目投资</label>
+</li>
+
+<li><label class="label-pointer J_tab" for="i2014">
+<input name="xiangmu" id="i2014" _url="/Home/personal/zjxm_publish/add/2014" type="radio">其它投资</label>
+</li>
+
+</ul>
+</aside>
+<div class="j-tab-cont">
+<table class="fn-hide tabshow J_tab_menu" style="display:block;">
+<tbody><tr>
+<td>您与项目方合作进行项目的投资模式，最终目的是获得较大的资金利益。其获得的利益可以通过分得项目方利润或股利获取，同时也可以以其他方式获取；通常是长期投资，以期控制或对项目方公司的财务和经营政策有参与决策的权力，但并不决定这些政策。</td>
+</tr>
+</tbody></table>
+
+
+<table class="fn-hide tabshow J_tab_menu">
+<tbody><tr>
+<td>您与项目方以合同方式的进行资金借贷的投资模式，此模式借款期间较短，且利率固定，即项目方的经营状况与您的投资所得无关，是在最初便协定好的。以此种方式投资，您无法干涉项目方的经营政策等公司运营相关事务。</td>
+</tr>
+</tbody></table>
+
+
+<table class="fn-hide tabshow J_tab_menu">
+<tbody><tr>
+<td>泛指通过银行或基金公司等其他金融公司风控后的项目，以产品模式推出的理财方式，也包含部分公司拆股后，以有限合伙形式将股份分散，从而您能持有对方公司股份的投资方式。</td>
+</tr>
+</tbody></table>
+<table class="fn-hide tabshow J_tab_menu">
+<tbody><tr>
+<td>通常与政府合作，其中BT项目是指在建设完毕后，由政府补全项目建设资金，从而获得投资收益，多见于政府办公楼等建设项目。而BOT是指在建设完毕后有一定期限的经营权，如道路收费站经营等。通过经营而获取收益。</td>
+</tr>
+</tbody></table>
+<table class="fn-hide tabshow J_tab_menu">
+<tbody><tr>
+<td>如果您认为您希望的投资方式不属于股权投资/债权投资/金融投资/BT BOT项目投资，则可以在此进行您的信息发布。</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<footer class="fn-tac fn-mt-20"><a href="javascript:void(0);" data-id="xiangmu" class="ui-btn-big ui-btn-blue w100" id="J-next-step" data-label="项目">下一步</a></footer>
+</form>
+<footer class="ui-text-gray-2 fn-mt-20">
+<strong>重要提示：</strong><br>为了保证信息能顺利通过我们的审核，请将信息的真实情况尽可能全面的发布出来，根据我们的长期跟踪统计，信息完整度越高，越容易获得目标客
+户的关注，并能大幅提升投融双方达成合作意向的成功率！
+</footer>
+</div>
+</div>
+<script type="text/javascript">
+    _url = $('.fund_select input:radio[name=xiangmu]:eq(0)').attr('_url');
+    $('#J-next-step').attr('href',_url);
+    $(function () {
+        $("input").click(function () {
+            if ($(this).attr("checked")) {
+                var _url = $(this).attr("_url");
+                if(_url){
+                    $('#J-next-step').attr('href',_url);
+                }
+            }
+        });
+    });
+
+    var isDone = true; // 防止重复点击
+    $('.J_tab').on('click', function(event) {
+    $(this).addClass("select").siblings(".J_tab").removeClass("select");
+    var obj = $('.J_tab.select');
+    var index = $(".J_tab").index(this);
+    $('.J_tab_menu').eq(index).find('.ajax_loading').show();
+    $('.J_tab_menu').eq(index).show().siblings(".J_tab_menu").hide();
+isDone = true; // 切换tab之后重置
+});
+</script>
+<include file="index_footer" />
+</body>
+</html>

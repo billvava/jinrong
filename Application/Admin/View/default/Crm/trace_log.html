@@ -1,0 +1,145 @@
+<include file="public:header" />
+<form id="form1" name="form1" enctype="multipart/form-data" method="post" action="{:U('throw_into_sea')}">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="link_lan">
+    <tr>
+      <td width="100" class="admin_list_tit admin_list_first">
+        <label id="chkAll">
+    <input type="checkbox" name="" title="全选/反选" id="chk"/></label>
+      uid</td>
+      <td align="center" width="15%" class="admin_list_tit">
+        客户姓名</td>
+        <td align="center" width="140" class="admin_list_tit">之前负责人</td>
+        <td align="center" width="140" class="admin_list_tit">现任负责人</td>
+        <td align="center" width="12%" class="admin_list_tit">手机号码</td>
+        <td align="center"  width="100"  class="admin_list_tit">跟进情况</td>
+        <td align="center"  width="100"  class="admin_list_tit">跟进时间</td>
+        <td align="center"  width="100"  class="admin_list_tit">注册时间</td>
+        <td align="center"  width="50"  class="admin_list_tit">状态</td>
+    </tr>
+      <volist name="trace_log" id="vo">
+      <tr>
+        <td align="left" class="admin_list admin_list_first">
+        <input name="id[]" type="checkbox" id="id" value="{$vo['id']}"/>
+          {$vo['uid']}
+          </td>
+        <td align="center" class="admin_list">
+            <notempty name="vo[name]">{$vo['name']}<else />{$vo['realname']}</notempty>
+        </td>
+        <td align="center" class="admin_list">
+          {$vo['cid']}
+          </td>
+          <td align="center" class="admin_list">
+          {$vo['new_cid']}
+          </td>
+          <td align="center" class="admin_list">{$vo.mobile}</td>
+<td align="center" class="admin_list vtip" title="{$vo.notes}">{$vo.notes}</td>
+<td align="center" class="admin_list">{:date('Y-m-d H:i:s',$vo['addtime'])}</td>
+<td align="center" class="admin_list">{:date('Y-m-d H:i:s',$vo['reg_time'])}</td>
+         <td align="center" class="admin_list"><if condition="vo['is_locked'] eq 1"><span style="color:#f00;">{$vo.is_locked}</span><else />{$vo.is_locked}</if>
+        </td>
+        </tr>
+       </volist>
+      </table>
+    </form>
+
+    <if condition="!$trace_log">
+    <div class="admin_list_no_info">没有任何信息！</div>
+    </if>
+<style type="text/css">
+    .tj_trace_log:hover{color:#000;}
+</style>
+    <table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">  
+      <tr>
+      <td>
+          <a style="display: block;text-decoration:none;color:#000;" class="admin_submit tj_trace_log" href="{:U('Crm/trace_detail')}">添加跟进记录</a>
+        </td>
+        <td width="305" align="right">
+          <form id="formseh" name="formseh" method="get" action="?">
+          <input type="hidden" name="m" value="{:MODULE_NAME}">
+          <input type="hidden" name="c" value="{:CONTROLLER_NAME}">
+          <input type="hidden" name="a" value="{:ACTION_NAME}">
+            <div class="seh">
+              <div class="keybox"><input name="key" type="text"   value="{$Think.get.key}" /></div>
+              <div class="sbtbox">
+                <input type="submit" name="" class="sbt" id="sbt" value="搜索"/>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </form>
+        </td>
+      </tr>
+    </table>
+    <div class="qspage"><notempty name="count">共{$count}条&nbsp;&nbsp;</notempty>{$page}</div>
+  </div>
+    <include file="public:footer" />
+    <script type="text/javascript" src="__ADMINPUBLIC__/js/jquery.entrustinfotip-min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function()
+    {
+      $(".ajax_send_sms").QSdialog({
+    DialogTitle:"发送短信",
+    DialogContentType:"url",
+    DialogContent:"{:U('Ajax/ajax_send_sms')}&"
+    });
+  $(".ajax_send_email").QSdialog({
+    DialogTitle:"发送邮件",
+    DialogContentType:"url",
+    DialogContent:"{:U('Ajax/ajax_send_email')}&"
+    });
+    showmenu("#key_type_cn","#sehmenu","#key_type");
+    $("#ButAudit").QSdialog({
+    DialogAddObj:"#OpAudit",
+    DialogTitle:"请选择踢进公海客户",
+    DialogContent:"#AuditSet",
+    DialogContentType:"id"
+    });
+
+    $(".custormer_info").QSdialog({
+        DialogTitle:"管理",
+        DialogContentType:"url",
+        DialogContent:"{:U('ajax/custormer_info')}&"
+    });
+
+    $(".audit_log").QSdialog({
+        DialogTitle:"审核日志",
+        DialogContentType:"url",
+        DialogContent:"{:U('ajax/audit_log')}&"
+    });
+    //点击批量删除
+    $("#ButDel").click(function(){
+    if (confirm('你确定要删除吗？'))
+    {
+    $("form[name=form1]").attr("action","{:U('resume_delete')}");
+    $("form[name=form1]").submit()
+    }
+    });
+    $("#Butrefresh").click(function(){
+    $("form[name=form1]").attr("action","{:U('refresh')}");
+    $("form[name=form1]").submit()
+    });
+    //纵向列表排序
+    $(".listod .txt").each(function(i){
+    var li=$(this).children(".select");
+    var htm="<a href=\""+li.attr("href")+"\" class=\""+li.attr("class")+"\">"+li.text()+"</a>";
+    li.detach();
+    $(this).prepend(htm);
+    });
+    $("#not_audit").click(function(){
+    $("#is_del_img").show();
+    });
+    $("#yes_audit").click(function(){
+    $("#is_del_img").hide();
+    });
+    });
+    </script>
+<!--
+<script type="text/javascript">
+$("#show_trace_detail").click(function(){
+$("#form1").css('display','block');
+$(this).hide();
+$('#trace_record').hide();
+});
+</script>
+-->
+</body>
+</html>

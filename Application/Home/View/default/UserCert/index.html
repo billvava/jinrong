@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/user_cert.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+<include file="Personal:index_header" />
+<div class="user_main">
+<include file="Personal:index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<div class="part-certification-hd">
+<div class="stars-part-all"><strong class="fn-vam">我的认证等级：</strong>
+<span class="stars-cur"></span><span class="stars-cur"></span><span class="stars-cur"></span><span></span><span></span>                              </div>
+<p class="fn-mt-10 fn-mb-10"><strong>已通过的认证：</strong>
+手机认证&nbsp;&nbsp;
+</p>
+<div class="fn-clear fn-pb-10"><i class="icoBul16 fn-left fn-mt-5"></i><div class="fn-ml-20">为验证会员资料可信度，我们建立了一套信用认证等级制度，完整的认证是会员搜索到您的重要保证，更是让对方能够信任您的基础。一旦发现有违诚信的虚假认证，投融界有权作出相应处理：负面标记、限制行为、甚至封号。</div></div>
+</div>                      <div class="fn-mt-10">
+<header class="part-head-all-a">
+<nav class="fn-pl-5">
+<ul style="display: none">
+
+<li>
+<a href="{:U('UserCert/mobile')}">成功案例</a>
+</li>
+<li>
+<a href="{:U('UserCert/personal')}">个人身份认证</a>
+</li>
+<li>
+<a href="{:U('UserCert/job')}">个人职务证明</a>
+</li>
+<li>
+<a href="{:U('UserCert/email')}">邮箱认证</a>
+</li>
+
+<if condition="$type eq 1">
+<li>
+<a href="{:U('UserCert/email')}">银行账户认证</a>
+</li>
+</if>
+
+<if condition="$type eq 2">
+<li>
+<a href="{:U('UserCert/email')}">政府身份认证</a>
+</li>
+
+<if condition="$type eq 1">
+<li>
+<a href="{:U('UserCert/email')}">企业身份认证</a>
+</li>
+</if>
+
+<li>
+<a href="{:U('UserCert/email')}">企业荣誉证书</a>
+</li>
+
+</ul>
+</nav>
+</header>                             <div class="part-br-ddd part-certification-main">
+
+<!-- <article class="">
+<i class="fn-left icoCor32 fn-mt-10"></i>
+<a href="javascript:;" class="fn-right ui-btn-small ui-btn-blue w60 fn-mt-15">已认证</a>
+<section><strong>手机认证</strong><br>手机认证可以让需求方有更多的途径和您进行深入交流，为您的真实性加分。</section>
+</article> -->
+
+
+
+<foreach name="list" item="vo" key="k" >
+		<article>
+		<if condition="$vo.status eq 0">
+		<i class="fn-left icoErr32 fn-mt-10"></i>
+		<a href="javascript:;" class="fn-right ui-btn-small ui-btn-blue w60 fn-mt-15">认证中</a>
+		<elseif condition="$vo.status eq 1"/>
+		<i class="fn-left icoCor32 fn-mt-10"></i>
+		<a href="javascript:;" class="fn-right ui-btn-small ui-btn-blue w60 fn-mt-15">已认证</a>
+		<else/>
+		<i class="fn-left icoErr32 fn-mt-10"></i>
+		<a href="/{$vo.action}/id/{$vo.id}" class="fn-right ui-btn-small ui-btn-blue w60 fn-mt-15">立即认证</a>
+		</if>
+		<!-- <span class="fn-right fn-mt-15 fn-mr-10">未认证</span> -->
+		<section><strong>{$vo.name}</strong><br>{$vo.description}</section>
+		</article>
+</foreach>
+
+
+
+
+</div>                     
+</div>
+</div>
+</div>
+<include file="index_footer" />
+</body>
+</html>

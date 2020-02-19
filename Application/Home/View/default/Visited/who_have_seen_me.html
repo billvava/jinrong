@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+<style>
+.ui-tab-head-box {
+    background: #eef2ff none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    padding: 15px 5px 0;
+    border-bottom:0;
+}
+.ui-tab-head {
+    height: 26px;
+}
+.ui-tab-head ul {
+    float: left;
+}
+.ui-tab-head li {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    margin-right: 5px;
+    padding: 0 15px;
+    border-bottom: 0;
+}
+.ui-tab-head li.ui-tab-head-current {
+    background-color: #fff;
+    color: #333;
+    height: 25px;
+    position: relative;
+}
+.ui-tab-head li a {
+    display: inline-block;
+    margin: 0 -15px;
+    padding: 0 15px;
+    white-space: nowrap;
+}
+.ui-tab-head li a:hover {
+    text-decoration: none;
+}
+.search-part-nav {
+    background: #f1f1f1 none repeat scroll 0 0;
+    overflow: hidden;
+    padding: 5px 10px;
+}
+.search-part-nav .ui-btn-blue {
+    padding-left: 25px;
+}
+.search-part-nav .ui-btn-blue i {
+    left: 5px;
+    position: absolute;
+    top: 4px;
+}
+.search-part-nav input {
+    border: 1px solid #bbb;
+    height: 18px;
+    line-height: 18px;
+    padding-left: 5px;
+}
+.search-part-nav .search-part-link {
+    color: #333;
+    margin-right: 15px;
+}
+.search-part-nav .search-part-link a {
+    color: #333;
+    line-height: 20px;
+    padding: 0 20px;
+}
+.search-part-nav .search-part-link-first {
+    padding-left: 0;
+}
+.fn-mr-15 {
+    margin-right: 15px !important;
+}
+.ui-btn {
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 8px;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.news-info-list {
+    margin-top: -10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.news-info-item {
+    border-bottom: 1px dashed #c2c2c2;
+    overflow: hidden;
+    padding: 15px 0;
+    width: 540px;
+}
+.user-avatar {
+    border: 1px solid #ddd;
+    float: left;
+    height: 78px;
+    overflow: hidden;
+    width: 78px;
+}
+.user-avatar img {
+    height: 78px;
+    width: 78px;
+}
+.collecting-box .news-info-item {
+    width: 788px;
+}
+.collecting-box .news-info-wrap {
+    padding-right: 0;
+    width: 698px;
+}
+.collecting-box .news-info-list {
+    margin-top: 0;
+}
+.news-info-wrap {
+    float: left;
+    padding: 0 60px 0 10px;
+    position: relative;
+    width: 390px;
+}
+.news-info-trends {
+    padding-right: 235px;
+    padding-top: 5px;
+    position: relative;
+}
+.news-info-industry .news-info-industry-cont {
+    display: block;
+    float: left;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 200px;
+}
+.news-info-industry .news-info-control {
+    margin-top: -20px;
+    width: 300px;
+}
+.news-info-industry {
+    height: 20px;
+    padding-right: 250px;
+    position: relative;
+}
+.news-info-relation {
+    color: #999;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 5px;
+    width: 235px;
+}
+.news-info-control {
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 50%;
+}
+.news-info-time {
+    color: #999;
+    height: 20px;
+    overflow: hidden;
+}
+.ui-btn-orange {
+    background-color: #f06307 !important;
+}
+a.ui-btn-orange:hover {
+    background-color: #ff802d !important;
+}
+.ui-btn-red {
+    background-color: #dd3650;
+}
+a.ui-btn-red:hover {
+    background-color: #ff4663;
+}
+.ui-tab-cont {
+    border-top: 1px solid #ccc;
+    margin-top: -1px;
+    padding-top: 10px;
+}
+</style>
+</head>
+<body>
+<include file="Personal:index_header" />
+<div class="user_main">
+<include file="Personal:index_left_nav" />
+<div class="mainbox">
+<div class="main ">
+<div class="ui-tab-head-box">
+<div class="ui-tab-head ui-tab-head-p">
+<ul>
+<li><a href="/Home/Visited/who_i_have_see">我看过谁</a></li>
+<li class="ui-tab-head-current"><a href="/Home/visited/who_have_seen_me">谁看过我</a></li>
+</ul>
+</div>
+</div>
+<div class="ui-tab-cont">
+<form action="" method="get" id="search_form">
+<div class="search-part-nav">
+
+<div class="fn-left fn-mr-15">会员类型：
+<select name="type">
+<option value="">所有会员</option>
+<option value="1">企业会员</option>
+<option value="2">政府会员</option>
+<option value="3">个人会员</option>
+
+</select>
+</div>
+
+<input name="act" value="" type="hidden">
+<div class="fn-right fn-pr"><a class="ui-btn-small ui-btn-blue" id="seen_me_btn"><i class="icon-part-bg icon-part-search"></i>搜索</a></div>
+<div class="fn-right  fn-mr-15"><input name="keyword" id="keyword" value="" placeholder="输入联系人搜索" type="text"></div>
+
+</div>
+</form>
+
+<div class="collecting-box">
+<ul class="news-info-list news-info-list-guest">
+<!--
+<li class="news-info-item">
+<div class="user-avatar">
+<a href="#" target="_blank">
+<img src="../public/images/face/nan1.gif">
+</a>
+</div>
+<div class="news-info-wrap">
+<p class="news-info-title">
+<span class="news-info-name">
+<a href="#" target="_blank">陈先生</a>
+</span>
+<i class="icon-auth-p-16-1 fn-mr-5" title="项目"></i><i class="icon-auth-s-16-3 fn-mr-5" title="个人"></i></p>
+<p class="news-info-post"> </p>
+<p class="news-info-industry">
+<span class="news-info-industry-cont">
+</span>
+<span class="news-info-control" data-id="761854fd550c38e25f33a1edcbd98caabd6b3a">
+<a href="javascript:;" event="click.exchange" class="ui-btn-small ui-btn-blue">加为商友</a>
+</span>
+</p>
+<p class="news-info-trends">
+<span class="news-info-time">
+2015-08-17 查看了<a href="#" target="_blank">我的展厅</a>
+</span>
+<span class="news-info-relation">人脉关系：<a href="#" target="_blank">已递送名片(<strong>6</strong>)</a> | <a href="#" target="_blank">商友(<strong>3</strong>)</a></span></p>
+</div>
+</li>
+-->
+</ul>
+<footer class="table-page-part ">
+<div class="paging"> </div>
+</footer>
+</div>
+</div>
+</div>
+</div>
+<include file="index_footer" />
+</body>
+</html>

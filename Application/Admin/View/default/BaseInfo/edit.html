@@ -1,0 +1,155 @@
+<include file="public:header" />
+<div class="toptit">信息审核</div>
+<form id="form1" name="form1" method="post" action="{:U()}" enctype="multipart/form-data">
+<table width="100%" border="0" cellpadding="4" cellspacing="0"  >
+<tr>
+<td style=" border-bottom:1px #CCCCCC dashed" height="30" align="right">信息置顶：</td>
+<td style=" border-bottom:1px #CCCCCC dashed"><label style="color: rgb(0, 153, 0);">
+<input name="is_top" type="radio" id="is_top" value="1" <if condition="$info['is_top'] eq 1">checked="checked"</if>/>是</label>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<label >
+<input type="radio" name="is_top" value="0" <if condition="$info['is_top'] eq 0">checked="checked"</if>/>否</label>        
+
+
+</td>
+</tr>
+
+
+<tr>
+<td align="right">置顶缩略图：</td>
+        <td colspan="2" >
+          <if condition="$info['top_img']">
+            <a href="{:attach($info['top_img'],'images')}" target="_blank" >
+            <img src="{:attach($info['top_img'],'images')}" border="0"/>
+             </a>
+             <!--
+             <a href="{:U('article/del_img',array('id'=>$info['id']))}" style="color: #006600">
+             [删除重新上传]
+             </a>
+             -->
+          <else/>
+              <input type="file" name="top_img" onKeyDown="alert('请点击右侧“浏览”选择您电脑上的图片！');return false" style="height:21px; width:210px; border:1px #999999 solid" />
+          </if>
+</td>
+</tr>
+
+
+<tr>
+<td style=" border-bottom:1px #CCCCCC dashed" height="30" align="right">信息审核：</td>
+<td style=" border-bottom:1px #CCCCCC dashed"><label style="color: rgb(0, 153, 0);">
+<input name="is_open" type="radio" id="is_open" value="1" <if condition="$info['is_open'] eq 1">checked="checked"</if>/>是</label>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<label>
+<input type="radio" name="is_open" value="2" <if condition="$info['is_open'] eq 2">checked="checked"</if>/>否</label>        
+
+</td>
+</tr>
+
+<tr>
+<td height="30" align="right" >&nbsp;</td>
+<td>
+<input type="hidden" value="{$info.id}" id="id" name="id">
+<input name="submit3" type="submit" class="admin_submit" value="保存"/>
+<input name="submit22" type="reset" class="admin_submit" value="重置"/>
+</td>
+</tr>
+</table>
+</form>
+
+<div class="toptit mt15">信息留言管理</div>
+<form id="form1" name="form1" method="post" action="{:U('article/delete')}">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="link_lan" id="list">
+<tr>
+<td width="50" height="26" class="admin_list_tit admin_list_first" >
+<label id="chkAll"><input type="checkbox" name=" " title="全选/反选" id="chk"/>id</label></td>
+<td width="100" align="left" class="admin_list_tit">留言内容</td>
+<td width="100" align="right"  class="admin_list_tit">留言方式</td>
+<td width="120" align="center" class="admin_list_tit">评论时间</td>
+<td width="100" align="center" class="admin_list_tit">状态</td>
+<td width="100" align="left" class="admin_list_tit">操作</td>
+</tr>
+<volist name="msg_list" id="vo">
+<tr rel="{$vo['id']}">
+<td class="admin_list admin_list_first">
+<input name="id[]" type="checkbox" id="id" value="{$vo['id']}"/>
+[{$vo.id}]
+</td>
+<td align="left" class="admin_list vtip" title="{$vo.content}">{:cut_str($vo['content'],50)}</td>
+<td align="right" class="admin_list">{$vo['public']}</td>
+<td align="center" class="admin_list">{:date('Y-m-d H-i-s',$vo['addtime'])}</td>
+<td align="center"><if condition="$vo[is_show] eq 1"><span rel="1" style="color:#5CB85C" class="changeDefault iconfont icon-duihao"></span><else /><span rel="0" style="color:#f00" class="changeDefault iconfont icon-cuowu"></span></if></td>
+<td><a href="">管理</a></td>
+</tr>
+</volist>
+</table>
+</form>
+
+<table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
+<tbody>
+<tr>
+<td>
+<input type="button" name="ButAdd" value="编辑" class="admin_submit" id="message_edit">
+</td>
+</tr>
+</tbody>
+</table>
+
+<div id="message" style="display: none" >
+<table width="400" border="0" align="center" cellpadding="0" cellspacing="6" >
+<tr>
+<td height="30">&nbsp;</td>
+<td height="30"><strong  style="color:#0066CC; font-size:14px;">选取留言进行审核：</strong></td>
+</tr>
+<tr>
+<td width="40" height="25">&nbsp;</td>
+<td>
+<label>
+<input name="audit" type="radio" value="1" checked="checked"/>
+允许 </label>
+
+<label>
+<input name="audit" type="radio" value="0" checked="checked"/>
+禁止 </label>
+
+</td>
+</tr>
+<tr>
+<td height="25">&nbsp;</td>
+<td><span>
+<input type="submit" id="into_sea" name="set_audit" value="确定" class="admin_submit">
+</span></td>
+</tr>
+</table>
+</div>
+</div>
+<script type="text/javascript">
+$("#message_edit").QSdialog({
+DialogTitle:"留言修改审核",
+DialogContent:"#message",
+DialogContentType:"id"
+});
+/*
+$("#into_sea").live('click',function(){
+$("form[name=form1]").attr("action","/index.php?m=Admin&c=Crm&a=throw_into_sea");
+$("form[name=form1]").submit()
+});
+*/
+</script>
+<script type="text/javascript">
+$(function(){
+    $(".changeDefault").live("click",function(){
+    var e=$(this);
+        var id = e.parent().parent().attr("rel");
+        var is_show = e.attr("rel");
+        $.post("{:U('Msg/Api/change_status')}",{'id':id,'is_show':is_show},function(data){
+              is_show = data.state;
+              if(is_show == "1"){
+                    e.parent().empty().html("<span rel='1' style='color:#5CB85C' class='changeDefault iconfont icon-duihao'></span>");
+              }else{
+                    e.parent().empty().html("<span rel='0' style='color:#f00' class='changeDefault iconfont icon-cuowu'></span>");
+              }
+        });
+    });
+});
+</script>
+<include file="public:footer"/>

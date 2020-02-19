@@ -1,0 +1,14 @@
+<volist name="inverstor_list" id="vo" key="k">
+<li class="part-money-list-a invertor j-hover-all js-1 clearfix">
+<div class="fl">
+<i class="ix">{:(I('get.page'))?((I('get.page')-1)*5+$k+5):($k+5)}</i>
+<aside><a href=""><img src="{:attach($vo['small_img'],'images')}" alt=""></a></aside>
+<section><h3><a href="investor/investor_show/id/{$vo.id}">{$vo.name}</a></h3>
+<article>{$vo.seo_description}</article>
+</section>
+</div>
+<div class="fr onekey_pull">
+<a class="ui-btn ui-btn-orange" href="javascript:;">一键直投</a>
+</div>
+</li>
+</volist>

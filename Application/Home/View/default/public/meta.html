@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta name="renderer" content="webkit"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{$page_seo.title}</title>
+<meta name="keywords" content="{$page_seo.keywords}"/>
+<meta name="description" content="{$page_seo.description}"/>
+<link rel="shortcut icon" href="{:C('qscms_site_dir')}favicon.ico"/>
+<script src="../public/js/jquery/1.8.3/jquery.min.js"></script>
+<link rel="stylesheet" href="/static/js/plugin/font/ali-iconfont/iconfont.css">
+<script type="text/javascript">
+	var qscms = {
+		base : "{:C('SUBSITE_DOMAIN')}",
+		keyUrlencode:"{:C('qscms_key_urlencode')}",
+		domain : "http://{$_SERVER['HTTP_HOST']}",
+		root : "__ROOT__/index.php",
+	};
+	/*
+	$(function(){
+		$.getJSON("{:U('Home/AjaxCommon/get_header_min')}",function(result){
+			if(result.status == 1){
+				$('.header_min_top').html(result.data.html);
+			}
+		});
+	})
+	*/
+</script>

@@ -1,0 +1,901 @@
+<include file="public:meta" />
+<link href="../public/css/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/header.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/base_main.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/common_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/fund.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/ui-dialog.css" rel="stylesheet" type="text/css" />
+<style>
+.ui-dialog-content {
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+}
+.ui-text-orange-2 {
+    color: #f60;
+}
+.fn-tac {
+    text-align: center !important;
+}
+.fn-mt-20 {
+    margin-top: 20px !important;
+}
+.popup-msg .ui-btn, .popup-msg .ui-btn {
+    width: 130px;
+}
+.hide_item{
+    display: none
+}
+.plist .pl .listb .yli .td2{
+    padding-left: 50px;
+}
+.table-page-part-a {
+    margin: 0;
+    padding: 20px;
+}
+.ui-le-ht26 {
+    line-height: 26px;
+}
+.fn-left {
+    float: left;
+}
+.ui-text-orange {
+    color: #f06612;
+}
+.table-page-part .paging {
+    text-align: right;
+}
+.paging {
+    color: #666;
+    font: 12px arial;
+    height: 26px;
+    overflow: hidden;
+    text-align: center;
+}
+.paging a, .paging span {
+    display: inline-block;
+    line-height: 24px;
+    overflow: hidden;
+    vertical-align: top;
+}
+.ui-btn-orange{
+    background: #f60
+}
+.paging a {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #e8e8e8;
+    color: #999;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 2px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+.paging a:hover {
+    background: #e9e9e9 none repeat scroll 0 0;
+    border: 1px solid #c1c1c1;
+    color: #666;
+    text-decoration: none;
+}
+.paging .select, .paging .selected {
+    background: #f06612 none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    color: #fff;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 2px;
+    padding: 0 10px;
+}
+.paging .no {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e8e8e8;
+    color: #ccc;
+    cursor: no-drop;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 2px;
+    padding: 0 10px;
+}
+</style>
+<script src="../public/js/jquery.common.js" type="text/javascript"></script>
+<script src="../public/js/zjxm_search.js" type="text/javascript"></script>
+</head>
+<body>
+<include file="public:header" />
+<!--搜索 -->
+<div class="page_so">
+<!--条件 -->
+<div class="so_condition_show">
+<div class="J_showbtn showbtn unfold none">打开筛选</div>
+<div class="J_showbtn showbtn">收起筛选</div>
+<div class="clear"></div>
+</div>
+</div>
+<div class="so_condition J_so_condition clearfix">
+<section <if condition="$Think.get.info_type neq ''">class="hide_item"</if>>
+<div class="lefttit">投资方式</div>
+<div class="rs">
+<div class="li <if condition="$Think.get.info_type eq ''">select</if>"><a href="{:P(array('wage'=>''))}">不限</a></div>
+<volist name="category['invest_style']" id="vo" key="k">
+<div class="li <if condition="$Think.get.info_type eq $key">select</if>"><a href="{:P(array('info_type'=>$key))}">{$vo}</a></div>
+</volist>
+<div class="clear"></div>
+</div>
+</section>
+<section <if condition="$Think.get.funds_body neq ''">class="hide_item"</if>>
+<div class="lefttit">资金类型</div>
+<div class="rs">
+<div class="li <if condition="$Think.get.funds_body eq ''">select</if>"><a href="{:P(array('funds_body'=>''))}">不限</a></div>
+<volist name="category['funds_body']" id="vo" key="k">
+<div class="li <if condition="$Think.get.funds_body eq $key">select</if>"><a href="{:P(array('funds_body'=>$key))}">{$vo}</a></div>
+</volist>
+<div class="clear"></div>
+</div>
+<div class="rs_more">
+<a href="javascript:void(0);" class=""><span class="fn-vam fn-mr-5 j-multi-more">更多</span><i class="small-icon small-icon-24"></i></a>
+</div>
+<div class="clear"></div>
+</section>
+
+<!--
+<section <if condition="$Think.get.province_id neq ''">class="hide_item"</if>>
+<div class="lefttit">所在地区</div>
+<div class="rs">
+<div class="li <if condition="$Think.get.province_id eq ''">select</if>"><a href="{:P(array('province_id'=>''))}">不限</a></div>
+<volist name="category['province']" id="vo" key="k">
+<div class="li <if condition="$Think.get.province_id eq $key">select</if>"><a href="{:P(array('province_id'=>$key))}">{$vo}</a></div>
+</volist>
+<div class="clear"></div>
+</div>
+<div class="rs_more">
+<a href="javascript:void(0);" class=""><span class="fn-vam fn-mr-5 j-multi-more">更多</span><i class="small-icon small-icon-24"></i></a>
+</div>
+<div class="clear"></div>
+</section>
+-->
+<section <if condition="$Think.get.tz_industry neq ''">class="hide_item"</if>>
+<div class="lefttit">投资行业</div>
+<div class="rs">
+<div class="li <if condition="$Think.get.tz_industry eq ''">select</if>"><a href="{:P(array('tz_industry'=>''))}">不限</a></div>
+<volist name="category['tz_industry']" id="vo" key="k">
+<div class="li <if condition="$Think.get.tz_industry eq $key">select</if>"><a href="{:P(array('tz_industry'=>$key))}">{$vo}</a></div>
+</volist>
+<div class="clear"></div>
+</div>
+<div class="rs_more">
+<a href="javascript:void(0);" class=""><span class="fn-vam fn-mr-5 j-multi-more">更多</span><i class="small-icon small-icon-24"></i></a>
+</div>
+<div class="clear"></div>
+</section>
+
+
+<section <if condition="$Think.get.tz_area neq ''">class="hide_item"</if>>
+<div class="lefttit">投资地区</div>
+<div class="rs">
+<div class="li <if condition="$Think.get.tz_area eq ''">select</if>"><a href="{:P(array('tz_area'=>''))}">不限</a></div>
+<volist name="category['province']" id="vo" key="k">
+<div class="li <if condition="$Think.get.tz_area eq $key">select</if>"><a href="{:P(array('tz_area'=>$key))}">{$vo}</a></div>
+</volist>
+<div class="clear"></div>
+</div>
+<div class="rs_more">
+<a href="javascript:void(0);" class=""><span class="fn-vam fn-mr-5 j-multi-more">更多</span><i class="small-icon small-icon-24"></i></a>
+</div>
+<div class="clear"></div>
+</section>
+
+<section <if condition="$Think.get.mo neq ''">class="hide_item"</if>>
+<div class="lefttit">投资金额</div>
+<div class="rs">
+<div class="li <if condition="$Think.get.mo eq ''">select</if>"><a href="{:P(array('mo'=>''))}">不限</a></div>
+<volist name="category['range']" id="vo" key="k">
+<div class="li <if condition="$Think.get.mo eq $key">select</if>"><a href="{:P(array('mo'=>$key))}">{$vo}</a></div>
+</volist>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+</section>
+
+<if condition="$_GET">
+<div class="selected J_selected" id="7rh_selected">
+<div class="stit">已选条件</div>
+<div class="sc">
+<if condition="$Think.get.info_type neq ''">
+<div class="slist" onclick="window.location='{:P(array('info_type'=>''))}';">
+<span>投资方式：</span>
+{$category['invest_style'][$_GET['info_type']]}
+</div>
+</if>
+
+<if condition="$Think.get.funds_body neq ''">
+<div class="slist" onclick="window.location='{:P(array('funds_body'=>''))}';">
+<span>资金类型：</span>
+{$category['funds_body'][$_GET['funds_body']]}
+</div>
+</if>
+
+<if condition="$Think.get.province_id neq ''">
+<div class="slist" onclick="window.location='{:P(array('province_id'=>''))}';">
+<span>所在地区：</span>
+{$category['province'][$_GET['province_id']]}
+</div>
+</if>
+
+<if condition="$Think.get.tz_industry neq ''">
+<div class="slist" onclick="window.location='{:P(array('tz_industry'=>''))}';"><span>投资行业：</span>{$category['tz_industry'][$_GET['tz_industry']]}</div>
+</if>
+
+<if condition="$Think.get.tz_area neq ''">
+<div class="slist" onclick="window.location='{:P(array('tz_area'=>''))}';"><span>投资地区：</span>{$category['province'][$_GET['tz_area']]}</div>
+</if>
+
+<if condition="$Think.get.mo neq ''">
+<div class="slist" onclick="window.location='{:P(array('mo'=>''))}';"><span>投资金额：</span>{$category['range'][$_GET['mo']]}</div>
+</if>
+
+<div class="clear"></div>
+</div>
+<div class="sr">
+<div class="empty" onclick="window.location='';">清空</div>
+</div>
+<div class="clear"></div>
+</div>
+</if>
+</div>
+
+<div class="plist">
+<div class="pl">
+<div class="toptitle">
+<div class="sort">
+<if condition="C('qscms_jobsearch_type') neq 0 and $Think.get.search_type eq 'full' and $Think.get.key neq ''">
+<a class="sl2 <if condition="$Think.get.sort eq 'score' or ($Think.get.sort eq '' and C('qscms_fulltext_orderby') eq 1)">select</if>" href="{:P(array('sort'=>'score'))}">相关度</a>
+<else/>
+<a class="sl2 <if condition="$Think.get.sort eq ''">select</if>" href="{:P(array('sort'=>''))}">综合排序</a>
+</if>
+<a class="sl2 <if condition="$Think.get.sort eq 'rtime' or ($Think.get.sort eq '' and C('qscms_jobsearch_type') neq 0 and $Think.get.search_type eq 'full' and C('qscms_fulltext_orderby') eq 0)">select</if>" href="{:P(array('sort'=>'rtime'))}">更新时间</a>
+<div class="l1"></div>
+<style type="text/css">
+.total_item{
+    line-height: 54px; float: right;margin-right:50px;
+}
+.ui-text-orange{
+    color: #f06612;
+}
+</style>
+<p class="fn-right total_item">共有&nbsp;<span class="ui-text-orange">{$count}</span>&nbsp;个符合要求的项目信息</p>
+<div class="clear"></div>
+</div>
+</div>
+
+<div class="listb J_allListBox clearfix">
+<notempty name="fund_list">
+<volist name="fund_list" id="vo">
+<div class="J_jobsList yli">
+<div><a class="line_substring fn-font-14 fn-font-b ui-text-red-1" href="{:U('fund/show',array('id'=>$vo['id']))}" target="_blank">{$vo.title}</a>
+<time class="fn-right ui-text-gray"><empty name="vo['updatetime']">{$vo.addtime}<else />{$vo.updatetime}</empty></time>
+</div>
+<div class="clear"></div>
+<div class="detail">
+<div class="ltx">
+<div class="txt font_gray6">
+<p class="part-money-text-list">
+<span>投资资金：
+<em class="part-money-it-a">
+<if condition="$vo['amount_interval_min'] eq $vo['amount_interval_max']">{$vo.amount_interval_min}
+{$vo.amount_interval_min_unit}
+<else />
+{$vo.amount_interval_min}
+{$vo.amount_interval_min_unit}-{$vo.amount_interval_max}
+{$vo.amount_interval_max_unit}
+</if>
+</em>
+</span>
+</p>
+<p class="part-money-text-list">
+<span>投资方式：{$vo.info_type}</span>
+<span>资金类型：{$vo.funds_body}</span>
+</p>
+<p class="part-money-text-list">
+<span>投资地区：{$vo.tz_area}</span>
+<span>投资行业：{$vo.tz_industry}</span>
+</p>
+</div>
+</div>
+<div class="owner_person fn-pl-20 fn-pr-20" style="width: 200px;float:left;">
+<p class="fn-mb-5">
+<empty name="vo['company_name']">
+<strong class="fn-font-14 fn-vam fn-mr-5">该信息已委托金融网代发布</strong>
+<br/>
+<else />
+<strong class="fn-font-14 fn-vam fn-mr-5">
+<a href="/Company/show/company_id/{$vo.trj_company_id}.html" target="_blank" title="{$vo.realname}">{$vo.realname}</a>
+</strong>
+<br/>
+<span class="ui-text-gray-2">{$vo.company_name}</span>
+</empty>
+</p>
+</div>
+<div class="rbtn">
+<div data-title="{$vo.title}" data-funder-id="{$vo.id}" data-user-id="{$vo.uid}" class="deliver onekey_pull">投递项目</div>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+</volist>
+<footer class="table-page-part table-page-part-a" style="margin-bottom:20px;">
+<p class="fn-left ui-le-ht26">共有&nbsp;<span class="ui-text-orange">{$count}</span>&nbsp;个符合要求的项目信息</p>
+{$page}
+</footer>
+<else />
+<div class="list_empty_group">
+<div class="list_empty">
+<div class="list_empty_left"></div>
+<div class="list_empty_right">
+<div class="sorry_box">抱歉，没有找到符合条件的查询结果。</div>
+<div class="stips_box">放宽您的查找条件也许有更多合适您的查询结果哦~</div>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+</notempty>
+</div>
+
+<if condition="$Think.get.citycategory neq ''">
+<div class="bot_info link_gray6">
+<div class="topnavbg">
+<div class="topnav">
+<if condition="$_GET['key'] neq '' or $_GET['jobcategory'] neq ''">
+<div class="tl J_job_hotnear select">周边职位</div>
+</if>
+<div class="tl J_job_hotnear">热门职位</div>
+<div class="clear"></div>
+</div>
+</div>
+<if condition="$_GET['key'] neq ''">
+<div class="showbotinfo J_job_hotnear_show show">
+<volist name="city['list']" id="district" offset="0" length="21">
+<div class="ili"><a href="{:P(array('citycategory'=>$district['citycategory'],'key'=>$_GET['key']))}" target="_blank">{$district.categoryname}{$Think.get.key|urldecode|urldecode}</a></div>
+</volist>
+<div class="clear"></div>
+</div>
+<elseif condition="$_GET['jobcategory'] neq ''"/>
+<div class="showbotinfo J_job_hotnear_show show">
+<volist name="city['list']" id="district" offset="0" length="21">
+<div class="ili"><a href="{:P(array('citycategory'=>$district['citycategory'],'jobcategory'=>$_GET['jobcategory']))}" target="_blank">{$district.categoryname}{$jobs_cate_info[$_GET['jobcategory']]['categoryname']}</a></div>
+</volist>
+<div class="clear"></div>
+</div>
+</if>
+<div class="showbotinfo J_job_hotnear_show <if condition="$_GET['key'] eq '' and $_GET['jobcategory'] eq ''">show</if>">
+<qscms:hotword 列表名="hotword_list" 显示数目="22"/>
+<volist name="hotword_list" id="hotword">
+<if condition="C('qscms_key_urlencode') eq 1">
+<div class="ili"><a href="{:P(array('citycategory'=>$city['select']['citycategory'],'key'=>urlencode($hotword['w_word_code'])))}" target="_blank">{$city['select']['categoryname']}{$hotword.w_word}</a></div>
+<else />
+<div class="ili"><a href="{:P(array('citycategory'=>$city['select']['citycategory'],'key'=>$hotword['w_word_code']))}" target="_blank">{$city['select']['categoryname']}{$hotword.w_word}</a></div>
+</if>
+</volist>
+<div class="clear"></div>
+</div>
+</div>
+</if>
+</div>
+<div class="bot_info link_gray6">
+<div class="topnavbg">
+<div class="topnav">
+<div class="tl J_resume_hotnear">优质资金推荐</div>
+<div class="clear"></div>
+</div>
+</div>
+<style type="text/css">
+.w120{width: 200px;}
+.fl{float: left;}
+</style>
+<div class="hrrwbd-content">
+<ul>
+<volist name="recommend_fund" id="vo" key="k">
+<li class="rwbd-{$k}"><a href="{:U('Fund/show',array('id'=>$vo['id']))}" target="_blank" title="{$vo.title}">{$vo.title}</a>
+</li>
+</volist>
+</ul>
+<div class="clear"></div>
+</div>
+<style>
+.hrrwbd-content {
+    height: auto;
+    overflow: hidden;
+    padding-top: 15px;
+    width: 350px;
+}
+.hrrwbd-content li {
+    display: block;
+    height: 36px;
+    line-height: 18px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    padding-left: 15px;
+    text-align: left;
+    vertical-align: middle;
+    width: 316px;
+}
+.hrrwbd-content li a{
+    color:#939292;
+    font-size: 16px;
+    font-family: "Lantinghei SC","Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif,"MicrosoftYaHeiLight","Microsoft YaHei Light","Microsoft YaHei";
+}
+.hrrwbd-content li.rwbd-1 {
+    border-left: 3px solid #fd5f00;
+}
+.hrrwbd-content li.rwbd-2 {
+    border-left: 3px solid #ffc002;
+}
+.hrrwbd-content li.rwbd-3 {
+    border-left: 3px solid #00a635;
+}
+.hrrwbd-content li.rwbd-4 {
+    border-left: 3px solid #00c3c4;
+}
+.hrrwbd-content li.rwbd-5 {
+    border-left: 3px solid #b92400;
+}
+.hrrwbd-content li.rwbd-6 {
+    border-left: 3px solid #e07e00;
+}
+.hrrwbd-content li.rwbd-7 {
+    border-left: 3px solid #27c790;
+}
+.hrrwbd-content li.rwbd-8 {
+    border-left: 3px solid #5c68ec;
+}
+.hrrwbd-content li.rwbd-9 {
+    border-left: 3px solid #00a9da;
+}
+.hrrwbd-content li.rwbd-10 {
+    border-left: 3px solid #e41a91;
+}
+.hrrwbd-content li a {
+    color: #939292;
+    font-weight: 100;
+}
+.hrrwbd-content li a:hover {
+    color: #00aa98;
+}
+.recommends-box {
+    border-top: 1px dashed #a5a5a5;
+    margin-top: -1px;
+    padding: 10px;
+}
+.ui-bg-white {
+    background-color: #fff;
+}
+</style>
+</div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<include file="public:footer" />
+<script type="text/javascript" src="../public/js/jquery.jobslist.js"></script>
+<script type="text/javascript" src="../public/js/jquery.modal.dialog.js"></script>
+<script type="text/javascript" src="../public/js/jquery.modal.search.js"></script>
+<script type="text/javascript" src="../public/js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="../public/js/jquery.listitem.js"></script>
+<script type="text/javascript" src="../public/js/jquery.highlight-3.js"></script>
+<style type="text/css">
+.fn-pt-20 {
+    padding-top: 20px !important;
+}
+.fn-pb-10 {
+    padding-bottom: 10px !important;
+}
+fieldset, img {
+    border: 0 none;
+}
+.part-fieldset {
+    overflow: hidden;
+}
+.popup-msg-b .part-fieldset textarea {
+    margin-right: 0;
+    width: 375px;
+}
+.part-fieldset .t_input {
+    width: 242px;
+}
+.popup-code-cur {
+    background: #ededed none repeat scroll 0 0;
+    color: #ccc;
+    cursor: no-drop;
+}
+.popup-code-cur:hover {
+    background: #ededed none repeat scroll 0 0 !important;
+    color: #ccc !important;
+}
+.part-fieldset aside {
+    font-size: 14px;
+    width: 27%;
+}
+.part-fieldset {
+    overflow: inherit;
+}
+.part-fieldset section .w370 {
+    margin-right: 0;
+    width: 365px !important;
+}
+.popup-msg-d section i {
+    margin-top: 8px;
+}
+.popup-msg-d section .ittext {
+    margin: 0 140px 0 40px;
+}
+.popup-msg-e h6 {
+    background: #f1f1f1 none repeat scroll 0 0;
+    color: #ec7b68;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.popup-msg-e form {
+    color: #666;
+    font-size: 14px;
+    margin: 15px auto;
+    width: 340px;
+}
+.part-dialog-btn {
+    border-top: 1px dashed #333333;
+    color: #666;
+    text-align: center;
+}
+.popup-msg-e .part-dialog-btn p {
+    margin: 15px 0;
+}
+.popup-msg-e-s .part-fieldset-text {
+    width: 210px !important;
+}
+.popup-msg-e-s .part-fieldset .t_input {
+    font-size: 12px;
+}
+.popup-msg-e-s .part-dialog-btn div {
+    margin: 25px 0 5px 174px;
+}
+.popup-msg-f aside img {
+    border: 1px solid #dad9e9;
+    height: 48px;
+    width: 48px;
+}
+.popup-msg-f section {
+    line-height: 22px;
+    width: 250px;
+}
+.pop-msg-label label {
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px 0;
+    width: 186px;
+}
+.pop-msg-label label input, .pop-msg-label2 label input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.pop-msg-label130 label {
+    width: 130px;
+}
+.ui-btn-red {
+    background-color: #e94e38;
+}
+a.ui-btn-red:hover {
+background-color: #f45842;
+color: #fff;
+}
+.ui-btn {
+font-size: 14px;
+height: 30px;
+line-height: 30px;
+padding: 0 8px;
+}
+.w130 {
+width: 130px !important;
+}
+.ui-dialog-header {
+background-color: #e3eaff;
+border-bottom: 1px solid #fff;
+border-radius: 5px 5px 0 0;
+white-space: nowrap;
+}
+.ui-dialog-content {
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 5px 0;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg em {
+    display: block;
+    margin: 0 0 0 20px;
+    position: relative;
+}
+.part-fieldset .part-fieldset-msg i {
+    left: -20px;
+    position: absolute;
+    top: 2px;
+}
+.part-fieldset .t_input {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 5px;
+    padding: 0 10px;
+    position: relative;
+    vertical-align: middle;
+    width: 248px;
+}
+.part-fieldset section label {
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+}
+.part-fieldset aside {
+    color: #666666;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    width: 16%;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 5px 0;
+    vertical-align: middle;
+}
+.part-fieldset section label input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 5px 0;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg em {
+    display: block;
+    margin: 0 0 0 20px;
+    position: relative;
+}
+.part-fieldset .part-fieldset-msg i {
+    left: -20px;
+    position: absolute;
+    top: 2px;
+}
+.part-fieldset textarea {
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 72px;
+    margin-right: 5px;
+    padding: 5px;
+    vertical-align: middle;
+    width: 360px;
+}
+.part-fieldset aside {
+    font-size: 14px;
+    width: 22%;
+}
+.popup-msg-b .part-fieldset section {
+    width: 77%;
+}
+.part-fieldset section {
+    width: 83%;
+    padding: 0;
+    display: inline-block;
+    color: #999;
+}
+.part-fieldset {
+    overflow: hidden;
+}
+.part-fieldset-obj .ignore {
+    width: 100% !important;
+}
+.part-fieldset-obj .uploadify-queue {
+    display: inherit !important;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 5px 0;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg em {
+    display: block;
+    margin: 0 0 0 20px;
+    position: relative;
+}
+.part-fieldset .part-fieldset-msg i {
+    left: -20px;
+    position: absolute;
+    top: 2px;
+}
+.popup-msg-b .part-popup-pot {
+    background: #f1f1f1 none repeat scroll 0 0;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    text-align: center;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 500;
+}
+.part-fieldset .part-fieldset-section {
+    min-height: 44px;
+}
+.fn-clear::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.fn-ow-clear {
+    overflow: hidden;
+}
+.fn-vam {
+    vertical-align: middle;
+    color:#333;
+}
+.ui-le-ht30 {
+    line-height: 30px;
+}
+.popup-msg-b .part-fieldset aside {
+    font-size: 14px;
+    width: 22%;
+}
+.w140 {
+    width: 140px !important;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    color: #fff;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.ui-btn {
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 8px;
+}
+.ui-btn-gray {
+    background-color: #ededed;
+    color: #999;
+}
+body{font-size:14px;}
+.modal_header{
+    background-color: #e3eaff;
+    border-bottom: 1px solid #fff;
+    border-radius: 5px 5px 0 0;
+    white-space: nowrap;
+}
+.popup-msg-c .part-fieldset aside {
+    font-size: 14px;
+    width: 27%;
+}
+.popup-msg-c .part-fieldset section {
+    width: 72%;
+}
+.fieldset-select-arrow-box {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    position: relative;
+    z-index: 110;
+    background: #fff;
+}
+.fieldset-select-arrow-box .t_input {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 30px;
+    width: 260px !important;
+}
+.fn-mt-20 {
+    margin-top: 20px !important;
+}
+.fn-mt-30 {
+    margin-top: 30px !important;
+}
+.popup-msg .part-fieldset .t_input {
+    width: 242px;
+}
+.popup-msg .part-fieldset aside {
+    font-size: 14px;
+    width: 22%;
+}
+.popup-msg .part-fieldset section {
+    width: 77%;
+}
+.popup-msg-c > a{
+    color: #f60;
+}
+</style>
+<script>
+var is_extend = false;
+$(".rs_more a").click(function () {
+    if ($(this).parent().prev('.rs').attr("class") == "rs") {
+        $(this).parent().prev('.rs').addClass('part-heigt-s');
+        $(this).children('span').text("收起");
+    }else {
+        $(this).parent().prev('.rs').removeClass("part-heigt-s");
+        $(this).children('span').text("更多");
+    }
+}).each(function(){
+    if (is_extend === true)$(this).trigger('click');
+});
+
+$('.onekey_pull').click(function(){
+var funder_id = $(this).attr('data-funder-id');
+var user_id = $(this).attr('data-user-id');
+var qsDialog = $(this).dialog({
+title: '投递项目',
+loading: true,
+showFooter: false,
+yes: function() {
+}
+});
+
+$.getJSON("/index.php?m=&c=AjaxPersonal&a=senditem&funder_id="+funder_id+'&user_id='+user_id,function(result){
+if(result.status == 1){
+qsDialog.setContent(result.data);
+//qsDialog.showFooter(true);
+}else{
+qsDialog.setContent('<div class="confirm">' + result.msg + '</div>');
+}
+});
+});
+
+var selected_content = $('#7rh_selected');
+$('.J_so_condition').prepend(selected_content);
+var city_select = {:json_encode($city['select'])};
+var city_parent = {:json_encode($city['parent'])};
+if (city_parent) {
+if (app_spell) {
+    $('#showSearchModal').text(city_parent['categoryname']);
+    $('#recoverSearchCityModalCode').val(city_parent['spell']);
+} else {
+    $('#showSearchModal').text(city_parent['categoryname']);
+    $('#recoverSearchCityModalCode').val(city_parent['citycategory']);
+}
+} else if(city_select) {
+if (app_spell) {
+    $('#showSearchModal').text(city_select['categoryname']);
+    $('#recoverSearchCityModalCode').val(city_select['spell']);
+} else {
+    $('#showSearchModal').text(city_select['categoryname']);
+    $('#recoverSearchCityModalCode').val(city_select['citycategory']);
+}
+}
+
+if ($('.J_selected .slist').length) {
+    $('.J_selected').show();
+}
+
+$('.J_jobConditions .wli').each(function(index, el) {
+    if (index > 6) {
+    $(this).addClass('for_up');
+    };
+});
+</script>
+</body>
+</html>

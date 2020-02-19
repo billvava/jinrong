@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>金融网</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="项目融资,融资,天使投资,投资,投资项目,投资公司,项目,股权融资,债权融资,投融资,融资平台,金融网"/>
+<meta name="description"
+          content="金融网（7ronghui.com）是中国最大的融资服务平台，拥有超百万的投融资机构、企业与个人用户入驻。金融网通过线上＋线下、标准化  ＋个性化的服务体系，为客户提供针对性的投融资信息对接和项目撮配服务，成功对接融资千余亿元。金融网凭借其强大、便捷的平台信息整合能力，大大提高企业投融资活动成功率，为中小微企业解决融资难问题。"/>
+<link rel='icon' href='../public/images/v2/icon/logo.ico' type='image/x-ico'/>
+<link rel="stylesheet" href="../public/css/v2/base.css">
+<link rel="stylesheet" href="../public/css/v2/component.css">
+<link rel="stylesheet" href="../public/css/v2/module.css">
+<link rel="stylesheet" href="../public/css/v2/all.css">
+</head>
+<body>
+<include file="public:new_header" />
+<div class="banner project-transfer-details-banner">
+    <a href="#"></a>
+</div>
+<div class="project-transfer-details-bg">
+    <div class="project-transfer-details">
+        <div class="div1">
+            <p class="float-l">
+                <span>司法拍卖</span>
+                <span>&gt;</span>
+                <span>太原铁路运输法院</span>
+                <span>&gt;</span>
+                <span>太原铁路运输法院黑色奥迪</span>
+            </p>
+            <p class="float-r">
+                <a href="#">在线客服(推荐)</a>
+                <span>客服专线 </span>
+            </p>
+        </div>
+        <div class="div2">
+            <div class="float-l">
+                <div class="div3 float-l">
+                    <h2>{$info['title']}</h2>
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                    <ul>
+                    <volist name="info['i_pic']" key="k" id="vo">
+                        <li <if condition="$key eq 0">class="select"</if>>
+                            <img src="{$vo['path']}" alt="{$vo['title']}">
+                        </li>
+                    </volist>
+                    </ul>
+                    <p>
+                    <!--
+                        <span>29</span>
+                        人报名
+                        -->
+                        <!--<span>535</span>
+                        人设置提醒-->
+                        <span>{$info.click}</span>
+                        次围观
+                    </p>
+                    <a href="#">分享给好友</a>
+                </div>
+                <div class="div4 float-r">
+                    <p class="p1">
+                        <span>当前价</span>
+                        <span class="span1">{:num_format($info['transfer_price'])}</span>
+                        <span class="span2">{$info.transfer_price_unit}</span>
+                        <!--
+                        <span class="span3">
+                            出价人:
+                            <span>G6957</span>
+                        </span>
+                        -->
+                    </p>
+                    <!--
+                    <p class="p2">
+                        <span>距结束</span>
+                        <span class="span4 days"></span>
+                        <span>天</span>
+                        <span class="span4 hours"></span>
+                        <span>时</span>
+                        <span class="span4 minutes"></span>
+                        <span>分</span>
+                        <span class="span4 seconds"></span>
+                        <span>秒</span>
+                    </p>
+                    -->
+                    <div class="div5">
+                        <form>
+                            <div>
+                                <p class="adjust">
+                                    <span>+</span>
+                                    <span>-</span>
+                                </p>
+                                <span>出&nbsp;&nbsp;&nbsp;价</span>
+                                <input type="text" name="price">
+                            </div>
+                            <p>
+                                <button>报名交保证金</button>
+                                <a href="#">报名必看</a>
+                            </p>
+                        </form>
+                    </div>
+                    <ul class="ul2">
+                        <li class="li1">
+                            <p>起&nbsp;拍&nbsp;价:￥{:num_format($info['transfer_price'])}{$info.transfer_price_unit}</p>
+                            <!--
+                            <p>保&nbsp;证&nbsp;金:￥5000</p>
+                            <p>评&nbsp;估&nbsp;价:￥126100</p>
+                            -->
+                        </li>
+                        <li class="li2">
+                            <p>
+                                加价幅度:￥<span class="amplitude">500</span>
+                            </p>
+                            <!--
+                            <p>竞价周期:1天</p>
+                            <p>延期周期:5分钟/次</p>
+                            -->
+                        </li>
+                        <li class="li3">
+                            <p>类&nbsp;&nbsp;&nbsp;型:{$info.xmzc_type}</p>
+                            <!--
+                            <p>优先购买权人:无</p>
+                            -->
+                        </li>
+                    </ul>
+                    <p class="p3">竞价规则：至少一人报价且出价不低于起拍价，方可成交</p>
+                    <p class="p3">资产处置单位：太原铁路运输法院</p>
+                    <p class="p3">联系咨询方式：金融网 &nbsp;&nbsp;&nbsp;</p>
+                </div>
+            </div>
+            <div class="float-r div6">
+                <h2>竞买帮助</h2>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span>竞拍</span>
+                            如何参加拍卖(视频)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>交保</span>
+                            如何缴纳保证金
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>交保</span>
+                            拍卖开始后可以交保
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>竞价</span>
+                            司法拍卖出价规则
+                        </a>
+                    </li>
+                </ul>
+                <h2>资产交易服务</h2>
+                <p>
+                    <a href="#">拍卖咨询</a>
+                </p>
+                <div class="div7">
+                    <span>扫码出价</span>
+                    <img src="../public/images/v2/picture/list21.png" alt="">
+                </div>
+            </div>
+        </div>
+        <ul class="nav" id="J_announcement_list">
+            <li class="select">
+                <a href="#announcement">竞买公告</a>
+            </li>
+            <li>
+                <a href="#notice">竞买须知</a>
+            </li>
+            <li>
+                <a href="#goods-introduce">标的物介绍</a>
+            </li>
+            <li>
+                <a href="#record">竞买记录(<span>51</span>)</a>
+
+            </li>
+            <li>
+                <a href="#confirmation">竞价成功确认书</a>
+            </li>
+        </ul>
+        <div class="menu">
+            <div class="auction-read">
+                <p>
+                    <span>竞拍前必读</span>
+                    <a href="#">更多常见问题</a>
+                </p>
+                <ul>
+                    <li>
+                        <span>拍卖准备</span>
+                        <p>
+                            <span>阅读竞买公告，实地看样；确保有淘宝账号及实名认证完成的支付宝账号，
+                                <a href="#">企业账号注册流程</a>，
+                                <a href="#">个人账号注册流程</a>；拍卖过程中淘宝平台不收取任何费用
+                            </span>
+                        </p>
+                    </li>
+                    <li>
+                        <span>报名交保证金</span>
+                        <p>
+                            <span>拍卖结束前都可以交保证金，建议提前1-2天交，以免遇到问题错过拍卖；可以委托他人拍卖，
+                                <a href="#">查看委托流程</a>
+                            </span>
+                            <span>
+                                <span>该标的物需缴纳保证金5,000 元，建议您使用银行卡快捷支付、网银、余额宝，推荐：除邮储以外的银行</span>
+                                <a href="#">查看各银行支付限额及视频教程</a>
+                            </span>
+                        </p>
+                    </li>
+                    <li>
+                        <span>参与竞拍</span>
+                        <p>
+                            <span>
+                                手机电脑均可出价，出价次数无限制（可以不出价）
+                                <a href="#">查看出价、成交等规则</a>
+                            </span>
+                        </p>
+                    </li>
+                    <li>
+                        <span>竞拍结束</span>
+                        <p>
+                            <span>竞拍失败：保证金会自动全额退回给竞买人。
+                                <a href="#">查看保证金退回方式</a>
+                            </span>
+                            <span>竞拍成功：按照法院在竞买公告中的说明支付尾款，尾款支付后请联系法院签署《拍卖成交确认书》，
+                                <a href="#">办理交割</a>。
+                            </span>
+                        </p>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="announcement" id="announcement">
+                <h2>竞买公告</h2>
+                <div class="line"></div>
+                <div class="content">
+                    <div>
+                        <p>竞拍前请务必遵照《竞买公告》的要求，进行实地看样、调查标的物信息（如过户要求、违章情况等）、了解竞买资质、委托代理及尾款支付方式等内容。</p>
+                        <p>如违反相关规定，您的保证金可能会被法院划扣并产生其他司法处罚等后果，请理性参拍！
+                            <a href="#">查看真实案例</a>
+                        </p>
+                    </div>
+                    <!--
+                    <h3>竞买公告</h3>
+                    <p>太原铁路运输法院将于2017年5月22日10时至2017年5月23日10时（延时的除外）在太原铁路运输法院淘宝网司法拍卖网络平台进行公开拍卖活动，现公告如下：</p>
+                    <p>一、拍卖标的物：晋A6W771黑色奥迪A6L轿车一辆。里程数：31316；型号：ＦＶ７２４１ＦＣＶＴＧ奥迪Ａ６L、ＶＩＮ号ＬＦＶ４Ａ２４Ｆ６Ａ３０３７５２４、发动机号ＢＤＷ２６５５５８、V6 2.4L发动机、用途非营运、燃料汽油车辆初次登记日期为二零一零年五月十三日，年检有限期至二零一四年五月。车辆四门五座三厢，变速箱为2.4LCVT无级变速，由于停放时间较长电瓶缺电，经工作人员搭电瓶后车辆正常启动并开动；实木装饰、真皮座椅、脚垫、座垫、座套、影像导航、方向盘、档杆等内饰状况一般；左后门和左后翼子板有少许划痕，后保险杠右侧有刮痕，车身落满灰尘，由于长时间停放有掉漆、裂纹和喷漆等痕迹；轮胎漏气压扁；四门、三厢各缝隙分布均匀，车辆正常开动停放这里后，再未移动。（未标明的瑕疵不在拍卖人承担范围，请各竞买人自行了解）。</p>
+                    <p>评估价：126100元，起拍价：88300元，保证金：5000元，增价幅度500元(以及其整倍数)。</p>
+                    <p>二、咨询、展示看样的时间与方式：本院已委托山西省产权交易中心股份有限公司在拍卖期间对上述车辆的相关信息进行咨询及组织看样等工作，自公告之日起至2017年5月21日16时止（工作日）接受咨询，有意者请与山西省产权交易中心股份有限公司联系统一安排看样。山西省产权交易中心股份有限公司联系电话：李经理，0351-2374110,18735385686。</p>
+                    <p>三、竞买人条件：竞买人应当具备完全民事行为能力，法律、行政法规和司法解释对买受人资格或者条件有特殊规定的，竞买人应当具备规定的资格或者条件。负责执行的人民法院、网络服务提供者、承担拍卖辅助工作的社会机构或者组织的工作人员及其近亲属不得参与竞买并不得委托他人代为竞买与其行为相关的拍卖标的物。</p>
+                    <p>竞买人（含自然人、法人、其他组织）可委托他人（具备完全民事行为能力的自然人）参与拍卖。竞买人委托他人拍卖的，须在竞价程序开始前（5月15日16时前）到法院办理委托手续并经法院确认，竞买成功后，竞买人（委托人）与受托人一同到法院办理交接手续。拍卖成交后直接裁定委托人为买受人。如无委托手续或委托手续不全的，竞买活动认定为参拍人的本人行为，成交后裁定参拍人为买受人。</p>
+                    <p>因不符合条件参加竞买的，由竞买人自行承担相应的法律责任。</p>
+                    <p>四、本次拍卖活动设置延时出价功能，在拍卖活动结束前，每最后5分钟如果有竞买人出价，就自动延迟5分钟。</p>
+                    <p>五、拍卖的方式：本次拍卖为增价拍卖，起拍价即为拍卖保留价，至少一人报名且出价不低于起拍价，方可成交。</p>
+                    <p>六、标的物以实物现状为准，本院不承担本标的车辆瑕疵保证。特别提醒，有意者请亲自实地看样，未看样的竞买人视为对本标的实物现状的确认，责任自负。</p>
+                    <p>七、标的物原违法记录由买受人自行负责处理，相应的罚款及停车费等一切拖欠的费用均由买受人承担。标的物转让登记手续由买受人自行办理，所涉及的过户费、上牌费及可能存在的费用由买受人承担。</p>
+                    <p>八、对上述标的物权属有异议者，请于2017年5月15日前与本院联系。与本标的物有关人员[案件当事人、担保物权人（质押权人）、优先购买权人等]均可参加竞拍，不参加竞拍的请关注本次拍卖活动的整个过程。本标的物的优先购买权人未参加竞拍，视为放弃优先购买权。</p>
+                    <p>九、本标的物的网络司法拍卖事项本院已通知了当事人、已知优先购买权人，没有接到通知的在本次拍卖公告公示满五日视为已通知。</p>
+                    <p>十、拍卖竞价前淘宝系统将冻结竞买人支付宝账户内的资金作为应缴的保证金，拍卖结束后未能竞得者冻结的保证金自动解冻，冻结期间不计利息。本标的物竞得者原冻结的保证金自动转入法院指定账户，拍卖余款在2017年5月27日16时前缴入法院指定账户(户名：太原铁路运输法院，开户银行：中国建设银行太原建设北路支行，账号：14001815908050503630（转款时请备注项目名称）)。拍卖未成交的，竞买人冻结的保证金自动解冻，冻结期间不计利息。</p>
+                    <p>十一、司法拍卖因标的物本身价值，其起拍价、保证金、竞拍成交价格相对较高的，竞买人参与竞拍，支付保证金及余款可能会碰到当天限额无法支付的情况，请竞买人根据自身情况选择网上充值银行。各大银行充值和支付的限额情况可上网查询，网址：https://www.taobao.com/market/paimai/sf-helpcenter.php?path=sf-hc-right-content5#q1</p>
+                    <p>十二、依照法释〔2016〕18号《最高人民法院关于人民法院网络司法拍卖若干问题的规定》，竞买人成功竞得网拍标的物后，淘宝网拍平台将生成相应《司法拍卖网络竞价成功确认书》，确认书中载明实际买受人姓名、网拍竞买号信息。</p>
+                    <p>竞买人在拍卖竞价前请务必再仔细阅读本院发布的拍卖须知。</p>
+                    <p>标的物详情咨询：山西省产权交易中心股份有限公司，李经理，0351-2374110,18735385686</p>
+                    <p>本规则其他未尽事宜，请向产权交易中心咨询。</p>
+                    <p>法院监督电话：0351-2623105</p>
+                    <p>淘宝技术咨询：400-822-2870</p>
+                    <p>联系地址：山西省太原市建设北路236号</p>
+                    <p class="right">太原铁路运输法院</p>
+                    <p class="right">2017年5月5日</p>
+                    <h4>优先购买权</h4>
+                    <p>无</p>
+                    <h4>相关附件</h4>
+                    <p>没有相关下载附件</p>
+                    -->
+                </div>
+            </div>
+
+            <div class="notice" id="notice">
+                <h2>竞买须知</h2>
+                <div class="line"></div>
+                <div class="content">
+                    
+                </div>
+            </div>
+            <div class="goods-introduce" id="goods-introduce">
+                <h2>标的物介绍</h2>
+                <div class="line"></div>
+                <div class="content">
+                    <h4>具体描述</h4>
+                    <!--
+                    <p>
+                        相关附件下载：
+                        <a href="#">奥迪评估报告书.doc</a>
+                    </p>
+                    -->
+                    <h3>标的物介绍</h3>
+                    <!--
+                    <table>
+                        <tr>
+                            <td><p>拍品名称</p></td>
+                            <td colspan="2"><p>晋A6W771黑色奥迪A6L轿车一辆</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>拍卖依据</p></td>
+                            <td colspan="2">
+                                <p>1.太原铁路运输法院刑事判决书（2014）太铁刑初字第28号</p>
+                                <p>2.晋愚公评字（2016）第06102号</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><p>拍品所有人</p></td>
+                            <td colspan="2"><p>王慧</p></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><p>拍品现状</p></td>
+                            <td>
+                                <p>车辆</p>
+                                <p>类型</p>
+                            </td>
+                            <td><p>小型轿车</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>备注</p></td>
+                            <td><p>该车已被太原铁路运输法院扣押</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>优先购买权人</p></td>
+                            <td colspan="2"><p>无</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>提供的文件</p></td>
+                            <td colspan="2">
+                                <p>1、法院裁定书</p>
+                                <p>2、《拍卖成交确认书》</p>
+                                <p>3、协助执行通知书</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><p>该车注册登记日期为2010年5月13日，型号：奥迪牌FV7241FCVTG。里程数：31316；ＶＩＮ号ＬＦＶ４Ａ２４Ｆ６Ａ３０３７５２４、发动机号ＢＤＷ２６５５５８、V6 2.4L发动机、用途非营运、燃料汽油车辆初次登记日期为二零一零年五月十三日，年检有限期至二零一四年五月。车辆四门五座三厢，变速箱为2.4LCVT无级变速，由于停放时间较长电瓶缺电，经工作人员搭电瓶后车辆正常启动并开动；实木装饰、真皮座椅、脚垫、座垫、座套、影像导航、方向盘、档杆等内饰状况一般；左后门和左后翼子板有少许划痕，后保险杠右侧有刮痕，车身落满灰尘，由于长时间停放有掉漆、裂纹和喷漆等痕迹；轮胎漏气压扁；四门、三厢各缝隙分布均匀，车辆正常开动停放这里后，再未移动</p></td>
+                        </tr>
+                    </table>
+                    -->
+                    {$info.i_overview}
+                    <div class="img-list">
+                    <!--
+                        <img src="../public/images/v2/picture/list104.jpg" alt="">
+                        <img src="../public/images/v2/picture/list105.jpg" alt="">
+                        <img src="../public/images/v2/picture/list106.jpg" alt="">
+                        -->
+                        <volist name="info['i_pic']" key="k" id="vo">
+                            <img src="{$vo['path']}" alt="{$vo['title']}">
+                    </volist>
+
+                    </div>
+                    <h4>所在地</h4>
+                    <p>
+                        标的物所在地：{$info.area}
+                    </p>
+                    <div class="baidu-map" id="baidu-map">
+                    </div>
+                </div>
+            </div>
+            <div class="record" id="record">
+                <h2>竞买记录</h2>
+                <div class="line"></div>
+                <div class="content">
+                    <table class="record-table">
+                        <thead>
+                        <tr>
+                            <th>状态</th>
+                            <th>竞买号</th>
+                            <th>价格</th>
+                            <th>时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!--
+                        <tr class="get">
+                            <td>成交</td>
+                            <td>W0771</td>
+                            <td>180,800</td>
+                            <td>2017年05月23日 10:16:50</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>D8278</td>
+                            <td>180,300</td>
+                            <td>2017年05月23日 10:16:03</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>W0771</td>
+                            <td>179,800</td>
+                            <td>2017年05月23日 10:15:47</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>D8278</td>
+                            <td>179,300</td>
+                            <td>2017年05月23日 10:15:15</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>W0771</td>
+                            <td>178,800</td>
+                            <td>2017年05月23日 10:14:23</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>D8278</td>
+                            <td>178,300</td>
+                            <td>2017年05月23日 10:13:57</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>W0771</td>
+                            <td>177,800</td>
+                            <td>2017年05月23日 10:13:51</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>D8278</td>
+                            <td>177,300</td>
+                            <td>2017年05月23日 10:12:48</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>W0771</td>
+                            <td>176,800</td>
+                            <td>2017年05月23日 10:12:33</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>D8278</td>
+                            <td>176,300</td>
+                            <td>2017年05月23日 10:12:28</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>W0771</td>
+                            <td>175,800</td>
+                            <td>2017年05月23日 10:11:32</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>D8278</td>
+                            <td>175,300</td>
+                            <td>2017年05月23日 10:11:10</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>W0771</td>
+                            <td>174,800</td>
+                            <td>2017年05月23日 10:08:18</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>L5558</td>
+                            <td>174,300</td>
+                            <td>2017年05月23日 10:08:02</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>W0771</td>
+                            <td>173,800</td>
+                            <td>2017年05月23日 10:05:56</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>D8278</td>
+                            <td>173,300</td>
+                            <td>2017年05月23日 10:05:49</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>W0771</td>
+                            <td>172,800</td>
+                            <td>2017年05月23日 10:03:31</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>D8278</td>
+                            <td>172,300</td>
+                            <td>2017年05月23日 10:02:50</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>W0771</td>
+                            <td>171,800</td>
+                            <td>2017年05月23日 10:02:49</td>
+                        </tr>
+                        <tr>
+                            <td>出局</td>
+                            <td>L5558</td>
+                            <td>171,300</td>
+                            <td>2017年05月23日 10:02:33</td>
+                        </tr>
+                        -->
+                        </tbody>
+                    </table>
+                    <p>
+                        <a href="#">上一页</a>
+                        <a href="#">下一页</a>
+                    </p>
+
+                </div>
+            </div>
+            <div class="confirmation" id="confirmation">
+                <h2>竞价成功确认书</h2>
+                <div class="line"></div>
+                <div class="content">
+                    <h1>司法拍卖网络竞价成功确认书</h1>
+                    <p class="p4"></p>
+                    <p class="p5"></p>
+                    <div>
+                    <!--
+                        <p class="p6">司法标的处置单位：太原铁路运输法院</p>
+                        <p class="p6">标的物名称：晋A6W771黑色奥迪A6L轿车一辆</p>
+                        <p class="p6">标的物网拍链接：https://sf.taobao.com/sf_item/550111394947.htm</p>
+                        <p class="p6">网拍公告时间：2017/05/05 17:07:50</p>
+                        <p class="p6">网拍开始时间：2017/05/22 10:00:00</p>
+                        <p class="p6">网拍结束时间：2017/05/23 10:21:50</p>
+                        <p class="p7"></p>
+                        <p class="p6">【网络拍卖竞价结果】</p>
+                        <p class="p6">用户姓名周增文通过竞买号W0771于2017年05月23日在太原铁路运输法院于淘宝网司法拍卖网络平台开展的“晋A6W771黑色奥迪A6L轿车一辆”司法拍卖项目公开竞价中，以最高应价胜出。</p>
+                        <p class="p6">该标的网络拍卖成交价格：¥180800（壹拾捌万零捌佰元）</p>
+                        <p class="p7"></p>
+                        <p class="p6">在网络拍卖中竞买成功的用户，必须依照标的物《竞买须知》、《竞买公告》要求，按时交付标的物网拍成交余款、办理相关手续。</p>
+                        <p class="p6">标的物最终成交以太原铁路运输法院出具拍卖成交裁定为准。</p>
+                        <p class="p6 p8">2017年05月23日</p>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="introduce">
+    <ul>
+        <li>
+            <img src="../public/images/v2/picture/list15.png" alt="">
+            <span>一对一客服</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list16.png" alt="">
+            <span>隐私保护</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list17.png" alt="">
+            <span>服务费合理</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list18.png" alt="">
+            <span>信息可靠</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list19.png" alt="">
+            <span>手机访问</span>
+        </li>
+    </ul>
+</div>
+
+<include file="public:new_footer" />
+<script src="../public/js/v2/lib/jquery-1.12.4.min.js"></script>
+<script src="../public/js/v2/project-transfer-details.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=iAPq3FZ2sTuNuyjSxMQjbOk50el3x9vf"></script>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("baidu-map",{minZoom:5,maxZoom:15});  // 创建Map实例
+    //map.enableScrollWheelZoom();    // 启用鼠标滚轮缩放
+    map.centerAndZoom("{$info.area}",14);      // 初始化地图,用城市名设置地图中心点
+</script>
+</body>
+</html>
+
+

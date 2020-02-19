@@ -1,0 +1,764 @@
+<include file="public:meta" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc"/>
+<meta name="format-detection" content="telephone=no">
+<link href="../public/css/index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/header.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/school.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/common.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../piblic/js/html5shiv.js"></script>
+<![endif]-->
+<style>
+body {
+    background-color: #eee;
+    font-family: "微软雅黑";
+}
+.fn-left {
+    float: left;
+}
+.fn-right {
+    float: right;
+}
+.service-in-list {
+    margin-right: 500px;
+}
+.service-in-list h5 {
+    color: #e94e38;
+    font-size: 18px;
+}
+.service-in-list li {
+    font-size: 14px;
+    margin-top: 10px;
+}
+.service-in-list li i {
+    background: rgba(0, 0, 0, 0) url("../public/images/service/icon-gou.png") no-repeat scroll -4px -8px;
+    display: inline-block;
+    font-size: 0;
+    height: 8px;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 13px;
+}
+.preferential-list h2 {
+    font-size: 24px;
+    line-height: 1em;
+    margin: 30px 0 5px;
+}
+.preferential-list .preferential-br {
+    border-bottom: 2px solid #bbb;
+    display: inline-block;
+    width: 20px;
+}
+.preferential-list p {
+    font-size: 14px;
+    height: 42px;
+    margin: 10px 0 20px;
+}
+.preferential-list .part-icon-arrow-a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd #ddd transparent transparent;
+    border-image: none;
+    border-style: solid solid dashed dashed;
+    border-width: 15px;
+    right: 0;
+    top: 0;
+}
+.preferential-gou {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/icon-gou.png") no-repeat scroll -30px -6px;
+    display: block;
+    height: 11px;
+    position: absolute;
+    right: 2px;
+    top: 3px;
+    width: 12px;
+}
+.preferential-list li.cur {
+    border-color: #e94e38;
+}
+.preferential-list li.cur .part-icon-arrow-a {
+    border-right: 15px solid #e94e38;
+    border-top: 15px solid #e94e38;
+}
+.preferential-list li {
+    background: #fbfbfb none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    color: #666;
+    float: left;
+    height: 210px;
+    position: relative;
+    text-align: center;
+    width: 218px;
+}
+.preferential-list li.cur {
+    border-color: #e94e38;
+}
+.preferential-list li.cur .part-icon-arrow-a {
+    border-right: 15px solid #e94e38;
+    border-top: 15px solid #e94e38;
+}
+.preferential-list .part-icon-arrow-a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd #ddd transparent transparent;
+    border-image: none;
+    border-style: solid solid dashed dashed;
+    border-width: 15px;
+    right: 0;
+    top: 0;
+}
+.preferential-gou {
+    background: rgba(0, 0, 0, 0) url("../public/images/service/icon-gou.png") no-repeat scroll -30px -6px;
+    display: block;
+    height: 11px;
+    position: absolute;
+    right: 2px;
+    top: 3px;
+    width: 12px;
+}
+.preferential-list li.cur {
+    border-color: #e94e38;
+}
+.bids_scroll .scroll_absolute {
+    position: absolute;
+    width: 310px !important;
+}
+.service-privileges-list {
+    overflow: hidden;
+    padding: 0 30px;
+}
+.service-privileges-list article {
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    margin-top: -1px;
+    overflow: hidden;
+    padding: 30px 0;
+}
+.service-privileges-list aside {
+    float: left;
+    width: 225px;
+}
+.service-privileges-list aside i {
+    background: #bbb none repeat scroll 0 0;
+    border-radius: 10em;
+    color: #fff;
+    display: inline-block;
+    font-family: arial;
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 20px 0 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 30px;
+}
+.service-privileges-list section {
+    color: #666;
+    float: left;
+    line-height: 30px;
+    width: 664px;
+}
+.preferential-list-a li {
+    margin-left: 30px;
+}
+.preferential-list-b li {
+    margin-right: 20px;
+}
+.preferential-list-b {
+    overflow: hidden;
+    width: 940px;
+}
+.preferential-list-b ul {
+    width: 980px;
+}
+.preferential-list h2 {
+    font-size: 24px;
+    line-height: 1em;
+    margin: 30px 0 5px;
+}
+.preferential-list .preferential-br {
+    border-bottom: 2px solid #bbb;
+    display: inline-block;
+    width: 20px;
+}
+.preferential-list p {
+    font-size: 14px;
+    height: 42px;
+    margin: 10px 0 20px;
+}
+.preferential-list .part-icon-arrow-a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd #ddd transparent transparent;
+    border-image: none;
+    border-style: solid solid dashed dashed;
+    border-width: 15px;
+    right: 0;
+    top: 0;
+}
+.preferential-list li.cur {
+    border-color: #e94e38;
+}
+.preferential-list li.cur .part-icon-arrow-a {
+    border-right: 15px solid #e94e38;
+    border-top: 15px solid #e94e38;
+}
+.bids_scroll .scroll_vertical_bar {
+    background: #d7d7d7 none repeat scroll 0 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+}
+.bids_scroll .scroll_track {
+    background-color: #e8e8e8;
+    position: relative;
+}
+.bids_scroll .scroll_drag {
+    background-color: #a4a3a3;
+    border-radius: 2px;
+    cursor: pointer;
+    left: 0 !important;
+    position: relative;
+    top: 0;
+    width: 4px !important;
+}
+.bids_scroll .scroll_arrow {
+    background-color: #369db4;
+    cursor: pointer;
+    display: block;
+    text-indent: -20000px;
+}
+.bids_scroll .scroll_vertical_bar .scroll_arrow {
+    height: 16px;
+}
+.ad-m10 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.ad-m15 {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.ad-mb10 {
+    margin-bottom: 10px;
+}
+.icon-good {
+    background: rgba(0, 0, 0, 0) url("../../src/images/member/member-info/icon_ppt.jpg") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 13px;
+    margin-left: 5px;
+    vertical-align: middle;
+    width: 22px;
+}
+.service-nav li a {
+    width: 140px;
+}
+.service-cont-all {
+    background: #fff none repeat scroll 0 0;
+    border-top: 1px solid #ddd;
+    margin-top: -1px;
+}
+.service-cont-box {
+    padding: 15px 20px;
+}
+.service-icon-list {
+    margin: 30px auto;
+    overflow: hidden;
+    width: 900px;
+}
+.service-icon-list li {
+    float: left;
+    text-align: center;
+    width: 180px;
+}
+.service-icon-list li aside {
+    height: 128px;
+}
+.service-icon-list li aside i {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/icon-service.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 128px;
+    width: 112px;
+}
+.service-icon-list li .icon-service1 i {
+    background-position: -4px 0;
+}
+.service-icon-list li .icon-service2 i {
+    background-position: -175px 0;
+}
+.service-icon-list li .icon-service3 i {
+    background-position: -350px 0;
+}
+.service-icon-list li .icon-service4 i {
+    background-position: -527px 0;
+}
+.service-icon-list li .icon-service5 i {
+    background-position: -7px -134px;
+}
+.service-icon-list li .icon-service6 i {
+    background-position: -175px -134px;
+}
+.service-icon-list li .icon-service7 i {
+    background-position: -350px -134px;
+}
+.service-icon-list p {
+    color: #666;
+    font-size: 14px;
+    line-height: 26px;
+}
+.service-btn-box {
+    margin-left: auto;
+    margin-right: auto;
+    width: 219px;
+}
+.service-btn-box a {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/btn-service-red.jpg") no-repeat scroll 0 0;
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    height: 45px;
+    line-height: 42px;
+    text-align: center;
+    width: 219px;
+}
+.service-btn-box a:hover {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/btn-service-red-hr.jpg") no-repeat scroll 0 0;
+    color: #fff;
+    text-decoration: none;
+}
+.service-cont-title {
+    border-bottom: 1px solid #ddd;
+    height: 50px;
+    position: relative;
+}
+.service-cont-title-f8 {
+    background: #f8f8f8 none repeat scroll 0 0;
+}
+.service-cont-title h3 {
+    border-bottom: 2px solid #e84e36;
+    font-size: 16px;
+    height: 50px;
+    left: 0;
+    line-height: 50px;
+    padding: 0 20px;
+    position: absolute;
+    top: 0;
+}
+.service-cont-title .fn-right {
+    color: #333;
+    font-size: 16px;
+    line-height: 50px;
+    margin-right: 15px;
+}
+.service-title-child {
+    background: #fafafa none repeat scroll 0 0;
+    color: #ef4349;
+    font-size: 16px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
+.single-service {
+    overflow: hidden;
+}
+.single-service article {
+    border-top: 1px dashed #c9c9c9;
+    margin-top: -1px;
+    overflow: hidden;
+    padding: 20px 0 20px 30px;
+}
+.single-service article.cur {
+    background: #f8f8f8 none repeat scroll 0 0;
+}
+.single-service .single-icon {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/single-icon.png") no-repeat scroll 0 0;
+    display: block;
+    float: left;
+    height: 102px;
+    width: 108px;
+}
+.single-service .single-icon1 {
+    background-position: 0 0;
+}
+.single-service .single-icon2 {
+    background-position: 0 -102px;
+}
+.single-service .single-icon3 {
+    background-position: 0 -204px;
+}
+.single-service .single-icon4 {
+    background-position: 0 -306px;
+}
+.single-service .single-icon5 {
+    background-position: 0 -408px;
+}
+.single-service .single-icon6 {
+    background-position: 0 -513px;
+}
+.single-service section {
+    margin: 0 155px 0 135px;
+}
+.single-service section div span {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/icon-dian.gif") no-repeat scroll left center;
+    color: #666;
+    line-height: 22px;
+    padding: 0 20px 0 6px;
+}
+.single-service aside {
+    float: right;
+    width: 145px;
+}
+.single-service aside span {
+    color: #ea4f39;
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 5px;
+}
+.certification-service-list {
+    margin: 55px 0 35px 152px;
+}
+.certification-service-list article {
+    background: #f3f3f3 none repeat scroll 0 0;
+    border: 1px solid #f3f3f3;
+    float: left;
+    margin-right: 80px;
+    padding-top: 132px;
+    position: relative;
+    width: 272px;
+}
+.certification-service-list aside {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/service-radius.png") no-repeat scroll 0 0;
+    color: #fff;
+    font-size: 24px;
+    height: 154px;
+    left: 50%;
+    line-height: 154px;
+    margin-left: -77px;
+    position: absolute;
+    text-align: center;
+    top: -40px;
+    width: 154px;
+}
+.certification-service-list .certification-radius1 {
+    background-position: -6px -5px;
+}
+.certification-service-list .certification-radius2 {
+    background-position: -185px -5px;
+}
+.certification-service-list ul {
+    background: #fff none repeat scroll 0 0;
+}
+.certification-service-list ul li {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/cn-se-icon.png") no-repeat scroll 28px center;
+    color: #666;
+    font-size: 14px;
+    height: 42px;
+    line-height: 42px;
+    padding-left: 42px;
+}
+.certification-service-list ul li.cur {
+    background: #fafafa url("../../src/images/v6/service/cn-se-icon.png") no-repeat scroll 28px center;
+}
+.buy-process {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/buy-process.jpg") no-repeat scroll 0 0;
+    height: 204px;
+    margin: 25px 0 25px 76px;
+    padding-left: 12px;
+    width: 860px;
+}
+.buy-process span {
+    color: #76aedf;
+    display: inline-block;
+    font-size: 22px;
+    margin: 125px 78px 0 0;
+    text-align: center;
+    width: 133px;
+}
+.taobao-way {
+    border: 1px solid #ddd;
+    height: 141px;
+    margin: 35px 40px;
+    overflow: hidden;
+}
+.main .configureLists {
+    padding-bottom: 90px;
+}
+.main .box {
+    width: 100%;
+}
+.main .configureLists ul {
+    height: auto;
+    margin: 115px auto 0;
+    overflow: hidden;
+    width: 1200px;
+}
+.main .configureLists .list1 {
+    border-bottom-left-radius: 8px;
+    border-left: 1px solid #ddd;
+    border-top-left-radius: 8px;
+    margin-left: 5px;
+}
+.main .configureLists ul li {
+    border-bottom: 1px solid #ddd;
+    float: left;
+    width: 279px;
+    z-index: 10;
+}
+.main .configureLists li .columns {
+    width: inherit;
+}
+ul, dl {
+    list-style: outside none none;
+}
+.main .configureLists .list1 dt {
+    padding-left: 25px;
+    text-align: left;
+}
+.main .configureLists .columns dt {
+    background-color: #f60;
+    color: #fff;
+    font-size: 22px;
+    font-weight: normal;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+}
+.border-top-left-radius {
+    border-top-left-radius: 8px;
+}
+.main .configureLists .list1 dd {
+    padding-left: 25px;
+    text-align: left;
+}
+.main .configureLists .columns dd {
+    font-size: 14px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.main .configureLists li.active {
+    animation: 0.6s ease-in-out 0s normal forwards 1 running change;
+    border: 1px solid #f60;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 279px;
+}
+@keyframes change {
+0% {
+    width: 279px;
+}
+100% {
+    width: 316px;
+}
+}
+@keyframes change {
+0% {
+    width: 279px;
+}
+100% {
+    width: 316px;
+}
+}
+@keyframes change {
+0% {
+    width: 279px;
+}
+100% {
+    width: 316px;
+}
+}
+.main .configureLists li.restore {
+    animation: 0.6s ease-in-out 0s normal forwards 1 running restore;
+}
+@keyframes restore {
+0% {
+    width: 279px;
+}
+100% {
+    width: 316px;
+}
+}
+@keyframes restore {
+0% {
+    width: 279px;
+}
+100% {
+    width: 316px;
+}
+}
+@keyframes restore {
+0% {
+    width: 316px;
+}
+100% {
+    width: 279px;
+}
+}
+.main .configureLists li.active .columns dt {
+    background-color: #02c599;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 80px;
+    margin-top: -16px;
+    padding-top: 15px;
+}
+.main .configureLists li.active .columns .finalRow {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    height: 80px;
+}
+.main .configureLists li.restore {
+    animation: 0.6s ease-in-out 0s normal forwards 1 running restore;
+}
+</style>
+</head>
+<body>
+<include file="public:header" />
+<div class="container fn-mb-20 main">
+<div class="box configureLists">
+            <ul>
+                <li class="list1">
+                    <dl class="columns">
+                        <dt class="border-top-left-radius">服务内容</dt>
+                        <dd>联系方式查看
+更直接获得对方联系信息</dd>
+                        <dd>委托刷新
+委托刷新代您进行刷新</dd>
+                        <dd>投融特刊
+定制特刊形式，精确推送至目标客户邮箱内</dd>
+                        <dd>信息精编展示
+将您的信息发送给目标客户</dd>
+                        <dd>信息精编推送
+选择最优质的资金信息发送给您</dd>
+                        <dd>商业计划书编写
+专业人员协助编写商业计划书</dd>
+                        <dd>创刻秀路演
+参加创刻秀活动路演名额壹个</dd>
+                        <dd>套餐优惠价
+开通服务，即可享用会员特权</dd>
+                        <dd>销售系统</dd>
+                        <dd>职介/人才市场客户管理系统</dd>
+                        <dd>运营解决方案</dd>
+                        <dd>服务方式</dd>
+                        <dd>服务期限</dd>
+                        <dd>授权期限</dd>
+                        <dd class="finalRow border-bottom-left-radius"></dd>
+                    </dl>
+                </li>
+                <li class="active">
+                    <dl class="columns">
+                        <dt>金融宝</dt>
+                        <dd class="price">联系客服</dd>
+                        <dd class="tick">提供升级包</dd>
+                        <dd>1个</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="fork">×</dd>
+                        <dd class="fork">×</dd>
+                        <dd class="fork">×</dd>
+                        <dd class="fork">×</dd>
+                        <dd class="fork">×</dd>
+                        <dd class="tick">提供基础文档</dd>
+                        <dd class="tick">1年</dd>
+                        <dd class="tick">永久</dd>
+                        <dd class="finalRow"><a class="openNow" href="javascript:void(0)" data-btn-type="3">马上开通</a></dd>
+                    </dl>
+                </li>
+                <li class="list3 restore">
+                    <dl class="columns">
+                        <dt>金融宝白金版</dt>
+                        <dd class="price">￥50000</dd>
+                        <dd class="tick">提供升级包</dd>
+                        <dd>1个</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">提供电话咨询</dd>
+                        <dd class="tick">1年</dd>
+                        <dd class="tick">永久</dd>
+                        <dd class="finalRow"><a class="openNow" href="javascript:void(0)" data-btn-type="3">马上开通</a></dd>
+                    </dl>
+                </li>
+                <li class="list4 restore">
+                    <dl class="columns">
+                        <dt class="border-top-right-radius">金融宝钻石版</dt>
+                        <dd class="price">￥100000</dd>
+                        <dd class="tick">技术辅助升级</dd>
+                        <dd>1个</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">√</dd>
+                        <dd class="tick">技术辅助</dd>
+                        <dd class="tick">1年</dd>
+                        <dd class="tick">永久</dd>
+                        <dd class="finalRow border-bottom-right-radius"><a class="openNow" href="javascript:void(0)" data-btn-type="3">马上开通</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>       
+</div>
+<include file="public:footer" />
+<script type="text/javascript">
+        $(function(){
+            //鼠标移上时更改配置列表中样式
+            $(".configureLists ul").on("mouseenter","li:not(.list1)",function(){
+                var that = this;
+                if(!$(that).hasClass('active')){
+                    $(".configureLists ul li.active").removeClass('active').addClass('restore');
+                    $(that).removeClass('restore').addClass('active');
+                }
+            });
+            //鼠标移上时更改配置列表中样式结束
+
+            //添加配置列表背景
+            /*
+            for(var i = 0; i< $(".configureLists ul li dl").length; i++){
+                $(".configureLists ul li dl:eq("+ i + ") dd:odd").css("background-color","#f3f3f3");
+            }
+            */
+            //添加配置列表背景结束
+
+            var $el1 = $('.main .inlineShow');
+            var $el2 = $('.main .experienceAtOnce');
+            var $el3 = $('.main .configureLists .openNow');
+            options = {
+                type: 1, //弹出框类型
+                title: '温馨提示',
+                skin: 'layui-layer-rim', //加上边框
+                area: ['400px',''], //弹出框大小
+                //弹出框内容
+                content: '<form class="warmPrompt">' +
+                '<p class="list">我们的客服人员会在24小时内与您取得联系，协商开通相关事宜，请您保持电话畅通^_^</p>' +
+                '</form>'
+            }
+            buttonClick($el1);
+            buttonClick($el2);
+            buttonClick($el3,options);
+        });
+    </script>
+</body>
+</html>

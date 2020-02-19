@@ -1,0 +1,253 @@
+<include file="public:meta" />
+<link href="../public/css/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/header.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/common_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/hall_show.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/tab.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/show.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/company/company_show.css" rel="stylesheet" type="text/css" />
+<style media="print" type="text/css"> 
+.noprint{visibility:hidden} 
+</style>
+</head>
+<body>
+<div class="noprint">
+<include file="public:header" />
+</div>
+<div class="rshow" id="content">
+<div class="l">
+<div class="main">
+<!--基本资料 -->
+<div class="info">
+<div class="inl">
+<div class="pic"><img src="<if condition='$user_info["photosrc"]==""'>../public/images/face/07.png<else />{$user_info['photosrc']}</if>"/></div>
+</div>
+<div class="inr">
+<div class="exhibition_room">项目方<br>展厅</div>
+<div class="name_box">
+<div class="name"><span style="font-size: 16px;">{$user_info['realname']}</span><!--<if condition="user_info['sex'] ==1"> 男士<else /> 女士</if>--></div>
+<div class="clear"></div>
+</div>
+<div class="txt shareBtn bdsharebuttonbox">
+<a class='ui-btn ui-btn-blue bds_more' data-cmd="more" href="javascript:;"><span>分享</span></a>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+<div class="biz-card-dl-container">
+<notempty name="user_info['user_area']">
+<dl>
+<dt>所在地区</dt>
+<dd>{$user_info['province']} {$user_info['city']} {$user_info['area']}</dd>
+</dl>
+</notempty>
+<dl>
+<dt>意向资金</dt>
+<dd>
+个人资金、  
+企业资金、  
+天使投资  
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="items">
+<div class="bgFFF top20" id="tab">
+<header class="part-nav-tab-a j-tab-all-c">
+<nav class="fn-clear">
+<ul>
+<li class="current"><a href="javascript:;">概况</a></li>
+<li><a href="javascript:;">动态</a></li>
+<li><a href="javascript:;">人脉(0)</a></li>
+<li id="guest_number"><a href="javascript:;">留言(0)</a></li>
+</ul>
+</nav>
+</header>               
+<div class="m-detaCont j-tab-cont">
+<div class="conet pad30 clearfix" id="user_info"><div class="part-not-cont fn-pb-50"><i class="icoPro16yellow"></i><span class="fn-vam">该用户暂时还没有任何概况信息</span></div></div>
+<div class="conet clearfix" style="display:none" id="feed">  
+<!--
+<div class="m-dtai clearfix">
+<div class=" rightArea top15"><span class="col999">04月21日</span></div>
+<div class="leftArea">
+<p class="bold">TA给&nbsp;<a href="#" target="_blank">重庆市某金融投资公司 吴先生</a>&nbsp;递送了名片</p>
+<p class="line24 col666">
+所在地：重庆                                                 <i class="line">|</i>
+所属行业：金融投资
+</p>
+</div>
+</div>
+-->
+<div class=" clear"></div>
+</div>
+<div class="conet clearfix" style="display:none" id="business_all">
+<div class="m-rmTit fn-clear" id="bus_tab">
+<span class="active" value="">全部</span>
+<span value="firends">商友</span>
+<span value="myfollow">发出名片</span>
+<span value="myfans">收到名片</span>
+<input name="back_url" id="back_url" value="/service/company/businesscard" type="hidden">
+<input name="act" id="bus_act" value="" type="hidden">
+</div>
+<div class="j-m-rmCont">
+<div class="m-rmCont" style="display:block;">
+<ul>
+<!--
+<li class="clearfix">
+<div class="box">
+<a href="/company_761854.html"><img src="__RESUME__/default/images/07.png"></a>
+<p class="col333 bold"><a href="/company_761854.html">赵先生</a><em></em></p>
+<p class="colblue">   </p>
+<p class="col999">商友 3  |  发出名片 6  |  收到名片 0  |  信息 1</p>
+<p class="top5" data-id="761854">
+<a href="javascript:;" event="click.exchange" class="ui-btn-small ui-btn-blue">+加为商友</a>
+</p>
+</div>
+<div class="box">
+<a href="/company_702980.html"><img src="__RESUME__/default/images/07.png"></a>
+<p class="col333 bold"><a href="/company_702980.html">李先生</a><em></em></p>
+<p class="colblue">广西省柳州市某汽车汽配公司   经理</p>
+<p class="col999">商友 2  |  发出名片 4  |  收到名片 0  |  信息 1</p>
+<p class="top5" data-id="702980">
+<a href="javascript:;" event="click.exchange" class="ui-btn-small ui-btn-blue">+加为商友</a>
+</p>
+</div>
+</li>
+-->
+</ul>
+</div>
+</div>
+</div>
+<div class="conet clearfix pad30" style="display:none">
+<div class="fn-clear ui-le-ht24">
+
+<p class="fn-left"><span class="font16">用户留言</span>
+</p>
+<p class="fn-right" id="leave_msg_input_tip">您还可以输入<span class="colye">300</span>个字</p>
+</div>
+<div class="m-textArea top20">
+<div class="fn-pr">
+<textarea class="input" maxlength="300" name="leave_msg" id="leave_msg_content" placeholder="提示：严禁发布含有联系方式和广告性质的内容，违者一律删除！"></textarea>
+<span class="prompt_pass">提示：严禁发布含有联系方式和广告性质的内容，违者一律删除 !</span>
+</div>
+<div class="inputArea">
+<a href="javascript:alert('留言功能暂时关闭!')" class="ui-btn ui-btn-red btn-publish-leave-msg">发布留言</a>
+<div class="m-hykj fn-right right10 j-hover-all">
+<span>公开</span>
+<ul>
+<li><a href="javascript:void(0)" data-scope="0">公开</a></li>
+<li><a href="javascript:void(0)" data-scope="1">仅对方可见</a></li>
+<li><a href="javascript:void(0)" data-scope="2">会员可见</a></li>
+</ul>
+</div>
+<input id="public" name="public" value="0" type="hidden">
+<div id="comment_login_reg" class="fn-hide">
+<input id="reg_or_login" name="reg_or_login" type="hidden">
+<form id="frmRegOrLogin" name="frmRegOrLogin" method="post">
+<div class="fn-left fn-pr">
+<input id="J_name" name="name" class="input width-name" placeholder="姓名" type="text">
+<span class="prompt_pass">姓名</span>
+</div>
+<div class="fn-left fn-pr">
+<input id="J_mobile_msg" name="mobile" class="input width-tel log_reg_code" placeholder="手机号码" type="text">
+<span class="prompt_pass">手机号码</span>
+</div>
+<div class="fn-left prompt">输入姓名与电话留言后方便对方与您联系!</div>
+</form>
+</div>
+</div>
+</div>
+<p class="pad20TB" id="J_mobile_msg_info"></p>
+<div class="v6-message-all" id="guest">    <div class="part-not-cont fn-pb-30 fn-border-t-gary"><i class="icoPro16yellow"></i><span class="fn-vam">暂时还没有用户留言</span></div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="down_resum_confirm_box"></div>
+<div class="noprint">
+<include file="Home@default/public/footer_min" />
+</div>
+<script type="text/javascript" src="../public/js/jquery.modal.dialog.js"></script>
+<script type="text/javascript" src="../public/js/jquery.listitem.js"></script>
+<script type="text/javascript" src="../public/js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="../public/js/laydate/laydate.js"></script>
+<script type="text/javascript" src="../public/js/personal/jquery.fixed.sidebar.js"></script>
+<style>
+.bds_more{
+background-image: none !important;
+color: #fff !important;
+float: inherit;
+font-size: 14px !important;
+height: 30px !important;
+line-height: 30px !important;
+margin: 0 !important;
+padding: 0 8px 0 28px !important;
+}
+.ui-btn-red {
+    background-color: #e94e38;
+}
+</style>
+<script src="../public/js/message.js" type="text/javascript" language="javascript"></script>
+<script>
+	jQuery.jqtab = function(tabtit,tab_conbox,shijian,li,cur,type,first) {
+                if( li==undefined || li==""){
+                    li="li:not('.part-li-not')" ;
+                }
+                if( shijian==undefined || shijian==""){
+                    shijian="click";
+                }
+                if( cur==undefined || cur==""){
+                    cur="current";
+                }
+                $(tabtit).find(li).bind(shijian,function(){
+                    if(type ==1){
+                        $(this).find("input").attr("checked","checked").siblings().attr("checked","");
+                    }else{
+                        $(this).addClass(cur).siblings(li).removeClass(cur);
+                    }
+                    var activeindex = $(this).parents(tabtit).find(li).index(this);
+                    $(this).parents(tabtit).siblings(tab_conbox).children().eq(activeindex).show().siblings().hide();
+                    if(type!=1){
+                        return false;
+                    }
+                });
+            };
+            //公共导航点击效果
+            $.jqtab(".j-tab-all-c",".j-tab-cont");
+            $.jqtab(".j-tab-all-c-cur",".j-tab-cont","","","ui-tab-head-current");
+            $.jqtab(".j-tab-all-c-1",".j-tab-cont","","","",1);
+            $.jqtab(".j-tab-all-m",".j-tab-cont","mouseover");
+            $.jqtab(".j-tab-all-m-1",".j-tab-cont","mouseover","","","",1);
+             $.jqtab(".m-title2",".m-detaCont",'','span','active');//外包
+            $.jqtab(".m-rmTit",".j-m-rmCont",'','span','active');//外包
+            // 公共组件hover
+            jQuery.jqhover = function(tabtit) {
+
+                $(tabtit).hover(function(){
+                    $(this).addClass("cur")
+                },function(){
+                    $(this).removeClass("cur")
+                });
+            };
+            $.jqhover('.j-hover-all');
+</script>
+<script>
+var uid='5597859950232f10de3a54dedd3bbb6efb0cc5';
+    var act='';
+    $.post('/Home/BusinessCard/my', 'uid='+uid+"&act="+act, function(res){
+        if (res.code = 200){     
+            $("#business_all").html(res.data.html);
+            bus.init();
+        }
+      },"json");
+</script>
+</body>
+</html>

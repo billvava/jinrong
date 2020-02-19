@@ -1,0 +1,153 @@
+#focus .container {
+    position: relative;
+    z-index: 10;
+}
+#focus .container .prev, #focus .container .next {
+    background-color: #000;
+    cursor: pointer;
+    display: none;
+    height: 54px;
+    position: absolute;
+    top: 173px;
+    width: 54px;
+}
+#focus .container .prev {
+    left: -100px;
+}
+#focus .container .next {
+    background-position: right top;
+    right: -100px;
+}
+.login {
+    height: 260px;
+    position: absolute;
+    top: 50px;
+    width: 280px;
+    right: 10%;
+}
+.login-bg {
+    background-color: #000;
+    height: 280px;
+    left: 0;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    width: 280px;
+    z-index:9;
+}
+.login-tab {
+    height: 280px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 280px;
+    z-index: 20;
+}
+.login-tab .ui-tab-head {
+    height: 40px;
+}
+.login-tab .ui-tab-head ul li {
+    color: #ccc;
+    cursor: pointer;
+    float: left;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    width: 140px;
+}
+.login-tab .ui-tab-head ul li.ui-tab-head-current {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+.login-tab .ui-tab-head .ui-tab-head-bg {
+    background-color: #fff;
+    display: block;
+    height: 40px;
+    left: 0;
+    opacity: 0.1;
+    position: absolute;
+    top: 0;
+    width: 140px;
+}
+.login-tab .ui-tab-head ul li.ui-tab-head-current .ui-tab-head-bg {
+    display: none;
+}
+.login-form {
+    padding: 30px 30px 0;
+}
+.login-form .checkbox {
+    vertical-align: middle;
+}
+.login-form li a {
+    color: #fff;
+}
+.login-form li {
+    padding-bottom: 10px;
+}
+.login-input {
+    background-color: #fff;
+    height: 20px;
+    line-height: 20px;
+    padding: 5px 8px;
+    width: 204px;
+}
+.login-input.captcha {
+    float: left;
+    width: 104px;
+}
+.btn-captcha {
+    background-color: #ddd;
+    border: 0 none;
+    cursor: pointer;
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 90px;
+}
+.login-forget a, .login-forget a:hover {
+    color: #fff;
+}
+.btn-login {
+    background-color: #ef4349;
+    border: medium none;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    width: 220px;
+}
+a.btn-login:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.login-form .btn-login:hover {
+    background: #ff4663 none repeat scroll 0 0;
+}
+.login-tips {
+    color: #fff;
+    float: none;
+    padding-top: 5px;
+}
+.login-form li.fn-clear .login-tips {
+    float: left;
+    width: 220px;
+}
+.login-tips a, .login-tips a:hover {
+    color: #ffd800;
+}
+.login-right {
+    color: #fff;
+    padding: 25px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 230px;
+    z-index: 20;
+}

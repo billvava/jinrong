@@ -1,0 +1,166 @@
+<include file="public:meta" />
+<link href="../public/css/init.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/box.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript"></script>
+<style type="text/css">
+.fn-mt-15 {
+    margin-top: 15px;
+}
+.perfect-information nav span {
+    display: inline-block;
+    text-align: right;
+    width: 15px;
+}
+.perfect-information nav label {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 5px;
+    width: 60px;
+}
+.perfect-information nav input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.part-fieldset-footer {
+    margin: 40px 0;
+    text-align: center;
+}
+.ui-btn-red {
+    background-color: #dd3650;
+}
+.ui-btn-big {
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.fn-ml-20 {
+    margin-left: 20px;
+}
+.perfect-information nav span {
+    display: inline-block;
+    text-align: right;
+    width: 15px;
+}
+.fn-clear::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.fn-ml-20 {
+    margin-left: 20px;
+}
+.ui-le-ht24 {
+    line-height: 24px;
+}
+</style>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main">
+<form id="afrm" method="post" action="/service/user.submit" novalidate="novalidate">
+<div class="perfect-information">
+<div class="fn-clear ui-le-ht24"><i class="fn-left icoBul16 fn-mt-5"></i>
+<div class="fn-ml-20">完善资料之后，系统将自动给您生成一张名片，名片可以和金融网会员交换。完整的基本资料是会员搜索到您的重要保证，更是让对方能够初步了解您的基础。</div>
+</div>
+<div class="fn-clear" style="margin-top:-24px;"><a href="/zt/wszl.html" class="ui-btn-small ui-btn-blue fn-right" target="_blank">教你完善会员资料</a></div>
+<nav class="fn-mt-15">
+
+<span class="ui-text-red font-simsun">*</span>会员身份：
+<em for="type">
+<input name="type" id="type1" value="1" type="radio"><label for="type1">企业</label>
+<input name="type" id="type2" value="3" type="radio"><label for="type2">个人</label>
+<input name="type" id="type3" value="2" type="radio"><label for="type3">政府</label>
+</em>
+<span class="ui-text-red font-simsun">*</span> 提交后不可更改                                
+</nav>              
+</div>
+<input value="" name="introduce_key" type="hidden">
+<input value="" name="introduce_ckey" type="hidden">
+<div class="part-fieldset-footer">
+<a id="J-submit" class="ui-btn-big ui-btn-blue fn-mr-10 w100">保存资料</a>
+<a id="J-preview-businesscard" class="ui-btn-big ui-btn-red w100">预览名片</a>
+</div>
+</form>
+</div>
+</div>
+<!--
+<style type="text/css">
+.ui-dialog-content {
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    text-align: left;
+}
+.ui-dialog-footer {
+    padding: 0 20px 20px;
+}
+</style>
+-->
+<include file="index_footer" />
+<!--
+<script>
+    seajs.use(['jquery','component/jquery.validate']);
+</script>
+-->
+<!--
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery-validate/1.16.0/jquery.validate.js"></script>
+-->
+<script src="../public/js/jquery.validate.js" type="text/javascript"></script>
+<script src="../public/js/personal/account.js" type="text/javascript"></script>
+<script type="text/javascript" src="../public/js/layer/layer.js"></script>
+<!--
+<script type="text/javascript">
+var form_publish = $('#afrm');
+form_publish.click(function(){
+$('#afrm').attr('target','_self').attr('action',"{:U('Personal/account')}");
+});
+</script>
+-->
+<script type="text/javascript">
+/*
+dialog = function (title,msg){
+            layer.open({
+                type: 1,
+                title: '温馨提示',
+                skin: 'layui-layer-rim',
+                area: ['520px','173px'],
+                //move:false,
+                content: '<form class="layerContent fn-tac ui-dialog-body popup-msg">' +
+                '<p class="part-popup-ittext">'+msg+'</p>'+
+                '<footer class="fn-mt-30"><a href="/Personal/account" class="ui-btn ui-btn-orange fn-mr-10">完善资料</a><a href="javascript:history.go(-1);" class="ui-btn ui-btn-gray T-win-close">以后再说</a></footer>'+
+                '</form>'
+            });
+        },
+        $.getJSON("{:U('Personal/get_user_info')}",function(result){
+                            if(result.status == 1){
+                                qsDialog.setContent(result.data);
+                            }else{
+                                dialog('','您好，您需要完善您的会员资料，才能进行认证操作。');
+                            }
+                        });
+                        */
+    $('input[name="type"]').bind('click', function(){
+        window.location.href='/Personal/account.html?type='+$(this).val();
+    });
+</script>
+
+</body>
+</html>

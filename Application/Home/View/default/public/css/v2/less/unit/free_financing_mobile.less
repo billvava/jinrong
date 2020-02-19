@@ -1,0 +1,265 @@
+@import "../../less/variable";
+@import "../../less/base";
+@import "../../less/component";
+
+@icon: "../images/icon";
+@picture: "../images/picture";
+
+// 按钮基础样式
+.btn-mobile {
+  text-align: center;
+  color: #fff;
+  background-color: @qrhBlue;
+  &:hover{
+    background-color: @qrhHoverBlue;
+  }
+  &:focus{
+    background-color: @qrhFocusBlue;
+  }
+}
+
+// 左右边线
+.line-left {
+  width: 75px;
+  height: 1px;
+  background-image: url("@{picture}/left-line.png");
+  background-size: 75px 1px;
+  top: 10px;
+  left: -85px;
+}
+
+.line-right {
+  width: 75px;
+  height: 1px;
+  background-image: url("@{picture}/right-line.png");
+  background-size: 75px 1px;
+  top: 10px;
+  left: 128px;
+}
+
+h3{
+  position: relative;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  span{
+    position: absolute;
+  }
+}
+
+// 隔断
+.partition{
+  width: 100%;
+  height: 11px;
+  background-color: #F1F1F1;
+  border-top: 1px solid #E9E9E9;
+}
+
+.header{
+  width: 100%;
+  height: 207px;
+  padding: 0 15px;
+  background: url("@{picture}/bar-free-financing.jpg") no-repeat center / 375px 207px;
+  >a{
+    margin-top: 10px;
+    float: left;
+    font-size: 12px;
+    img{
+      width: 73px;
+      height: 20px;
+    }
+  }
+  p{
+    margin-top: 12px;
+    float: right;
+    font-size: 11px;
+    color: #fff;
+    a{
+      color: #fff;
+    }
+    span{
+      padding-left: 20px;
+      background: url("@{icon}/icon-mobile.png") no-repeat 7px center / 8px 9px;
+    }
+  }
+}
+
+.login{
+  padding-bottom: 15px;
+  h2{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+  }
+  form{
+    width: 260px;
+    margin: 0 auto;
+    font-size: 12px;
+    input[type="text"]{
+      height: 38px;
+      padding-left: 34px;
+      border: 1px solid #999;
+      background: no-repeat 10px center / 18px 25px;
+      font-size: 12px;
+      &:focus{
+        border: 1px solid @qrhFocusBlue;
+      }
+    }
+    >input[type="text"]{
+      width: 260px;
+      background-image: url("@{icon}/icon-account.png");
+    }
+    p{
+      margin: 15px 0;
+      input[type="text"]{
+        width: 150px;
+        float: left;
+        background-image: url("@{icon}/icon-password.png");
+      }
+      a{
+        .btn-mobile;
+        width: 100px;
+        height: 38px;
+        line-height: 38px;
+        float: right;
+        border-radius: 4px;
+        font-size: 15px;
+      }
+    }
+    >a{
+      .btn-mobile;
+      width: 260px;
+      height: 38px;
+      display: inline-block;
+      line-height: 38px;
+      border-radius: 4px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+    >div{
+      margin-top: 7px;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      label{
+        span{
+          padding-left: 15px;
+          background: url("@{icon}/icon-uncheck.png") no-repeat 3px 4px;
+          background-size: 8px;
+        }
+        span.select{
+          background: url("@{icon}/icon-check.png") no-repeat 3px 3px;
+          background-size: 10px 9px;
+        }
+      }
+      >span{
+        a{
+          color: @qrhBlue;
+        }
+      }
+      >a{
+        margin-top: 5px;
+        display: block;
+        color: #666;
+      }
+    }
+  }
+}
+
+.offline-salon{
+  padding-top: 18px;
+  h3{
+    width: 140px;
+    margin: 0 auto;
+    span.line-left{
+      left: -87px;
+    }
+    span.line-right{
+      left: 139px;
+    }
+  }
+  p{
+    line-height: 18px;
+    margin-top: 17px;
+    margin-bottom: 12px;
+    padding: 0 20px;
+    font-size: 11px;
+    color: #666;
+  }
+  div{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    padding: 0 15px 5px;
+    img{
+      width: 167px;
+      height: 103px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.prosperity{
+  padding-top: 18px;
+  h3{
+    width: 180px;
+    margin: 0 auto 18px;
+    span.line-left{
+      left: -87px;
+    }
+    span.line-right{
+      left: 178px;
+    }
+  }
+  ul{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    padding: 0 15px;
+    li{
+      width: 167px;
+      margin-bottom: 10px;
+      img{
+        width: 167px;
+        height: 100px;
+      }
+      p{
+        line-height: 15px;
+        padding: 0 6px;
+        font-size: 11px;
+        color: #333;
+      }
+    }
+  }
+  a{
+    .btn-mobile;
+    width: 120px;
+    height: 35px;
+    line-height: 35px;
+    display: block;
+    margin: 10px auto 20px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+}
+
+.footer{
+  padding-bottom: 15px;
+  background-color: @qrhBlue;
+  img{
+    height: 78px;
+    margin-bottom: 7px;
+  }
+  p{
+    line-height: 20px;
+    text-align: center;
+    font-size: 11px;
+    color: #fff;
+  }
+}
+
+
+

@@ -1,0 +1,111 @@
+<empty name="visitor['uid']">
+<div class="popup-msg fn-tac" style="display: block; width: 480px;">
+    <form method="POST" action="?" id="J_dl_login_frm">
+        <article class="part-fieldset">
+            <aside>手机号：</aside>
+            <section class="part-fieldset-section">
+                    <input class="t_input w260" maxlength="200" id="login_username" type="text" name="mobile" value="{:C('visitor.mobile')}">
+            </section>
+        </article>
+        <article class="part-fieldset">
+            <aside>密码：</aside>
+            <section class="part-fieldset-section">
+                    <input class="t_input w260" maxlength="20" id="login_password" type="password">
+            </section>
+        </article>
+
+        <article class="part-fieldset fn-hide">
+            <aside></aside> 
+            <section class="part-fieldset-section">
+            <div class="part-fieldset-msg"><em class="ui-text-red" id="login-msg"></em></div>
+            </section>
+        </article>
+
+        <article class="part-fieldset">
+            <aside></aside>
+            <section class="part-fieldset-section">
+                 <div style="font-size:14px;"><a href="javascript:;" id="btn-login" class="ui-btn ui-btn-orange w130 fn-mr-25">登录</a><a href="{:U('Members/user_getpass')}" class=" fn-ml-50">忘记密码？</a></div>
+                 <!--
+                 <p class=" fn-mt-20" style="font-size:14px;">还不是会员？<a href="javascript:;" id="J_dl_reg" class="ui-text-blue-2">先注册生成名片&gt;&gt;</a></p>
+                 -->
+            </section>
+        </article>
+  </form>
+</div>
+<script>
+   // 账号登录验证
+    $('#btn-login').on('click',function(){
+        var mobile = $.trim($('#login_username').val());
+        var password = $.trim($('#login_password').val());
+        if (mobile == '') {
+            $('.part-fieldset-msg').text('请输入手机号码').addClass('ui-text-red').parent().parent().css('display','block');
+            $('#login_username').focus();
+            return false;
+        }
+        var regularMobile = /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$/; // 验证手机号正则
+        if (mobile != "" && !regularMobile.test(mobile)) {
+            $('.part-fieldset-msg').text('手机格式不正确').addClass('ui-text-red').parent().parent().css('display','block');
+            $('#login_username').focus();
+            return false;
+        }
+        if (password == ''){
+            $('.part-fieldset-msg').text('请输入密码').addClass('ui-text-red').parent().parent().css('display','block');
+            $('#login_password').focus();
+            return false;
+        }
+        $.ajax({
+            url: qscms.root + '?m=Home&c=Members&a=ajax_check',
+            cache: false,
+            async: false,
+            type: 'post',
+            dataType: 'json',
+            data: { type: 'mobile', param: mobile},
+            success: function(result) {
+                if (!result.status) {
+                    $('#J_sendVerifyType').val('1');
+                    $("#btnCheck").click();
+                    doLogin();
+                } else {
+                    $('.part-fieldset-msg').text('账号不存在').addClass('ui-text-red').parent().parent().css('display','block');
+                }
+            }
+        });
+        $('.part-fieldset-msg').css('display','none');
+
+
+         // 登录方法
+    function doLogin() {
+            var mobile = $.trim($('#login_username').val());
+            var password = $.trim($('#login_password').val());
+            // 提交表单
+            // 提交表单
+            $.ajax({
+                url: qscms.root+'?m=Home&c=Members&a=login',
+                type: "post",
+                dataType: "json",
+                data: {
+                    username: mobile,
+                    password: password,
+                },
+                success: function (result) {
+                    if (parseInt(result.status)) {
+                        window.location.href = window.location.href;
+                    } else {
+                        $thisTypeBox.addClass('openerr');
+                        $thisTypeBox.find('.J_errbox').text(result.msg);
+                        $('#J_dologin').val('登录').prop('disabled', 0).removeClass('btn_disabled');
+                        $("#verify_userlogin").val(result.data);
+                    }
+                }
+            });
+    }
+    }); 
+</script>
+<else/>
+<div class="popup-msg fn-tac" style="display: block; width: 480px;">
+    <form method="POST" action="?" id="J_dl_login_frm">
+<p class="part-popup-ittext">会员充值后方可投递</p>
+<footer class="fn-mt-30"><a href="javascript:;" id="dialog_close" class="close J_dismiss_modal ui-btn ui-btn-orange">确定</a></footer>
+</form>
+</div>
+</empty>

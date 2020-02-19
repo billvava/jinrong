@@ -1,0 +1,74 @@
+<link href="../public/css/top.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/header.css" rel="stylesheet" type="text/css" />
+<div class="header_min" id="header">
+    <div class="header_min_top">
+        <div id="top-fast-login" class="itopl font_gray6 link_gray6"  style="width: 300px;">
+
+            <span class="link_yellow loginno" <if condition="$login eq 1 ">style="display: none"</if> >欢迎登录{:C('qscms_site_name')}！请 <a href="{:U('home/members/login')}">登录</a> 或 <a href="{:U('home/members/register')}">免费注册</a></span>
+
+            <span class="link_yellow loginyes" <if condition="$login eq 0 ">style="display: none"</if> >欢迎登录{:C('qscms_site_name')}！</span>
+
+        </div>
+
+        <div class="" style="width: 100px;float: left;height: 40px;color: #666666;line-height:40px;overflow: hidden;">
+           <!-- <div class="leftimg"><img src="../public/images/11.png"></div> -->
+            <qscms:notice_list 列表名="notice_list" 显示数目="10" 分类="1" 排序="addtime:desc"/>
+            <ul class="txt ul-upscroll">
+                <volist name="notice_list['list']" id="notice">
+                    <li class="" onClick="javascript:location.href='{$notice.url}'">{$notice.title}</li>
+                </volist>
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+        <div class="itopr font_gray9 link_gray6">
+
+            <ul class="part-top-allnav-list">
+                <li class="part-top-allnav-link">
+                    <a href="__ROOT__/" class="home">
+                        <span class="iconfont icon-home top-home"></span>网站首页
+                    </a>
+                </li>
+                <li class="part-top-allnav-link">
+                    <a href="/help/help_list/id/3" class="help">
+                        <span class="iconfont icon-question-mark top-home"></span> 新手指导
+                    </a>
+                </li>
+                <li class="part-top-allnav-link">
+                    <a href="{:U('Home/Index/shortcut')}" class="last"><span class="iconfont icon-computer top-home"></span>保存到桌面</a></li>
+                <li class="part-top-allnav-pr j-hover-all">
+                    <div class="sn-dropdown sn-mobile">
+                        <span class="part-icon-mobile-box">
+<a href="#" class="sn-dropdown-hd m">
+<span class="iconfont icon-mobile top-home"></span> 手机金融网
+                        </a>
+                        </span>
+                        <div class="part-sn-dropdown-bd">
+                            <i class="sn-mobile-qrcode"></i>
+                            <p class="sn-mobile-text">扫描我，立刻打开触屏站</p>
+                            <p class="sn-mobile-text">手机触屏站：<span class="ui-text-red">m.jinrong.xiaba666.com</span></p>
+                        </div>
+                    </div>
+                </li>
+                <li class="part-top-allnav-pr j-hover-all">
+                    <a href="/members/register/utype/1" class="btn-invest-recruit" target="_blank"><i class="icon-recruit-add-a"></i><i class="icon-recruit-add-b"></i>资本机构免费入驻</a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 公共组件hover
+    jQuery.jqhover = function(tabtit) {
+        $(tabtit).hover(function() {
+            $(this).addClass("cur")
+        }, function() {
+            $(this).removeClass("cur")
+        });
+    };
+    $.jqhover('.j-hover-all');
+
+</script>

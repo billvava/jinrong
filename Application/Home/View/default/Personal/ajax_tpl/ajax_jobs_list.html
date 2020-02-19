@@ -1,0 +1,20 @@
+<notempty name="jobs_list">
+	<volist name="jobs_list" id="jobs">
+		<div class="list_cell_box">
+			<div class="td1">
+				<div class="jobname link_blue substring"><a target="_blank" href="{$jobs.jobs_url}" title="{$jobs.jobs_name}">{$jobs.jobs_name}</a></div>
+				<div class="edu_wage substring">
+					<div class="education">经验{$jobs.experience_cn} / {$jobs.education_cn}</div>
+					<div class="wage font_yellow">{$jobs.wage_cn}</div>
+					<div class="clear"></div>
+				</div>
+				<div class="cname link_gray9 substring"><a target="_blank" href="{:url_rewrite('QS_companyshow',array('id'=>$jobs['company_id']))}" title="{$jobs.companyname}">{$jobs.companyname}</a></div>
+			</div>
+		</div>
+	</volist>
+	<div class="clear"></div>
+<else />
+	<div class="empty_tipstxt link_blue">
+		暂无信息!
+	</div>
+</notempty>

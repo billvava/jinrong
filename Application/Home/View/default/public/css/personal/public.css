@@ -1,0 +1,248 @@
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.trjStep {
+    background: #ddd none repeat scroll 0 0;
+    height: 34px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+    padding: 0;
+}
+.trjStep ol {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.trjStep li {
+    background: #ddd url("../../images/step_bg.png") no-repeat scroll 100% -34px;
+    color: #666666;
+    float: left;
+    font: bold 14px/34px arial;
+    list-style: outside none none;
+    text-align: left;
+}
+.trjStep li span {
+    padding-left: 15px;
+}
+.trjStep .cols2 li {
+    width: 49.9%;
+}
+.trjStep .cols3 li {
+    width: 33.3%;
+}
+.trjStep .cols4 li {
+    width: 24.9%;
+}
+.trjStep .cols5 li {
+    width: 19.92%;
+}
+.trjStep .cols6 li {
+    width: 149px;
+}
+.trjStep_no1 .step_1, .trjStep_no2 .step_2, .trjStep_no3 .step_3, .trjStep_no4 .step_4, .trjStep_no5 .step_5, .trjStep_no6 .step_6 {
+    background-color: #8892b5;
+    background-position: 100% -34px;
+    color: #ffffff;
+}
+.trjStep_no1 .step_1 a, .trjStep_no2 .step_2 a, .trjStep_no3 .step_3 a {
+    color: #fff;
+}
+.trjStep_no1 a, .trjStep_no2 a, .trjStep_no3 a {
+    color: #666;
+}
+.cols2 .step_2, .cols3 .step_3, .cols4 .step_4, .cols5 .step_5, .cols6 .step_6 {
+    background-image: none;
+}
+.trjStep_no2 .step_1, .trjStep_no3 .step_2, .trjStep_no4 .step_3, .trjStep_no5 .step_4, .trjStep_no6 .step_5 {
+    background-color: #ddd;
+    background-position: 100% 0;
+    color: #666666;
+}
+.trjStep_no3 .step_1, .trjStep_no4 .step_1, .trjStep_no4 .step_2, .trjStep_no5 .step_1, .trjStep_no5 .step_2, .trjStep_no5 .step_3, .trjStep_no6 .step_1, .trjStep_no6 .step_2, .trjStep_no6 .step_3, .trjStep_no6 .step_4 {
+    background-color: #ddd;
+    background-position: 100% -34px;
+    color: #666666;
+}
+.trjStep_no2 .cols2 .step_2, .trjStep_no3 .cols3 .step_3, .trjStep_no4 .cols4 .step_4, .trjStep_no5 .cols5 .step_5, .trjStep_no6 .cols6 .step_6 {
+    background-color: #8892b5;
+    color: #ffffff;
+}
+.trjStep-tal li span {
+    display: block;
+    padding-right: 15px;
+    text-align: center;
+}
+.pri_info_ct {
+    background: rgb(245, 245, 245) none repeat scroll 0 0;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+.pri_info_list {
+    line-height: 25px;
+    padding-left: 20px;
+}
+
+
+.publicForm dl {
+    color: #666;
+    padding: 7px 0;
+}
+.publicForm dl dt {
+    float: left;
+    font-family: simsun;
+    line-height: 24px;
+    text-align: right;
+    width: 130px;
+}
+.publicForm dl dt i {
+    color: #e93100;
+    display: inline-block;
+    padding-right: 3px;
+}
+.publicForm dl dd {
+    padding-left: 135px;
+}
+.publicForm dl dd span {
+    display: inline-block;
+    line-height: 24px;
+}
+.publicForm dl dd label {
+    display: inline-block;
+    margin-right: 20px;
+    padding-top: 2px;
+}
+.publicForm dl dd label input {
+    vertical-align: middle;
+}
+.publicForm dl dd select {
+    height: 24px;
+    vertical-align: middle;
+}
+.publicForm dl dd select option {
+    white-space: nowrap;
+}
+.publicForm dl dd .alert {
+    color: #999;
+    display: inline-block;
+    vertical-align: middle;
+}
+.publicForm dl dd .alertPr {
+    color: #999;
+    display: inline-block;
+    padding: 3px 0 0 20px;
+    position: relative;
+    vertical-align: top;
+}
+.publicForm dl dd .alertPr i {
+    left: 0;
+    position: absolute;
+    top: 4px;
+}
+.publicForm dl dd textarea {
+    font-size: 12px;
+    padding: 3px 0 0 6px;
+}
+.publicForm dl dd .hide {
+    display: none;
+}
+input.text {
+    height: 24px;
+    line-height: 24px;
+    padding-left: 4px;
+    vertical-align: middle;
+}
+input.text22 {
+    height: 22px;
+    line-height: 22px;
+    padding-left: 4px;
+    vertical-align: middle;
+}
+textarea {
+    resize: none;
+}
+.publicForm dl dd .wb70 {
+    width: 420px;
+}
+.pr {
+    position: relative;
+}
+.av-collapse {
+    height: 24px;
+    overflow: hidden;
+    position: relative;
+    width: 550px;
+}
+.av-collapse li {
+    float: left;
+    padding: 3px 0;
+    width: 19%;
+}
+.av-collapse li input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.av-collapse.av-expand {
+    height: auto;
+}
+.av-more {
+    background: rgba(0, 0, 0, 0) url("../../images/btn-sprites.png") no-repeat scroll left top;
+    color: #333;
+    cursor: pointer;
+    display: block;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 10px;
+    position: absolute;
+    right: 80px;
+    top: 3px;
+    width: 38px;
+}
+.av-more:hover {
+    color: #333;
+    text-decoration: none;
+}
+.av-more.av-less {
+    background-position: left -27px;
+}
+.hidea {
+    cursor: pointer;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+    z-index: 8888;
+}
+.mr5 {
+    margin-right: 5px;
+}
+input, textarea, select {
+    color: #666;
+    outline: medium none;
+}
+.publicForm dl {
+    color: #666;
+    padding: 7px 0;
+}
+address, caption, cite, code, dfn, em, i, th, var {
+    font-style: normal;
+    font-weight: 500;
+}
+i.icoPro16 {
+    background-position: left -120px;
+}
+i.icoErr16, i.icoWar16, i.icoDou16, i.icoPro16, i.icoBul16, i.icoCor16, i.icoHor16, i.icoCor16gray, i.icoPro16yellow {
+    background: rgba(0, 0, 0, 0) url("../../images/icon-tips.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 16px;
+    margin-right: 3px;
+    vertical-align: middle;
+    width: 16px;
+}
+i.icoErr16 {
+    background-position: 0 0;
+}
+

@@ -1,0 +1,121 @@
+<include file="public:header" />
+  <div class="toptit">基本信息 <span style="color:#0066CC">({$info.username})</span></div>
+  <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF">
+    <tr>
+      <td width="120" height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">注册时间：</td>
+      <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >{$info.addtime|date="Y-m-d H:i",###}</td>
+      <td width="120" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >最后登录时间：</td>
+      <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >{$info.last_login_time|date="Y-m-d H:i",###}</td>
+    </tr>
+    <tr>
+      <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">注册IP：</td>
+      <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >{$info.reg_ip|default="- - - -"}</td>
+      <td align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >最后登录IP：</td>
+      <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >{$info.last_login_ip|default="- - - -"}</td>
+    </tr>
+    </table>
+    <div class="toptit">基本信息</div>
+    <form id="form4" name="form4" method="post" action="{:U('member_info')}">
+      <table width="700" border="0" cellpadding="4" cellspacing="0"   >
+
+        <tr>
+          <td width="120" height="30" align="right" style=" border-bottom:1px #CCCCCC dashed">用户姓名：</td>
+          <td style=" border-bottom:1px #CCCCCC dashed;">
+            <input name="realname" type="text" class="input_text_200" maxlength="50" value="{$info['realname']}">
+          </td>
+        </tr>
+
+        <tr>
+            <td style=" border-bottom:1px #CCCCCC dashed" width="120" height="30" align="right">性别：</td>
+            <td style=" border-bottom:1px #CCCCCC dashed;">
+              <label style="color: rgb(0, 153, 0);">
+                <input name="sex" value="0" <if condition="$userprofile['sex'] eq 0">checked</if>  type="radio">男</label>
+              <label style="color: rgb(102, 102, 102);">&nbsp;&nbsp;&nbsp;&nbsp;
+                <input name="sex" value="1" <if condition="$userprofile['sex'] eq 1">checked</if> type="radio">女</label>
+            </td>
+          </tr>
+
+
+        <tr>
+          <td width="120" height="30" align="right" style=" border-bottom:1px #CCCCCC dashed">负责人：</td>
+          <td style=" border-bottom:1px #CCCCCC dashed;">
+            <input readonly="readonly" disabled='disabled' name="vip_kf_name" type="text" class="input_text_200" maxlength="50" value="{$info['vip_kf_name']}">
+          </td>
+        </tr>
+
+
+      <tr>
+          <td width="120" height="30" align="right" style=" border-bottom:1px #CCCCCC dashed">部门职务：</td>
+          <td style=" border-bottom:1px #CCCCCC dashed;">
+            <input name="zhiwu" type="text" class="input_text_200" maxlength="50" value="{$info['zhiwu']}">
+          </td>
+        </tr>
+
+
+  
+
+        <tr>
+          <td width="120" height="30" align="right" style=" border-bottom:1px #CCCCCC dashed">QQ：</td>
+          <td style=" border-bottom:1px #CCCCCC dashed;">
+            <input name="qq" type="text" class="input_text_200" maxlength="50" value="{$info['qq']}">
+          </td>
+        </tr>
+
+        <tr>
+          <td width="120" height="30" align="right" style=" border-bottom:1px #CCCCCC dashed">微信：</td>
+          <td style=" border-bottom:1px #CCCCCC dashed;">
+            <input name="weixin" type="text" class="input_text_200" maxlength="50" value="{$info['weixin']}">
+          </td>
+        </tr>
+
+
+        <tr>
+          <td width="120" height="30" align="right" style=" border-bottom:1px #CCCCCC dashed">邮箱：</td>
+          <td style=" border-bottom:1px #CCCCCC dashed;">
+            <input name="email" type="text" class="input_text_200" maxlength="50" value="{$info['email']}">
+          </td>
+        </tr>
+
+        <tr>
+          <td width="120" height="30" align="right" style=" border-bottom:1px #CCCCCC dashed">手机：</td>
+          <td style="border-bottom:1px #CCCCCC dashed;" >
+            <input name="mobile" readonly="readonly" disabled='disabled' type="text" class="input_text_200" maxlength="50" value="{$info['mobile']}">
+          </td>
+        </tr>
+
+        <tr>
+            <td style=" border-bottom:1px #CCCCCC dashed" height="30" align="right">联系地址：</td>
+            <td style=" border-bottom:1px #CCCCCC dashed;">
+              <input name="address" class="input_text_400" id="address" maxlength="30" value="{$info['address']}" type="text"></td>
+            </tr>
+
+        <tr>
+        <td valign="top" align="right">备注：</td>
+        <td colspan="4"><textarea name="beizhu" class="input_textarea_400" id="beizhu">{$info['beizhu']}</textarea></td>
+      </tr>
+
+        <tr>
+          <td height="30" align="right">&nbsp;</td>
+          <td height="50">
+            <input type="hidden" name="uid" value="{$info['uid']}" />
+            <input name="_k_v" type="hidden" value="{$Think.get._k_v}">
+            <input type="hidden" name="mobile_audit" value="{$info['mobile_audit']}">
+            <input type="hidden" name="email_audit" value="{$info['email_audit']}">
+            <input name="submit32" type="submit" class="admin_submit" value="确定"/>
+            <input name="submit222" type="button" class="admin_submit" value="返 回" onclick="Javascript:window.history.go(-1)"/></td>
+          </tr>
+        </table>
+      </form> 
+    <include file="public:footer" />
+    <script type="text/javascript">
+        $('.email_audit').click(function(){
+          var s = $(this).attr('checked')?1:0;
+          $('input[name="email_audit"]').val(s);
+        });
+        $('.mobile_audit').click(function(){
+          var s = $(this).attr('checked')?1:0;
+          $('input[name="mobile_audit"]').val(s);
+        });
+    </script>
+  </body>
+</html>

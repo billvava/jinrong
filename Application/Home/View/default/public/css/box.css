@@ -1,0 +1,217 @@
+.ui-btn,.ui-btn-small,.ui-btn-big {
+    color: #fff;
+}
+a.ui-btn:hover,a.ui-btn-small:hover,a.ui-btn-big:hover {
+    color: #fff ;
+    text-decoration: none;
+    cursor: pointer;
+}
+.ui-btn,.ui-btn-small,.ui-btn-big {
+    display: inline-block;
+    *zoom: 1;color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    border: 0;
+    border-radius: 3px;
+}
+.ui-btn {
+    padding: 0 8px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+.ui-btn-small {
+    padding: 0 6px;
+    height: 24px;
+    line-height: 24px;
+}
+.ui-btn-big {
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+}
+.ui-btn-gray {
+    background-color: #ededed;
+    color: #999;
+}
+a.ui-btn-gray:hover {
+    background-color: #d8d8d8;
+    color: #666;
+}
+.ui-btn-darkgray {
+    background-color: #d8d8d8;
+    color: #999;
+}
+a.ui-btn-darkgray:hover {
+    background-color: #d8d8d8;
+    color: #999;
+}
+.ui-btn-red {
+    background-color: #dd3650;
+}
+a.ui-btn-red:hover {
+    background-color: #ff4663;
+}
+.ui-btn-blue {
+    background-color: #7381ac !important;
+}
+a.ui-btn-blue:hover {
+    background-color: #8fa0d3 !important;
+}
+.ui-btn-orange {
+    background-color: #f60 !important;
+}
+a.ui-btn-orange:hover {
+    background-color: #ff802d !important;
+}
+.ui-btn-red {
+    background-color: #e94e38;
+}
+.popup-msg .part-popup-po {
+    position: absolute;
+    text-align: right;
+    top: -33px;
+    width: 496px;
+}
+.popup-msg .part-popup-pot {
+    background: #f1f1f1 none repeat scroll 0 0;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    text-align: center;
+}
+.popup-msg .part-fieldset aside {
+    font-size: 14px;
+    width: 22%;
+}
+.popup-msg .part-fieldset section {
+    width: 77%;
+}
+.popup-msg .part-fieldset textarea {
+    margin-right: 0;
+    width: 375px;
+}
+.popup-msg .part-fieldset .t_input {
+    width: 242px;
+}
+.popup-code-cur {
+    background: #ededed none repeat scroll 0 0;
+    color: #ccc;
+    cursor: no-drop;
+}
+.part-fieldset .part-fieldset-section {
+    min-height: 44px;
+}
+.ui-dialog-body {
+    padding: 20px;
+    text-align: center;
+}
+.ui-dialog-content {
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+}
+.ui-dialog-footer {
+    padding: 0 20px 20px;
+}
+.ui-dialog-statusbar {
+    color: #888;
+    float: left;
+    font-size: 14px;
+    line-height: 1.42857;
+    margin-right: 20px;
+    padding: 6px 0;
+    white-space: nowrap;
+}
+.ui-dialog-statusbar label:hover {
+    color: #333;
+}
+.ui-dialog-statusbar input, .ui-dialog-statusbar .label {
+    vertical-align: middle;
+}
+.ui-dialog-button {
+    text-align: center;
+    white-space: nowrap;
+}
+.ui-dialog-footer button + button {
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+.popup-msg .part-fieldset .t_input {
+    width: 242px;
+}
+.part-fieldset .t_input {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 5px;
+    padding: 0 10px;
+    position: relative;
+    vertical-align: middle;
+    width: 248px;
+}
+.part-fieldset section label {
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+}
+.part-fieldset section label input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.popup-msg .part-fieldset aside {
+    font-size: 14px;
+    width: 22%;
+}
+.part-fieldset aside {
+    color: #666666;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    width: 16%;
+}
+.part-fieldset section {
+    color: #999;
+    display: inline-block;
+    padding: 0;
+    width: 83%;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 5px 0;
+    vertical-align: middle;
+}
+.t_center{
+    text-align: center;
+}
+.mg0{margin: 0 auto;}
+body .fn-hide {
+    display: none;
+}
+.fn-ml-50 {
+    margin-left: 50px !important;
+}
+.fn-mt-20 {
+    margin-top: 20px !important;
+}
+.fn-mt-30 {
+    margin-top: 30px !important;
+}
+.popup-msg .ui-btn,.popup-msg .ui-btn {
+    width: 130px;
+}
+.popup-msg .part-popup-ittext {
+    font-size: 14px;
+    color: #333;
+    line-height: 28px;
+}
+footer #dialog_close{
+    position:static;
+}

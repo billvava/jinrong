@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="public:meta"/>
+<link rel="stylesheet" href="../public/css/jobs.css">
+</head>
+<body>
+<include file="public:header"/>
+<div class="jobsshowtop">
+  <div class="jobsname font18">{$info.title}</div>
+<div class="profile">
+<volist name="info['i_keywords']" id="vo">
+<a href="{:U('Fund/fund_list',array('k'=>$vo))}" target="_blank">{$vo}</a>
+</volist>
+  </div>
+</div>
+<div class="jobsshowatt">
+<div class="attul">
+<ul class="profile-list">
+<li><span>项目类型：</span>{$info['info_type']}</li>
+<li><span>所在地区：</span>{$info['area']}</li>
+<notempty name="info['xmrz_body']">
+<li><span>融资主体：</span><a href="">{$info['xmrz_body']}</a></li>
+</notempty>
+<li><span>所属行业：</span><a href="">{$info['industry_id']}</a></li>
+<li><span>融资用途：</span><a href="">{$info['xmrz_usage']}</a></li>
+<li><span>融资金额：</span><span class="price">{$info.amount_interval_min}{$info.amount_interval_min_unit}<notempty name="info['amount_interval_max']">-{$info.amount_interval_max}{$info.amount_interval_max_unit}</notempty></span></li>
+<li><span>意向资金：</span><a href="">{$info['xmrz_intention']}</a></li>
+<li><span>融资方式：</span><a href="">{$info['xmrz_type']}</a></li>
+<notempty name="info[s11]">
+<li><span>可提供资料：</span><a href="">{$info['s11']}</a></li>
+</notempty>
+</ul>
+	<div class="clear"></div>
+  </div>
+</div>
+<if condition="$info.xmrz_type !=''">
+<volist name="xmrz_type" id="vo">
+<if condition="$vo eq 618">
+<div class="jobsshowatt border-dashed-grey">
+<div class="attul">
+<div class="money-invit-type">{$category['xmrz_type'][$vo]}</div>
+<ul class="profile-list">
+<li><span>可承担最高利息：</span><span>{$info.s21}%/年</span></li>
+<li><span>资金占用时长：</span><span>{$info.s22_min} - {$info.s22_max}% 年</span></li>
+</ul>
+  <div class="clear"></div>
+  </div>
+</div>
+<div class="split-block"></div>
+<elseif condition="$vo eq 619"/>
+<div class="jobsshowatt border-dashed-grey">
+<div class="attul">
+<div class="money-invit-type">{$category['xmrz_type'][$vo]}</div>
+<ul class="profile-list">
+<notempty name="info['xmgq_period']">
+<li><span>项目所处阶段：</span><span>{$info.xmgq_period}</span></li>
+</notempty>
+<notempty name="info['s18_min']">
+<li><span>资金方占股比例：</span><span>{$info.s18_min} - {$info.s18_max}%</span></li>
+</notempty>
+<notempty name="info['s19']">
+<li><span>投资退出方式：</span><span>{$info.s19}</span></li>
+</notempty>
+<li><span>最短退出年限：</span><span>{$info.s20}年</span></li>
+<notempty name="info['s110_min']">
+<li><span>投资期限：</span><a href="">{$info.s110_min} - {$info.s110_max} <switch name="info.s110_unit">
+<case value="M360">年</case>
+<case value="M30">月</case>
+<case value="M1">日</case>
+</switch></a></li>
+</notempty>
+</ul>
+  <div class="clear"></div>
+  </div>
+</div>
+<div class="split-block"></div>
+<elseif condition="$vo eq 892"/>
+<div class="jobsshowatt border-dashed-grey">
+<div class="attul">
+<div class="money-invit-type">{$category['xmrz_type'][$vo]}</div>
+<ul class="profile-list">
+<li><span>项目所处阶段：</span><span>{$info.xmgq_period}</span></li>
+<li><span>资金方占股比例：</span><span>{$info.s18_min} - {$info.s18_max}%</span></li>
+<li><span>投资退出方式：</span><span>{$info.s19}</span></li>
+<li><span>最短退出年限：</span><span>{$info.s20}年</span></li>
+<notempty name="info['s110_min']">
+<li><span>投资期限：</span><a href="">{$info.s110_min} - {$info.s110_max} <switch name="info.s110_unit">
+<case value="M360">年</case>
+<case value="M30">月</case>
+<case value="M1">日</case>
+</switch></a></li>
+</notempty>
+</ul>
+  <div class="clear"></div>
+  </div>
+</div>
+<div class="split-block"></div>
+<elseif condition="$vo eq 891"/>
+<div class="jobsshowatt border-dashed-grey">
+<div class="attul">
+<div class="money-invit-type">{$category['xmrz_type'][$vo]}</div>
+<ul class="profile-list">
+<li><span>项目所处阶段：</span><span>{$info.xmgq_period}</span></li>
+<li><span>资金方占股比例：</span><span>{$info.s18_min} - {$info.s18_max}%</span></li>
+<li><span>投资退出方式：</span><span>{$info.s19}</span></li>
+<li><span>最短退出年限：</span><span>{$info.s20}年</span></li>
+<notempty name="info['s110_min']">
+<li><span>投资期限：</span><a href="">{$info.s110_min} - {$info.s110_max} <switch name="info.s110_unit">
+<case value="M360">年</case>
+<case value="M30">月</case>
+<case value="M1">日</case>
+</switch></a></li>
+</notempty>
+</ul>
+  <div class="clear"></div>
+  </div>
+</div>
+<div class="split-block"></div>
+</if>
+
+
+</volist>
+</if>
+<div class="jobsshowsdes">
+  <div class="eattitle list_height">项目概述</div> 
+  <div class="txt">{$info.i_overview}</div>
+</div>
+
+<notempty name="info['i_introduce']">
+<div class="split-block"></div>
+<div class="jobsshowsdes">
+  <div class="eattitle list_height">项目优势</div> 
+  <div class="txt">{$info.i_introduce}</div>
+</div>
+</notempty>
+
+<notempty name="info['i_other_remark']">
+<div class="split-block"></div>
+<div class="jobsshowsdes">
+  <div class="eattitle list_height">其他备注</div> 
+  <div class="txt">{$info.i_other_remark}</div>
+</div>
+</notempty>
+<div class="split-block"></div>
+<div class="jobsshowcon">
+  <div class="eattitle list_height">
+  联系方式
+    <if condition="!C('visitor.utype')">
+    <div class="ritle font12">请登录后查看联系方式</div>
+    </if>
+  </div>
+
+<!--
+  <if condition="$jobs_info['contact']['telephone_show'] eq 0">
+  <div class="mob">企业设置不公开</div>
+  <else />
+  <div class="mob">{$jobs_info.contact.telephone} 
+  <if condition="$jobs_info['contact']['contact_show'] eq 1">({$jobs_info.contact.contact})</if>
+  </div>
+  </if>
+  <div class="map link_blue">{$jobs_info.contact.address} <if condition="$jobs_info['map_x'] gt 0 && $jobs_info['map_y'] gt 0"><a class="show-map" href="#map">[地图]</a></if></div>
+  <if condition="$jobs_info['company']['famous'] eq 1">
+  <div class="tip font12">该企业已加入诚聘通会员，可放心求职</div>
+  <else />
+   <div class="tip font12">面试过程中，遇到用人单位收取费用请提高警惕！</div>
+  </if>
+-->
+
+</div>
+<notempty name="jobslist['list']">
+<div class="split-block"></div>
+<div class="jobsshowrec">
+  <div class="eattitle list_height">
+  推荐职位
+    <div class="ritle font12 link_gray9"><a href="{:U('Jobs/index')}">查看更多></a></div>
+  </div>
+ <volist name="jobslist['list']" id="jobs">
+  <div class="jobslist">
+    <div class="jname font15 link_gray6 substring"><a href="{$jobs.jobs_url}">{$jobs.jobs_name}</a></div>
+	<div class="cname font12 substring">{$jobs.companyname} | {$jobs.district_cn}</div>
+	<div class="wage font13">{$jobs.wage_cn}</div>
+	<div class="time font12">{$jobs.refreshtime_cn}</div>
+  </div>
+  </volist>
+</div>
+<div class="jobssshowbottomso link_blue">没有找到满意的职位? <a href="{:U('Jobs/index')}">立即搜索</a></div>
+</notempty>
+
+
+<div class="split-block-footnav"></div>
+<neq name="jobs_info['tmp']" value="1">
+<div class="jobsfootnav">
+		<div class="btns link_gray6">
+    <!--
+		  <div class="qs-btn qs-btn-medium qs-btn-blue qs-btn-inline apply_jobs">投递项目</div>
+      -->
+      <if condition="$jobs_info['contact']['telephone_show'] eq 0">
+      <a href="javascript:;" class="J_tel tel font9 hide_tel"><img src="../public/images/130.png"><br>
+拨打电话</a>
+      <else />
+		  <a href="tel:<if condition='$jobs_info["contact"]["telephone_"]'>{$jobs_info["contact"]["telephone_"]}<else />{$jobs_info["contact"]["landline_tel"]}</if>" class="J_tel tel font9"><img src="../public/images/130.png"><br>
+拨打电话</a>
+      </if>
+      <div class="fov font9 favor">
+      <if condition="$jobs_info['favor']">
+		    <img src="../public/images/175.png"><br>已收藏
+      <else />
+        <img src="../public/images/131.png"><br>收藏
+      </if>
+      </div>
+  </div>
+</div>
+</neq>
+<script id="tpl-map" type="text/html">
+    <!--地图-->
+    <div class="headernavfixed">
+        <div class="headernav font18"></div></div>
+    </div>
+    <div class="com-map">
+        <div class="map" id="container"></div>
+    </div>
+    <div class="split-block"></div>
+    <div class="btn-spacing">
+        <div id="mapBtn" class="qs-btn qs-btn-blue font18" title="返回">返回</div>
+    </div>
+</script>
+<include file="public:footer_min" />
+<script src="../public/js/popWin.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak={:C('qscms_map_ak')}"></script>
+<script type="text/javascript">
+      $.getJSON("{:U('AjaxCommon/jobs_click')}",{id:"{$jobs_info.id}"});
+      var mapTemp = $('#tpl-map').html();
+      $(".show-map").on('click', function() {
+          var $this = $(this);
+          popWin.init({
+              from:"right",
+              html:mapTemp,
+              handle:function(a){
+                var map = new BMap.Map("container");
+                var point = new BMap.Point("{$jobs_info['map_x']}","{$jobs_info['map_y']}");  // 创建点坐标
+                map.centerAndZoom(point, "{$jobs_info['map_zoom']}");
+                var qs_marker = new BMap.Marker(point);        // 创建标注
+                map.addOverlay(qs_marker);
+                map.setCenter(point);
+                map.addControl(new BMap.NavigationControl());//添加鱼骨
+                map.enableScrollWheelZoom();//启用滚轮放大缩小，默认禁用。
+                $('#mapBtn').on('click',function(){
+                    a.close();
+                });
+              }
+          })
+      });
+  var isVisitor = "{:C('visitor.uid')}";
+  var utype = "{:C('visitor.utype')}";
+  // 收藏职位点击事件绑定
+    $(".favor").on('click',function(){
+      var obj = $(this);
+      var url = "{:U('ajaxPersonal/jobs_favorites')}";
+      var info_id = "{$info['id']}";
+      if ((isVisitor > 0)) {
+        if(utype != 2){
+          qsToast({type:2,context: '请登录会员会员后查看'});
+          return false;
+        }
+        $.getJSON(url,{info_id:info_id},function(result){
+          if(result.status==1){
+            qsToast({type:1,context: result.msg});
+            if(result.data=='cancel'){
+              obj.html('<img src="../public/images/131.png"><br>收藏职位');
+            }else{
+              obj.html('<img src="../public/images/175.png"><br>已收藏');
+            }
+          } else {
+            qsToast({type:2,context: result.msg});
+            return false;
+          }
+        });
+      } else {
+        window.location.href="{:U('members/login')}";
+        return false;
+      }
+    });
+
+    $('.J_tel').on('click',function(){
+      if (isVisitor > 0) {
+          if(utype != 2){
+            qsToast({type:2,context: '请登录会员会员后查看'});
+            return false;
+          }
+          if($(this.hasClass('hide_tel'))){
+              qsToast({type:2,context: '该用户设置联系方式不公开！'});
+              return false;
+          }
+      }else{
+          window.location.href="{:U('members/login')}";
+          return false;
+      }
+    });
+</script>
+</body>
+</html>

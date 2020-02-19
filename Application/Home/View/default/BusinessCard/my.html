@@ -1,0 +1,134 @@
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript"></script>
+<style type="text/css">
+.news-info-tab .paging {
+    padding-bottom: 10px;
+    padding-top: 15px;
+    text-align: right;
+}
+.news-info-list {
+    margin-top: -10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.news-info-item {
+    border-bottom: 1px dashed #c2c2c2;
+    overflow: hidden;
+    padding: 15px 0;
+    width: 540px;
+}
+.part-not-cont {
+    padding-top: 50px;
+    text-align: center;
+}
+.part-not-cont span, .part-not-cont a {
+    color: #e93100;
+}
+.search-part-nav {
+    background: #f1f1f1 none repeat scroll 0 0;
+    overflow: hidden;
+    padding: 5px 10px;
+}
+.search-part-nav .ui-btn-blue {
+    padding-left: 25px;
+}
+.search-part-nav .ui-btn-blue i {
+    left: 5px;
+    position: absolute;
+    top: 4px;
+}
+.search-part-nav input {
+    border: 1px solid #bbb;
+    height: 18px;
+    line-height: 18px;
+    padding-left: 5px;
+}
+.search-part-nav .search-part-link {
+    color: #333;
+    margin-right: 15px;
+}
+.search-part-nav .search-part-link a {
+    color: #333;
+    line-height: 20px;
+    padding: 0 20px;
+}
+.search-part-nav .search-part-link-first {
+    padding-left: 0;
+}
+.ui-btn {
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 8px;
+}
+.ui-btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+}
+.fn-mr-15 {
+    margin-right: 15px !important;
+}
+</style>
+</head>
+<body>
+<include file="Personal:index_header" />
+<div class="user_main">
+<include file="Personal:index_left_nav" />
+<div class="mainbox">
+<div class="main ">
+<div class="ui-tab-head-box">
+<div class="ui-tab-head ui-tab-head-p">
+<ul>
+<li class="ui-tab-head-current"><a href="{:U('BusinessCard/my')}">我的商友</a></li>
+<li><a href="{:U('BusinessCard/myfollow')}">已递送名片</a></li>
+<li>
+<a href="{:U('BusinessCard/myfans')}">收到的名片</a>
+</li>
+<li><a href="{:U('BusinessCard/contact')}">已查看联系方式</a></li>
+</ul>
+</div>
+</div>
+<div class="ui-tab-cont">
+<form action="" method="get" id="search_form">
+<div class="search-part-nav">
+
+<div class="fn-left fn-mr-15">会员类型：
+<select name="type">
+<option value="">所有会员</option>
+<option value="1">企业会员</option>
+<option value="2">政府会员</option>
+<option value="3">个人会员</option>
+</select>
+</div>
+
+<input name="act" value="" type="hidden">
+<div class="fn-right fn-pr"><a class="ui-btn-small ui-btn-blue" id="seen_me_btn"><i class="icon-part-bg icon-part-search"></i>搜索</a></div>
+<div class="fn-right  fn-mr-15"><input name="keyword" id="keyword" value="" placeholder="输入联系人搜索" type="text"></div>
+
+</div>
+</form>
+
+<div class="collecting-box">
+<ul class="news-info-list news-info-list-guest">
+<div class="part-not-cont">
+<i class="icoPro16yellow"></i>
+<a href="{:U('Home/Fund/fund_list')}" class="fn-vam">您还没有和任何人成为商友，马上主动出击，向资金方交换名片。</a>
+</div>
+</ul>
+<footer class="table-page-part ">
+<div class="paging"> </div>
+</footer>
+</div>
+</div>
+</div>
+</div>
+<include file="index_footer" />
+</body>
+</html>

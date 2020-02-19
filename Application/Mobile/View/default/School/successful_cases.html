@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="public:meta"/>
+    <link rel="stylesheet" href="../public/css/jobs.css">
+    <link rel="stylesheet" href="../public/css/v2/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/v2/successful_cases.css">
+</head>
+<body>
+<include file="public:header"/>
+<div class="split-block-title">
+    <div class="sbox js-show-qspageso">
+        {$Think.get.k|default="请输入要搜索的关键词"}
+        <script>
+            // 显示搜索层
+            $('.js-show-qspageso').on('click', function () {
+                $('.qspageso').toggle();
+            });
+        </script>
+    </div>
+</div>
+
+<div class="filter-group x4 filter-outer">
+    <div id="f-mask"></div>
+    <div class="filter-outer successful_cases">
+        <div class="filter-list js-filter" data-tag="0">
+            <div class="filter-cell">
+                <div class="filter-cell-txt">所属行业</div>
+            </div>
+        </div>
+        <div class="filter-list js-filter" data-tag="1">
+            <div class="filter-cell">
+                <div class="filter-cell-txt">全部</div>
+            </div>
+            <i class="iconfont icon-xiala2 J_all"></i>
+        </div>
+
+
+        <div class="clear"></div>
+        <div class="qs-actionmore"></div>
+        <form id="searchForm">
+            <input type="hidden" class="" name="key" value="{$Think.get.key}">
+            <input type="hidden" class="f-normal-code-province_id" name="province_id" value="{$Think.get.province_id}">
+            <input type="hidden" class="f-normal-code-industry_id" name="industry_id" value="{$Think.get.industry_id}">
+            <input type="hidden" class="f-normal-code-xmrz_type" name="xmrz_type" value="{$Think.get.xmrz_type}">
+            <input type="hidden" class="f-more-l-code-mo" name="mo" value="{$Think.get.mo}">
+        </form>
+        <input type="hidden" class="f-seach-page" value="?m=Mobile&c=item&a=item_list&">
+    </div>
+
+
+    <div class="con-filter">
+        
+        <div class="f-box f-box-city">
+            <div class="f-box-inner">
+                <li><a class="f-item f-item-normal">全部</a></li>
+                <li><a class="f-item f-item-normal">旅游酒店</a></li>
+                <li><a class="f-item f-item-normal">矿产冶金</a></li>
+                <li><a class="f-item f-item-normal">金融投资</a></li>
+                <li><a class="f-item f-item-normal">农林牧渔</a></li>
+                <li><a class="f-item f-item-normal">能源</a></li>
+                <li><a class="f-item f-item-normal">旅游酒店</a></li>
+                <li><a class="f-item f-item-normal">矿产冶金</a></li>
+                <li><a class="f-item f-item-normal">金融投资</a></li>
+                <li><a class="f-item f-item-normal">农林牧渔</a></li>
+                <li><a class="f-item f-item-normal">能源</a></li>
+                <li><a class="f-item f-item-normal">旅游酒店</a></li>
+                <li><a class="f-item f-item-normal">矿产冶金</a></li>
+                <li><a class="f-item f-item-normal">金融投资</a></li>
+                <li><a class="f-item f-item-normal">农林牧渔</a></li>
+                <li><a class="f-item f-item-normal">能源</a></li>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="list-split-block lower"></div>
+<if condition="$Think.get.jobcategory neq ''">
+    <div class="list-jobcategory-block font13">
+        <div class="l-recover-job-txt">当前在 <span class="l-cetgory">{$jobs_cate_info['spell'][$_GET['jobcategory']]['categoryname']}</span>
+            分类下
+        </div>
+        <div class="l-recover-close js-clearjob-jobcategory">清空分类</div>
+    </div>
+</if>
+
+<ul class="successful_cases">
+    <li>
+        <div>
+            <img src="../public/images/v2/successful_cases1.jpg" alt="">
+            <div class="J_change_num_words">
+                <h2>河北承德某酒店项目成功融资1500万元</h2>
+                <p>该酒店地理位置优越，附近有学校、街道、公园景点，与机场路交汇，交通便</p>
+            </div>
+        </div>
+        <p>
+            <span>
+                <i class="iconfont icon-jinrongfuwu"></i>
+            </span>
+            <span>资金需求： 1000万-3000万元</span>
+        </p>
+        <p>
+            <span>
+                <i class="iconfont icon-chenggong"></i>
+            </span>
+            <span>成功融资金额： 1500万元 </span>
+        </p>
+    </li>
+
+    <li>
+        <div>
+            <img src="../public/images/v2/successful_cases2.jpg" alt="">
+            <div class="J_change_num_words">
+                <h2>山东临沂某新型互联网项目</h2>
+                <p>该项目将搭建一个覆盖全国的“星棋管家”网络，并通过“星棋管家”网络实“星棋管家”网络，并通过“星棋管家”网络实“星棋管家”网络，并通过“星棋管家”网络实</p>
+            </div>
+        </div>
+        <p>
+            <span>
+                <i class="iconfont icon-jinrongfuwu"></i>
+            </span>
+            <span>资金需求： 600万元</span>
+        </p>
+        <p>
+            <span>
+                <i class="iconfont icon-chenggong"></i>
+            </span>
+            <span>成功融资金额：保密</span>
+        </p>
+    </li>
+
+    <li>
+        <div>
+            <img src="../public/images/v2/successful_cases3.jpg" alt="">
+            <div class="J_change_num_words">
+                <h2>河南某皂角树种植林地开发项目</h2>
+                <p>该项目将搭建一个覆盖全国的“星棋管家”网络，并通过“星棋管家”网络实该项目将搭建一个覆盖全国的“星棋管家”网络，并通过“星棋管家”网络实</p>
+            </div>
+        </div>
+        <p>
+            <span>
+                <i class="iconfont icon-jinrongfuwu"></i>
+            </span>
+            <span>资金需求：100万元</span>
+        </p>
+        <p>
+            <span>
+                <i class="iconfont icon-chenggong"></i>
+            </span>
+            <span>成功融资金额：20万</span>
+        </p>
+    </li>
+
+    <li>
+        <div>
+            <img src="../public/images/v2/successful_cases4.jpg" alt="">
+            <div class="J_change_num_words">
+                <h2>浙江某云商消费平台项目</h2>
+                <p>该项目以“提供高性价比的优质产品，为客户创造积分消费增值”为核心理项目以“提供高性价比的优质产品，为客户创造积分消费增值”为核心理</p>
+            </div>
+        </div>
+        <p>
+            <span>
+                <i class="iconfont icon-jinrongfuwu"></i>
+            </span>
+            <span>资金需求：300万-500万元</span>
+        </p>
+        <p>
+            <span>
+                <i class="iconfont icon-chenggong"></i>
+            </span>
+            <span>成功融资金额：保密</span>
+        </p>
+    </li>
+
+    <li>
+        <div>
+            <img src="../public/images/v2/successful_cases5.jpg" alt="">
+            <div class="J_change_num_words">
+                <h2>重庆某商住综合体项目</h2>
+                <p>该商住综合体项目，总建筑面积为32690平方，其中商业区2500平方该商住综合体项目，总建筑面积为32690平方，其中商业区2500平方</p>
+            </div>
+        </div>
+        <p>
+            <span>
+                <i class="iconfont icon-jinrongfuwu"></i>
+            </span>
+            <span>资金需求：1000万元</span>
+        </p>
+        <p>
+            <span>
+                <i class="iconfont icon-chenggong"></i>
+            </span>
+            <span>成功融资金额：1000万元</span>
+        </p>
+    </li>
+
+    <li>
+        <div>
+            <img src="../public/images/v2/successful_cases6.jpg" alt="">
+            <div class="J_change_num_words">
+                <h2>杭州某日式料理项目</h2>
+                <p>该项目主营日式料理，以外卖加堂食为主，周边的消费人群以高收入年轻群外卖加堂食为主，周边的消费人群以高收入年轻群</p>
+            </div>
+        </div>
+        <p>
+            <span>
+                <i class="iconfont icon-jinrongfuwu"></i>
+            </span>
+            <span>资金需求： 20万-30万元</span>
+        </p>
+        <p>
+            <span>
+                <i class="iconfont icon-chenggong"></i>
+            </span>
+            <span>成功融资金额：30万元</span>
+        </p>
+    </li>
+
+    <li>
+        <div>
+            <img src="../public/images/v2/successful_cases7.jpg" alt="">
+            <div class="J_change_num_words">
+                <h2>甘肃某煤矸石烧结砖项目甘肃某煤矸石烧结砖项目甘肃某煤矸石烧结砖项目甘肃某煤矸石烧结砖项目</h2>
+                <p>该项目位于煤炭资源大县，项目将新建年产3500万块煤矸石烧结砖生产线1项目将新建年产3500万块煤矸石烧结砖生产线1</p>
+            </div>
+        </div>
+        <p>
+            <span>
+                <i class="iconfont icon-jinrongfuwu"></i>
+            </span>
+            <span>资金需求： 200万-300万元</span>
+        </p>
+        <p>
+            <span>
+                <i class="iconfont icon-chenggong"></i>
+            </span>
+            <span>成功融资金额：500万元</span>
+        </p>
+    </li>
+
+    <li>
+        <div>
+            <img src="../public/images/v2/successful_cases8.jpg" alt="">
+            <div class="J_change_num_words">
+                <h2>北京某音乐类APP项目</h2>
+                <p>该酒店地理位置优越，附近有学校、街道、公园景点，与机场路交汇，交通便</p>
+            </div>
+        </div>
+        <p>
+            <span>
+                <i class="iconfont icon-jinrongfuwu"></i>
+            </span>
+            <span>资金需求： 500万-1000万元</span>
+        </p>
+        <p>
+            <span>
+                <i class="iconfont icon-chenggong"></i>
+            </span>
+            <span>成功融资金额：保密</span>
+        </p>
+    </li>
+</ul>
+
+<div class="qspage">{$page}</div>
+
+
+
+<include file="public:footer_min"/>
+<script src="../public/js/QSfilter.js"></script>
+<script src="../public/js/qsCategory.js"></script>
+</body>
+<script>
+    // 过滤已投递恢复
+    var recoverDeliver = '{$Think.get.deliver}';
+    if (eval(recoverDeliver)) {
+        $('.js-clickedbox').addClass('clickedchoice');
+    }
+    // 更多列表左右切换
+    $('.js-more-l').on('click', function () {
+        var targetId = $(this).data('id');
+        $('.f-box-more').toggleClass('qs-actionsheet-toggle-left');
+        $('#' + targetId).toggleClass('qs-actionsheet-toggle');
+    })
+    $('.f-more-back-btn').on('click', function () { // 更多列表切换返回
+        $('.f-box-more').toggleClass('qs-actionsheet-toggle-left');
+        $('.f-more-content').removeClass('qs-actionsheet-toggle');
+    })
+    $('.f-more-back-a').on('click', function () { // 更多列表项点击
+        var thisType = $(this).data('type');
+        var thisTitle = $(this).data('title');
+        var thisCode = $(this).data('code');
+        $('.f-more-l-code-' + thisType).val(thisCode);
+        $('.f-more-l-txt-' + thisType).text(thisTitle);
+        $('.f-box-more').toggleClass('qs-actionsheet-toggle-left');
+        $('.f-more-content').removeClass('qs-actionsheet-toggle');
+    })
+    // 除更多和读取缓存之外的下拉列表
+    $('.f-item-normal').on('click', function () {
+        var thisType = $(this).data('type');
+        var thisTitle = $(this).data('title');
+        var thisCode = $(this).data('code');
+        $('.f-normal-code-' + thisType).val(thisCode);
+        $('.f-normal-txt-' + thisType).text(thisTitle);
+        $('body').removeClass('filter-fixed');
+        $('.f-box-' + thisType).addClass('qs-hidden');
+        $('.js-filter').removeClass('active');
+        $('#f-mask').hide();
+        goPage();
+
+        // v2
+//        $('.J_all').removeClass('icon-xiangshang').addClass('icon-xiala2');
+    })
+
+    // 过滤已投递
+    $('.js-clickedbox').on('click', function () {
+        if ($(this).hasClass('clickedchoice')) {
+            $(this).removeClass('clickedchoice');
+            $('.f-deliver').val('0');
+        } else {
+            $(this).addClass('clickedchoice');
+            $('.f-deliver').val('1');
+        }
+    })
+
+    // 清空已选分类
+    $('.js-clearjob-jobcategory').on('click', function () {
+        $('.qs-recover-code-job').val('');
+        goPage();
+    })
+    // 跳转方法
+    function goPage() {
+        var toSearchPage = $('.f-seach-page').val();
+        window.location.href = qscms.root + toSearchPage + $('#searchForm').serialize();
+    }
+    // 点击筛选
+    $('#f-do-filter').on('click', function () {
+        goPage();
+    });
+    var isVisitor = "{:C('visitor.uid')}";
+    $('.js-filter').on('click', function () {
+        var filter = new QSfilter($(this));
+        document.getElementById('f-mask').ontouchstart = function (e) {
+            e.preventDefault();
+        }
+
+        // v2添加 将点击的active去除
+        $(this).removeClass('active');
+        // 更换icon
+//        $('.J_all').removeClass('icon-xiala2').addClass('icon-xiangshang');
+    });
+</script>
+<script>
+    (function () {
+        (function () {
+            // 定义改变字体方法 传入jquery对象数组 以及字数限制
+            function changeNumWords($el, num) {
+                for(var i = 0; i < $el.length; i++){
+                    // 判断长度是否超过要求
+                    if ($el.eq(i).text().length > num) {
+                        // 将多余的字数换成...
+                        $el.eq(i).text($el.eq(i).text().substring(0, num) + '...');
+                    }
+                }
+            }
+            // 更改字数 多余用...表示
+            changeNumWords($('.J_change_num_words h2'), 22);
+            changeNumWords($('.J_change_num_words p'), 45);
+        })();
+
+
+    })();
+</script>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<qscms:explain_show 列表名="info" 说明页id="$_GET['id']" />
+<include file="public:meta" />
+<link href="../public/css/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/header.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/explain.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/jquery.common.js" type="text/javascript"></script>
+<style type="text/css">
+#footer{margin-bottom: 0px;}
+.statement_title .title {
+    color: #000;
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 3px;
+}
+.statement_details {
+    margin: 10px 0 40px;
+}
+.statement_list {
+    display: block;
+    margin-bottom: 40px;
+}
+.statement_details ul li{
+    list-style: outside none disc;
+}
+.statement_list .statement_declarer {
+    margin-top: 10px;
+}
+.statement_list .statement_declarer p {
+    text-align: right;
+}
+.statement_details p, .statement_details ul li {
+    font-size: 14px;
+    line-height: 2em;
+}
+</style>
+</head>
+<body>
+<include file="public:header" />
+<div class="explain_topimg">
+<img src="../public/banner/about.jpg" border="0"/>
+</div>
+
+<div class="explain">
+  <div class="el">
+		<div class="enav link_gray6">
+		  <div class="tli">关于我们</div>
+		  <qscms:explain_list 列表名="list" 分类id="1"/>
+		  <volist name="list" id="vo">
+		  <div class="eli <if condition="$vo['id'] eq $info['id']">select</if>"><a href="{$vo['url']}">{$vo['title_']}</a></div>
+		  </volist>
+    </div>
+  </div>
+  
+  <div class="er">
+  
+	<div class="main">
+	  <div class="txt">
+	  {$info['content']}
+
+    <if condition="$Think.get.id eq 7">
+    <style type="text/css">
+    #map{
+      border: 1px solid #ccc;
+      font-size: 14px;
+      height: 400px;
+      width: 700px;
+    }
+    </style>
+    <div id="map"></div>
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8bWqbqQ9DRYFhSX3uzQGHols"></script>
+    <script type="text/javascript">
+        //创建和初始化地图函数：
+        function initMap(){
+            createMap();//创建地图
+            setMapEvent();//设置地图事件
+            addMapControl();//向地图添加控件
+            addMapOverlay();//向地图添加覆盖物
+        }
+        function createMap(){
+            map = new BMap.Map("map", {enableMapClick:false});//构造底图,并关闭底图可点功能;
+            map.centerAndZoom(new BMap.Point(121.511367,31.325907),19);//地图中心坐标
+        }
+        function setMapEvent(){
+            map.enableScrollWheelZoom();
+            map.enableKeyboard();
+            map.enableDragging();
+            map.enableDoubleClickZoom()
+        }
+        function addClickHandler(target,window){
+            target.addEventListener("click",function(){
+                target.openInfoWindow(window);
+            });
+        }
+        function addMapOverlay(){
+            var markers = [
+                {
+                    content:"地址：北京市杨浦区国安路758弄9号楼906 ",
+                    title:"<strong>北京金融网</strong>",
+                    imageOffset: {width:-46,height:-21},
+                    position:{lat:31.325907,lng:121.511367}//标注图标坐标
+                }
+            ];
+            for(var index = 0; index < markers.length; index++ ){
+                var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
+                var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
+                    imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
+                })});
+                var opts = {
+                    width: 200,
+                    title: markers[index].title,
+                    enableMessage: false
+                };
+                var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
+                addClickHandler(marker,infoWindow);
+                map.addOverlay(marker);
+            };
+        }
+        //向地图添加控件
+        function addMapControl(){
+            var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+            map.addControl(navControl);
+        }
+        var map;
+        initMap();
+    </script>
+    </if>
+	  </div>
+	</div>
+  </div>
+    <div class="clear"></div>
+</div>
+<include file="public:footer_min" />
+</body>
+</html>

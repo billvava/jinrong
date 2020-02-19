@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>数据库词典-金融网开发手册</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="金融网开发手册">
+<meta name="KeyWords" content="金融网开发手册">
+<meta name="generator" content="金融网开发手册" />
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<!--[if lt IE 9 ] >
+<META http-equiv="X-UA-Compatible" content="IE=8" > </META>
+<![endif]-->
+<link href="../public/css/handbook/bootstrap.min.css" rel="stylesheet">
+<link  href="../public/css/handbook/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="../public/css/handbook/manual.css" rel="stylesheet">
+<script src="../public/css/handbook/jquery-1.11.1.min.js"></script>
+<script>
+$(document).ready(function(){
+$(".table tr:last-child").siblings().removeAttr("id");
+});
+</script>
+<script src="../public/css/handbook/jquery.scrollUp.min.js"></script>
+<link id="scrollUpTheme" rel="stylesheet" href="../public/css/handbook/tab.css">
+<link rel="stylesheet" href="../public/css/handbook/labs.css">
+<link rel="stylesheet" href="../public/css/handbook/image.css">
+<script>
+// Parse URL Queries Method
+(function ($) {
+$.getQuery = function (query) {
+query = query.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
+var expr = '[\\?&]' + query + '=([^&#]*)';
+var regex = new RegExp(expr);
+var results = regex.exec(window.location.href);
+if (results !== null) {
+return results[1];
+} else {
+return false;
+}
+};
+})(jQuery);
+$(function () {
+$('.image-switch').click(function () {
+window.location = '?theme=image';
+});
+
+if ($.getQuery('theme') === 'image') {
+$(function () {
+$.scrollUp({
+animation: 'fade',
+activeOverlay: '#00FFFF',
+scrollImg: {
+active: true,
+type: 'background',
+src: 'img/top.png'
+}
+});
+});
+$('#scrollUpTheme').attr('href', 'css/themes/image.css');
+$('.image-switch').addClass('active');
+}else{
+
+$(function (){
+    $.scrollUp({
+        animation: 'fade',
+        activeOverlay: '#00FFFF',
+        scrollImg: {
+        active: true,
+        type: 'background',
+        src: 'img/top.png'
+    }
+    });
+});
+$('#scrollUpTheme').attr('href', 'css/themes/image.css?1.1');
+    $('.image-switch').addClass('active');
+}
+$('#toggleActive').click(function () {
+    $('#scrollUp-active').toggle();
+    var text = $(this).text() == 'Hide activeOverlay' ? 'Show activeOverlay' : 'Hide activeOverlay';
+    $(this)
+        .text(text)
+        .toggleClass('active');
+    });
+});
+</script>
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+<!--start: Navigation -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar-inner">
+<div class="container">
+<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="brand" href="/Manual.html">金融网开发手册</a>
+<div class="nav-collapse collapse">
+<ul class="nav">
+<li>
+<a href="/" >官网</a>
+</li>
+<li class="">
+<a href="/Manual.html" >手册首页</a>
+</li>
+<li class="active">
+<a href="/Manual/dictionary.html">数据库词典</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!--end: Navigation -->
+<!--头部 end -->
+<!-- container start --> 
+<div class="container top">
+<h3>导航</h3>
+<div class="alert alert-error">
+快速查询技巧：ctrl+F或点击以下数据表快速导航
+</div>
+<!--导航-->
+<div class="row navigation">
+<foreach name="database_list" item="vo">
+<div class="span2"><a href="#{$vo.name}">{$vo.name}</a></div>
+</foreach>
+</div>
+<!--导航 end-->
+<h3 id="ds_system">内容</h3>
+<!--内容-->
+<div class="row content">
+<!--系统配置-->
+<foreach name="Field_list" item="vo">
+<table class="table table-bordered">
+<caption>{$vo.biaoming}({$vo.beizhu})</caption>
+<thead><tr class="success"><th style="width:200px;">名字</th><th style="width:200px;">类型</th><th style="width:100px;">主键(是/否)</th><th style="width:100px;">默认值</th><th>说明</th></tr></thead>
+<tbody>
+<foreach name="vo['database_structure']" item="Field">
+<tr id="{$vo.maodian}"><td>{$Field.field}</td><td>{$Field.type}</td><td>{$Field.key}</td><td>{$Field.default}</td><td>{$Field.comment}</td></tr>   
+</foreach>
+</tbody>
+</table>
+</foreach>
+</div>
+</div>
+<!-- container end -->
+<!--[if lte IE 6]>
+<script type="text/javascript" src="../public/css/handbook/bootstrap-ie.js"></script>
+<![endif]-->
+<!-- bootstrap-->
+<script src="../public/css/handbook/bootstrap.min.js"></script>
+</body>
+</html>

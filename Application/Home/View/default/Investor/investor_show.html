@@ -1,0 +1,117 @@
+<include file="public:meta" />
+<link href="../public/css/common.css" rel="stylesheet"/>
+<link href="../public/css/header.css" rel="stylesheet"/>
+<link href="../public/css/investor_show.css" rel="stylesheet"/>
+<script src="../public/js/jquery.common.js"></script>
+</head>
+<body>
+<include file="public:header" />
+<div class="detial-banner">
+<div class="container">
+<div class="detail-investor fn-left">
+<section>
+<p><img src="{:attach($info['small_img'],'images')}"></p>
+<h3>{$info.name}</h3>
+<article><strong><i></i>{$info.click}人浏览过</strong></article>
+<a href="###" class="ui-btn ui-btn-orange J_do_meeting_org_apply">一键直投</a>
+</section>
+</div>
+</div>
+</div>
+<div class="container fn-mt-20 clearfix">
+<div class="content-left fn-left">
+<div class="detail-header fn-mb-20 clearfix">
+<ul>
+<li><span>投资阶段</span>初创期 成长期</li>
+<li><span>投资领域</span>医疗保健 机械机电 IT互联网 </li>
+</ul>
+</div>
+
+
+<div class="fn-mb-20">
+<div class="directly-con-title">
+<h2>机构简介</h2>
+</div>
+<div class="directly-con-container ti2em">
+{$info.content}
+</div>
+</div>
+
+<notempty name="info['case']">
+<div class="fn-mb-20">
+<div class="directly-con-title">
+<h2>成功案例</h2>
+</div>
+<div class="directly-con-container ti2em">
+<p><img src="#" alt=""></p>
+</div>
+</div>
+</notempty>
+
+<notempty name="info['term']">
+<div class="fn-mb-20">
+<div class="directly-con-title">
+<h2>团队</h2>
+</div>
+<div class="directly-con-container ti2em">
+<p></p><p>
+<img src="#" alt=""> 
+</p>
+<p>
+<img src="#" alt=""> 
+</p><p></p>
+</div>
+</div>
+</notempty>
+</div>
+
+<div class="content-right fn-right">
+<div class="fn-mb-20">
+<div class="directly-con-title">
+<h2>热门机构</h2>
+</div>
+<div class="directly-con-container">
+    
+<volist name="red_investor" id="vo">
+<div class="directly-hot-invertor ">
+<a href="{:U('investor/investor_show',array('id'=>$vo['id']))}" target="_blank"><img src="{:attach($vo['small_img'],'images')}"></a>
+<h3><a href="{:U('investor/investor_show',array('id'=>$vo['id']))}" target="_blank">{$vo.name}</a></h3>
+<p>{$vo.click}人浏览过</p>
+</div>
+</volist>
+</div>
+</div>
+<div class="fn-mb-20">
+<div class="directly-con-title">
+<h2>相关报道</h2>
+</div>
+<div class="directly-con-container fn-pt-10 fn-pb-10">
+    
+<!--
+<div class="directly-news-list fn-text-overflow ">
+<a href="http://news.trjcn.com/detail_148205.html" target="_blank"><span>·</span>达晨创投肖冰：现在的投资越来越前沿</a>
+</div>
+<div class="directly-news-list fn-text-overflow ">
+<a href="http://news.trjcn.com/detail_127165.html" target="_blank"><span>·</span>达晨创投屠铮：服务业需流程精细化</a>
+</div>
+<div class="directly-news-list fn-text-overflow ">
+<a href="http://news.trjcn.com/detail_146345.html" target="_blank"><span>·</span>达晨创投肖冰：资产荒下，PE成为唯一一个高收益的配置渠道</a>
+</div>
+<div class="directly-news-list fn-text-overflow ">
+<a href="http://news.trjcn.com/detail_127118.html" target="_blank"><span>·</span>达晨创投胡德华：文化产业可能会成为下一个重要支柱</a>
+</div>
+<div class="directly-news-list fn-text-overflow ">
+<a href="http://news.trjcn.com/detail_127117.html" target="_blank"><span>·</span>达晨创投胡德华：PE行业竞争减弱 项目估值下降</a>
+</div>
+<div class="directly-news-list fn-text-overflow fn-br-b0">
+<a href="http://news.trjcn.com/detail_126639.html" target="_blank"><span>·</span>达晨创投肖冰：PE选股 须防三大造假重灾区</a>
+</div>
+-->
+<p class="center" style="height:30px;line-height:30px;">暂无</p>
+</div>
+</div>
+</div>
+</div>
+<include file="public:footer_min" />
+</body>
+</html>

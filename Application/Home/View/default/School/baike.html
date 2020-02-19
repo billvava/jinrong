@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>金融网</title>
+    <meta name="keywords" content="项目融资,融资,天使投资,投资,投资项目,投资公司,项目,股权融资,债权融资,投融资,融资平台,金融网"/>
+    <meta name="description"
+          content="金融网（7ronghui.com）是中国最大的融资服务平台，拥有超百万的投融资机构、企业与个人用户入驻。金融网通过线上＋线下、标准化  ＋个性化的服务体系，为客户提供针对性的投融资信息对接和项目撮配服务，成功对接融资千余亿元。金融网凭借其强大、便捷的平台信息整合能力，大大提高企业投融资活动成功率，为中小微企业解决融资难问题。"/>
+    <link rel="stylesheet" href="../public/css/v2/font/iconfont.css">
+    <link rel="stylesheet/less" type="text/css" href="../public/css/v2/less/combination/ranking.less"/>
+    <script src="../public/css/v2/less/less_all.js"></script>
+</head>
+<body>
+
+<include file="public:header2"/>
+
+<div class="container-full" id="ranking">
+    <div class="container clearfix">
+        <p>网站首页 >投资学院 >投资公司排名</p>
+        <div class="main-left">
+            <h2>投资公司排名</h2>
+            <ul>
+            <volist name="list" id="vo" key="k">
+            <li <if condition="$key eq 0">class="select"</if>><span></span>{:len($vo['title'],12)}</li>
+            </volist>
+            </ul>
+        </div>
+
+        <div class="main">
+
+            <volist name="list" id="vo">
+            <div>
+                <h2 class="J_title">{$vo.title}</h2>
+                <p>{:len(html_out($vo['content']),300)}</p>
+                <!--<span>......</span>-->
+                <a href="{:U('News/show',array('id'=>$vo['id']))}">查看更多<i class="iconfont icon-xiayige"></i></a>
+            </div>
+            </volist>
+        </div>
+    </div>
+</div>
+
+<include file="public:footer2"/>
+
+<script src="../public/js/v2/lib/jquery-1.12.4.min.js"></script>
+
+<script>
+    $(function () {
+        (function () {
+            // main-left浮动效果
+            // 获得main-left在页面的位置
+            var height = parseInt($('.main-left').offset().top);
+            // 滚动
+            $(window).scroll(function () {
+                if(parseInt($(document).scrollTop())>height) {
+                    $('.main-left').addClass('fixed');
+                } else {
+                    $('.main-left').removeClass('fixed')
+                }
+            });
+        })();
+        
+        // 点击页面滑动
+        $('.main-left li').click(function () {
+            // 获取点击的文本
+            var text = $(this).text();
+            // 查找带文字的h2
+            var top = parseInt($('h2:contains('+text+')')
+            // 父级元素位置
+                    .parent('div').offset().top);
+            // 将页面滚动到这个位置
+            $('body').animate({scrollTop: top+'px'}, 300);
+        });
+
+        // 滚动改变样式
+        (function () {
+            // 获得标题数量
+            var J_title_number = $('.J_title').length;
+            $(window).scroll(function () {
+
+                $(window).scroll(function(){
+                    //为页面添加页面滚动监听事件
+                    //滚动条距离顶端值
+                    var wst =  $(window).scrollTop();
+                    for( var i =0; i<J_title_number;i++){
+                        if(parseInt(wst)+50>parseInt($('.J_title').eq(i).offset().top)){
+                            $('.main-left li').eq(i).addClass('select').siblings('li').removeClass('select');
+                        }
+                    }
+                });
+            });
+        })();
+    });
+</script>
+
+</body>
+</html>
+

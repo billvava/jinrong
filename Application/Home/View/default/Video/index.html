@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>金融网</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="项目融资,融资,天使投资,投资,投资项目,投资公司,项目,股权融资,债权融资,投融资,融资平台,金融网"/>
+<meta name="description" content="金融网（7ronghui.com）是中国最大的融资服务平台，拥有超百万的投融资机构、企业与个人用户入驻。金融网通过线上＋线下、标准化  ＋个性化的服务体系，为客户提供针对性的投融资信息对接和项目撮配服务，成功对接融资千余亿元。金融网凭借其强大、便捷的平台信息整合能力，大大提高企业投融资活动成功率，为中小微企业解决融资难问题。"/>
+<link rel='icon' href='../img/icon/logo.ico' type='image/x-ico'/>
+<link rel="stylesheet" href="../public/css/v2/base.css">
+<link rel="stylesheet" href="../public/css/v2/component.css">
+<link rel="stylesheet" href="../public/css/v2/module.css">
+<link rel="stylesheet" href="../public/css/v2/all.css">
+</head>
+<body>
+<div class="header">
+    <div>
+        <div class="header-login">
+            <p class="float-l">欢迎登录金融网！请
+                <a href="#">登录</a>
+                或
+                <a href="#">免费注册</a></p>
+            <ul class="float-l">
+                <li class="li1">
+                    <a href="#">网站首页</a>
+                </li>
+                <li class="li2">
+                    <a href="#">新手指导</a>
+                </li>
+                <li class="li3">
+                    <a href="#">保存到桌面</a>
+                </li>
+                <li class="li4 position-rel">
+                    <a href="#" class="position-rel">手机金融网</a>
+                    <div class="position-abs">
+                        <img src="../public/images/v2/picture/list10.png" alt="">
+                        <p>扫描我，立刻打开触屏站</p>
+                        <p>手机触屏站：</p>
+                        <span>m.7ronghui.com</span>
+                    </div>
+                </li>
+                <li class="li5">
+                    <a href="#">资本机构免费入驻</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <div class="header-nav">
+            <a class="float-l" href="#">
+                <img src="../public/images/v2/picture/logo-2.png" alt="">
+            </a>
+            <ul class="float-l">
+            <qscms:nav 列表名="nav" 调用名称="QS_top" 数量="10"/>
+            <volist name="nav" id="nav">
+                <li <if condition="MODULE_NAME eq C('DEFAULT_MODULE')"><if condition="$nav['tag'] eq strtolower(CONTROLLER_NAME)">select</if><else/><if condition="$nav['tag'] eq strtolower(MODULE_NAME)">select</if></if>>
+                    <a href="{$nav['url']}" target="{$nav.target}">{$nav.title}</a>
+                </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="banner important-recommend-banner">
+    <a href="#"></a>
+</div>
+<style type="text/css">
+    .important-recommend{margin-bottom: 30px;}
+    .ul1 {text-align: center;}
+    .ul1 a img{width: 550px;}
+</style>
+<div class="important-recommend">
+    <h2 class="position-rel">
+        金融视频
+        <span class="position-abs line-left"></span>
+        <span class="position-abs line-right"></span>
+    </h2>
+    <ul class="ul1">
+        <li>
+            <a href=""><img src="../public/images/temp/222.jpg" alt=""></a>
+        </li>
+        <li>
+            <a href=""><img src="../public/images/temp/222.jpg" alt=""></a>
+        </li>
+    </ul>
+    
+</div>
+
+<div class="introduce">
+    <ul>
+        <li>
+            <img src="../public/images/v2/picture/list15.png" alt="">
+            <span>一对一客服</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list16.png" alt="">
+            <span>隐私保护</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list17.png" alt="">
+            <span>服务费合理</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list18.png" alt="">
+            <span>信息可靠</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list19.png" alt="">
+            <span>手机访问</span>
+        </li>
+    </ul>
+</div>
+
+<div class="footer">
+    <ul class="ul1">
+        <li>
+            <img src="../public/images/v2/picture/list20.png" alt="">
+            <p></p>
+            <span>客服热线（服务时间9:00-19:00）</span>
+        </li>
+        <li>
+            <h3>平台保障</h3>
+            <p>
+                <a href="#">招贤纳士</a>
+            </p>
+            <p>
+                <a href="#">联系我们</a>
+            </p>
+            <p>
+                <a href="#">推广合作</a>
+            </p>
+            <p>
+                <a href="#">法律申明</a>
+            </p>
+        </li>
+        <li>
+            <h3>新手指导</h3>
+            <p>
+                <a href="#">免费注册生成名片</a>
+            </p>
+            <p>
+                <a href="#">免费发布投融信息</a>
+            </p>
+            <p>
+                <a href="#">常见问题解答</a>
+            </p>
+        </li>
+        <li>
+            <h3>投资服务</h3>
+            <p>
+                <a href="#">融资宝</a>
+            </p>
+            <p>
+                <a href="#">委托刷新</a>
+            </p>
+            <p>
+                <a href="#">投递项目</a>
+            </p>
+        </li>
+        <li>
+            <h3>关于金融网</h3>
+            <p>
+                <a href="#">关于金融网</a>
+            </p>
+            <p>
+                <a href="#">联系我们</a>
+            </p>
+            <p>
+                <a href="#">网站公告</a>
+            </p>
+            <p>
+                <a href="#">隐私条款 网站地图</a>
+            </p>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list21.png" alt="">
+        </li>
+    </ul>
+    <p>联系地址：北京市杨浦区国安路星汇广场9号楼9楼 联系电话： 网站备案：沪ICP备15057977号-3</p>
+</div>
+
+</body>
+</html>

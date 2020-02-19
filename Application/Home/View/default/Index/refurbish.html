@@ -1,0 +1,572 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="public:meta" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc"/>
+<meta name="format-detection" content="telephone=no">
+<link href="../public/css/index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/header.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/school.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/common.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../piblic/js/html5shiv.js"></script>
+<![endif]-->
+<style>
+body {
+    background-color: #eee;
+    font-family: "微软雅黑";
+}
+.fn-left {
+    float: left;
+}
+.fn-right {
+    float: right;
+}
+.service-in-list {
+    margin-right: 500px;
+}
+.service-in-list h5 {
+    color: #e94e38;
+    font-size: 18px;
+}
+.service-in-list li {
+    font-size: 14px;
+    margin-top: 10px;
+}
+.service-in-list li i {
+    background: rgba(0, 0, 0, 0) url("../public/images/service/icon-gou.png") no-repeat scroll -4px -8px;
+    display: inline-block;
+    font-size: 0;
+    height: 8px;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 13px;
+}
+.preferential-list h2 {
+    font-size: 24px;
+    line-height: 1em;
+    margin: 30px 0 5px;
+}
+.preferential-list .preferential-br {
+    border-bottom: 2px solid #bbb;
+    display: inline-block;
+    width: 20px;
+}
+.preferential-list p {
+    font-size: 14px;
+    height: 42px;
+    margin: 10px 0 20px;
+}
+.preferential-list .part-icon-arrow-a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd #ddd transparent transparent;
+    border-image: none;
+    border-style: solid solid dashed dashed;
+    border-width: 15px;
+    right: 0;
+    top: 0;
+}
+.preferential-gou {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/icon-gou.png") no-repeat scroll -30px -6px;
+    display: block;
+    height: 11px;
+    position: absolute;
+    right: 2px;
+    top: 3px;
+    width: 12px;
+}
+.preferential-list li.cur {
+    border-color: #e94e38;
+}
+.preferential-list li.cur .part-icon-arrow-a {
+    border-right: 15px solid #e94e38;
+    border-top: 15px solid #e94e38;
+}
+.preferential-list li {
+    background: #fbfbfb none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    color: #666;
+    float: left;
+    height: 210px;
+    position: relative;
+    text-align: center;
+    width: 218px;
+}
+.preferential-list li.cur {
+    border-color: #e94e38;
+}
+.preferential-list li.cur .part-icon-arrow-a {
+    border-right: 15px solid #e94e38;
+    border-top: 15px solid #e94e38;
+}
+.preferential-list .part-icon-arrow-a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd #ddd transparent transparent;
+    border-image: none;
+    border-style: solid solid dashed dashed;
+    border-width: 15px;
+    right: 0;
+    top: 0;
+}
+.preferential-gou {
+    background: rgba(0, 0, 0, 0) url("../public/images/service/icon-gou.png") no-repeat scroll -30px -6px;
+    display: block;
+    height: 11px;
+    position: absolute;
+    right: 2px;
+    top: 3px;
+    width: 12px;
+}
+.preferential-list li.cur {
+    border-color: #e94e38;
+}
+.bids_scroll .scroll_absolute {
+    position: absolute;
+    width: 310px !important;
+}
+.service-privileges-list {
+    overflow: hidden;
+    padding: 0 30px;
+}
+.service-privileges-list article {
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    margin-top: -1px;
+    overflow: hidden;
+    padding: 30px 0;
+}
+.service-privileges-list aside {
+    float: left;
+    width: 225px;
+}
+.service-privileges-list aside i {
+    background: #bbb none repeat scroll 0 0;
+    border-radius: 10em;
+    color: #fff;
+    display: inline-block;
+    font-family: arial;
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 20px 0 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 30px;
+}
+.service-privileges-list section {
+    color: #666;
+    float: left;
+    line-height: 30px;
+    width: 664px;
+}
+.preferential-list-a li {
+    margin-left: 30px;
+}
+.preferential-list-b li {
+    margin-right: 20px;
+}
+.preferential-list-b {
+    overflow: hidden;
+    width: 940px;
+}
+.preferential-list-b ul {
+    width: 980px;
+}
+.preferential-list h2 {
+    font-size: 24px;
+    line-height: 1em;
+    margin: 30px 0 5px;
+}
+.preferential-list .preferential-br {
+    border-bottom: 2px solid #bbb;
+    display: inline-block;
+    width: 20px;
+}
+.preferential-list p {
+    font-size: 14px;
+    height: 42px;
+    margin: 10px 0 20px;
+}
+.preferential-list .part-icon-arrow-a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd #ddd transparent transparent;
+    border-image: none;
+    border-style: solid solid dashed dashed;
+    border-width: 15px;
+    right: 0;
+    top: 0;
+}
+.preferential-list li.cur {
+    border-color: #e94e38;
+}
+.preferential-list li.cur .part-icon-arrow-a {
+    border-right: 15px solid #e94e38;
+    border-top: 15px solid #e94e38;
+}
+.bids_scroll .scroll_vertical_bar {
+    background: #d7d7d7 none repeat scroll 0 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+}
+.bids_scroll .scroll_track {
+    background-color: #e8e8e8;
+    position: relative;
+}
+.bids_scroll .scroll_drag {
+    background-color: #a4a3a3;
+    border-radius: 2px;
+    cursor: pointer;
+    left: 0 !important;
+    position: relative;
+    top: 0;
+    width: 4px !important;
+}
+.bids_scroll .scroll_arrow {
+    background-color: #369db4;
+    cursor: pointer;
+    display: block;
+    text-indent: -20000px;
+}
+.bids_scroll .scroll_vertical_bar .scroll_arrow {
+    height: 16px;
+}
+.ad-m10 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.ad-m15 {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.ad-mb10 {
+    margin-bottom: 10px;
+}
+.icon-good {
+    background: rgba(0, 0, 0, 0) url("../../src/images/member/member-info/icon_ppt.jpg") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 13px;
+    margin-left: 5px;
+    vertical-align: middle;
+    width: 22px;
+}
+.service-nav li a {
+    width: 140px;
+}
+.service-cont-all {
+    background: #fff none repeat scroll 0 0;
+    border-top: 1px solid #ddd;
+    margin-top: -1px;
+}
+.service-cont-box {
+    padding: 15px 20px;
+}
+.service-icon-list {
+    margin: 30px auto;
+    overflow: hidden;
+    width: 900px;
+}
+.service-icon-list li {
+    float: left;
+    text-align: center;
+    width: 180px;
+}
+.service-icon-list li aside {
+    height: 128px;
+}
+.service-icon-list li aside i {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/icon-service.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 128px;
+    width: 112px;
+}
+.service-icon-list li .icon-service1 i {
+    background-position: -4px 0;
+}
+.service-icon-list li .icon-service2 i {
+    background-position: -175px 0;
+}
+.service-icon-list li .icon-service3 i {
+    background-position: -350px 0;
+}
+.service-icon-list li .icon-service4 i {
+    background-position: -527px 0;
+}
+.service-icon-list li .icon-service5 i {
+    background-position: -7px -134px;
+}
+.service-icon-list li .icon-service6 i {
+    background-position: -175px -134px;
+}
+.service-icon-list li .icon-service7 i {
+    background-position: -350px -134px;
+}
+.service-icon-list p {
+    color: #666;
+    font-size: 14px;
+    line-height: 26px;
+}
+.service-btn-box {
+    margin-left: auto;
+    margin-right: auto;
+    width: 219px;
+}
+.service-btn-box a {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/btn-service-red.jpg") no-repeat scroll 0 0;
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    height: 45px;
+    line-height: 42px;
+    text-align: center;
+    width: 219px;
+}
+.service-btn-box a:hover {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/btn-service-red-hr.jpg") no-repeat scroll 0 0;
+    color: #fff;
+    text-decoration: none;
+}
+.service-cont-title {
+    border-bottom: 1px solid #ddd;
+    height: 50px;
+    position: relative;
+}
+.service-cont-title-f8 {
+    background: #f8f8f8 none repeat scroll 0 0;
+}
+.service-cont-title h3 {
+    border-bottom: 2px solid #e84e36;
+    font-size: 16px;
+    height: 50px;
+    left: 0;
+    line-height: 50px;
+    padding: 0 20px;
+    position: absolute;
+    top: 0;
+}
+.service-cont-title .fn-right {
+    color: #333;
+    font-size: 16px;
+    line-height: 50px;
+    margin-right: 15px;
+}
+.service-title-child {
+    background: #fafafa none repeat scroll 0 0;
+    color: #ef4349;
+    font-size: 16px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
+.single-service {
+    overflow: hidden;
+}
+.single-service article {
+    border-top: 1px dashed #c9c9c9;
+    margin-top: -1px;
+    overflow: hidden;
+    padding: 20px 0 20px 30px;
+}
+.single-service article.cur {
+    background: #f8f8f8 none repeat scroll 0 0;
+}
+.single-service .single-icon {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/single-icon.png") no-repeat scroll 0 0;
+    display: block;
+    float: left;
+    height: 102px;
+    width: 108px;
+}
+.single-service .single-icon1 {
+    background-position: 0 0;
+}
+.single-service .single-icon2 {
+    background-position: 0 -102px;
+}
+.single-service .single-icon3 {
+    background-position: 0 -204px;
+}
+.single-service .single-icon4 {
+    background-position: 0 -306px;
+}
+.single-service .single-icon5 {
+    background-position: 0 -408px;
+}
+.single-service .single-icon6 {
+    background-position: 0 -513px;
+}
+.single-service section {
+    margin: 0 155px 0 135px;
+}
+.single-service section div span {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/icon-dian.gif") no-repeat scroll left center;
+    color: #666;
+    line-height: 22px;
+    padding: 0 20px 0 6px;
+}
+.single-service aside {
+    float: right;
+    width: 145px;
+}
+.single-service aside span {
+    color: #ea4f39;
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 5px;
+}
+.certification-service-list {
+    margin: 55px 0 35px 152px;
+}
+.certification-service-list article {
+    background: #f3f3f3 none repeat scroll 0 0;
+    border: 1px solid #f3f3f3;
+    float: left;
+    margin-right: 80px;
+    padding-top: 132px;
+    position: relative;
+    width: 272px;
+}
+.certification-service-list aside {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/service-radius.png") no-repeat scroll 0 0;
+    color: #fff;
+    font-size: 24px;
+    height: 154px;
+    left: 50%;
+    line-height: 154px;
+    margin-left: -77px;
+    position: absolute;
+    text-align: center;
+    top: -40px;
+    width: 154px;
+}
+.certification-service-list .certification-radius1 {
+    background-position: -6px -5px;
+}
+.certification-service-list .certification-radius2 {
+    background-position: -185px -5px;
+}
+.certification-service-list ul {
+    background: #fff none repeat scroll 0 0;
+}
+.certification-service-list ul li {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/cn-se-icon.png") no-repeat scroll 28px center;
+    color: #666;
+    font-size: 14px;
+    height: 42px;
+    line-height: 42px;
+    padding-left: 42px;
+}
+.certification-service-list ul li.cur {
+    background: #fafafa url("../../src/images/v6/service/cn-se-icon.png") no-repeat scroll 28px center;
+}
+.buy-process {
+    background: rgba(0, 0, 0, 0) url("../../src/images/v6/service/buy-process.jpg") no-repeat scroll 0 0;
+    height: 204px;
+    margin: 25px 0 25px 76px;
+    padding-left: 12px;
+    width: 860px;
+}
+.buy-process span {
+    color: #76aedf;
+    display: inline-block;
+    font-size: 22px;
+    margin: 125px 78px 0 0;
+    text-align: center;
+    width: 133px;
+}
+.taobao-way {
+    border: 1px solid #ddd;
+    height: 141px;
+    margin: 35px 40px;
+    overflow: hidden;
+}
+</style>
+</head>
+<body>
+<include file="public:header" />
+<div class="container fn-mb-20">
+       <div class="ui-bg-white fn-mt-20">
+             <header class="service-cont-title"><h3>单项增值服务</h3></header>
+             <div class="fn-p-30 fn-clear">
+                   <div class="fn-right preferential-list preferential-list-a">
+                         <ul>
+                              <li class="j-hover-all">
+                                   <h2>7天</h2>
+                                   <div class="preferential-br"></div>
+                                   <p>300.00元/条</p>
+                                   <footer><a href="###" data-id="34516756d61fd74da7af39b84a42fe453d" class="J_buy ui-btn ui-btn-red w90">立即购买</a></footer>
+                                   <div class="part-icon-arrow-a"></div>
+                                   <div class="preferential-gou"></div>
+                              </li>
+                              <li class="j-hover-all">
+                                   <h2>30天</h2>
+                                   <div class="preferential-br"></div>
+                                   <p>980.00元/条</p>
+                                   <footer><a href="###" data-id="35274dfd37c43519a7fb41caddb8d744d4" class="J_buy ui-btn ui-btn-red w90">立即购买</a></footer>
+                                   <div class="part-icon-arrow-a"></div>
+                                   <div class="preferential-gou"></div>
+                              </li>
+                         </ul>
+                   </div>
+                   <div class="service-in-list">
+                         <h5>★&nbsp;委托刷新信息排名靠前&nbsp;★</h5>
+                         <ul>
+                              <li><i></i><span>系统刷新将您的信息排名靠前</span></li>
+                              <li><i></i><span>时刻自动完成操作</span></li>
+                         </ul>
+                   </div>
+             </div>
+       </div>
+       
+       <div class="ui-bg-white fn-mt-20">
+             <header class="service-cont-title"><h3>服务特权介绍</h3></header>
+             <div class="service-privileges-list">
+                   <article>
+                            <aside><i>01</i>定时刷新</aside>
+                            <section>设定时间，每天准时帮您刷新，保证每天的信息排名</section>
+                            <div class="privileges-gou"></div>
+                   </article>
+                   <article>
+                            <aside><i>02</i>固定周期</aside>
+                            <section>设定周期，在设定的周期中帮您刷新，保持一段时间的排名优势</section>
+                            <div class="privileges-gou"></div>
+                   </article>
+                   <article>
+                            <aside><i>03</i>排名靠前</aside>
+                            <section>发布时间刷新，信息排名更靠前</section>
+                            <div class="privileges-gou"></div>
+                   </article>
+             </div>
+       </div>
+  </div>
+<include file="public:footer" />
+<script>
+// 公共组件hover
+jQuery.jqhover = function(tabtit) {
+    $(tabtit).hover(function(){
+        $(this).addClass("cur")
+    },function(){
+        $(this).removeClass("cur")
+    });
+};
+$.jqhover('.j-hover-all');
+</script>
+</body>
+</html>

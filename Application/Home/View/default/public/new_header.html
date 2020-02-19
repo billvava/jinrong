@@ -1,0 +1,48 @@
+<div class="header">
+    <div>
+        <div class="header-login">
+            <p class="float-l">欢迎登录金融网！请
+                <a href="{:U('Members/login')}">登录</a>
+                或
+                <a href="{:U('Members/register')}">免费注册</a></p>
+            <ul class="float-l">
+                <li class="li1">
+                    <a href="__ROOT__/">网站首页</a>
+                </li>
+                <li class="li2">
+                    <a href="{:U('Help/help_list',array('id'=>3))}">新手指导</a>
+                </li>
+                <li class="li3">
+                    <a href="{:U('Index/shortcut')}">保存到桌面</a>
+                </li>
+                <li class="li4 position-rel">
+                    <a href="#" class="position-rel">手机金融网</a>
+                    <div class="position-abs">
+                        <img src="../public/images/v2/picture/list10.png" alt="">
+                        <p>扫描我，立刻打开触屏站</p>
+                        <p>手机触屏站：</p>
+                        <span>m.jinrong.xiaba666.com</span>
+                    </div>
+                </li>
+                <li class="li5">
+                    <a href="{:U('Members/register',array('utype'=>1))}">资本机构免费入驻</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <div class="header-nav">
+            <a class="float-l" href="#">
+                <img src="../public/images/v2/picture/logo.png" alt="">
+            </a>
+            <ul class="float-l">
+            <qscms:nav 列表名="nav" 调用名称="QS_top" 数量="10"/>
+            <volist name="nav" id="nav">
+                <li class="<if condition="$nav['tag'] eq $nav['alias']">select hover</if>">
+                    <a href="{$nav['url']}" target="{$nav.target}">{$nav.title}</a>
+                </li>
+            </volist>
+            </ul>
+        </div>
+    </div>
+</div>

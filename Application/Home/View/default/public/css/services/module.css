@@ -1,0 +1,262 @@
+.header {
+    width: 100%;
+}
+.header > div:first-child {
+    width: 100%;
+    background-color: #FAFAFA;
+    min-width: 1200px;
+}
+.header .header-login {
+    margin: 0 auto;
+    width: 1200px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 40px;
+}
+.header .header-login p {
+    width: 540px;
+}
+
+.header .header-login p a {
+    color: #56C6FF;
+}
+.header .header-login ul {
+    width: 570px;
+}
+.header .header-login ul li {
+    float: left;
+}
+.header .header-login ul li.li1 a:hover,
+.header .header-login ul li.li2 a:hover,
+.header .header-login ul li.li3 a:hover {
+    color: #56C6FF;
+}
+.header .header-login ul li a {
+    color: #666666;
+}
+.header .header-login ul li.li1 a,
+.header .header-login ul li.li2 a {
+    padding-left: 32px;
+    padding-right: 17px;
+    border-right: 1px solid #cccccc;
+}
+.header .header-login ul li.li3,
+.header .header-login ul li.li4 {
+    margin-left: 20px;
+}
+.header .header-login ul li.li1 {
+    background: url("../images/services/icon6.png") no-repeat 10px center;
+}
+.header .header-login ul li.li2 {
+    background: url("../images/services/icon7.png") no-repeat 10px center;
+}
+.header .header-login ul li.li4 {
+    background: url("../images/services/icon8.png") no-repeat 5px center;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+.header .header-login ul li.li4 div {
+    top: 37px;
+    left: -79px;
+    width: 154px;
+    padding: 10px;
+    line-height: 18px;
+    display: none;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.header .header-login ul li.li4 div span {
+    color: #EF4349;
+}
+
+.header .header-login ul li.li4:hover {
+    background-color: #fff;
+}
+
+.header .header-login ul li.li4:hover div {
+    display: block;
+}
+
+.header .header-login ul li.li5 a {
+    display: inline-block;
+    width: 110px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #EF4349;
+    border-radius: 3px;
+    color: #fff;
+}
+
+/*第二部分*/
+.header > div:last-child {
+    width: 100%;
+}
+
+.header .header-nav {
+    margin: 0 auto 38px;
+    width: 1200px;
+    height: 82px;
+}
+
+.header .header-nav > a {
+    margin: 30px 0 0 84px;
+}
+
+.header .header-nav ul {
+    overflow: hidden;
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.header .header-nav ul li {
+    float: left;
+    padding: 0 25px;
+    line-height: 51px;
+}
+
+.header .header-nav ul li a {
+    color: #000;
+    font-size: 16px;
+}
+
+.header .header-nav ul li:hover:not(.select) a {
+    color: #56C6FF;
+}
+
+/*选中时样式*/
+.header-nav .select {
+    background-color: #56C6FF;
+}
+
+.header .header-nav .select a {
+    color: #fff;
+}
+
+
+
+/*introduce*/
+.introduce {
+    width: 100%;
+    min-width: 1200px;
+    background-color: #fafafa;
+}
+
+.introduce ul {
+    height: 90px;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.introduce ul li {
+    float: left;
+    width: 210px;
+    padding: 20px 0 0 30px;
+}
+
+.introduce img, .introduce span {
+    float: left;
+}
+
+.introduce span {
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 21px;
+    color: #333;
+}
+
+/*footer*/
+.footer {
+    background-color: #eee;
+    width: 100%;
+    min-width: 1200px;
+}
+
+.footer .ul1 {
+    width: 1200px;
+    height: 190px;
+    padding-top: 30px;
+    margin: 0 auto;
+}
+
+.footer .ul1 > li {
+    float: left;
+    height: 185px;
+}
+
+.footer .ul1 > li:first-child {
+    width: 244px;
+    border-right: 1px solid #fff;
+    text-align: center;
+}
+.footer .ul1 > li:first-child img{
+    display: inline-block;
+    margin-top: 5px;
+}
+.footer .ul1 > li:first-child p{
+    font-size: 32px;
+    color: #ff5a00;
+    margin: 20px 0 15px 0;
+}
+.footer .ul1 > li:first-child span{
+    font-size: 12px;
+    color: #666;
+}
+
+.footer .ul1 > li:not(first-child){
+    width: 190px;
+    text-align: center;
+    border-right: 1px solid #fff;
+}
+
+.footer .ul1 > li:not(first-child) h3{
+    font-size: 18px;
+    line-height: 50px;
+    color: #333;
+}
+
+.footer .ul1 > li:not(first-child) p a{
+    font-size: 12px;
+    line-height: 22px;
+    color: #666;
+}
+
+.footer .ul1 > li:last-child{
+    border-right: none;
+}
+.footer .ul1 > li:last-child img{
+    display: block;
+    margin: 30px 0 0 65px;
+}
+
+.footer .ul1 > li a:hover{
+    color: #333;
+}
+
+.footer > p {
+    line-height: 110px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

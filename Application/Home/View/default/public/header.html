@@ -1,0 +1,19 @@
+<link href="../public/css/theme.css" rel="stylesheet" type="text/css" />
+<include file="Home@default/public/header_min" />
+<div class="header_wrapper">
+    <div class="index_head">
+        <div class="logobox" style="text-align:center;">
+            <a href="__ROOT__/"><img src="../public/images/logo.png" border="0" /></a>
+        </div>
+        <div class="index_nav">
+            <ul class="link_gray6 nowrap">
+                <qscms:nav 列表名="nav" 调用名称="QS_top" 数量="10" />
+                <volist name="nav" id="nav">
+                    <li class="nli J_hoverbut <if condition=" MODULE_NAME eq C( 'DEFAULT_MODULE') "><if condition="$nav[ 'tag'] eq strtolower(CONTROLLER_NAME) ">select hover</if><else/><if condition="$nav[ 'tag'] eq strtolower(MODULE_NAME) ">select hover</if></if>"><a href="{$nav['url']}" target="{$nav.target}">{$nav.title}</a></li>
+                </volist>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

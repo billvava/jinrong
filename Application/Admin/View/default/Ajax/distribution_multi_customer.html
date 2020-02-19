@@ -1,0 +1,27 @@
+<form action="{:U('Ajax/distribution_multi_customer')}" method="post" name="form" id="form">
+	<table width="100%" border="0" cellspacing="10" cellpadding="1" style=" margin-bottom:3px;">
+	  <tr>
+        <td width="60" align="right">专职客服:</td>
+        <td>
+          <input id="key" maxlength="60" name="key" class="input_text_200" value="" type="text">
+          <span class="admin_note" style="color: rgb(153, 153, 153);">(备注:输入姓名或拼音进行检索)</span>
+
+        </td>
+      </tr>
+      <tr>
+        <td align="right">&nbsp;</td>
+        <td>
+		<input name="check" type="submit" class="admin_submit" id="check" value="开始分配" /></td>
+    <input type="hidden" name="ids" value="">
+      </tr>
+    </table>
+    </form>
+<script type="text/javascript">
+$(function(){
+$("#key").autocomplete({
+    source: "{:U('Ajax/ajax_kefu')}",
+    minLength: 1,
+    autoFocus: true
+});
+});
+</script>

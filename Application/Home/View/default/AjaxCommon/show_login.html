@@ -1,0 +1,56 @@
+<div i="content" class="ui-dialog-content" style="display: block; width: 500px;">
+<div class="popup-msg fn-tac">
+	<form  method="post">
+		<article class="part-fieldset">
+            <aside>手机号：</aside>
+            <section class="part-fieldset-section">
+                    <input class="t_input w260" name="username" maxlength="200" id="login_username" type="text">
+                    <span class="part-fieldset-msg"></span>
+            </section>
+        </article>
+        <article class="part-fieldset">
+            <aside>密码：</aside>
+            <section class="part-fieldset-section">
+                    <input class="t_input w260" name="password" maxlength="20" id="login_password" type="password">
+                    <span class="part-fieldset-msg"></span>
+            </section>
+        </article>
+        <article class="part-fieldset fn-hide">
+            <aside></aside> 
+            <section class="part-fieldset-section">
+            <div class="part-fieldset-msg">
+            <em class="ui-text-red" id="login-msg">账号或密码错误，请重新输入！</em>
+            </div>
+            </section>
+        </article>
+        <article class="part-fieldset">
+            <section class="part-fieldset-section">
+<div><a style="margin-left: 66px;" href="javascript:;" id="btn-login" class="ui-btn ui-btn-red w130 fn-mr-25">登录</a>
+<a href="{:U('Members/user_getpass')}" class="fn-ml-50">忘记密码？</a></div>
+<p class=" fn-mt-20">还不是会员？<a href="{:U('Members/register')}" class="ui-text-blue-2">先注册生成名片&gt;&gt;</a></p>
+</section>
+</article>
+</form>
+</div>
+<script>
+    $('body').on('click','#btn-login',function(){
+    username = $('#login_username').val();
+    password = $('#login_password').val();
+    $.ajax({
+            url: qscms.root + '?m=&c=Members&a=show_login',
+            cache: false,
+            async: false,
+            type: 'post',
+            dataType: 'json',
+            data: {username:username,password:password},
+            success: function(json) {               
+                console.log(json.msg);
+                if(json.status == 1){
+                    window.location.href=json.data;
+                }else{
+                    $('.fn-hide').attr("style","display: block");
+                }
+            }
+        });
+    });
+</script>

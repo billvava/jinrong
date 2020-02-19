@@ -1,0 +1,219 @@
+.home2 .header{
+    width: 100%;
+    height: 90px;
+
+}
+
+.home2 .header .center{
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.home2 .center>a{
+    margin-top: 27px;
+    display: inline-block;
+}
+
+.home2 .center div{
+    margin-top: 35px;
+}
+
+.home2 .center div a{
+    display: inline-block;
+    font-size: 14px;
+    color: #666;
+}
+
+.home2 .center div a:first-child{
+    margin-right: 7px;
+}
+
+.home2 .center div a:last-child{
+    padding-left: 11px;
+    border-left: 1px solid #666;
+}
+
+.home2 .center div span{
+    display: inline-block;
+}
+
+.home2 .center div a:hover{
+    color: #333;
+}
+
+.home2 .main{
+    width: 100%;
+    min-width: 1200px;
+    height: 625px;
+    padding-top: 62px;
+    box-sizing: border-box;
+    background-color: #eee;
+}
+
+.home2 .main .main-b{
+    width: 1200px;
+    height: 500px;
+    margin: 0 auto;
+    background-image: url("../../images/v2/picture/list90.png");
+}
+
+.home2 .main-b form{
+    width: 345px;
+    height: 331px;
+    margin-top: 67px;
+    margin-right: 64px;
+}
+
+.home2 .main-b h3{
+    width: 100%;
+    height: 37px;
+    line-height: 37px;
+    margin-bottom: 32px;
+    padding-left: 48px;
+    box-sizing: border-box;
+    background: url("../../images/v2/picture/list91.png") no-repeat left center;
+    font-size: 18px;
+    font-weight: 400;
+    color: #666;
+}
+
+.home2 .main-b input{
+    width: 100%;
+    height: 48px;
+    padding-left: 40px;
+    display: block;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #999;
+}
+
+.home2 .main-b input[type="text"]{
+    margin-bottom: 22px;
+    background: url("../../images/v2/icon/icon50.png") no-repeat 11px center;
+}
+
+.home2 .main-b input[type="password"]{
+    background: url("../../images/v2/icon/icon51.png") no-repeat 12px center;
+}
+
+.home2 .main-b form p:nth-child(4){
+    line-height: 20px;
+    margin-top: 8px;
+    padding-left: 22px;
+    display: inline-block;
+    background: url("../../images/v2/icon/icon53.png") no-repeat 0 center;
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+}
+
+.home2 .main-b form button{
+    width: 100%;
+    line-height: 48px;
+    margin-top: 22px;
+    background-color: #56C6FF;
+    border-radius: 4px;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.home2 .main-b form p:nth-child(6){
+    margin-top: 27px;
+}
+
+.home2 .main-b form p:nth-child(6) a{
+    font-size: 14px;
+    color: #56C6FF;
+}
+
+.home2 .main-b form p:nth-child(6) a:first-child{
+    margin-right: 5px;
+    padding-right: 10px;
+    border-right: 1px solid #999;
+}
+
+.home2 .main-b form i{
+    top: 83px;
+    right: 22px;
+    display: none;
+    width: 20px;
+    height: 20px;
+    background: url("../../images/v2/icon/icon52.png");
+    cursor: pointer;
+}
+
+.home2 .introduce{
+    background-color: #fff;
+}
+
+.home2 .footer{
+    width: 100%;
+    height: 180px;
+    padding-top: 40px;
+    box-sizing: border-box;
+    background-color: #eee;
+}
+
+.home2 .footer p{
+    line-height: 26px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+}
+
+.home2 .footer p:first-child{
+    margin-bottom: 15px;
+}
+
+.home2 .footer p span{
+    height: 15px;
+    width: 1px;
+    margin: 0 15px;
+    display: inline-block;
+    background-color: #666;
+}
+
+.home2 .footer p a{
+    color: #666;
+}
+
+.home2 .footer p a:hover{
+    color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

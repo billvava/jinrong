@@ -1,0 +1,1320 @@
+/*共同部分 开始*/
+/*头部*/
+.all-header {
+    width: 100%;
+    line-height: 44px;
+    background-color: #56C6FF;
+    text-align: center;
+    font-size: 19px;
+    color: #fff;
+}
+
+.all-header span:nth-child(1) {
+    width: 11px;
+    height: 18px;
+    margin-top: 13px;
+    margin-left: 15px;
+    background: url("../img/icon/icon12.png") no-repeat 0 / 11px 18px;
+
+}
+
+.all-header span:nth-child(2) {
+    width: 18px;
+    height: 18px;
+    margin-top: 13px;
+    margin-right: 15px;
+    background: url("../img/icon/icon13.png") no-repeat 0 / 18px 18px;
+}
+
+/*banner*/
+.all-banner img {
+    width: 100%;
+}
+
+/*查看更多*/
+.view-more {
+    width: 73px;
+    height: 16px;
+    line-height: 16px;
+    display: inline-block;
+    background: url("../img/icon/icon14.png") no-repeat right center / 16px 16px;
+    font-size: 13px;
+    color: #666;
+}
+
+/*标题边上的竖线*/
+.vertical-line {
+    line-height: 16px;
+    padding-left: 7px;
+    background: url("../img/icon/icon15.png") no-repeat left center / 1px 15px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+}
+
+/*字体颜色*/
+.orange {
+    color: #56C6FF;
+}
+
+.banner-img {
+    width: 100%;
+    display: block;
+}
+
+/*小按钮*/
+.btn {
+    width: 80px;
+    height: 25px;
+    line-height: 25px;
+    display: block;
+    background-color: #56C6FF;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 13px;
+    color: #fff;
+}
+
+/*腿部*/
+.all-footer {
+    padding-top: 15px;
+    padding-bottom: 13px;
+    background-color: #f0f2f5;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}
+
+/*灰色分割线*/
+.segmentation {
+    width: 100%;
+    height: 12px;
+    background-color: #f0f2f5;
+}
+
+.all-footer p:first-child {
+    margin-bottom: 10px;
+}
+
+.all-footer p:first-child a:nth-child(2) {
+    margin: 0 24px;
+    position: relative;
+}
+
+.all-footer p:first-child a:nth-child(2):after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    right: -14px;
+    width: 1px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.all-footer p:first-child a:nth-child(2):before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: -14px;
+    width: 1px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.all-footer a {
+    color: #666;
+}
+
+.all-footer a.orange {
+    color: #56C6FF;
+}
+
+/*共同部分 结束*/
+
+/*金融学院 开始*/
+.qrcollege a {
+    color: #666;
+}
+
+.qrcollege .div1 {
+    padding: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.qrcollege .div1:first-child {
+    padding-bottom: 0;
+}
+
+.qrcollege .div1 a {
+    width: 80px;
+    height: 81px;
+    display: inline-block;
+    font-size: 13px;
+    color: #333;
+}
+
+.qrcollege .div1 a img {
+    width: 55px;
+    height: 55px;
+}
+
+.qrcollege .div1 a span {
+    margin-top: 5px;
+    display: block;
+}
+
+.qrcollege .segmentation {
+    width: 100%;
+    height: 12px;
+    background-color: #f0f2f5;
+}
+
+.qrcollege .div2 {
+    width: 100%;
+    padding: 15px 15px 0;
+    box-sizing: border-box;
+}
+
+.qrcollege .div3 {
+    margin-top: 15px;
+    padding-bottom: 13px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 13px;
+    color: #333;
+}
+
+.qrcollege .div3 span {
+    position: relative;
+}
+
+.qrcollege .div3 span:not(:last-child):after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    right: -17px;
+    width: 1px;
+    height: 100%;
+    background-color: #ccc;
+}
+
+.qrcollege .ul1 {
+    padding: 5px 15px;
+    box-sizing: border-box;
+    border: 1px solid #e8e8e8;
+    border-left: none;
+    border-right: none;
+}
+
+.qrcollege .ul1 a {
+    padding-left: 15px;
+    box-sizing: border-box;
+    display: block;
+    background: url("../img/icon/icon16.png") no-repeat left center / 6px 6px;
+    font-size: 13px;
+}
+
+.qrcollege .ul1 span {
+    width: 175px;
+    line-height: 30px;
+    display: block;
+}
+
+.qrcollege .ul1 i {
+    width: 6px;
+    height: 25px;
+    display: inline-block;
+    background: url("../img/icon/icon17.png") no-repeat center center / 6px 10px;
+}
+
+.qrcollege .div4 a {
+    width: 80px;
+    height: 25px;
+    line-height: 25px;
+    margin: 10px auto;
+    display: block;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.qrcollege .div5 {
+    padding: 15px;
+}
+
+.qrcollege .div6 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 13px;
+}
+
+.qrcollege .div6 a {
+    width: 167px;
+    height: 127px;
+    margin-top: 13px;
+    display: inline-block;
+}
+
+.qrcollege .div6 img {
+    width: 167px;
+    height: 89px;
+}
+
+.qrcollege .div6 span {
+    display: block;
+}
+
+.qrcollege .div7 {
+    padding: 15px;
+    border-top: 1px solid #e8e8e8;
+}
+
+.qrcollege .div7 div a {
+    margin-top: 15px;
+    overflow: hidden;
+    display: block;
+    font-size: 13px;
+}
+
+.qrcollege .div7 img {
+
+    width: 105px;
+    height: 70px;
+    margin-right: 15px;
+}
+
+.qrcollege .div7 p {
+    margin-top: 10px;
+    text-align: right;
+    font-size: 13px;
+}
+
+.qrcollege .div7 p a {
+    text-align: left;
+}
+
+.qrcollege .div8 {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #333;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.qrcollege .div8 span {
+    position: relative;
+}
+
+.qrcollege .div8 span:not(:last-child):after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    right: -13px;
+    width: 1px;
+    height: 100%;
+    background-color: #ccc;
+}
+
+.qrcollege .ul2 {
+    padding: 15px;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 13px;
+}
+
+.qrcollege .ul2 li a {
+    padding-left: 15px;
+    box-sizing: border-box;
+    display: block;
+    background: url("../img/icon/icon16.png") no-repeat left center / 6px 6px;
+    font-size: 13px;
+}
+
+.qrcollege .ul2 li a:not(:last-child) {
+    margin-bottom: 14px;
+}
+
+.qrcollege .ul2 p {
+    margin-top: 3px;
+    text-align: right;
+}
+
+.qrcollege .ul2 p a {
+    text-align: left;
+}
+
+.qrcollege .div9 {
+    padding: 15px;
+}
+
+.qrcollege .div10 {
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.qrcollege .div10 img {
+    width: 167px;
+    height: 100px;
+}
+
+.qrcollege .div10 span {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    line-height: 25px;
+    display: block;
+    background-color: #7d7d7d;
+    opacity: .8;
+    text-align: center;
+    font-size: 13px;
+    color: #fff;
+}
+
+.qrcollege .div9 p {
+    margin-top: 12px;
+    text-align: right;
+    font-size: 13px;
+}
+
+.qrcollege .div9 p a {
+    text-align: left;
+}
+
+/*金融学院 结束*/
+
+/*金融宝 开始*/
+.qrb-project-banner img {
+    width: 100%;
+    display: block;
+}
+
+.qrb-project {
+    width: 100%;
+}
+
+.qrb-project .div1 {
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f0f2f5;
+    border-bottom: 1px solid #ccc;
+    color: #666;
+}
+
+.qrb-project .div1 span {
+    line-height: 40px;
+    font-size: 13px;
+}
+
+.qrb-project .div1 span:nth-child(2),
+.qrb-project .div1 span:nth-child(4) {
+    width: 1px;
+    height: 13px;
+    margin-top: 14px;
+    display: inline-block;
+    background-color: #666;
+}
+
+.qrb-project ul {
+    padding-top: 8px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.qrb-project ul li {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    overflow: hidden;
+    font-size: 13px;
+    color: #333;
+}
+
+.qrb-project ul li div:first-child {
+    float: left;
+}
+
+.qrb-project ul li div:last-child {
+    line-height: 34px;
+    float: right;
+}
+
+.qrb-project ul > p {
+    padding: 15px 0;
+    border-top: 1px solid #e7e7e7;
+}
+
+.qrb-project ul > p a {
+    width: 200px;
+    height: 33px;
+    line-height: 33px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 4px;
+    background-color: #56C6FF;
+    text-align: center;
+    font-size: 13px;
+}
+
+.qrb-project .ul1 li:nth-child(2),
+.qrb-project .ul1 li:nth-child(6),
+.qrb-project .ul1 li:nth-child(7) {
+    color: #999;
+}
+
+.qrb-project .ul1 li:nth-child(3) div:last-child,
+.qrb-project .ul1 li:nth-child(4) div:last-child,
+.qrb-project .ul1 li:nth-child(5) div:last-child {
+    height: 34px;
+    width: 34px;
+    background: url("../img/icon/icon18.png") no-repeat right center / 19px 19px;
+}
+
+.qrb-project .ul1 li:nth-child(3) div:last-child {
+    height: 51px;
+}
+
+.qrb-project .ul1 li:nth-child(2),
+.qrb-project .ul1 li:nth-child(3),
+.qrb-project .ul1 li:nth-child(4),
+.qrb-project .ul1 li:nth-child(5),
+.qrb-project .ul1 li:nth-child(6),
+.qrb-project .ul1 li:nth-child(7) {
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+
+.qrb-project .ul2 li:nth-child(7) {
+    color: #999;
+}
+
+.qrb-project .ul2 li:nth-child(2) div:last-child,
+.qrb-project .ul2 li:nth-child(3) div:last-child,
+.qrb-project .ul2 li:nth-child(4) div:last-child,
+.qrb-project .ul2 li:nth-child(5) div:last-child,
+.qrb-project .ul2 li:nth-child(6) div:last-child {
+    height: 34px;
+    width: 34px;
+    background: url("../img/icon/icon18.png") no-repeat right center / 19px 19px;
+}
+
+.qrb-project .ul2 li:nth-child(3) div:last-child {
+    height: 51px;
+}
+
+.qrb-project .ul2 li:nth-child(2),
+.qrb-project .ul2 li:nth-child(3),
+.qrb-project .ul2 li:nth-child(4),
+.qrb-project .ul2 li:nth-child(5),
+.qrb-project .ul2 li:nth-child(6),
+.qrb-project .ul2 li:nth-child(7) {
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+
+.qrb-project .ul3 li:nth-child(6) {
+    color: #999;
+}
+
+.qrb-project .ul3 li:nth-child(2) div:last-child,
+.qrb-project .ul3 li:nth-child(3) div:last-child,
+.qrb-project .ul3 li:nth-child(4) div:last-child,
+.qrb-project .ul3 li:nth-child(5) div:last-child,
+.qrb-project .ul3 li:nth-child(7) div:last-child {
+    height: 34px;
+    width: 34px;
+    background: url("../img/icon/icon18.png") no-repeat right center / 19px 19px;
+}
+
+.qrb-project .ul3 li:nth-child(3) div:last-child {
+    height: 51px;
+}
+
+.qrb-project .ul3 li:nth-child(2),
+.qrb-project .ul3 li:nth-child(3),
+.qrb-project .ul3 li:nth-child(4),
+.qrb-project .ul3 li:nth-child(5),
+.qrb-project .ul3 li:nth-child(6),
+.qrb-project .ul3 li:nth-child(7) {
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+
+/*金融宝 结束*/
+
+/*头条宝考 开始*/
+.headlines-banner img {
+    width: 100%;
+    display: block;
+}
+
+.headlines {
+    width: 100%;
+}
+
+.headlines .div1 {
+    padding: 15px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.headlines .div1 p {
+    margin-top: 12px;
+    line-height: 25px;
+    font-size: 13px;
+}
+
+.headlines .div1 p span {
+    margin-right: 10px;
+}
+
+.headlines .div2 {
+    padding: 15px;
+}
+
+.headlines .div2 h3 {
+    padding-left: 22px;
+    font-size: 14px;
+    color: #56C6FF;
+}
+
+.headlines .div2 h3:first-child {
+    background: url("../img/icon/icon19.png") no-repeat left center / 14px;
+}
+
+.headlines .div2 h3:nth-child(2) {
+    margin-bottom: 8px;
+}
+
+.headlines .div2 p {
+    padding-left: 22px;
+    font-size: 13px;
+    color: #666;
+}
+
+.headlines .div2 p:not(:nth-child(6)) {
+    background: url("../img/icon/icon20.png") no-repeat 2px center / 10px 8px;
+}
+
+.headlines .div2 p:nth-child(3),
+.headlines .div2 p:nth-child(4),
+.headlines .div2 p:nth-child(6) {
+    margin-bottom: 3px;
+}
+
+.headlines .div3 {
+    padding: 15px;
+}
+
+.headlines .div3 h2 {
+    font-size: 16px;
+    color: #333;
+}
+
+.headlines .div3 div {
+    margin-top: 15px;
+    padding-left: 45px;
+    background: no-repeat 6px 0 / 30px 34px;
+}
+
+.headlines .div3 div:nth-child(2) {
+    background-image: url("../img/picture/list40.png");
+}
+
+.headlines .div3 div:nth-child(3) {
+    background-image: url("../img/picture/list41.png");
+}
+
+.headlines .div3 div:nth-child(4) {
+    background-image: url("../img/picture/list42.png");
+}
+
+.headlines .div3 h3 {
+    line-height: 33px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+}
+
+.headlines .div3 p {
+    font-size: 13px;
+    color: #666;
+}
+
+/*头条宝 结束*/
+
+/*投递项目 开始*/
+.deliver-project-banner img {
+    width: 100%;
+    display: block;
+}
+
+.deliver-project {
+    width: 100%;
+}
+
+.deliver-project h2 {
+    margin-left: 15px;
+    margin-top: 18px;
+}
+
+.deliver-project .div1,
+.deliver-project .div2,
+.deliver-project .div3,
+.deliver-project .div4 {
+    padding: 10px 15px 10px 21px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.deliver-project .div1 p span:nth-child(2),
+.deliver-project .div2 p span:nth-child(2),
+.deliver-project .div3 p span:nth-child(2),
+.deliver-project .div4 p span:nth-child(2) {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.deliver-project p {
+    font-size: 13px;
+    color: #666;
+}
+
+.deliver-project a {
+    margin-top: 4px;
+}
+
+.deliver-project h3 {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.deliver-project .div5 {
+    padding: 20px;
+}
+
+.deliver-project .div5 div:first-child {
+    margin-right: 2px;
+}
+
+.deliver-project .div5 p {
+    line-height: 19px;
+}
+
+.deliver-project .div6,
+.deliver-project .div7,
+.deliver-project .div8,
+.deliver-project .div9,
+.deliver-project .div10 {
+    padding: 1px 30px 10px 54px;
+    border-bottom: 1px solid #e5e5e5;
+    background: no-repeat 16px 8px / 32px 29px;
+}
+
+.deliver-project > div > h3 {
+    line-height: 24px;
+    margin-top: 10px;
+}
+
+.deliver-project .div6 {
+    margin-top: 10px;
+    background-image: url("../img/picture/list43.png");
+}
+
+.deliver-project .div7 {
+    background-image: url("../img/picture/list44.png");
+}
+
+.deliver-project .div8 {
+    background-image: url("../img/picture/list45.png");
+}
+
+.deliver-project .div9 {
+    background-image: url("../img/picture/list46.png");
+}
+
+.deliver-project .div10 {
+    background-image: url("../img/picture/list47.png");
+}
+
+/*投递项目 结束*/
+
+/*投融服务 开始*/
+.financing-service-banner img {
+    width: 100%;
+    display: block;
+}
+
+.financing-service {
+    width: 100%;
+}
+
+.financing-service .div1 {
+    height: 130px;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    background: url("../img/icon/icon21.png") no-repeat center / 1px 100px;
+    box-sizing: border-box;
+}
+
+.financing-service .div1 a {
+    width: 85px;
+    height: 100%;
+    display: block;
+    text-align: center;
+}
+
+.financing-service .div1 img {
+    width: 55px;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.financing-service .div1 a span {
+    display: block;
+    font-size: 13px;
+}
+
+.financing-service .div1 a span:nth-child(2) {
+    color: #333;
+}
+
+.financing-service .div1 a span:nth-child(3) {
+    color: #666;
+}
+
+.financing-service .div2 {
+    padding: 15px 15px 0 15px;
+}
+
+.financing-service .div2 h2 {
+    margin-bottom: 10px;
+}
+
+.financing-service .div2 a {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 26px;
+    display: block;
+    background: no-repeat left center / 19px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+    color: #666;
+}
+
+.financing-service .div2 a:nth-child(2) {
+    background-image: url("../img/icon/icon22.png");
+}
+
+.financing-service .div2 a:nth-child(3) {
+    background-image: url("../img/icon/icon23.png");
+}
+
+.financing-service .div2 a:nth-child(4) {
+    background-image: url("../img/icon/icon24.png");
+}
+
+.financing-service .div2 a:nth-child(5) {
+    background-image: url("../img/icon/icon25.png");
+}
+
+.financing-service .div2 a:nth-child(6) {
+    background-image: url("../img/icon/icon26.png");
+    border-bottom: 0;
+}
+
+.financing-service .div2 a i {
+    width: 6px;
+    height: 40px;
+    float: right;
+    display: block;
+    background: url("../img/icon/icon17.png") no-repeat center / 6px 12px;
+}
+
+.financing-service .div3 {
+    display: flex;
+    justify-content: space-around;
+    background: url("../img/icon/icon27.png") no-repeat center / 1px 30px;
+}
+
+.financing-service .div3 a {
+    line-height: 40px;
+    padding: 0 60px;
+    display: block;
+    font-size: 13px;
+    color: #666;
+}
+
+/*投融服务 结束*/
+
+/*委托刷新 开始*/
+.message-top-banner img {
+    width: 100%;
+    display: block;
+}
+
+.message-top {
+    width: 100%;
+}
+
+.message-top h2 {
+    margin: 15px 0 5px 15px;
+}
+
+.message-top > p {
+    line-height: 25px;
+    padding: 10px 15px 10px 20px;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 13px;
+    color: #666;
+}
+
+.message-top > p span:nth-child(3) {
+    margin: 0 16px;
+}
+
+.message-top .div1 {
+    padding: 15px 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.message-top .div1 img {
+    width: 61px;
+    height: 51px;
+}
+
+.message-top .div1 p {
+    line-height: 22px;
+    padding-left: 19px;
+}
+
+.message-top .div1 p:nth-child(2) {
+    background: url("../img/icon/icon28.png") no-repeat left center / 14px;
+}
+
+.message-top .div1 p:nth-child(3),
+.message-top .div1 p:nth-child(4) {
+    background: url("../img/icon/icon29.png") no-repeat 2px center / 10px 8px;
+}
+
+.message-top .div2,
+.message-top .div3,
+.message-top .div4 {
+    margin-top: 5px;
+    padding: 10px 20px 0 53px;
+    background: no-repeat 16px 8px / 32px 29px;
+    font-size: 13px;
+    color: #999;
+}
+
+.message-top .div2 h3,
+.message-top .div3 h3,
+.message-top .div4 h3 {
+    line-height: 24px;
+    font-weight: 400;
+    color: #333;
+}
+
+.message-top .div2 {
+    background-image: url("../img/picture/list43.png");
+}
+
+.message-top .div3 {
+    background-image: url("../img/picture/list44.png");
+}
+
+.message-top .div4 {
+    margin-bottom: 20px;
+    background-image: url("../img/picture/list45.png");
+}
+
+/*委托刷新 结束*/
+
+/*重点项目推荐 开始*/
+.important-recommend {
+    width: 100%;
+}
+
+.important-recommend .div1 {
+    padding: 15px;
+    line-height: 25px;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 13px;
+    color: #666;
+}
+
+.important-recommend .div1 h2 {
+    margin-bottom: 8px;
+}
+
+.important-recommend .div1 p {
+    padding-left: 5px;
+}
+
+.important-recommend .div1 p span:nth-child(3) {
+    margin: 0 8px;
+}
+
+.important-recommend .div2 {
+    padding: 10px 0 15px 20px;
+}
+
+.important-recommend .div2 h3 {
+    padding-left: 20px;
+    line-height: 27px;
+    background: url("../img/icon/icon30.png") no-repeat left center / 14px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.important-recommend .div2 p {
+    padding-left: 20px;
+    line-height: 20px;
+    background: url("../img/icon/icon29.png") no-repeat 2px center / 10px 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+.important-recommend .div3 {
+    padding: 15px;
+}
+
+.important-recommend .div3 div {
+    margin-bottom: 5px;
+    padding-top: 12px;
+    padding-left: 40px;
+    padding-right: 35px;
+    background: no-repeat 2px 10px / 32px 29px;
+    font-size: 13px;
+    color: #666;
+}
+
+.important-recommend .div3 h2 {
+    margin-bottom: 5px;
+}
+
+.important-recommend .div3 h3 {
+    line-height: 24px;
+    margin-bottom: 5px;
+    font-weight: 400;
+    color: #333;
+}
+
+.important-recommend .div3 div:nth-child(2) {
+    background-image: url("../img/picture/list43.png");
+}
+
+.important-recommend .div3 div:nth-child(3) {
+    background-image: url("../img/picture/list44.png");
+}
+
+.important-recommend .div3 div:nth-child(4) {
+    background-image: url("../img/picture/list45.png");
+}
+
+.important-recommend .div3 div:nth-child(5) {
+    background-image: url("../img/picture/list46.png");
+}
+
+/*重点项目推荐 结束*/
+
+/*重点项目推荐2 开始*/
+.highly-recommended {
+    font-size: 12px;
+    color: #666;
+}
+
+.highly-recommended .div2 {
+    width: 225px;
+    height: 25px;
+    margin: 12px auto 10px;
+}
+
+.highly-recommended .div2 form {
+    width: 100%;
+    height: 100%;
+    /*background-color: #56C6FF;*/
+}
+
+.highly-recommended .div2 input {
+    width: 190px;
+    height: 25px;
+    float: left;
+    padding-left: 8px;
+    box-sizing: border-box;
+    border: 1px solid #56C6FF;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.highly-recommended .div2 button {
+    width: 35px;
+    height: 25px;
+    float: left;
+    margin-left: -1px;
+    box-sizing: border-box;
+    border: none;
+    background: url("../img/icon/icon31.png") no-repeat center / 35px 25px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    font-size: 0;
+}
+
+.highly-recommended .div3 {
+    padding-left: 15px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #efefef;
+    font-size: 12px;
+    color: #666;
+}
+
+.highly-recommended .div4 {
+    line-height: 22px;
+}
+
+.highly-recommended .div4 > span {
+    float: left;
+}
+
+.highly-recommended .div4 > span:first-child {
+    margin-right: 3px;
+}
+
+.highly-recommended .div4 > span:nth-child(3) {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.highly-recommended .div4 > div:nth-child(2),
+.highly-recommended .div4 > div:nth-child(4) {
+    width: 75px;
+    height: 22px;
+    padding-left: 2px;
+    float: left;
+    box-sizing: border-box;
+    border: 1px solid #d1d1d1;
+    border-radius: 2px;
+
+}
+
+.highly-recommended .div5 {
+    width: 142px;
+    height: 22px;
+    margin-left: 8px;
+    background: url("../img/icon/icon32.png") no-repeat right center / 22px;
+}
+
+.highly-recommended .div5 span:first-child {
+    width: 120px;
+    height: 22px;
+    line-height: 20px;
+    padding-left: 7px;
+    display: block;
+    box-sizing: border-box;
+    border: 1px solid #d1d1d1;
+    border-right: none;
+    border-radius: 2px;
+}
+
+.highly-recommended .div5 ul {
+    width: 142px;
+    height: 110px;
+    overflow: auto;
+    background-color: #fff;
+}
+
+.highly-recommended .div5 ul li {
+    width: 142px;
+    height: 22px;
+}
+
+.highly-recommended .div5 ul li p {
+    line-height: 22px;
+    padding-left: 15px;
+}
+
+.highly-recommended > ul {
+    padding: 15px 15px 0;
+}
+
+.highly-recommended > ul li {
+    margin-bottom: 10px;
+    border: 1px solid #e1e1e1;
+}
+
+.highly-recommended > ul li a {
+    color: #666;
+}
+
+.highly-recommended > ul li > a:first-child {
+    display: block;
+    overflow: hidden;
+}
+
+.highly-recommended > ul li > a:first-child img {
+    width: 157px;
+    height: 108px;
+    display: block;
+}
+
+.highly-recommended > ul li div:nth-child(2) {
+    width: 178px;
+}
+
+.highly-recommended .div6 a {
+    display: inline-block;
+}
+
+.highly-recommended .div6 p a {
+    line-height: 22px;
+}
+
+.highly-recommended .div6 p {
+    padding-right: 15px;
+    padding-top: 7px;
+}
+
+.highly-recommended .div6 span {
+    width: 74px;
+    height: 22px;
+    display: inline-block;
+    background: url("../img/icon/icon34.png") center / 74px 22px;
+}
+
+.highly-recommended .div6 > a {
+    width: 170px;
+}
+
+.highly-recommended .div6 > a:nth-child(2) {
+    margin-top: 30px;
+}
+
+.highly-recommended .div7 {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    color: #999;
+}
+
+.highly-recommended .div7 p {
+    line-height: 50px;
+    padding: 0 35px;
+}
+
+.highly-recommended .calendar {
+    position: absolute;
+    top: 33px;
+    left: 0;
+    display: none;
+}
+
+/*重点项目推荐2 结束*/
+
+/*优质项目现场推荐 开始*/
+.high-quality-project {
+    width: 100%;
+}
+
+.high-quality-project .div1 {
+    padding: 15px 15px 6px;
+    border-bottom: 1px solid #ececec;
+    font-size: 13px;
+    color: #666;
+}
+
+.high-quality-project .div2 {
+    padding-left: 6px;
+}
+
+.high-quality-project .div1 h2 {
+    margin-bottom: 6px;
+}
+
+.high-quality-project .div1 p {
+    line-height: 27px;
+}
+
+.high-quality-project .div4 {
+    margin-left: 20px;
+}
+
+.high-quality-project .div4 p:last-child {
+    font-weight: 700;
+}
+
+.high-quality-project .div5 {
+    padding: 15px;
+    height: 85px;
+}
+
+.high-quality-project .div5 div {
+    height: 25px;
+    margin-top: 10px;
+    padding-left: 5px;
+}
+
+.high-quality-project .div5 div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+}
+
+.high-quality-project .div5 div:nth-child(3) {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.high-quality-project .div5 a {
+    line-height: 25px;
+    padding: 0 6px;
+    display: inline-block;
+    background-color: #56C6FF;
+    border-radius: 2px;
+    font-size: 13px;
+    color: #fff;
+}
+
+.high-quality-project .div5 div a:not(:last-child) {
+    margin-right: 30px;
+}
+
+.high-quality-project .div6 {
+    padding: 15px;
+}
+
+.high-quality-project .div6 h2 {
+    margin-bottom: 5px;
+}
+
+.high-quality-project .div6 p {
+    line-height: 26px;
+    padding-left: 7px;
+    font-size: 13px;
+    color: #666;
+}
+
+.high-quality-project .div6 span {
+    color: #999;
+}
+
+/*优质项目现场推荐 结束*/
+
+
+
+
+
+
+
+
+
+
+
+

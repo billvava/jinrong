@@ -1,0 +1,388 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>加入金融网投资生态联盟-金融网</title>
+<meta name="keywords" content="">
+<meta name="Description" content="">
+<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="../public/js/lianmeng.js"></script>
+<script>
+    var app_spell = "1";
+    var qrh = {
+        domain : "http://www.7ronghui.com",
+        root : "/index.php",
+    };
+    $(function(){
+        $.getJSON("/index.php?m=Home&c=AjaxCommon&a=get_header_min",function(result){
+            if(result.status == 1){
+                $('#J_header').html(result.data.html);
+            }
+        });
+        $(".place-text").css("color","#999");
+    $(".place-text").focus(function(){
+        var tip = $(this).attr("tip");
+        if($(this).val() == tip)
+            {
+                $(this).val("");
+                $(this).css("color","#333")
+            }
+        })
+    }),
+    $(".place-text").blur(function(){
+        var tip = $(this).attr("tip");
+        if($(this).val() == "")
+        {
+            $(this).val(tip);
+            $(this).css("color","#999")
+        }
+    });
+</script>
+<style>
+.pic-code {
+    float: left;
+    display: block;
+    width: 120px;
+    height: 36px;
+    vertical-align: bottom;
+    cursor:pointer;
+}
+.btn-money-captcha,.btn-upload-license,.btn-win-back,.uploadify-button,.uploadify-button:hover {
+    float: left;
+    display: block;
+    width: 120px;
+    height: 36px;
+    border: none;
+    border-radius: 3px;
+    background-color: #e6ebed;
+    color: #526069;
+    cursor: pointer;
+}
+.btn-money-submit {
+    width: 200px;
+    height: 47px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #59c7f9;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+.btn-money-submit:hover{
+    background-color: #08A1EF;
+}
+.money-form {
+    padding: 20px 20px 20px 220px;
+    font-size: 14px;
+}
+.money-form-item {
+    position: relative;
+    float: left;
+    padding: 10px 0 10px 170px;
+    width: 650px;
+    overflow: hidden;
+}
+.money-form-label {
+    position: absolute;
+    display: block;
+    left: 40px;
+    top: 10px;
+    width: 130px;
+    line-height: 34px;
+    text-align: right;
+}
+.money-form-required {
+    font-family: simsun;
+    color: red;
+    margin-right: 3px;
+}
+.money-form-value {
+    display: block;
+}
+.money-form-tips {
+    float: left;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-top: 5px;
+    width: 260px;
+    color: #df3333;
+}
+.money-form-tips-s {
+    position: relative;
+    padding-left: 35px;
+    margin-top: 5px;
+    width: 260px;
+    color: #df3333;
+}
+.money-form-tips-s i {
+    top: 0;
+    *top: 8px;
+}
+.icon-money-tips,.icon-money-win,.icon-add-case {
+    display: block;
+    position: absolute;
+    left: 10px;
+    *zoom:1;width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+    background: url(../../src/images/v6/money/icon-money.png) no-repeat left -180px;
+}
+.money-form-value select,.money-form-select {
+    float: left;
+    margin-right: 10px;
+    padding: 6px 10px;
+    *margin-top: 6px;
+    border: 1px solid #ddd;
+}
+.money-form-text,.money-form-captcha,.money-form-textarea {
+    float: left;
+    padding: 4px;
+    width: 340px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+.money-form-captcha {
+    width: 208px;
+    margin-right: 10px;
+}
+.money-form-textarea {
+    height: 120px;
+}
+.money-form-checkbox {
+    display: block;
+    float: left;
+    margin-right: 20px;
+    padding: 6px 0;
+    white-space: nowrap;
+}
+.money-form-checkbox input {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.btn_disabled{
+    cursor:not-allowed;
+}
+</style>
+<link href="../public/css/CatUI.min.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/complaints.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/wyl-header-footer.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="public:header" />
+<div class="registerWrapper">
+        <div class="form form_findPwd">
+            <h2>加入金融网投资生态联盟</h2>
+            <div id="step">
+            <ul class="ui_steps_round" style="width:800px">
+            <li style="width:266px" class="active"><div class="tit">入驻申请</div><i>1</i><b style="left:150px; width:232px;"></b></li>
+            <li style="width:266px" class=""><div class="tit">公司信息</div><i>2</i><b style="left:150px; width:232px;"></b></li>
+            <li style="width:268px" class="last"><div class="tit">等待审核</div><i>3</i><b style="left:151px; width:234px;"></b></li>
+            </ul>
+            </div>
+
+<form method="post" id="stlm-form">
+<div class="money-form fn-clear">
+<div class="money-form-item">
+<label class="money-form-label"><i class="money-form-required">*</i>联系人姓名：</label>
+<span class="money-form-value">
+<input name="realname" id="realname" type="text" class="money-form-text place-text" maxlength="30" tip="请输入您的名字" value="请输入您的名字">
+<span id="realname_info" class="money-form-tips"></span>
+</span>
+</div>
+<div class="money-form-item">
+<label class="money-form-label"><i class="money-form-required">*</i>手机号码：</label>
+<span class="money-form-value">
+<input id="mobile" name="mobile" type="text" class="money-form-text place-text" maxlength="11" tip="输入您的手机号码" value="输入您的手机号码">
+<span id="mobile_info" class="money-form-tips"></span>
+</span>
+</div>
+<div class="money-form-item">
+<label class="money-form-label"><i class="money-form-required">*</i>图片验证：</label>
+<span class="money-form-value">
+<input type="text" class="money-form-captcha place-text" id="login_yzcode" maxlength="4" tip="输入图形验证码" value="输入图形验证码" style="color: rgb(153, 153, 153);"><img id="yzimg" src="{:('/Home/index/verify')}" class="pic-code" onclick="this.src='{:("/Home/index/verify")}?'+Math.random()" alt="输入图形验证码">
+<span id="J_mobile_msg_info" class="money-form-tips"></span>
+</span>
+</div>
+<div class="money-form-item">
+<label class="money-form-label">
+<i class="money-form-required">*</i>手机验证：</label>
+<span class="money-form-value">
+<input name="yzm" type="text" class="money-form-captcha place-text" maxlength="6" id="yzm" tip="请输入验证码" value="">
+<input type="button" class="btn-money-captcha btn-captcha" id="get_code" onclick="return false" value="获取验证码">
+<span id="mobilecode" class="money-form-tips"></span>
+</span>
+</div>
+<div class="money-form-item">
+<input class="btn-money-submit" id="register" type="button" value="下一步">
+</div>
+</div>
+</form>
+</div>
+</div>
+<script type="text/javascript" src="../public/js/jquery.disappear.tooltip.js"></script>
+<link href="../public/css/tip.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    qrh.Util = {
+        isMobile: function(a) {
+            return /^1(3[0-9]|4[0-9]|5[0-9]|7[0|1|3|5|6|7|8]|8[0-9])\d{8}$/.test(a)
+        },
+        isChinese: function(a) {
+            return /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/.test(a)
+        },
+        isEmail: function(a) {
+            return /^\w+((-\w+)|(\.\w+))*\@\w+((\.|-)\w+)*\.\w+$/.test(a)
+        },
+        isEmpty: function(a) {
+            switch (typeof a) {
+                case "string":
+                    return 0 == $.trim(a).length ? !0 : !1;
+                case "number":
+                    return 0 == a;
+                case "object":
+                    return null == a;
+                case "array":
+                    return 0 == a.length;
+                default:
+                    return ! 0
+            }
+        }
+    },
+    $('#get_code').click(function() {
+        var mobile = $.trim($('#mobile').val());
+        var realname = $.trim($('#realname').val());
+        if (realname != "" && !qrh.Util.isChinese(realname)) {
+            disapperTooltip("remind", "请输入正确的姓名");
+            $('#realname').focus();
+            return false;
+        }
+        if (mobile == '') {
+            disapperTooltip("remind", "请输入手机号码");
+            $('#mobile').focus();
+            return false;
+        };
+        if (mobile != "" && !qrh.Util.isMobile(mobile)) {
+            disapperTooltip("remind", "请输入正确的手机号码");
+            $('#mobile').focus();
+            return false;
+        }
+        $.ajax({
+            url: qrh.root + '?m=Home&c=Members&a=ajax_check',
+            cache: false,
+            async: false,
+            type: 'post',
+            dataType: 'json',
+            data: { type: 'mobile', param: mobile },
+            success: function(json) {
+                if (json && json.status){
+                    toSetSms();
+                } else {
+                    disapperTooltip("remind", "该手机号已被注册，请尝试登录");
+                    $('#mobile').focus();
+                    return false;
+                }
+            }
+        });
+    });
+
+    // 发送手机验证码
+    function toSetSms() {
+        $.ajax({
+            url: qrh.root+'?m=Home&c=Members&a=reg_send_sms1',
+            type: 'POST',
+            dataType: 'json',
+            data: {mobile: $.trim($('#mobile').val())}
+        }).done(function(data) {
+            if (parseInt(data.status)) {
+                setTimeout(function() { 
+                    disapperTooltip("success", "验证码已发送，请注意查收");
+                },800)
+                // 开始倒计时
+                var countdown = 180;
+                function settime() {
+                    if (countdown == 0) {
+                        $('#get_code').prop("disabled", 0);
+                        $('#get_code').removeClass('btn_disabled');
+                        $('#get_code').val('获取验证码');
+                        countdown = 180;
+                        return;
+                    } else {
+                        $('#get_code').prop("disabled", !0);
+                        $('#get_code').addClass('btn_disabled');
+                        $('#get_code').val('重新发送' + countdown + '秒');
+                        countdown--;
+                    }
+                    setTimeout(function() { 
+                        settime()
+                    },1000)
+                }
+                settime();
+            } else {
+                setTimeout(function() { 
+                    disapperTooltip("remind", data.msg);
+                },1500)
+            }
+        });
+    }
+
+    $('#register').click(function(){
+        var mobile = $.trim($('input[name=mobile]').val());
+        var yzm = $.trim($('input[name=yzm]').val());
+        var realname = $.trim($('input[name=realname]').val());
+        if (realname == '') {
+            setTimeout(function() { 
+                    disapperTooltip("remind",'请输入您的姓名');
+                },300);
+            $('#realname').focus();
+            return false;
+        }
+        if (mobile == '') {
+            setTimeout(function() { 
+                    disapperTooltip("remind",'请输入您的手机号码');
+                },300);
+            $('#mobile').focus();
+            return false;
+        }
+        if (!qrh.Util.isMobile(mobile)) {
+            setTimeout(function() { 
+                    disapperTooltip("remind",'请输入正确的手机号码');
+                },300);
+            $('#mobile').focus();
+            return false;
+        }
+        if (yzm == '') {
+            disapperTooltip("remind",'请输入验证码');
+            $('#yzm').focus();
+            return false;
+        }
+        doRegister();
+    });
+
+    //注册处理程序
+    function doRegister() {
+        //$('#register').val('注册中...').addClass('btn_disabled').prop('disabled', !0);
+        $.ajax({
+            url: qrh.root+'?m=Home&c=Members&a=reg_test',
+            type: 'POST',
+            dataType: 'json',
+            data: $('#stlm-form').serialize(),
+            success: function (data) {
+                if(data.status == 1){
+                    disapperTooltip("success", data.msg);
+                    setTimeout(function () {
+                        window.location = "/Personal/index";
+                    }, 2000);
+                }else{
+                    disapperTooltip("error",'信息填写有误!');
+                }
+            }
+        });
+    }
+</script>
+<include file="public:footer1" />
+</body>
+</html>

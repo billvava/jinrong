@@ -1,0 +1,1 @@
+<?php	return array ( 'btn' => array ( 0 => array ( 'id' => '218', 'name' => '查看企业会员中心', 'menu_type' => '0', 'module_name' => 'Admin', 'controller_name' => 'Company', 'action_name' => 'management', 'data' => '', 'stat' => '', 'para' => '0', ), ), ); ?>

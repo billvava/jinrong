@@ -1,0 +1,35 @@
+i.icoErr16, i.icoWar16, i.icoDou16, i.icoPro16, i.icoBul16, i.icoCor16, i.icoHor16, i.icoCor16gray, i.icoPro16yellow {
+    background: rgba(0, 0, 0, 0) url("../../images/icon-tips.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 16px;
+    margin-right: 3px;
+    vertical-align: middle;
+    width: 16px;
+}
+i.icoErr16 {
+    background-position: 0 0;
+}
+i.icoWar16 {
+    background-position: left -40px;
+}
+i.icoDou16 {
+    background-position: left -79px;
+}
+i.icoPro16 {
+    background-position: left -120px;
+}
+i.icoBul16 {
+    background-position: left -159px;
+}
+i.icoCor16 {
+    background-position: left -200px;
+}
+i.icoCor16gray {
+    background-position: -37px -240px;
+}
+i.icoHor16 {
+    background-position: left -240px;
+}
+i.icoPro16yellow {
+    background-position: left -315px;
+}

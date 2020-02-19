@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>金融网</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="项目融资,融资,天使投资,投资,投资项目,投资公司,项目,股权融资,债权融资,投融资,融资平台,金融网"/>
+<meta name="description" content="金融网（7ronghui.com）是中国最大的融资服务平台，拥有超百万的投融资机构、企业与个人用户入驻。金融网通过线上＋线下、标准化  ＋个性化的服务体系，为客户提供针对性的投融资信息对接和项目撮配服务，成功对接融资千余亿元。金融网凭借其强大、便捷的平台信息整合能力，大大提高企业投融资活动成功率，为中小微企业解决融资难问题。"/>
+<link rel='icon' href='../public/images/v2/icon/logo.ico' type='image/x-ico'/>
+<link rel="stylesheet" href="../public/css/v2/base.css">
+<link rel="stylesheet" href="../public/css/v2/component.css">
+<link rel="stylesheet" href="../public/css/v2/module.css">
+<link rel="stylesheet/less" type="text/css" href="../public/css/v2/less/combination/platform_query.less"/>
+<link rel="stylesheet" href="../public/css/v2/all.css">
+<script src="../public/css/v2/less/less_all.js"></script>
+<script src="../public/pc/lib/jquery-1.12.4.min.js"></script>
+<style>
+.logo a img{width: 162px;}
+</style>
+<script type="text/javascript">
+    var app_spell = "1";
+    var qrh = {
+        base : "",
+        keyUrlencode:"0",
+        domain : "http://7ronghui.com",
+        root : "/index.php",
+        companyRepeat:"1",
+        is_subsite : 0,
+        subsite_level : "",
+        img_url_path:"__HOMEPUBLIC__/images/v2/",
+    };
+    $(function(){
+        $.getJSON("/index.php?m=Home&c=AjaxCommon&a=get_header_min",function(result){
+            if(result.status == 1){
+                $('#J_header').html(result.data.html);
+            }
+        });
+    })
+</script>
+</head>
+<body>
+<include file="public:header2"/>
+<div class="banner qrcollege-banner position-rel">
+    <a href="#"></a>
+    <div class="position-abs">
+        <ul>
+            <li>
+                <a href="#">金融百科</a>
+            </li>
+            <li>
+                <a href="#">金融专题</a>
+            </li>
+            <li>
+                <a href="#">商业计划书</a>
+            </li>
+            <li>
+                <a href="#">案例分析</a>
+            </li>
+            <li>
+                <a href="#">研究指导</a>
+            </li>
+            <li>
+                <a href="#">合同范本协议</a>
+            </li>
+            <li>
+                <a href="#">法律法规</a>
+            </li>
+            <li>
+                <a href="#">投资人</a>
+            </li>
+            <li>
+                <a href="#">投资机构</a>
+            </li>
+            <li>
+                <a href="#">专家解答</a>
+            </li>
+            <li>
+                <a href="#">融资租赁公司</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="qrcollege">
+    <div class="div1">
+        <h2>金融百科</h2>
+        <ul class="ul1">
+            <li>
+                <img class="img1" src="../public/images/v2/picture/list47.png" alt="">
+                <h3>投资</h3>
+                <ul>
+                <foreach name="tzbk" item="vo">
+                <li><a href="{:U('News/news_list',array('id'=>$vo['id']))}" target="_blank" title="{$vo.categoryname}">{$vo.categoryname}</a></li>
+                </foreach>
+                </ul>
+                <p>
+                    <img class="roll float-l" src="../public/images/v2/picture/list55.png" alt="">
+                    <img class="roll float-r" src="../public/images/v2/picture/list56.png" alt="">
+                </p>
+            </li>
+            <li>
+                <img class="img2" src="../public/images/v2/picture/list48.png" alt="">
+                <h3>融资</h3>
+                <ul>
+                <foreach name="rzbk" item="vo">
+                    <li>
+                        <a href="{:U('News/news_list',array('id'=>$vo['id']))}">{$vo.categoryname}</a>
+                    </li>
+                </foreach>
+                </ul>
+                <p>
+                    <img class="roll float-l" src="../public/images/v2/picture/list55.png" alt="">
+                    <img class="roll float-r" src="../public/images/v2/picture/list56.png" alt="">
+                </p>
+            </li>
+            <li>
+                <img class="img3" src="../public/images/v2/picture/list49.png" alt="">
+                <h3>资金</h3>
+                <ul>
+                <foreach name="zjbk" item="vo">
+                    <li><a href="{:U('News/news_list',array('id'=>$vo['id']))}" target="_blank" title="{$vo.categoryname}">{$vo.categoryname}</a>
+                    </li>
+                </foreach>
+                </ul>
+                <p>
+                    <img class="roll float-l" src="../public/images/v2/picture/list55.png" alt="">
+                    <img class="roll float-r" src="../public/images/v2/picture/list56.png" alt="">
+                </p>
+            </li>
+            <li>
+                <img class="img4" src="../public/images/v2/picture/list50.png" alt="">
+                <h3>担保</h3>
+                <ul>
+                <foreach name="dbbk" item="vo">
+                <li><a href="{:U('News/news_list',array('id'=>$vo['id']))}" target="_blank" title="{$vo.categoryname}">{$vo.categoryname}</a></li>
+                </foreach>
+                </ul>
+                <p>
+                    <img class="roll float-l" src="../public/images/v2/picture/list55.png" alt="">
+                    <img class="roll float-r" src="../public/images/v2/picture/list56.png" alt="">
+                </p>
+            </li>
+            <div class="clear-bo"></div>
+        </ul>
+        <p>
+            <a href="#">查看更多</a>
+        </p>
+    </div>
+    <div class="div2">
+        <h2>成功案例</h2>
+        <ul>
+            <foreach name="success_list" item="vo">
+            <li>
+                <a href="{:U('News/show',array('id'=>$vo['id']))}" target="_blank">
+                    <img src='<notempty name="vo[image]">{$vo[images]}<else />../public/images/v2/picture/case_success.jpg</notempty>' alt="">
+                    <span>{$vo['title']}</span>
+                    <span>{$vo['content']}</span>
+                </a>
+            </li>
+            </foreach>
+            <!-- <li>
+                <a href="#">
+                    <span>黑龙江某国际共享互联网门户网站项黑龙江某国际共享互联网门户网站项</span>
+                    <span>该项目的核心是打造一个全方位的国际共享社交聊天工具，通过积累用户大数据，依托互联网门户网站开展线上线下立体联动式的发展模式。</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>北京某轻物流平台项目北京某轻物流平台项目北京某轻物流平台项目</span>
+                    <span>该项目整合中小物流企业（第三方物流和干线物流）资源，建立互联网线上交易平台，促使物流行业向轻运输转型。</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>河南某智能照明台灯项目</span>
+                    <span>该项目生产的智能台灯专门针对户外露营、自驾、办公学习等便捷生活的需要，并融入特色元素，以手势指令控制、多级灯光效果、随意安放、携带方便...</span>
+                </a>
+            </li> -->
+            <div class="clear-bo"></div>
+            <p>
+                <a href="{:U('News/news_list',array('id'=>25))}">查看更多</a>
+            </p>
+        </ul>
+    </div>
+    <div class="div3">
+        <h2>如何寻找资金</h2>
+        <a href="{:U('Members/register',array('utype'=>2))}">发布我的项目</a>
+        <ul class="overflow-hid">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="div4">
+        <h2>行业发展趋势分析</h2>
+        <div>
+            <a href="#">
+                <span class="float-l">
+                    <span>金融界2017一季度融资报告：读创投研报金融界2017一季度融资报告：读创投研报</span>
+                    <span>2017年第一季度，金融界共收录融资案例577起，融资总额近878.67亿元，较2016年同期有了大幅增长2017年第一季度，金融界共收录融资案例577起，融资总额近878.67亿元，较2016年同期有了大幅增长2017年第一季度，金融界共收录融资案例577起，融资总额近878.67亿元，较2016年同期有了大幅增长2017年第一季度，金融界共收录融资案例577起，融资总额近878.67亿元，较2016年同期有了大幅增长2017年第一季度，金融界共收录融资案例577起，融资总额近878.67亿元，较2016年同期有了大幅增长</span>
+                </span>
+                <img class="float-r" src="../public/images/v2/picture/list74.png" alt="">
+            </a>
+            <a href="#">
+                <img class="float-l" src="../public/images/v2/picture/list75.png" alt="">
+                <span class="float-r">
+                    <span>金融界2017一季度融资报告：读创投研报金融界2017一季度融资报告：读创投研报</span>
+                    <span>2017年第一季度，金融界共收录融资案例577起，融资总额近878.67亿元，较2016年同期有了大幅增长</span>
+                </span>
+            </a>
+            <a href="#">
+                <span class="float-l">
+                    <span>金融界2017一季度融资报告：读创投研报金融界2017一季度融资报告：读创投研报</span>
+                    <span>2017年第一季度，金融界共收录融资案例577起，融资总额近878.67亿元，较2016年同期有了大幅增长</span>
+                </span>
+                <img class="float-r" src="../public/images/v2/picture/list76.png" alt="">
+            </a>
+            <a href="#">
+                <img class="float-l" src="../public/images/v2/picture/list77.png" alt="">
+                <span class="float-r">
+                    <span>金融界2017一季度融资报告：读创投研报金融界2017一季度融资报告：读创投研报</span>
+                    <span>2017年第一季度，金融界共收录融资案例577起，融资总额近878.67亿元，较2016年同期有了大幅增长</span>
+                </span>
+            </a>
+            <p class="clear-bo">
+                <a href="{:U('News/news_list',array('id'=>26))}">查看更多</a>
+            </p>
+        </div>
+    </div>
+    <div class="div5">
+        <h2>如何寻找项目</h2>
+        <a href="#">发布我的资金</a>
+        <div>
+            <h3>免费注册</h3>
+            <h3>发布资金</h3>
+            <h3>寻找项目</h3>
+            <h3>约谈项目方</h3>
+            <h3>达成投资</h3>
+        </div>
+    </div>
+    <div class="div6">
+        <ul class="ul2">
+            <li class="li6 float-l">
+                <ul>
+                    <li class="switch1 float-l">商业计划书</li>
+                    <li class="switch2 float-r">研究指导</li>
+                </ul>
+                <div class="switch1">
+                <volist name="business_plan" id="vo">
+                    <a href="{:U('News/show',array('id'=>$vo['id']))}">{$vo['title']}</a>
+                </volist>
+                </div>
+                <div class="switch2">
+
+                    <a href="#">健康管理服务项目融资商业计划书2</a>
+
+                    <a href="#">红木家具项目融资商业计划书2</a>
+                    <a href="#">网络视频项目融资商业计划书网络视频项目融资商业计划书2</a>
+                    <a href="#">土特产网上商城电子商务项目融资</a>
+                    <a href="#">内衣项目融资商业计划书2</a>
+                    <a href="#">科技中介服务项目融资商业计划书2</a>
+                    <a href="#">健康床垫项目融资商业计划书</a>
+                    <a href="#">文化创意产业园建设项目商业计划书文化创意产业园建设项目商业计划书</a>
+                    <a href="#">畜牧业项目融资商业计划书2</a>
+                    <a href="#">电影院线和电影院项目融资商业计</a>
+                    <a href="#">健康服务项目融资商业计划书</a>
+                    <a href="#">面膜项目融资商业计划书</a>
+                </div>
+                <p>
+                    <a class="J_jump" href="{:U('News/news_list',array('id'=>95))}">查看更多</a>
+                </p>
+            </li>
+            <li class="li7 float-r">
+                <ul>
+                    <li class="switch3">日排行</li>
+                    <li class="switch4">周排行</li>
+                    <li class="switch5">月排行</li>
+                </ul>
+                <div class="switch3">
+                    <volist name="success_list" id="vo">
+                    <a href="{:U('News/show',array('id'=>$vo['id']))}">{$vo['title']}</a>
+                    </volist>
+                </div>
+                <div class="switch4">
+                    <volist name="success_list" id="vo">
+                    <a href="{:U('News/show',array('id'=>$vo['id']))}">{$vo['title']}</a>
+                    </volist>
+                </div>
+                <div class="switch5">
+                    <volist name="success_list" id="vo">
+                    <a href="{:U('News/show',array('id'=>$vo['id']))}">{$vo['title']}</a>
+                    </volist>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="div7">
+        <ul class="overflow-hid">
+            <li class="li8 float-l">
+                <a class="float-r" href="#">查看更多</a>
+                <h3>金融网专题</h3>
+                <div class="div9">
+                    <a href="#">
+                        <img src="../public/images/v2/picture/list85.png" alt="">
+                        <span>创业风险投资案例</span>
+                    </a>
+                    <a href="#">
+                        <img src="../public/images/v2/picture/list86.png" alt="">
+                        <span>期货融资</span>
+                    </a>
+                </div>
+                <ul class="ul3">
+                    <li class="float-l">
+                        <ul class="ul4">
+                            <li class="switch6">合同范本协议</li>
+                            <li class="switch7">相关法律法规</li>
+                        </ul>
+                    </li>
+                    <li class="float-l">
+                        <div class="div10 switch6">
+                        <foreach name="contract_list" item="vo">
+                        <a href="{:U('News/show',array('id'=>$vo['id']))}">{$vo.title}</a>
+                        </foreach>
+                        </div>
+                        <div class="div10 display-no switch7">
+                        <foreach name="law_list" item="vo">
+                        <a href="{:U('News/show',array('id'=>$vo['id']))}">{$vo.title}</a>
+                        </foreach>
+                        </div>
+                        <p>
+                        <a class="J_jump" href="{:U('News/news_list',array('id'=>29))}">查看更多</a>
+                        </p>
+                    </li>
+                </ul>
+            </li>
+            <li class="li9 float-r">
+                <a class="float-r" href="#">换一换</a>
+                <h3>大家都在看</h3>
+                <div class="div11">
+                    <a href="#">APP风险投资</a>
+                    <a href="#">和君资本</a>
+                    <a href="#">个人投资</a>
+                    <a href="#">合伙人网</a>
+                    <a href="#">合作</a>
+                    <a href="#">托信投资公</a>
+                    <a href="#">博裕投资</a>
+                    <a href="#">老虎资金</a>
+                    <a href="#">高原资本</a>
+                    <a href="#">东方富海</a>
+                </div>
+                <div class="div12">
+                    <h3>帮助中心</h3>
+                    <div>
+                        <foreach name="help_list" item="vo">
+                        <a href="{:U('Help/help_show',array('id'=>$vo['id']))}">{:cut_str($vo['title'],14)}</a>
+                        </foreach>
+                    </div>
+                    <p>
+                        <a href="{:U('Help/help_list',array('id'=>41))}">查看更多</a>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="introduce">
+    <ul>
+        <li>
+            <img src="../public/images/v2/picture/list15.png" alt="">
+            <span>一对一客服</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list16.png" alt="">
+            <span>隐私保护</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list17.png" alt="">
+            <span>服务费合理</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list18.png" alt="">
+            <span>信息可靠</span>
+        </li>
+        <li>
+            <img src="../public/images/v2/picture/list19.png" alt="">
+            <span>手机访问</span>
+        </li>
+    </ul>
+</div>
+<include file="public:new_footer" />
+<script src="../public/js/v2/lib/jquery-1.12.4.min.js"></script>
+<script src="../public/js/v2/qrcollege.js"></script>
+</body>
+</html>

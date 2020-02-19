@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="public:meta" />
+<link href="../public/css/personal/common.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_index.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/personal_ajax_dialog.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/personal/board.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/user_cert.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
+<script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<include file="Personal:index_header" />
+<div class="user_main">
+<include file="Personal:index_left_nav" />
+<style type="text/css">
+.ui-tab-headd {
+    height: 26px;
+}
+.ui-tab-headd ul {
+    float: left;
+}
+.ui-tab-headd li {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px 3px 0 0;
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    margin-right: 5px;
+    padding: 0 15px;
+    border-bottom:0;
+}
+.ui-tab-headd li.ui-tab-head-current {
+    background-color: #fff;
+    color: #333;
+    height: 25px;
+    position: relative;
+}
+.ui-tab-headd li a {
+    margin: 0 -15px;
+    padding: 0 15px;
+    white-space: nowrap;
+}
+.ui-tab-headd li a:hover {
+    text-decoration: none;
+}
+.table-part-all-f table {
+    color: #000;
+}
+.table-part-all table {
+    width: 100%;
+}
+.table-part-all table th, .table-part-all table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.table-part-all-f table th {
+    background: #f8f8f8 none repeat scroll 0 0;
+    text-align: center;
+    white-space: nowrap;
+}
+.table-part-all .table-hover td {
+    background: #f1f1f1 none repeat scroll 0 0;
+}
+.table-part-all-f table td {
+    background: #fff none repeat scroll 0 0;
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+.table-part-all .btn-text a {
+    color: #3b4a82;
+    white-space: nowrap;
+}
+.table-part-th-b th {
+    font-weight: bold;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+th {
+    text-align: inherit;
+}
+.user-level {
+    border: 1px solid #ddd;
+    margin-top: 15px;
+}
+.user-level-box {
+    border-top: 1px solid #ddd;
+    margin-top: -1px;
+    padding: 10px;
+}
+.user-level-box h6 {
+    background: #e9e9e9 none repeat scroll 0 0;
+    color: #666;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 10px;
+}
+.user-level-cont p {
+    color: #666;
+    line-height: 24px;
+    padding: 5px 10px;
+}
+.user-level-cont .level-pic-box {
+    overflow: hidden;
+    padding: 10px 0 20px 26px;
+    width: 720px;
+}
+.user-level-cont .level-pic-box figure {
+    float: left;
+    margin-right: 48px;
+    position: relative;
+    text-align: center;
+    width: 80px;
+}
+.user-level-cont .level-pic-box article {
+    height: 59px;
+    overflow: hidden;
+}
+.user-level-cont .level-pic-box figcaption {
+    font-size: 14px;
+    margin-top: 5px;
+}
+.user-level-cont .level-pic-box div {
+    border-bottom: 1px solid #bdbdbd;
+    left: 80px;
+    position: absolute;
+    top: 30px;
+    width: 48px;
+}
+.user-level-cont .level-pic-box .fn-mr-0 {
+    margin-right: 0;
+}
+.user-level-box .table-part-all {
+    margin: 15px 10px;
+}
+.user-level-box table {
+    color: #666;
+}
+.user-level-box table th {
+    font-weight: bold;
+}
+.u-part-cont-box {
+    border-top: 1px dashed #a5a5a5;
+    margin-top: -1px;
+    overflow: hidden;
+    padding: 20px 0;
+}
+.u-part-cont-box aside {
+    background: rgba(0, 0, 0, 0) url("../../images/sprite.png") no-repeat scroll 0 0;
+    display: block;
+    height: 31px;
+    width: 40px;
+}
+.u-part-cont-box .icon-big-sprite1 {
+    background-position: 0 -4px;
+}
+.u-part-cont-box .icon-big-sprite2 {
+    background-position: -40px -4px;
+}
+.u-part-cont-box section {
+    line-height: 24px;
+    margin: 0 10px 0 50px;
+}
+.u-part-cont-box h5 {
+    color: #666;
+    font-weight: bold;
+}
+.part-detailed-box {
+    border: 1px solid #d9dce8;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.part-detailed-box h5 {
+    background: #e3eaff none repeat scroll 0 0;
+    font-weight: bold;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 10px;
+}
+.part-detailed-box section {
+    background: #fff none repeat scroll 0 0;
+    color: #666;
+    overflow: hidden;
+    padding: 0 20px;
+}
+.part-detailed-box section p {
+    padding: 20px 0;
+}
+.part-detailed-box section p span {
+    margin-right: 25px;
+    vertical-align: middle;
+}
+.part-detailed-box .part-detailed-list p {
+    border-top: 1px dashed #c2c2c2;
+    margin-top: -1px;
+}
+.submit,.add{
+    background: #19b955;
+    border: 0;
+    
+    margin: 20px 10px 0 40px;
+    vertical-align: bottom;
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #333;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    cursor: pointer;
+}
+.ui-tab-headd p{
+    height: 25px;font-size: 20px;
+}
+</style>
+</head>
+<body>
+<include file="index_header" />
+<div class="user_main">
+<include file="index_left_nav" />
+<div class="mainbox">
+<div class="main" id="news-info-tab">
+
+<div class="ui-tab-headd ui-tab-head-p ui-tab-head-box">
+<form action="__URL__/successfulCases" enctype="multipart/form-data" method="post" >
+
+<div class="main_img">
+<p class='anli' style="height: 25px;margin-top: 10px">成功案例：<input type='file'  name='id_card_img[]'></p>
+</div>
+<input type="hidden" name="id" value="{$id}" >
+<input type="button" class="add" value="添加更多成功案例" >
+<input type="submit" class="submit" value="提交" >
+</form>
+</div>
+
+
+
+<script type="text/javascript">
+$(function(){
+   $('.add').on('click',function(){
+      var htmladd="";
+      htmladd +="<p class='anli' style='height: 25px;margin-top: 10px'>成功案例：<input type='file'  name='id_card_img[]'></p>";
+      $(".main_img").append(htmladd);
+    })
+})
+</script>
+
+<div class="ui-tab-cont table-part-all table-part-hover fn-tac table-part-all-f">
+<div>
+
+<footer class="table-page-part ">
+<div class="paging"></div>
+</footer>
+</div>
+</div>
+
+</div>
+</div>
+<include file="index_footer" />
+</body>
+</html>

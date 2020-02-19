@@ -1,0 +1,353 @@
+<include file="public:meta" />
+<link href="../public/css/common.css" rel="stylesheet"/>
+<link href="../public/css/header.css" rel="stylesheet"/>
+<link href="../public/css/news.css" rel="stylesheet"/>
+<link href="../public/css/investor.css" rel="stylesheet"/>
+<script src="../public/js/jquery.common.js"></script>
+<style>
+.ui-text-red{color:#e93100}
+#investor_list ul li aside a img{
+    height: 155px;
+    margin-left: 28px;
+    width: 155px;
+}
+</style>
+</head>
+<body>
+<include file="public:header" />
+<div id="investor_list">
+<ul class="clearfix">
+<foreach name="investor_list" item="vo"  key="k">
+<li class="part-money-list-a invertor j-hover-all js-1 clearfix">
+<div class="fl">
+<i class="ix">{$k+1}</i>
+<aside><a href=""><img src="{:attach($vo['small_img'],'images')}" alt="" /></a></aside>
+<section><h3><a href="investor/investor_show/id/{$vo.id}">{$vo.name}</a></h3>
+<article>{$vo['seo_description']}</article>
+</section>
+</div>
+<div class="fr onekey_pull">
+<a class="ui-btn ui-btn-orange" href="javascript:;">一键直投</a>
+</div>
+</li>
+</foreach>
+</ul>
+<div class="case-more"><span page="1">查看更多</span></div>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<include file="public:footer_min" />
+<style>
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix::after {
+    clear: both;
+}
+.fn-clear::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.part-money-list-a, .part-instituional-list {
+    border-bottom: 1px dashed #cccccc;
+    line-height: 24px;
+    padding: 15px 20px;
+}
+.fn-pt-20 {
+    padding-top: 20px !important;
+}
+.fn-pb-10 {
+    padding-bottom: 10px !important;
+}
+.popup-msg-b img {
+    display: block;
+    margin: 0 auto 30px;
+}
+fieldset, img {
+    border: 0 none;
+}
+.part-fieldset {
+    overflow: hidden;
+}
+.popup-msg-b .part-fieldset textarea {
+    margin-right: 0;
+    width: 375px;
+}
+.part-fieldset .t_input {
+    width: 242px;
+}
+.popup-code-cur {
+    background: #ededed none repeat scroll 0 0;
+    color: #ccc;
+    cursor: no-drop;
+}
+.popup-code-cur:hover {
+    background: #ededed none repeat scroll 0 0 !important;
+    color: #ccc !important;
+}
+.part-fieldset aside {
+    font-size: 14px;
+    width: 27%;
+}
+.part-fieldset {
+    overflow: inherit;
+}
+.part-fieldset section .w370 {
+    margin-right: 0;
+    width: 365px !important;
+}
+.popup-msg-d section i {
+    margin-top: 8px;
+}
+.popup-msg-d section .ittext {
+    margin: 0 140px 0 40px;
+}
+.popup-msg-e h6 {
+    background: #f1f1f1 none repeat scroll 0 0;
+    color: #ec7b68;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.popup-msg-e form {
+    color: #666;
+    font-size: 14px;
+    margin: 15px auto;
+    width: 340px;
+}
+.part-dialog-btn {
+    border-top: 1px dashed #333333;
+    color: #666;
+    text-align: center;
+}
+.popup-msg-e .part-dialog-btn p {
+    margin: 15px 0;
+}
+.popup-msg-e-s .part-fieldset-text {
+    width: 210px !important;
+}
+.popup-msg-e-s .part-fieldset .t_input {
+    font-size: 12px;
+}
+.popup-msg-e-s .part-dialog-btn div {
+    margin: 25px 0 5px 174px;
+}
+.popup-msg-f aside img {
+    border: 1px solid #dad9e9;
+    height: 48px;
+    width: 48px;
+}
+.popup-msg-f section {
+    line-height: 22px;
+    width: 250px;
+}
+.pop-msg-label label {
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px 0;
+    width: 186px;
+}
+.pop-msg-label label input, .pop-msg-label2 label input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.pop-msg-label130 label {
+    width: 130px;
+}
+.ui-btn-red {
+    background-color: #e94e38;
+}
+a.ui-btn-red:hover {
+    background-color: #f45842;
+    color: #fff;
+}
+.ui-btn {
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 8px;
+}
+.w130 {
+    width: 130px !important;
+}
+.ui-dialog-content {
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-section {
+    min-height: 44px;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 5px 0;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg em {
+    display: block;
+    margin: 0 0 0 20px;
+    position: relative;
+}
+.part-fieldset .part-fieldset-msg i {
+    left: -20px;
+    position: absolute;
+    top: 2px;
+}
+.part-fieldset .t_input {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 5px;
+    padding: 0 10px;
+    position: relative;
+    vertical-align: middle;
+    width: 248px;
+}
+.part-fieldset section label {
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+}
+.part-fieldset aside {
+    color: #666666;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    width: 16%;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 5px 0;
+    vertical-align: middle;
+}
+.part-fieldset section label input {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 5px 0;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg em {
+    display: block;
+    margin: 0 0 0 20px;
+    position: relative;
+}
+.part-fieldset .part-fieldset-msg i {
+    left: -20px;
+    position: absolute;
+    top: 2px;
+}
+.part-fieldset textarea {
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 72px;
+    margin-right: 5px;
+    padding: 5px;
+    vertical-align: middle;
+    width: 360px;
+}
+.part-fieldset aside {
+    font-size: 14px;
+    width: 22%;
+}
+.part-fieldset {
+    overflow: hidden;
+}
+.part-fieldset .part-fieldset-msg {
+    display: inline-block;
+    padding: 5px 0;
+    vertical-align: middle;
+}
+.part-fieldset .part-fieldset-msg em {
+    display: block;
+    margin: 0 0 0 20px;
+    position: relative;
+}
+.part-fieldset .part-fieldset-msg i {
+    left: -20px;
+    position: absolute;
+    top: 2px;
+}
+.case-more {
+    height: 40px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    color:#56C6FF;
+}
+.case-more span {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #f06612;
+    border-radius: 20px;
+    color: #f06612;
+    display: block;
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    width: 230px;
+    cursor: pointer;
+}
+.case-more span:hover{
+    text-decoration: underline;
+}
+</style>
+<script src="../public/js/jquery.lazyload.min.js"></script>
+<script src="../public/js/jquery.modal.dialog.js"></script>
+<script src="../public/js/jquery.tooltip.js"></script>
+<script src="../public/js/jquery.disappear.tooltip.js"></script>
+<script src="../public/js/jquery.listitem.js"></script>
+<script src="../public/js/jquery.dropdown.js"></script>
+<script src="../public/js/jquery.highlight-3.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".case-more span").click(function(){
+            var page = $(this).attr('page');
+            $.getJSON("/Investor/ajax_Investor_list",{page:page},function(result){
+                if(result.status==1){
+                    $("#investor_list ul").append(result.data);
+                    $(".case-more span").attr('page',parseInt(page)+1);
+                }else{
+                    $(".case-more").html('没有更多创业投资机构了');
+                }
+            });
+        });
+    });
+</script>
+<script>
+$('.onekey_pull a').live("click",function(){
+var qsDialog = $(this).dialog({
+title: '一键直投',
+loading: true,
+showFooter: false,
+yes: function() {
+}
+});
+$.getJSON("/index.php?m=&c=Investor&a=one_key",function(result){
+if(result.status == 1){
+    qsDialog.setContent(result.data);
+}else{
+    qsDialog.setContent('<div class="confirm">' + result.msg + '</div>');
+}
+});
+});
+</script>
+<script src="../public/js/one_key_pull.js"></script>
+</body>
+</html>

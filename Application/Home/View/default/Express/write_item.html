@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../public/css/uikit.css">
+<link rel="stylesheet" href="../public/css/bp.css">
+<link rel="stylesheet" href="../public/css/responsive.css">
+<script src="../public/js/jquery_1.12.4.js"></script>
+<link rel="stylesheet" href="../public/luodiye/css/tip.css">
+<script src="./static/js/plugin/layer/layer.js"></script>
+<script src="../public/js/jquery.cookie.js"></script>
+<title>请填写项目详情</title>
+<style>
+html {
+    background: #f0f0f0;
+    padding: 0px 0px 35px 0px;
+}
+.modal {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1010;
+}
+.modal2 {
+    background: rgba(0, 0, 0, 0);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}
+.modal-dialog {
+    position: relative;
+    box-sizing: border-box;
+    margin: 50px auto;
+    width: 70%;
+    background: #fff;
+    line-height: 40px;
+}
+.modal-dialog-title {
+    background: #eee;
+    color: #000;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 20px;
+}
+.modal-dialog-title i {
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    color: #ccc;
+}
+.chiose {
+    padding: 0px 20px;
+    font-size: 14px;
+}
+.chiose span {
+    margin: 0px 20px;
+    border: 1px solid #F37B1D;
+    padding: 2px 15px;
+    min-width: 100px;
+    border-radius: 15px;
+    display: inline-block;
+    line-height: 20px;
+    text-align: center;
+}
+.chiose span i {
+    float: right;
+    margin-left: 15px;
+    height: 20px;
+    line-height: 20px;
+    display: block;
+    color: #ccc;
+}
+.choose-content {
+    width: 80%;
+    margin: 0 auto;
+}
+.choose-content ul {
+    margin: 30px 0px;
+    padding: 0px;
+}
+.choose-content .title li {
+    height: 20px;
+    line-height: 20px;
+}
+.choose-content .line-e {
+    border-bottom: 1px dashed #999;
+}
+.choose-content .font {
+    color: #999;
+    margin: -10px;
+    text-align: center;
+}
+.choose-content .font span {
+    width: 200px;
+    display: block;
+    background: #fff;
+    margin: 0 auto;
+    height: 30px;
+    line-height: 30px;
+}
+.choose-content .choose-team-part1 li,
+.choose-content .choose-team-part2 li {
+    display: inline-block;
+    min-width: 120px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+.choose-content .choose-team-part2 {
+    background: #eee;
+}
+.choose-team-part-active {
+    border: 1px solid #F37B1D;
+    border-radius: 15px;
+}
+.choose-content .btns {
+    padding-bottom: 60px;
+}
+.choose-content .btns a {
+    display: block;
+    background: #F37B1D;
+    color: #fff;
+    border-radius: 15px;
+    width: 100px;
+    margin: 0px 20px;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+}
+.categoryDiv {
+    display: none;
+}
+.notice_tip{
+    padding:40px 20px 40px 20px;
+}
+.notice_tip h3{text-align: center;margin-bottom: 20px;}
+.notice_tip p{text-align:left;}
+.tc {
+    text-align: center;
+}
+#wait{color:#3974c4;}
+p.alarm1{text-align: center;}
+.btn-account {
+    display: inline-block;
+    width: 150px;
+    margin: 0 9px;
+    background-color: #3974c4;
+    border: 1px solid #3974c4;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 18px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+.btn-account:hover {
+    background-color: #4082de;
+    color: #fff;
+}
+.btn-cancel {
+    background-color: #fff;
+    color: #3974c4
+}
+.btn-cancel:hover {
+    background-color: #fff;
+    border-color: #4082de;
+    color: #4082de
+}
+</style>
+</head>
+<body screen_capture_injected="true">
+<div class="pop_login-box"></div>
+<div class="page-top">
+<div class="uk-container uk-container-center">
+<div class="uk-grid">
+<div class="uk-width-1-2">
+<a href="__ROOT__/"><img src="../public/images/logo.png"></a>
+</div>
+<div class="uk-width-1-2 uk-text-right">
+<img style="height: 50px; width: 50px; border-radius: 50%;" src="../public/images/default.png">
+<a href="{:U('Members/logout')}">退出</a>
+</div>
+</div>
+</div>
+</div>
+<span id="refid" style="display: none;">{:C("visitor['uid']")}</span>
+<div class="page-content uk-container uk-container-center">
+<!--左侧菜单-->
+<ul class="left-menu">
+<li class="part1-title active">
+<a href="javascript:;">基本信息</a>
+</li>
+<li class="part2-title">
+<a href="javascript:;">项目信息</a>
+</li>
+<li class="part3-title">
+<a href="javascript:;">选填信息</a>
+</li>
+</ul>
+<!--右侧开始-->
+<div class="page-title">
+<span>资料完整度</span>
+<div class="rate">
+<i></i>
+<div class="done">
+</div>
+</div>
+</div>
+
+<div class="part">
+<ul class="menu-list">
+<li class="line"></li>
+<li class="font">
+<div class="title-bg">
+<span>基本信息</span>
+</div>
+</li>
+</ul>
+<div class="part1">
+</div>
+</div>
+
+
+<div class="part">
+<ul class="menu-list">
+<li class="line"></li>
+<li class="font">
+<div class="title-bg">
+<span>项目情况</span>
+</div>
+</li>
+</ul>
+<div class="part2">
+</div>
+</div>
+
+
+<div class="part">
+<ul class="menu-list">
+<li class="line"></li>
+<li class="font">
+<div class="title-bg">
+<span>选填内容</span>
+</div>
+</li>
+</ul>
+<div class="part3">
+</div>
+
+</div>
+</div>
+
+<div class="modal" style="display: none;">
+<div class="modal-dialog">
+
+</div>
+</div>
+<div class="modal2" style="display: none;">
+</div>
+<script src="../public/js/jquery.modal.dialog.js"></script>
+<link href="../public/css/popup_login.css" rel="stylesheet">
+<script src="../public/js/jquery.disappear.tooltip.js"></script>
+<script src="../public/js/jquery.tooltip.js"></script>
+<script>
+var switch_on=0;
+var qrh = {
+    base : "",
+    keyUrlencode:"0",
+    domain : "http://7ronghui.com",
+    root : "/index.php",
+};
+qrh.Util = {
+        isMobile: function(a) {
+            return /^1(3[0-9]|4[0-9]|5[0-9]|7[0|1|3|5|6|7|8]|8[0-9])\d{8}$/.test(a)
+        },
+        isChinese: function(a) {
+            return /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/.test(a)
+        },
+        isEmail: function(a) {
+            return /^\w+((-\w+)|(\.\w+))*\@\w+((\.|-)\w+)*\.\w+$/.test(a)
+        },
+        isEmpty: function(a) {
+            switch (typeof a) {
+                case "string":
+                    return 0 == $.trim(a).length ? !0 : !1;
+                case "number":
+                    return 0 == a;
+                case "object":
+                    return null == a;
+                case "array":
+                    return 0 == a.length;
+                default:
+                    return ! 0
+            }
+        }
+    },
+$(function() {
+// 账号登录验证
+    $('body').on('click','#btn-register',function(){
+        var mobile = $.trim($('input[name=mobile]').val());
+        var img_yzm = $.trim($('input[name=img_yzm]').val());
+        var yzm = $.trim($('input[name=yzm]').val());
+        if (mobile == '') {
+            disapperTooltip("remind","请输入您的手机号码");
+            $('input[name=mobile]').focus();
+            return false;
+        }
+        if (!qrh.Util.isMobile(mobile)) {
+            disapperTooltip("remind","请输入正确的手机号码");
+            $('.InforBox').css('height','300px');
+            $('input[name=mobile]').focus();
+            return false;
+        }
+        if (img_yzm == '') {
+            disapperTooltip("remind","请输入图形验证码");
+            $('#img_yzm').focus();
+            return false;
+        }
+        if (yzm == '') {
+            disapperTooltip("remind","请输入验证码");
+            $('#verify_code').focus();
+            return false;
+        }
+        doRegister();
+    });
+
+   $('body').on('click','#verify',function(){
+        var mobileValue = $.trim($('input[name=mobile]').val());
+        if (mobileValue == '') {
+            disapperTooltip("remind", "请输入手机号码");
+            $('input[name=mobile]').focus();
+            return false;
+        };
+        // 点击获取验证码先判断是否输入了手机号
+        var regularMobile = /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$/;
+        if (mobileValue != "" && !regularMobile.test(mobileValue)) {
+            disapperTooltip("remind", "请输入正确的手机号码");
+            $('#mobile').focus();
+            return false;
+        }
+        $.ajax({
+            url: qrh.root + '?m=Home&c=Members&a=ajax_check',
+            cache: false,
+            async: false,
+            type: 'post',
+            dataType: 'json',
+            data: { type: 'mobile', param: mobileValue },
+            success: function(json) {
+                if (json && json.status) {
+                    toSetSms();
+                } else {
+                    disapperTooltip("remind", "该手机号已被注册，请尝试登录");
+                    $('#mobile').focus();
+                    return false;
+                }
+            }
+        });
+    });
+
+    //注册处理程序
+    function doRegister(){
+        $.ajax({
+            url: qrh.root+'?m=Home&c=Members&a=index_register3',
+            type: 'POST',
+            dataType: 'json',
+            data: $('#regform').serialize(),
+            success: function (data) {
+                if(data.status == 1){
+                    setTimeout(function() {
+                        disapperTooltip("success", data.msg);
+                    },1500);
+                    $('#login_frame').hide();
+                    $('.modal').hide();
+                    location.reload();
+                }else{
+                    disapperTooltip("remind", data.msg);
+                }
+            }
+        });
+    }
+
+     // 发送手机验证码
+    function toSetSms() {
+        $.ajax({
+            url: qrh.root+'?m=Home&c=Members&a=reg_send_sms',
+            type: 'POST',
+            dataType: 'json',
+            data: {mobile: $.trim($('input[name=mobile]').val())}
+        })
+        .done(function(data) {
+            if (parseInt(data.status)) {
+                setTimeout(function() { 
+                    disapperTooltip("success", "验证码已发送，请注意查收");
+                },800);
+                // 开始倒计时
+                var countdown = 180;
+                function settime() {
+                    if (countdown == 0) {
+                        $('#verify').prop("disabled", 0);
+                        $('#verify').removeClass('btn-disabled');
+                        $('#verify').val('获取验证码');
+                        $('#register_username').prop("disabled",0);
+                        countdown = 180;
+                        return;
+                    } else {
+                        $('#verify').prop("disabled", !0);
+                        $('#register_username').prop("readonly", !0);
+                        $('#verify').addClass('btn-disabled');
+                        $('#verify').val('重新发送' + countdown + '秒');
+                        countdown--;
+                    }
+                    setTimeout(function() { 
+                        settime()
+                    },1000)
+                }
+                settime();
+            } else {
+                setTimeout(function() { 
+                    disapperTooltip("remind", data.msg);
+                },1500)
+            }
+        });
+    }
+
+function toEmpty() {
+    var name = $.trim($('#login_username').val());
+    var password = $.trim($('#login_password').val());
+    if (name != '' && password != '') {
+        $('#btn-login').removeClass('btn-disabled').addClass('btn-default-main')
+    } else {
+        $('#btn-login').addClass('btn-disabled').removeClass('btn-default-main')
+    }
+}
+
+$('body').on('keyup #login_username input', function(){
+    toEmpty()
+})
+$('body').on('keyup #login_password input', function() {
+    toEmpty()
+})
+
+$('body').on('keyup #register_username input', function() {
+    var mobile = $.trim($('#register_username').val());
+    var regularMobile = /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$/;
+    if (mobile != "" && regularMobile.test(mobile)) {
+        $('#verify').addClass('btn-default-main').removeClass('btn-disabled').removeAttr('disabled');
+    }else{
+        $('#verify').removeClass('btn-default-main').addClass('btn-disabled').attr('disabled');
+    }
+})
+
+/*
+//注册
+$('#btn-register').on('submit', function(event) {
+    event.preventDefault();
+    if(!$(this).validate('submitValidate')) return;
+    $.post('/member/account/register', $('#regform').serialize(), function(json) {
+        layer.msg(json.msg);
+        if(json.code == 1) {
+            var index = parent.layer.getFrameIndex(window.name);
+            setTimeout(function() {
+                parent.location.reload();
+            }, 4000);
+        }
+    }, 'json');
+
+});
+*/
+
+function pop_login(){
+    $('body').on('click','.menu_close',function(){
+        $('#login_frame').hide();
+        $('.modal').hide();
+    });
+}
+
+
+
+
+function notice(){
+    //页面层
+    layer.open({
+      title: false,
+      type: 1,
+      closeBtn :0,
+      scrollbar:false,
+      skin: '', //加上边框
+      area: ['570px', 'auto'], //宽高
+      content: '<div class="notice_tip"><h3>特别提示</h3><p>1:融资直通车是金融网全面负责项目融资事宜的一个版块,我们将为您设计最优最成熟的融资方案</p><p>2:此栏目上传的融资信息不会在网站进行公开展示,项目内容也仅限我司初步筛选使用</p><p>3:暂无任何前期费用</p><p>4:项目上传我们将会进行初步筛选后与创业者进行沟通</p><p class="alarm alarm1"><span id="wait">8</span>s后关闭弹窗</p><div class="tc"><a href="javascript:;" class="btn-account btn-cancel">取消</a><a href="javascript:;" class="btn-account btn-confirm">前往</a></div></div>'
+    });
+}
+
+if(!$.cookie('first')==1){
+    setTimeout(function(){
+        shutdown(notice);
+    },2000);
+}
+
+function shutdown(notice,parameter){
+    notice();
+    $.cookie('first', '1', { expires: 1});
+    interval = setInterval(stop_time_out,1000);
+}
+
+function stop_time_out(parameter){
+    if(parameter){
+        clearInterval(interval);
+        return false;
+    }
+    wait = document.getElementById('wait');
+    var time = --wait.innerHTML;
+    if(time <= 0) {
+        clearInterval(interval);
+        layer.closeAll('page');
+    };
+}
+
+$('body').on('click','.btn-cancel',function(){
+    stop_time_out(1);
+    layer.closeAll('page');
+});
+
+$('body').on('click','.btn-confirm',function(){
+    stop_time_out(1);
+    layer.closeAll('page');
+    check_login();
+});
+
+
+function check_login(){
+//关闭异步请求
+$.ajaxSettings.async = false; 
+$.getJSON("/Express/user_check",function(result){
+    if(result.status==0){
+        $(".pop_login-box").load("/index.php?s=/Express/login #login_frame");
+            $('.modal').show();
+            pop_login();
+    }
+     switch_on = result.status;
+});
+    return switch_on;
+}
+
+$('body').on('click','#user_register_btn',function(){
+    $(".pop_login-box").empty();
+    $(".pop_login-box").load("/index.php?s=/Express/register #login_frame");
+    $('.modal').show();
+});
+
+$('body').on('click','#user_login_btn',function(){
+    $(".pop_login-box").empty();
+    $(".pop_login-box").load("/index.php?s=/Express/login #login_frame");
+    $('.modal').show();
+});
+
+$('body').on('click','#btn-login',function(){
+    username = $('#login_username').val();
+    password = $('#login_password').val();
+    if (username == "") {
+        setTimeout(function() { 
+            disapperTooltip("remind",'请填写手机号');
+        },300);
+        $('#login_username').focus();
+        return false;
+    }
+    if(password == "") {
+        setTimeout(function() { 
+            disapperTooltip("remind",'请填写密码');
+        },300);
+        $('#login_password').focus();
+        return false;
+    }
+    $.ajax({
+            url: qrh.root + '?m=&c=Members&a=show_login',
+            cache: false,
+            async: false,
+            type: 'post',
+            dataType: 'json',
+            data: {username:username,password:password},
+            success: function(json) {               
+                console.log(json.msg);
+                if(json.status == 1){
+                    setTimeout(function() { 
+                        disapperTooltip("success",json.msg);
+                    }, 1000);
+                    window.location.href=json.data;
+                }else{
+                    setTimeout(function() { 
+                        disapperTooltip("remind",json.msg);
+                    },300);
+                    $('.fn-hide').attr("style","display: block");
+                }
+            }
+        });
+    });
+
+
+
+//登录
+var $register = $('#register');
+var $loginBtn = $('#loginBtn');
+var $loginBoxPost = $('.login-box-post');
+$register.on('click', function () {
+    $loginBoxPost.addClass('login-box-anim');
+});
+$loginBtn.on('click', function () {
+    $loginBoxPost.removeClass('login-box-anim');
+});
+//初次登录弹窗,修改为用户友情提示
+//check_login();
+
+
+
+
+
+var ref = $("#refid").text();
+part1();
+part2();
+part3();
+
+//平滑滚动效果
+$('.part1-title').click(function() {
+$('html,body').animate({
+    scrollTop: $('.part1').offset().top - 100 + "px"
+});
+});
+$('.part2-title').click(function() {
+$('html,body').animate({
+    scrollTop: $('.part2').offset().top - 100 + "px"
+});
+});
+$('.part3-title').click(function() {
+$('html,body').animate({
+    scrollTop: $('.part3').offset().top - 200 + "px"
+});
+});
+
+//右侧menu自动选择
+$(window).scroll(function() {
+if($(this).scrollTop() <= $('.part1').offset().top - 50) {
+$(".left-menu .part1-title").addClass("active").siblings().removeClass("active");
+} else if($(this).scrollTop() <= $('.part2').offset().top - 50) {
+$(".left-menu .part2-title").addClass("active").siblings().removeClass("active");
+} else if($(this).scrollTop() <= $('.part2').offset().top + 300) {
+$(".left-menu .part3-title").addClass("active").siblings().removeClass("active");
+}
+});
+
+//修改第一部分——基本信息
+function part1() {
+$(".part1").load("/index.php?s=/Express/project_info/projectid/" + ref + " #edit-part1", function(){
+$(".part1").find(".uk-icon-edit").click(function(){
+
+if(check_login() == 0){
+   return false; 
+}
+
+$(".part1").load("/index.php?s=/Express/save/projectid/" + ref + " #edit-part1", function(){
+$("#subbtn").click(function() {
+if($("#cust_name").val() == "") {
+    alert("请填写姓名");
+    return false;
+} else if($("#email").val() == "") {
+    alert("请输入邮箱");
+    return false;
+} else if($("#project").val() == "") {
+    alert("请填写项目名称");
+    return false;
+}
+var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+if(!regex.test($("#email").val())) {
+    alert("邮箱输入错误");
+    return false;
+}
+var update = new FormData($("#part1")[0]);
+$.ajax({
+type: "post",
+url: "/index.php?s=/Express/editprojectinfo.html",
+data: update,
+async: false,
+cache: false,
+contentType: false,
+processData: false,
+success: function(data) {
+if(data == 'ok') {
+alert("您的资料已上传成功。");
+part1();
+setPercent();
+} else {
+    alert("您的资料上传失败。");
+}
+}
+});
+})
+});
+
+})
+
+});
+}
+
+//修改第二部分——项目信息
+function part2() {
+$(".part2").load("/index.php?s=/Express/project_info/projectid/" + ref + " #edit-part2", function() {
+$(".part2").find("#icon-edit-part2").click(function() {
+
+if(check_login() == 0){
+   return false; 
+}
+
+$(".part2").load("/index.php?s=/Express/save/projectid/" + ref + " #edit-part2", function(){
+var click = 0;
+$(".select-focus").click(function() {
+if(click == 0) {
+$(this).next("ul").show();
+$(".modal2").show();
+click = 1;
+$(".modal2").click(function() {
+$(".select-focus").next("ul").hide();
+$(".modal2").hide();
+click = 0;
+})
+}else {
+$(this).next("ul").hide();
+$(".modal2").hide();
+click = 0;
+}
+});
+
+$(".select-box ul li").click(function() {
+$(this).parents(".select-box").find("input").val($(this).text());
+$(".select-box ul").hide();
+});
+$("#category").focus(function() {
+if($(".chiose").length<1){
+$(".modal").show();
+var tmp = $("#industryList").val();
+//console.log(tmp);
+//alert(tmp);
+//return false;
+var data = JSON.parse(tmp);
+
+//console.log(data);
+
+var css = "<p class='modal-dialog-title'>选择所需领域<i class='uk-icon uk-icon-close'></i></p>";
+css += "<div class='chiose'>已选择领域</div>";
+css += "<div class='choose-content'>";
+css += "<div class='category'>";
+css += "<ul class='title'><li class='line-e'></li><li class='font'><span>大领域</span></li></ul>";
+css += "<ul class='choose-team-part1 choose-team-part'></ul>";
+css += "</div>";
+css += "<div class='categoryDiv'>";
+css += "<ul class='title'><li class='line-e'></li><li class='font'><span>细分行业</span></li></ul>";
+css += "<ul class='choose-team-part2 choose-team-part'></ul>";
+css += "</div>";
+css += "<div class='btns uk-text-center'><a href='javascript:;' class='sure'>确定</a><a href='javascript:;' class='chanel'>取消</a></div></div>";
+$(".modal-dialog").append(css);
+//打开浮层自动赋值已选领域
+var categoryVal = $("#category").val();
+if(categoryVal.substr(categoryVal.length - 1, categoryVal.length) == ","){
+categoryVal = categoryVal.substr(0, categoryVal.length - 1);
+}
+var spancontent = categoryVal.split(",");
+$.each(spancontent, function(i,item) {
+if (item == ""){
+    return;
+}
+$(".chiose").append("<span>" + item + "<i class='uk-icon uk-icon-close'></i></span>");
+});
+movespan();
+
+function movespan() {
+$(".chiose span i").click(function() {
+$(this).parents("span").remove();
+var span = $(this).parents("span").text().split("/");
+var active = $(".choose-team-part1").find(".choose-team-part-active").text();
+$(".choose-team-part2 li").each(function() {
+if(active == span[0] && $(this).text() == span[1]) {
+    $(this).removeClass("choose-team-part-active");
+}
+})
+})
+}
+
+$.each(data, function(i, item) {
+$(".choose-team-part1").append("<li>" + item.name + "</li>");
+});
+$(".choose-team-part1 li").click(function() {
+$(".choose-team-part2").html("");
+$(".categoryDiv").show();
+var index = $(this).index();
+var itemPart2 = data[index]['child'];
+for(var j = 0; j < itemPart2.length; j++) {
+$(".choose-team-part2").append("<li>" + itemPart2[j].name + "</li>");
+}
+
+$(".chiose span").each(function() {
+var arr = $(this).text().split("/");
+$(".choose-team-part2 li").each(function() {
+var activetext = $(this).text();
+if(activetext == arr[1]) {
+    $(this).addClass("choose-team-part-active");
+}
+})
+})
+
+//点击选择其他选项
+$(this).addClass("choose-team-part-active")
+.siblings().removeClass("choose-team-part-active");
+$(".choose-team-part2 li").click(function() {
+var t = $(".choose-team-part1").find(".choose-team-part-active").text();
+var s = $(this).text();
+if(s == ""){
+    alert("请选择详细分类");
+}else {
+if(!$(this).hasClass("choose-team-part-active")) {
+    $(this).addClass("choose-team-part-active");
+    $(".chiose").append("<span>" + t + "/" + s + "<i class='uk-icon uk-icon-close'></i></span>");
+movespan();
+}
+}
+})
+});
+
+//确定按钮选项
+$(".choose-content .btns .sure").click(function(){
+    $(".modal").hide();
+$(".chiose span").each(function() {
+    $(this).text($(this).text() + ",");
+});
+$("#category").val($(".chiose span").text());
+    $(".modal-dialog").html("");
+});
+
+function chanel() {
+    $(".chiose").html("");
+    $(".modal").hide();
+    $(".modal-dialog").html("");
+}
+
+function decodeUnicode(str) {  
+    str = str.replace(/\\/g, "%");  
+    return unescape(str);  
+}  
+
+//取消按钮
+$(".choose-content .btns .chanel").click(function() {
+chanel();
+});
+
+//右上角关闭按钮，并赋值给input
+$(".modal-dialog-title i").click(function() {
+    chanel();
+})
+}
+});
+
+$("#subbtn2").click(function() {
+$.ajax({
+type: "post",
+url: "/index.php?s=/Express/setpart2info.html",
+data: {
+pro_name: $("#pro_name").val(),
+stage: $("#stage").val(),
+category: $("#category").val(),
+city: $("#city").val(),
+money: $("#money").val(),
+currency: $("#currency").val(),
+url: $("#url").val(),
+fround: $("#times").val(),
+pro_info: $("#pro-info").val(),
+pro_race: $("#pro-race").val(),
+pro_team: $("#pro-team").val(),
+projectid: ref
+},
+async: false,
+success: function() {
+    part2();
+    setPercent();
+}
+});
+})
+})
+})
+})
+}
+
+//修改第三部分——选填信息
+function part3() {
+$(".part3").load("/index.php?s=/Express/project_info/projectid/" + ref + " #edit-part3", function() {
+$(".part3").find("#icon-edit-part3").click(function() {
+
+if(check_login() == 0){
+   return false; 
+}
+
+$(".part3").load("/index.php?s=/Express/save/projectid/" + ref + " #edit-part3", function() {
+$("#subbtn3").click(function() {
+var business_model = $("#business_model").val(),
+opportunity = $("#opportunity").val(),
+situation = $("#situation").val(),
+planning = $("#planning").val(),
+investment_status = $("#investment_status").val(),
+projectid = ref;
+//orientation = $("#orientation").val()
+$.ajax({
+type: "post",
+url: "/index.php?s=/Express/setpart3info",
+data: {
+business_model: business_model,
+opportunity: opportunity,
+situation: situation,
+planning: planning,
+investment_status: investment_status,
+projectid: projectid
+},
+async: false,
+success: function(data) {
+part3();
+//console.log(data);
+setPercent();
+}
+});
+})
+})
+})
+});
+}
+
+function setPercent() {
+    setTimeout(percent, 500);
+}
+
+function percent() {
+var percent = $("#percent").val();
+//console.log(percent);
+if (typeof percent === 'undefined') {
+    percent = 0;
+}
+$(".rate i").text("完成度" + percent + "%");
+$(".rate .done").animate({
+width: percent + "%"
+}, 1000)
+}
+
+setPercent();
+});
+
+function change(e) {
+var src = e.target || window.event.srcElement; //获取事件源，兼容chrome/IE
+//测试chrome浏览器、IE6，获取的文件名带有文件的path路径
+//下面把路径截取为文件名
+var filename = src.value;
+document.getElementById("filename").innerText = filename.substring(filename.lastIndexOf('\\') + 1);
+//获取文件名的后缀名（文件格式）
+var fileType = filename.substring(filename.lastIndexOf('.') + 1);
+var imgtype = document.getElementById("imgtype");
+switch(fileType) {
+case("ppt"):
+imgtype.src = "../public/images/ppt.png";
+break;
+case("pdf"):
+imgtype.src = "../public/images/pdf.png";
+break;
+case("doc"):
+imgtype.src = "../public/images/word.png";
+break;
+case("xls"):
+imgtype.src = "../public/images/excel.png";
+break;
+default:
+imgtype.src = "../public/images/other.png";
+
+}
+var fileSize = src.files[0].size;
+fileSize = Math.round(fileSize/1024/1024*100)/100; // MB 
+if(fileSize > 10){ // 最大10M
+src.value = "";
+document.getElementById("filename").innerText = "";
+imgtype.src = "../public/images/other.png";
+alert("上传文件太大，必须小于10M！");
+} 
+}
+
+function previewImage(file) {
+var MAXWIDTH = 100;
+var MAXHEIGHT = 100;
+var div = document.getElementById('preview');
+if(file.files && file.files[0]) {
+div.innerHTML = '<img id=imghead>';
+var img = document.getElementById('imghead');
+img.onload = function() {
+var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+img.width = rect.width;
+img.height = rect.height;
+img.style.marginLeft = rect.left + 'px';
+img.style.marginTop = rect.top + 'px';
+}
+var reader = new FileReader();
+reader.onload = function(evt) {
+img.src = evt.target.result;
+}
+reader.readAsDataURL(file.files[0]);
+} else {
+var sFilter = 'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+file.select();
+var src = document.selection.createRange().text;
+div.innerHTML = '<img id=imghead>';
+var img = document.getElementById('imghead');
+img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+status = ('rect:' + rect.top + ',' + rect.left + ',' + rect.width + ',' + rect.height);
+div.innerHTML = "<div id=divhead style='width:" + rect.width + "px;height:" + rect.height + "px;margin-top:" + rect.top + "px;margin-left:" + rect.left + "px;" + sFilter + src + "\"'></div>";
+}
+}
+
+function clacImgZoomParam(maxWidth, maxHeight, width, height) {
+var param = {
+top: 0,
+left: 0,
+width: width,
+height: height
+};
+if(width > maxWidth || height > maxHeight) {
+rateWidth = width / maxWidth;
+rateHeight = height / maxHeight;
+if(rateWidth > rateHeight) {
+param.width = maxWidth;
+param.height = Math.round(height / rateWidth);
+} else {
+param.width = Math.round(width / rateHeight);
+param.height = maxHeight;
+}
+}
+param.left = Math.round((maxWidth - param.width) / 2);
+param.top = Math.round((maxHeight - param.height) / 2);
+return param;
+}
+</script>
+<!--
+<script src="./static/js/plugin/jquery.validate.min.js"></script>
+<script src="./static/js/plugin/layer/layer.js"></script>
+-->
+</body>
+</html>

@@ -1,0 +1,495 @@
+/*共通部分 开始*/
+/*小标题左右横线*/
+.line-left, .line-right {
+    display: inline-block;
+    width: 400px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.line-left {
+    background-image: url("../images/services/icon4.png");
+    background-position: right center;
+}
+
+.line-right {
+    background-image: url("../images/services/icon5.png");
+    background-position: left center;
+}
+
+/*大号按钮*/
+.big-btn {
+    display: inline-block;
+    width: 290px;
+    height: 72px;
+    line-height: 72px;
+    background: #72c5ff;
+    border-radius: 6px;
+    font-size: 30px;
+    text-align: center;
+}
+
+/*共通部分 结束*/
+
+/*页面的头部*/
+.header {
+    min-width: 1200px;
+    height: 900px;
+    color: #fff;
+    background: url("../images/services/bg.png") no-repeat;
+
+}
+
+/*控制居中的版心*/
+.center {
+    width: 1200px;
+    margin: 0 auto;
+    height: 900px;
+}
+
+.center-h {
+    width: 1200px;
+    height: 40px;
+    line-height: 40px;
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+
+/*左边logo*/
+.center .center-hl {
+    float: left;
+    width: 50%;
+    font-size: 22px;
+    overflow: hidden;
+    position: relative;
+}
+
+.center .center-hl > strong {
+    display: inline-block;
+    width: 154px;
+    height: 40px;
+    background: url("../images/services/logo-1.png") no-repeat;
+
+}
+
+.center .center-hl > b {
+    display: inline-block;
+    height: 40px;
+    border-right: 1px solid #fff;
+    margin-left: 16px;
+}
+
+.center .center-hl > span {
+    position: absolute;
+    top: -1px;
+    left: 193px;
+}
+
+/*右边热线*/
+.center .center-hr {
+    float: right;
+    font-size: 22px;
+}
+
+.center .center-hr > a {
+    margin-right: 45px;
+}
+
+.center .center-hr > span {
+    padding-left: 32px;
+    background-image: url("../images/services/icon1.png");
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+
+.center .center-c {
+    height: 690px;
+}
+.center .center-c div:first-child{
+    float: left;
+    margin-top: 125px;
+}
+
+/*头部的中间 右边登录框*/
+.center .login {
+    float: right;
+    width: 400px;
+    height: 420px;
+    background: rgb(255, 255, 255);
+    margin-top: 80px;
+    text-align: center;
+    position: relative;
+    filter:alpha(opacity=75);
+    -moz-opacity:0.75;
+    opacity: 0.75;
+}
+
+.login:before {
+    content: "";
+    display: table;
+}
+
+.login:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+/*登录框标题*/
+.center .login  h2 {
+    width: 100%;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 70px;
+    color: #72c5ff;
+    border-bottom: 1px solid #72c5ff;
+}
+.center .login form{
+    overflow: hidden;
+}
+/*登陆手机*/
+.center .login  .input1, .center .login  .input2 {
+    padding-left: 40px;
+    height: 44px;
+    position: relative;
+    line-height: 44px;
+}
+
+.center .login  .input1, .center .login  .input2, .center .login  .input3 {
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    border: 1px solid #999;
+    color: #A9A9A9;
+}
+
+.center .login  .input1 {
+    width: 296px;
+    margin: 42px 0 28px 31px;
+    background-image: url("../images/services/icon3.png");
+    float: left;
+}
+
+.center .login  div {
+    width: 338px;
+    height: 46px;
+    margin-left: 31px;
+    float: left;
+    overflow: hidden;
+}
+
+/*登录验证码*/
+.center .login  .input2 {
+    width: 126px;
+    /*margin-right: 15px;*/
+    background-image: url("../images/services/icon2.png");
+    float: left;
+}
+
+/*登录获取验证码*/
+.center .login  .input3 {
+    width: 150px;
+    height: 46px;
+    border: 0;
+    background: #72c5ff;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+}
+
+/*点击交流*/
+.center .login  button {
+    margin-top: 42px;
+    border: 0;
+    background: #72c5ff;
+    font-size: 23px;
+    color: #fff;
+    width: 338px;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/*登录框的已有帐号*/
+.center .login p {
+    text-align: right;
+    margin-top: 14px;
+    padding-right: 30px;
+}
+
+.center .login p > a {
+    color: #666666;
+    font-size: 14px;
+}
+
+.center .login span {
+    display: inline-block;
+    height: 35px;
+    width: 1px;
+    background-color: #ccc;
+    position: absolute;
+    left: 64px;
+}
+
+.center .login .span1 {
+    top: 119px;
+}
+
+.center .login .span2 {
+    top: 193px;
+}
+
+/*头部最下面的列表数据*/
+.center-down ul {
+    height: 90px;
+    line-height: 90px;
+}
+
+.center-down .list > li {
+    float: left;
+    width: 30%;
+    color: #898989;
+    font-size: 18px;
+}
+
+.center-down .list > li:last-child {
+    float: right;
+}
+
+.center-down .list span {
+    display: inline-block;
+    width: 46px;
+    height: 62px;
+    text-align: center;
+    line-height: 62px;
+    background: #fff;
+    color: #56C6FF;
+    font-size: 36px;
+}
+
+/*头部完成*/
+
+/*主题内容*/
+.main {
+    min-width: 1200px;
+    min-height: 800px;
+}
+
+.main .main-h {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.main .main-txt {
+    padding-top: 57px;
+    margin-bottom: 75px;
+    width: 1200px;
+    line-height: 46px;
+    text-align: center;
+    color: #333333;
+    font-size: 30px;
+    font-weight: 400;
+    position: relative;
+}
+
+.main .main-h ul > li {
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+.main .main-h li > h4 {
+    font-size: 22px;
+    font-weight: 400;
+    color: #333;
+    margin: 14px 0 8px 0;
+}
+
+.main .main-h li > p {
+    font-size: 18px;
+    line-height: 30px;
+    color: #666;
+}
+
+.main .main-h .main-btn {
+    clear: both;
+    width: 1200px;
+    text-align: center;
+    /*padding-top: 75px;*/
+    /*margin-bottom: 48px;*/
+    padding: 70px 0 48px 0;
+}
+
+.main .main-h .main-btn > a {
+    margin: 0 100px;
+}
+
+.main .main-c {
+    width: 100%;
+    background: #bbdff9;
+}
+
+.main .main-c .main-binner {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.main .main-binner-ad {
+    display: inline-block;
+    width: 700px;
+    height: 484px;
+    position: relative;
+}
+
+.main .main-binner-ad > p {
+    position: absolute;
+    width: 156px;
+    height: 156px;
+    background: url(../img/picture/yuan.png) no-repeat;
+}
+
+.main .main-binner-ad > p > span {
+    position: absolute;
+    color: #fff;
+    font-size: 43px;
+    top: 25px;
+    left: 55px;
+}
+
+.main .main-binner-ad > p > strong {
+    position: absolute;
+    color: #fff;
+    font-size: 21px;
+    top: 75px;
+    left: 38px;
+}
+
+.main .main-binner-ad > img {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+}
+
+.main .main-binner-ad > .p1 {
+    top: -20px;
+    left: 285px;
+}
+
+.main .main-binner-ad > .p2 {
+    top: 100px;
+    left: 470px;
+}
+
+.main .main-binner-ad > .p3 {
+    top: 310px;
+    left: 400px;
+}
+
+.main .main-binner-ad > .p4 {
+    top: 310px;
+    left: 170px;
+}
+
+.main .main-binner-ad > .p5 {
+    top: 110px;
+    left: 100px;
+}
+
+.main .main-binner-btn {
+    width: 1200px;
+    margin: 60px auto 20px;
+    height: 96px;
+    text-align: center;
+}
+
+.main .main-r {
+    width: 100%;
+}
+
+.main .main-r h2 {
+    color: #333333;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 54px;
+    margin-bottom: 55px;
+}
+
+/*主题内容 结束*/
+.main .main-r ul {
+    width: 1200px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.main .main-r ul li {
+    float: left;
+    width: 240px;
+    height: 240px;
+    position: relative;
+}
+
+.main .main-r ul li img+img {
+    position: absolute;
+}
+
+.img-left {
+    top: 111px;
+    right: -18px;
+}
+
+.img-bottom {
+    bottom: -18px;
+    left: 109px;
+}
+
+.img-right {
+    top: 110px;
+    left: -17px;
+}
+
+.main .main-r ul li h4, .main .main-r ul li p {
+    margin-left: 20px;
+}
+
+.main .main-r ul li h4 {
+    margin-top: 80px;
+    margin-bottom: 4px;
+    font-weight: 400;
+    font-size: 18px;
+    color: #333;
+}
+
+.main .main-r ul li p {
+    font-size: 16px;
+    color: #666;
+    line-height: 25px;
+}
+
+.main .main-r > a {
+    display: block;
+    margin: 60px auto;
+}
+
+.footer {
+    height: 100px;
+    min-width: 1200px;
+    padding-top: 50px;
+    background-color: #72C5FF;
+}
+
+.footer p {
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.footer p:first-child {
+    font-size: 16px;
+    /*margin-top: 50px;*/
+}
+
+.footer p:last-child {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+

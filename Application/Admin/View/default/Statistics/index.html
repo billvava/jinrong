@@ -1,0 +1,12 @@
+<include file="public:header" />
+<script type="text/javascript" src="__ADMINPUBLIC__/js/jquery.min.js"></script>
+<script type="text/javascript" src="__ADMINPUBLIC__/js/Highcharts-5.0.12/code/highcharts.js"></script>
+<div class="toptit">系统信息</div>
+<div id="container" style="width: 100%; height: 400px; margin: 0 auto"></div>
+<script>
+$(function () {
+    $('#container').highcharts({$jsonArray});
+});
+</script>
+</div>
+<include file="public:footer" />

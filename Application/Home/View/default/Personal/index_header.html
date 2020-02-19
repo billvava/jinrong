@@ -1,0 +1,35 @@
+<include file="public:header_min" />
+<div class="user_head link_white" id="header">
+<style>
+.insidebox span a:hover{text-decoration: none;}
+.insidebox span img{position: absolute;top: 2px;}
+</style>
+ <div class="insidebox">
+ 	<div class="logobox"><a href="__ROOT__/"><img src="<if condition="C('qscms_logo_user')">{:attach(C('qscms_logo_user'),'resource')}<else/>__HOMEPUBLIC__/images/logo_user.png</if>"    border="0"/></a></div>
+<style type="text/css">
+.member_select{margin-left:50px;line-height:85px;height:85px;font-size:30px;color:#fff;position: relative;}
+</style>
+<if condition="$visitor['utype'] eq 2">
+ <span class="member_select"><a href="{:U('home/fund/fund_list')}">找资金</a>
+ <else />
+<span class="member_select"><a href="{:U('home/item/item_list')}">找项目</a>
+ </if>
+<img src="__HOMEPUBLIC__/images/hot.gif">
+ 	</span>
+	<div class="clear"></div>
+	 
+ </div>
+</div>
+<script type="text/javascript">
+	$('#ajax_search_location').submit(function(){
+		var nowKeyValue = $.trim($('input[name="key"]').val());
+		var post_data = $('#ajax_search_location').serialize();
+		if(qscms.keyUrlencode==1){
+			post_data = encodeURI(post_data);
+		}
+		$.post($('#ajax_search_location').attr('action'),post_data,function(result){
+			window.location.href=result.data;
+		},'json');
+		return false;
+	});
+</script>

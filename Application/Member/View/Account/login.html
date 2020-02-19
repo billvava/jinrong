@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit">
+<title>用户登录 - 金融网融资服务平台</title>
+<meta name="keywords" content='项目融资,融资,天使投资,投资,投资项目,投资公司,项目,股权融资,债权融资,投融资,融资平台,金融网' />
+<meta name="description" content='金融网（7ronghui.com）是中国最大的融资服务平台，拥有超百万的投融资机构、企业与个人用户入驻。金融网通过线上＋线下、标准化  ＋个性化的服务体系，为客户提供针对性的投融资信息对接和项目撮配服务，成功对接融资千余亿元。金融网凭借其强大、便捷的平台信息整合能力，大大提高企业投融资活动成功率，为中小微企业解决融资难问题。' />
+<meta name="applicable-device"content="pc">
+<link href="/static/pc/css/common.css" rel="" />
+<link rel="shortcut icon" href="/static/pc/icon/favicon.ico" type="image/x-icon">
+<link href="/static/css/common.css" rel="stylesheet"/>
+<link href="/static/css/lay.css" rel="stylesheet"/>
+<link href="/static/js/plugin/font/ali-iconfont/iconfont.css" rel="stylesheet"/>
+<style>
+    body{ background: #fff;}
+</style>
+</head>
+<body>
+<div class="lay-wrap m38">
+    <form class="w330 m-c form-login" id="loginform" action="">
+        <input type="hidden" name="__token__" value="b2af5c24fd946418c7caf2ebdca4881c" />
+        <div class="ptb8 clearfix">
+            <div class="lab1 phone">
+                <div class="tubiao fl"><i class="icon iconfont icon-login_user"></i></div>
+                <input type="text" class="w250 required" name="username" placeholder="请输入登录账号" data-valid="isNonEmpty||isPhone" data-tip="" data-error="会员账号不能为空 ||请输入正确的会员账号"/>
+            </div>
+        </div>
+        <div class="ptb8 clearfix">
+            <div class="lab1 password1">
+                <div class="tubiao fl"><i class="icon iconfont icon-login_pwd"></i></div>
+                <input type="password" class="w250 required" name="password" placeholder="请输入登录密码"  data-valid="isNonEmpty||between:6-16" data-tip="" data-error="会员密码不能为空 ||密码长度在6-16位之间"/>
+            </div>
+        </div>
+        <div class="pt15 clearfix">
+            <div>
+                <button class="btn3 per100" type="submit">登录</button>
+            </div>
+        </div>
+        <div class="ptb8 plf1 clearfix">
+            <div class="rez plf2 mt15">
+                <a class="c14 mr5 register" data-url="/member/account/register.html">极速注册</a>
+                <a class="b0">|</a>
+                <a class="c14 ml5 zhaopass" data-url="/member/account/forgetpwd.html"  >找回密码</a>
+            </div>
+        </div>
+    </form>
+</div>
+<!--
+<script type="text/javascript" src="/static/pc/js/layer.js"></script>
+<script type="text/javascript" src="/static/pc/js/jquery.tab.js"></script>
+<script type="text/javascript" src="/static/pc/js/help.js"></script>
+<script type="text/javascript" src="/static/pc/js/common.js"></script>
+<script type="text/javascript" src="/static/pc/js/iframe.js"></script>
+<script type="text/javascript" src="/static/pc/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/static/pc/js/layer.js"></script>
+<script type="text/javascript" src="/static/pc/js/lay-yz.js"></script>
+<script type="text/javascript" src="/static/pc/js/iframe.js"></script>
+-->
+<script src="/static/js/plugin/require/2.2.0/require.min.js" data-main="/static/js/config.min"></script>
+<script>
+require(['app/login']);
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<include file="public:meta" />
+<link href="../public/css/members/common.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/members/jquery.common.js" type="text/javascript"></script>
+</head>
+<body>
+	<include file="header" />
+	<div class="find_pwd">
+		<div class="step s1"></div>
+		<div class="steptxt">
+			<div class="tli font_blue">1.验证账号信息</div>
+			<div class="tli">2.设置新密码</div>
+			<div class="tli">3.找回成功</div>
+			<div class="clear"></div>
+		</div>
+		<div class="rl J_focus">
+			<div class="clear"></div>
+			
+				<div class="mobileshow J_listitme_group">
+					<form id="getPassByMobileForm" action="{:U('members/user_getpass')}" method="post" onkeydown="if(event.keyCode==13){return false;}">
+						<div class="selecttip">系统将发送验证码短信到您的手机上，请注意查收</div>
+						<div class="J_validate_group">
+							<div class="td1">
+								<input class="input_295_34" name="mobile" id="mobile" type="text" placeholder="请输入手机号"/>
+							</div>
+							<div class="td2 J_showtip_box"></div>
+							<div class="clear"></div>
+						</div>
+
+
+						<div class="J_validate_group">
+							<div class="td1">
+								<input style="width:150px;" class="input_295_34" name="img_yzm" id="img_yzm" type="text" placeholder="请输入图形验证码"/>
+								<img class="yzm_img" style="width: 130px;height:42px;vertical-align:middle;" onclick="this.src='Home/index/verify?'+Math.random()" src="Home/index/verify" alt="验证码"/>
+							</div>
+							<div class="td2 J_showtip_box"></div>
+							<div class="clear"></div>
+						</div>
+						<div class="J_validate_group">
+							<div class="td1">
+								<div class="code">
+									<input name="yzm" id="yzm" type="text"  class="input_295_34" placeholder="请输入短信验证码"/>
+								</div>
+								<div class="codebtn">
+									<input type="button" class="btn_yellow J_hoverbut" id="J_getverificode" value="获取验证码" />
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="td2 J_showtip_box"></div>
+							<div class="clear"></div>
+						</div>
+						<div class="btnbox">
+							<input type="hidden" name="token" value="{$token}" />
+							<input type="hidden" name="type" value="1" />
+							<input type="submit" value="下一步" class="btn_reg J_hoverbut" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="popup-captcha"></div>
+		<input type="hidden" id="J_sms_open" value="{:C('qscms_sms_open')}">
+		<!--下方阴影 -->
+		<div class="find_pwd_bg">
+			<div class="bl"></div>
+			<div class="br"></div>
+			<div class="clear"></div>
+		</div>
+		<include file="public:footer_min" />
+		<script type="text/javascript" src="../public/js/jquery.validate.js"></script>
+		<script type="text/javascript" src="../public/js/jquery.listitem.js"></script>
+		<script type="text/javascript" src="../public/js/jquery.dropdown.js"></script>
+		<script type="text/javascript" src="../public/js/members/jquery.validate.getpass.js"></script>
+		<script type="text/javascript">
+			// 找回方式切换
+			$('.J_listitme').click(function(event) {
+				var indexValue = $('.J_listitme').index(this);
+				$('.J_listitme_group').eq(indexValue).show().siblings('.J_listitme_group').hide();
+			});
+
+			// 点击获取验证码先判断是否输入了手机号
+			var regularMobile = /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$/;
+			$('#J_getverificode').click(function() {
+				var mobileValue = $.trim($('#mobile').val());
+				var img_yzm = $.trim($('#img_yzm').val());
+				if (mobileValue == '') {
+					disapperTooltip("remind", "请输入手机号码");
+					$('#mobile').focus();
+					return false;
+				};
+				if (img_yzm == '') {
+					disapperTooltip("remind", "请输入图片验证码");
+					$('#img_yzm').focus();
+					return false;
+				};
+				if (mobileValue != "" && !regularMobile.test(mobileValue)) {
+					disapperTooltip("remind", "请输入正确的手机号码");
+					$('#mobile').focus();
+					return false;
+				}
+				$.ajax({
+		            url: "{:U('Members/ajax_check')}",
+		            cache: false,
+		            async: false,
+		            type: 'post',
+		            dataType: 'json',
+		            data: { type: 'mobile', param: mobileValue },
+		            success: function(json) {
+		                if (json && json.status) {
+		                    disapperTooltip("remind", "该手机号没有注册账号");
+							$('#mobile').focus();
+							return false;
+		                }
+		            }
+		        });
+
+				$.ajax({
+							url: "{:U('Members/reg_send_sms')}",
+							type: 'POST',
+							dataType: 'json',
+							data: {mobile: $.trim($('#mobile').val()), sms_type: 'getpass'}
+						})
+						.done(function(data) {
+							if (parseInt(data.status)) {
+								disapperTooltip("success", "验证码已发送，请注意查收");
+								// 开始倒计时
+								var countdown = 180;
+								function settime() {
+									if (countdown == 0) {
+										$('#J_getverificode').prop("disabled", 0);
+										$('#J_getverificode').removeClass('btn_disabled');
+										$('#J_getverificode').val('获取验证码');
+										countdown = 180;
+										return;
+									} else {
+										$('#J_getverificode').prop("disabled", !0);
+										$('#J_getverificode').addClass('btn_disabled');
+										$('#J_getverificode').val('重新发送' + countdown + '秒');
+										countdown--;
+									}
+									setTimeout(function() { 
+								    	settime()
+									},1000)
+								}
+								settime();
+							} else {
+								disapperTooltip("remind", data.msg);
+							}
+						});
+			});
+		</script>
+<style>
+.yzm_img{cursor:pointer;}
+</style>
+	</body>
+</html>

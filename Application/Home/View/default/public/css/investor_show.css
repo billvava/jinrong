@@ -1,0 +1,218 @@
+body{
+    background-color: #eeeeee;
+    position: relative;
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix::after {
+    clear: both;
+}
+.fn-clear::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+ins, a {
+    text-decoration: none;
+}
+.directly-news-list a {
+    color: #333;
+}
+fieldset, img {
+    border: 0 none;
+}
+img {
+    border: 0 none;
+}
+.detail-header li {
+    float: left;
+    font-size: 14px;
+    margin-bottom: -600px;
+    min-height: 65px;
+    padding: 45px 30px 600px 90px;
+    width: 250px;
+}
+.detail-header li span {
+    color: #979797;
+    display: block;
+    float: left;
+    font-size: 12px;
+    line-height: 20px;
+    margin-left: -60px;
+    padding-right: 10px;
+    width: 50px;
+}
+.container::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 1000px;
+    width: 1000px;
+}
+.detail-investor section {
+    margin: 0 auto;
+    text-align: center;
+    width: 290px;
+}
+.detial-banner{
+    height:350px;
+    background: url("../images/detail_banner.jpg") center bottom;
+}
+.detail-investor section h3 {
+    color: #444444;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.fn-mt-20 {
+    margin-top: 20px !important;
+}
+.content-left {
+    width: 740px;
+}
+.fn-left {
+    float: left;
+}
+.fn-right {
+    float: right;
+}
+.detail-investor section p img {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+.detail-investor section aside span {
+    margin-left: 20px;
+}
+.detail-investor section article {
+    color: #666666;
+    margin-bottom: 15px;
+}
+.detail-investor section article span {
+    font-size: 14px;
+    margin-right: 20px;
+}
+.detail-investor article span em {
+    color: #f06612;
+    font-size: 24px;
+    line-height: 24px;
+}
+.detail-investor article strong {
+    font-weight: normal;
+}
+
+.detail-investor section .ui-btn {
+    font-size: 18px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    width: 149px;
+}
+.ui-btn-orange {
+    background-color: #f06612 !important;
+}
+.ui-btn {
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 8px;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.ui-btn, .ui-btn-small, .ui-btn-big {
+    color: #fff;
+}
+.fn-mb-20 {
+    margin-bottom: 20px !important;
+}
+.directly-hot-invertor h3 a {
+    color: #333;
+}
+.directly-hot-invertor img {
+    float: left;
+    height: 50px;
+    margin-left: -60px;
+    width: 50px;
+}
+.directly-news-list {
+    border-bottom: 1px dashed #cccccc;
+    line-height: 20px;
+    padding: 15px 10px 15px 25px;
+}
+.fn-text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.detail-header {
+    background: #fff none repeat scroll 0 0;
+}
+.content-right .directly-con-container {
+    padding: 0;
+}
+.directly-hot-invertor {
+    border-bottom: 1px dashed #cccccc;
+    height: 50px;
+    padding: 20px 13px 20px 73px;
+}
+.directly-hot-invertor img {
+    float: left;
+    height: 50px;
+    margin-left: -60px;
+    width: 50px;
+}
+.directly-con-title {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    height: 56px;
+}
+.directly-con-title h2 {
+    border-bottom: 2px solid #e94e38;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    height: 56px;
+    line-height: 56px;
+    padding: 0 30px;
+}
+.directly-con-container {
+    background-color: #fff;
+    line-height: 24px;
+    padding: 20px 30px;
+}
+.content-right {
+    width: 240px;
+}
+.detial-banner {
+    width: 100%;
+}
+.detial-banner #header {
+    background: #fff none repeat scroll 0 0;
+    border-bottom: 1px solid #dedede;
+}
+.detail-investor {
+    background: rgba(0, 0, 0, 0) url("../images/detail_bj.png") repeat scroll 0 0;
+    height: 310px;
+    padding-top: 40px;
+    width: 350px;
+}
