@@ -172,20 +172,34 @@ class MembersController extends FrontendController{
             redirect(build_mobile_url(array('c'=>'Members','a'=>'register')));
         }
         if(IS_POST && IS_AJAX){
+
             $data['reg_type'] = I('post.reg_type',0,'intval');
+
             $array = array(1 => 'mobile');
             if(!$reg = $array[$data['reg_type']]) $this->ajaxReturn(0,'正确选择注册方式！');
             $data['utype'] = I('post.utype',0,'intval');
             if($data['utype'] != 1 && $data['utype'] != 2) $this->ajaxReturn(0,'请正确选择会员类型!');
             if($data['reg_type'] == 1){
                 $data['mobile'] = I('post.mobile',0,'trim');
-                $smsVerify = session('reg_smsVerify');
-                if(!$smsVerify) $this->ajaxReturn(0,'验证码错误！');
-                if($data['mobile'] != $smsVerify['mobile']) $this->ajaxReturn(0,'手机号不一致！',$smsVerify);//手机号不一致
-                if(time()>$smsVerify['time']+60000) $this->ajaxReturn(0,'验证码过期！');//验证码过期
-                $vcode_sms = I('post.mobile_vcode',0,'intval');
-                $mobile_rand=substr(md5($vcode_sms), 8,16);
-                if($mobile_rand!=$smsVerify['code']) $this->ajaxReturn(0,'验证码错误！');//验证码错误！
+               
+               //验证手机验证码
+                $verifycode = I('post.mobile_vcode',0,'trim');
+
+                $result = D('SmsCode') -> verify($data['mobile'],$verifycode,'reg');
+                 // dump($result);exit;
+                if(!$result){
+                    $this->ajaxReturn(0,'验证码错误！');//验证码错误！
+                }
+
+                // $smsVerify = session('reg_smsVerify');
+                // if(!$smsVerify) $this->ajaxReturn(0,'验证码错误！');
+                // if($data['mobile'] != $smsVerify['mobile']) $this->ajaxReturn(0,'手机号不一致！',$smsVerify);//手机号不一致
+                // if(time()>$smsVerify['time']+60000) $this->ajaxReturn(0,'验证码过期！');//验证码过期
+                // $vcode_sms = I('post.mobile_vcode',0,'intval');
+                // $mobile_rand=substr(md5($vcode_sms), 8,16);
+                // if($mobile_rand!=$smsVerify['code']) $this->ajaxReturn(0,'验证码错误！');//验证码错误！
+
+
                 $data['password'] = I('post.password','','trim');
                 $passwordVerify = I('post.passwordVerify','','trim');
             }else{
@@ -200,12 +214,16 @@ class MembersController extends FrontendController{
                 $data['utype']==1 && $data['mobile'] = I('post.telephone','','trim,badword');
                 C('qscms_check_reg_email') && $data['status'] = 0;
             }
+
             $data['password'] = I('post.password','','trim');
             $passwordVerify = I('post.passwordVerify','','trim');
             !$data['password'] && $this->ajaxReturn(0,'请输入密码!');
             $data['password'] != $passwordVerify && $this->ajaxReturn(0,'两次密码输入不一致!');
             $passport = $this->_user_server();
             if(false === $data = $passport->register($data)){
+
+                D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
+
                 if($user = $passport->get_status()) $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('members/reg_email_activate',array('uid'=>$user['uid']))));
                 $this->ajaxReturn(0,$passport->get_error());
             }
@@ -232,6 +250,9 @@ class MembersController extends FrontendController{
             D('Members')->user_register($data);
             $this->_correlation($data);
             $result['url'] = $data['utype']==2 ? U('Home/personal/account') : U('Home/personal/index');
+
+             D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
+
             $this->ajaxReturn(1,'会员注册成功！',$result);
         }else{
             $utype = I('get.utype',0,'intval');
@@ -495,7 +516,7 @@ class MembersController extends FrontendController{
     }
 
     // 注册发送短信/找回密码 短信
-    public function reg_send_sms(){
+    public function reg_send_sms22(){
         /*
         $allow_origin = array(  
             'https://www.7ronghui.com',  
@@ -554,7 +575,7 @@ class MembersController extends FrontendController{
     }
 
     
-    public function regSendSms(){
+    public function reg_send_sms(){
         header('Access-Control-Allow-Origin:*');
         if($uid = I('post.uid',0,'intval')){
             $mobile=M('Members')->where(array('uid'=>$uid))->getfield('mobile');

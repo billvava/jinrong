@@ -226,13 +226,23 @@ class MembersController extends MobileController{
             if($data['utype'] != 1 && $data['utype'] != 2) $this->ajaxReturn(0,'请正确选择会员类型!');
             if($data['reg_type'] == 1){
                 $data['mobile'] = I('post.mobile',0,'trim');
-                $smsVerify = session('reg_smsVerify');
-                if(!$smsVerify) $this->ajaxReturn(0,'验证码错误！');
-                if($data['mobile'] != $smsVerify['mobile']) $this->ajaxReturn(0,'手机号不一致！',$smsVerify);//手机号不一致
-                if(time()>$smsVerify['time']+600) $this->ajaxReturn(0,'验证码过期！');//验证码过期
-                $vcode_sms = I('post.mobile_vcode',0,'intval');
-                $mobile_rand=substr(md5($vcode_sms), 8,16);
-                if($mobile_rand!=$smsVerify['code']) $this->ajaxReturn(0,'验证码错误！');//验证码错误！
+                    
+                //验证手机验证码
+                $verifycode = I('post.mobile_vcode',0,'trim');
+
+                $result = D('SmsCode') -> verify($data['mobile'],$verifycode,'reg');
+                 // dump($result);exit;
+                if(!$result){
+                    $this->ajaxReturn(0,'验证码错误！');//验证码错误！
+                }
+                // $smsVerify = session('reg_smsVerify');
+                // if(!$smsVerify) $this->ajaxReturn(0,'验证码错误！');
+                // if($data['mobile'] != $smsVerify['mobile']) $this->ajaxReturn(0,'手机号不一致！',$smsVerify);//手机号不一致
+                // if(time()>$smsVerify['time']+600) $this->ajaxReturn(0,'验证码过期！');//验证码过期
+                // $vcode_sms = I('post.mobile_vcode',0,'intval');
+                // $mobile_rand=substr(md5($vcode_sms), 8,16);
+                // if($mobile_rand!=$smsVerify['code']) $this->ajaxReturn(0,'验证码错误！');//验证码错误！
+
                 $data['password'] = I('post.password','','trim');
                 $passwordVerify = I('post.passwordVerify','','trim');
             }else{
@@ -255,6 +265,9 @@ class MembersController extends MobileController{
             }
             $passport = $this->_user_server();
             if(false === $data = $passport->register($data)){
+
+                D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
+                
                 if($user = $passport->get_status()) $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('members/reg_email_activate',array('uid'=>$user['uid']))));
                 $this->ajaxReturn(0,$passport->get_error());
             }

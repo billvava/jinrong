@@ -15150,3 +15150,239 @@ NOTIC: [8] Undefined variable: menuList D:\www\jinrong\Application\Common\Model\
 NOTIC: [8] Undefined variable: menuList D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 75 行.
 NOTIC: [8] Undefined index: menu D:\www\jinrong\Application\Common\Controller\BackendController.class.php 第 21 行.
 
+[ 2020-02-19T22:45:26+08:00 ] 127.0.0.1 /index.php?m=Admin&c=index&a=panel
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000416s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000551s ]
+INFO: Run Common\Behavior\CheckIpbanBehavior [ RunTime:0.001293s ]
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] array_merge(): Argument #4 is not an array D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 93 行.
+INFO: Run Common\Behavior\CheckLangBehavior [ RunTime:0.002490s ]
+INFO: Run Common\Behavior\IsMobileBehavior [ RunTime:0.000829s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005273s ]
+NOTIC: [8] Undefined index: Subsite D:\www\jinrong\Application\Common\Controller\BaseController.class.php 第 32 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::_before_write() should be compatible with Think\Model::_before_write(&$data) D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 4 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::_after_insert() should be compatible with Think\Model::_after_insert($data, $options) D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 4 行.
+NOTIC: [8192] mysql_get_server_info(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\www\jinrong\Application\Admin\Controller\IndexController.class.php 第 51 行.
+NOTIC: [2] mysql_get_server_info(): Access denied for user ''@'localhost' (using password: NO) D:\www\jinrong\Application\Admin\Controller\IndexController.class.php 第 51 行.
+NOTIC: [2] mysql_get_server_info(): A link to the server could not be established D:\www\jinrong\Application\Admin\Controller\IndexController.class.php 第 51 行.
+NOTIC: [8] Use of undefined constant STATISTICS_PATH - assumed 'STATISTICS_PATH' D:\www\jinrong\Application\Admin\Controller\IndexController.class.php 第 54 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000050s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000082s ]
+NOTIC: [8] Undefined variable: sub_menu D:\www\jinrong\data\Runtime\Cache\Admin\4e3e0ecad70a1f05047369c61b7a1091.php 第 27 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009914s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009964s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000487s ]
+INFO: Run Common\Behavior\ContentReplaceBehavior [ RunTime:0.000578s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001108s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000572s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000600s ]
+
+[ 2020-02-19T22:45:26+08:00 ] 127.0.0.1 /index.php?m=Admin&c=index&a=total
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001492s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000452s ]
+INFO: Run Common\Behavior\CheckIpbanBehavior [ RunTime:0.000742s ]
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] array_merge(): Argument #4 is not an array D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 93 行.
+INFO: Run Common\Behavior\CheckLangBehavior [ RunTime:0.001573s ]
+INFO: Run Common\Behavior\IsMobileBehavior [ RunTime:0.000600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003457s ]
+NOTIC: [8] Undefined index: Subsite D:\www\jinrong\Application\Common\Controller\BaseController.class.php 第 32 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::_before_write() should be compatible with Think\Model::_before_write(&$data) D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 4 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::_after_insert() should be compatible with Think\Model::_after_insert($data, $options) D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 4 行.
+
+[ 2020-02-19T22:45:27+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Index&a=left_menu&menuid=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000354s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000444s ]
+INFO: Run Common\Behavior\CheckIpbanBehavior [ RunTime:0.000727s ]
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] array_merge(): Argument #4 is not an array D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 93 行.
+INFO: Run Common\Behavior\CheckLangBehavior [ RunTime:0.001577s ]
+INFO: Run Common\Behavior\IsMobileBehavior [ RunTime:0.000452s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003288s ]
+NOTIC: [8] Undefined index: Subsite D:\www\jinrong\Application\Common\Controller\BaseController.class.php 第 32 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::_before_write() should be compatible with Think\Model::_before_write(&$data) D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 4 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::_after_insert() should be compatible with Think\Model::_after_insert($data, $options) D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 4 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000026s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000067s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006426s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006461s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000424s ]
+INFO: Run Common\Behavior\ContentReplaceBehavior [ RunTime:0.000527s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000988s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000534s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000558s ]
+
+[ 2020-02-19T22:45:27+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Ajax&a=get_news_custorm
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000402s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000417s ]
+INFO: Run Common\Behavior\CheckIpbanBehavior [ RunTime:0.000685s ]
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] array_merge(): Argument #4 is not an array D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 93 行.
+INFO: Run Common\Behavior\CheckLangBehavior [ RunTime:0.001550s ]
+INFO: Run Common\Behavior\IsMobileBehavior [ RunTime:0.000463s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003186s ]
+NOTIC: [8] Undefined index: Subsite D:\www\jinrong\Application\Common\Controller\BaseController.class.php 第 32 行.
+NOTIC: [8] Undefined index: _k_v D:\www\jinrong\Application\Common\Controller\BackendController.class.php 第 346 行.
+NOTIC: [8] Undefined index: menu D:\www\jinrong\Application\Common\Controller\BackendController.class.php 第 21 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000647s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000679s ]
+
+[ 2020-02-19T22:45:28+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Index&a=left_menu&menuid=727
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000378s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000407s ]
+INFO: Run Common\Behavior\CheckIpbanBehavior [ RunTime:0.000849s ]
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] array_merge(): Argument #4 is not an array D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 93 行.
+INFO: Run Common\Behavior\CheckLangBehavior [ RunTime:0.001584s ]
+INFO: Run Common\Behavior\IsMobileBehavior [ RunTime:0.000523s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003469s ]
+NOTIC: [8] Undefined index: Subsite D:\www\jinrong\Application\Common\Controller\BaseController.class.php 第 32 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::_before_write() should be compatible with Think\Model::_before_write(&$data) D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 4 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::_after_insert() should be compatible with Think\Model::_after_insert($data, $options) D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 4 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000025s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000052s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006814s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006851s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000597s ]
+INFO: Run Common\Behavior\ContentReplaceBehavior [ RunTime:0.000904s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001587s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000900s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000932s ]
+
+[ 2020-02-19T22:45:28+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Ajax&a=get_news_custorm
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000353s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000452s ]
+INFO: Run Common\Behavior\CheckIpbanBehavior [ RunTime:0.000779s ]
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] array_merge(): Argument #4 is not an array D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 93 行.
+INFO: Run Common\Behavior\CheckLangBehavior [ RunTime:0.001595s ]
+INFO: Run Common\Behavior\IsMobileBehavior [ RunTime:0.000482s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003382s ]
+NOTIC: [8] Undefined index: Subsite D:\www\jinrong\Application\Common\Controller\BaseController.class.php 第 32 行.
+NOTIC: [8] Undefined index: _k_v D:\www\jinrong\Application\Common\Controller\BackendController.class.php 第 346 行.
+NOTIC: [8] Undefined index: menu D:\www\jinrong\Application\Common\Controller\BackendController.class.php 第 21 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000891s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000927s ]
+
+[ 2020-02-19T22:45:29+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Personal&a=member_list&menuid=727&child=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000386s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000426s ]
+INFO: Run Common\Behavior\CheckIpbanBehavior [ RunTime:0.000776s ]
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] array_merge(): Argument #4 is not an array D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 93 行.
+INFO: Run Common\Behavior\CheckLangBehavior [ RunTime:0.001590s ]
+INFO: Run Common\Behavior\IsMobileBehavior [ RunTime:0.000484s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003354s ]
+NOTIC: [8] Undefined index: Subsite D:\www\jinrong\Application\Common\Controller\BaseController.class.php 第 32 行.
+
+[ 2020-02-19T22:45:29+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Personal&a=member_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000358s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000432s ]
+INFO: Run Common\Behavior\CheckIpbanBehavior [ RunTime:0.000720s ]
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(./Application/Admin/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] include(): Failed opening './Application/Admin/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] array_merge(): Argument #4 is not an array D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 93 行.
+INFO: Run Common\Behavior\CheckLangBehavior [ RunTime:0.001439s ]
+INFO: Run Common\Behavior\IsMobileBehavior [ RunTime:0.000476s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003140s ]
+NOTIC: [8] Undefined index: Subsite D:\www\jinrong\Application\Common\Controller\BaseController.class.php 第 32 行.
+NOTIC: [8] Undefined index: _k_v D:\www\jinrong\Application\Common\Controller\BackendController.class.php 第 346 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::_before_write() should be compatible with Think\Model::_before_write(&$data) D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 4 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::_after_insert() should be compatible with Think\Model::_after_insert($data, $options) D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 4 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 67 行.
+NOTIC: [8] Undefined variable: menuList D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 74 行.
+NOTIC: [8] Undefined variable: menuList D:\www\jinrong\Application\Common\Model\MenuModel.class.php 第 75 行.
+NOTIC: [8] Undefined index: menu D:\www\jinrong\Application\Common\Controller\BackendController.class.php 第 21 行.
+NOTIC: [8] Undefined variable: where D:\www\jinrong\Application\Admin\Controller\PersonalController.class.php 第 134 行.
+NOTIC: [8] Undefined index: Subsite D:\www\jinrong\Application\Common\Controller\BackendController.class.php 第 208 行.
+NOTIC: [2] Missing argument 8 for Common\Controller\BackendController::_list(), called in D:\www\jinrong\Application\Common\Controller\BackendController.class.php on line 50 and defined D:\www\jinrong\Application\Common\Controller\BackendController.class.php 第 231 行.
+NOTIC: [8] Undefined index: key D:\www\jinrong\Application\Common\ORG\Page.class.php 第 178 行.
+NOTIC: [8] Undefined variable: custom_fun D:\www\jinrong\Application\Common\Controller\BackendController.class.php 第 299 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000104s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000146s ]
+NOTIC: [8] Undefined index: verification D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 40 行.
+NOTIC: [8] Undefined index: verification D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 41 行.
+NOTIC: [8] Undefined index: verification D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 42 行.
+NOTIC: [8] Undefined index: settr D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 51 行.
+NOTIC: [8] Undefined index: settr D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 52 行.
+NOTIC: [8] Undefined index: settr D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 53 行.
+NOTIC: [8] Undefined index: settr D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 54 行.
+NOTIC: [8] Undefined index: settr D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 55 行.
+NOTIC: [8] Undefined index: settr D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 56 行.
+NOTIC: [8] Undefined index: utype D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 65 行.
+NOTIC: [8] Undefined index: utype D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 66 行.
+NOTIC: [8] Undefined index: utype D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 67 行.
+NOTIC: [8] Undefined index: key D:\www\jinrong\data\Runtime\Cache\Admin\a9749732400b61598203ac8c8e7264da.php 第 139 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012313s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012339s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000372s ]
+INFO: Run Common\Behavior\ContentReplaceBehavior [ RunTime:0.000570s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000980s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000533s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000557s ]
+

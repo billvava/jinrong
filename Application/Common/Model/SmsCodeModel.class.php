@@ -68,14 +68,15 @@ class SmsCodeModel extends Model{
 		$map['state'] = 0;
 		// $map['time']  = array('EGT',$start_time);
 		// $map['time']  = array('ELT',$end_time);
-		$map['time']  = array('between',$start_time,$end_time);
+		$map['time']  = array('between',array($start_time,$end_time));
 		$log = $this -> where($map) -> order('time desc') -> find();
-		if(!$log || $log['time'] < time() - $this -> deadline || $log['code'] != $code){
 		
+		if(!$log || $log['time'] < time() - $this -> deadline || $log['code'] != $code){
+			
 			return false;
 		}
-
-		$this -> where($map) -> order('time desc') -> update(['state'=>'1']);
+		
+		// $this -> where($map) -> order('time desc') -> update(['state'=>'1']);
 
 		return true;
 	}
@@ -109,7 +110,7 @@ class SmsCodeModel extends Model{
 		$ip_count_map['ip'] = array('eq',$ip);
 		
 		// $ip_count_map['time']  = array('EGT',$start_time);
-		$ip_count_map['time']  = array('between',$start_time,$end_time);
+		$ip_count_map['time']  = array('between',array($start_time,$end_time));
 
 		$ip_count = $this -> where($ip_count_map) -> count();
 
