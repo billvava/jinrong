@@ -150,20 +150,20 @@ class MembersController extends MobileController{
         switch ($sms_type) {
             case 'reg':
                 $sendSms['tpl']='set_register';
-                $sendSms['data']=array('code'=>$rand.'');
+                $sendSms['code']= $rand;
                 break;
             case 'gsou_reg':
                 $sendSms['tpl']='set_register';
-                $sendSms['data']=array('code'=>$rand.'');
+                $sendSms['code']= $rand;
                 break;
             case 'getpass':
                 $sendSms['tpl']='set_retrieve_password';
-                $sendSms['data']=array('code'=>$rand.'');
+                $sendSms['code']= $rand;
                 break;
             case 'login':
                 if(!$uid=M('Members')->where(array('mobile'=>$mobile))->getfield('uid')) $this->ajaxReturn(0,'您输入的手机号未注册会员');
                 $sendSms['tpl']='set_login';
-                $sendSms['data']=array('code'=>$rand.'');
+                $sendSms['code']= $rand;
                 break;
         }
         $smsVerify = session($sms_type.'_smsVerify');
@@ -171,6 +171,18 @@ class MembersController extends MobileController{
         $sendSms['mobile']=$mobile;
         if(true === $reg = D('Sms')->sendSms('captcha',$sendSms)){
             session($sms_type.'_smsVerify',array('code'=>substr(md5($rand), 8,16),'time'=>time(),'mobile'=>$mobile));
+
+            $sms_data['phone'] = $mobile;
+            $sms_data['state'] = 0;
+            $sms_data['type'] = $sms_type;
+            $sms_data['code'] = $rand;
+
+            $sms_data['time'] = time();
+            $sms_data['ip'] =  $_SERVER['REMOTE_ADDR'];
+            $sms_data['app_status'] = 'development';
+
+            $res = D('SmsCode') -> data($sms_data) -> add();
+
             $this->ajaxReturn(1,'手机验证码发送成功！');
         }else{
             $this->ajaxReturn(0,$reg);
@@ -248,7 +260,7 @@ class MembersController extends MobileController{
             }else{
                 $data['password'] = I('post.emailpassword','','trim');
                 $passwordVerify = I('post.emailpasswordVerify','','trim');
-                $data['username'] = I('post.username','','trim,badword');
+                // $data['username'] = I('post.username','','trim,badword');
                 $data['email'] = I('post.email','','trim,badword');
                 $data['utype']==1 && $data['mobile'] = I('post.telephone','','trim,badword');
                 C('qscms_check_reg_email') && $data['status'] = 0;
@@ -268,7 +280,7 @@ class MembersController extends MobileController{
 
                 D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
                 
-                if($user = $passport->get_status()) $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('members/reg_email_activate',array('uid'=>$user['uid']))));
+                if($user = $passport->get_status()) $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('/')));
                 $this->ajaxReturn(0,$passport->get_error());
             }
             // 添加企业信息

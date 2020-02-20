@@ -1,1 +1,0 @@
-<?php	return array ( 1 => '关于我们', ); ?>

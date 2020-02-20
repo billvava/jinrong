@@ -1,1 +1,5 @@
 /Application/Common/Conf/db.php
+/data/Runtime/Cache
+/data/Runtime/Data
+/data/Runtime/Logs
+/data/Runtime/Temp

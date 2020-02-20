@@ -12,15 +12,15 @@ class MembersModel extends RelationModel{
     );
 
 	protected $_validate = array(
-		array('username,email,password,qq_openid,sina_access_token,taobao_access_token,qq_nick,sina_nick,taobao_nick,weixin_nick,qq_binding_time,sina_binding_time,taobao_binding_time,avatars,consultant,weixin_openid,bindingtime,remind_email_time,imei','identicalNull','',0,'callback'),
-		array('username','_username_length','{%members_format_error_username}',0,'callback'),
+		array(',email,password,qq_openid,sina_access_token,taobao_access_token,qq_nick,sina_nick,taobao_nick,weixin_nick,qq_binding_time,sina_binding_time,taobao_binding_time,avatars,consultant,weixin_openid,bindingtime,remind_email_time,imei','identicalNull','',0,'callback'),
+		// array('username','_username_length','{%members_format_error_username}',0,'callback'),
 		array('password','3,18','{%members_format_error_password}',2,'length'),
 		array('mobile','mobile','{%members_format_error_mobile}',2),
 		array('email','email','{%members_format_error_email}',2),
 		array('repassword','password','{%members_format_error_repassword}',0,'confirm'),
 		array('mobile','','{%members_unique_error_mobile}',2,'unique'),
 		array('email','','{%members_unique_error_email}',2,'unique'), 
-		array('username','','{%members_unique_error_username}',0,'unique'),
+		// array('username','','{%members_unique_error_username}',0,'unique'),
 	);
 	protected $_auto = array (
 		array('pwd_hash','randstr',1,'callback'),

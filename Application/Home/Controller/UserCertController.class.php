@@ -16,13 +16,19 @@ class UserCertController extends FrontendController{
 		$list = M('Attest') -> where(['type' => $type]) -> order('id asc') -> select();
 		$user_auth_list = array();
 		$user_auth_list = M('UserAuth') -> where(['uid' => $uid]) -> field('type,status,attest_id') -> order('id asc') -> select();
+
 		foreach ($list as $key => $value) {
-			foreach ($user_auth_list as $k => $v) {
-				$list[$key]['status'] = isset($list[$key]['status']) ? $list[$key]['status']: -1;
-				if($value['id'] == $v['attest_id']){
-					$list[$key]['status'] = $v['status'];
+			if(!empty($user_auth_list)){
+				foreach ($user_auth_list as $k => $v) {
+					$list[$key]['status'] = isset($list[$key]['status']) ? $list[$key]['status']: -1;
+					if($value['id'] == $v['attest_id']){
+						$list[$key]['status'] = $v['status'];
+					}
 				}
+			}else{
+				$list[$key]['status'] = -1;
 			}
+			
 		}
 	
 		$this->assign('list',$list);

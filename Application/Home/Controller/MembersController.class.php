@@ -182,7 +182,7 @@ class MembersController extends FrontendController{
             if($data['reg_type'] == 1){
                 $data['mobile'] = I('post.mobile',0,'trim');
                
-               //验证手机验证码
+               // 验证手机验证码
                 $verifycode = I('post.mobile_vcode',0,'trim');
 
                 $result = D('SmsCode') -> verify($data['mobile'],$verifycode,'reg');
@@ -192,7 +192,8 @@ class MembersController extends FrontendController{
                 }
 
                 // $smsVerify = session('reg_smsVerify');
-                // if(!$smsVerify) $this->ajaxReturn(0,'验证码错误！');
+                // if(!$smsVerify) $this->ajaxReturn(0,'验证码错误1！');
+
                 // if($data['mobile'] != $smsVerify['mobile']) $this->ajaxReturn(0,'手机号不一致！',$smsVerify);//手机号不一致
                 // if(time()>$smsVerify['time']+60000) $this->ajaxReturn(0,'验证码过期！');//验证码过期
                 // $vcode_sms = I('post.mobile_vcode',0,'intval');
@@ -210,7 +211,7 @@ class MembersController extends FrontendController{
                     $data['password'] = I('post.emailpassword','','trim');
                     $passwordVerify = I('post.emailpasswordVerify','','trim');
                 }
-                $data['username'] = I('post.username','','trim,badword');
+                // $data['username'] = I('post.username','','trim,badword');
                 $data['utype']==1 && $data['mobile'] = I('post.telephone','','trim,badword');
                 C('qscms_check_reg_email') && $data['status'] = 0;
             }
@@ -224,7 +225,7 @@ class MembersController extends FrontendController{
 
                 D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
 
-                if($user = $passport->get_status()) $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('members/reg_email_activate',array('uid'=>$user['uid']))));
+                if($user = $passport->get_status()) $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('/')));
                 $this->ajaxReturn(0,$passport->get_error());
             }
             //如果是推荐注册，赠送积分
@@ -311,8 +312,7 @@ class MembersController extends FrontendController{
                 }
             }
             if($result){
-                echo 333;
-                exit;
+                
                 //R('Home/Email/email_send',[$result]);
                 $user = M('Members')->where(['mobile'=>$data['mobile']])->find();
                 $uid = $user['uid'];
@@ -333,20 +333,25 @@ class MembersController extends FrontendController{
                 $data['following'] = serialize(explode('-',$utm_source));
             }
             $log = M('Members')->where(['mobile'=>$data['mobile']])->find();
-            if(!$log){
-                if($data['mobile']){
-                    $data['username'] = '7rh_'.$data['mobile'];
-                    $data['mobile_audit'] = 1;
-                    $pwd_hash = D('Members')->randstr();
-                    $password= I('post.yzm',0,'intval');
-                    $data['password'] = D('Members')->make_md5_pwd($password,$pwd_hash);
-                    $data['pwd_hash'] = $pwd_hash;
-                    $data['mobile_audit']=1;
-                    $data['reg_time'] = time();
-                    $data['status']=1;
-                }
-                $result = M('Members')->add($data);
+            if(M('Members')->where(['mobile'=>$data['mobile']])-> count()){
+                $this->ajaxReturn(0,'该号码已注册！');
             }
+            
+            if($data['mobile']){
+                $data['username'] = '7rh_'.$data['mobile'];
+                $data['mobile_audit'] = 1;
+                $pwd_hash = D('Members')->randstr();
+                $password= I('post.yzm',0,'intval');
+                $data['password'] = D('Members')->make_md5_pwd($password,$pwd_hash);
+                $data['pwd_hash'] = $pwd_hash;
+                $data['mobile_audit']=1;
+                $data['reg_time'] = time();
+                $data['status']=1;
+            }
+            
+            $result = M('Members')->add($data);
+            
+            //dump($data);exit;
             if($result){
                 R('Home/Email/email_send',[$result]);
                 $user = M('Members')->where(array('mobile'=>$data['mobile']))->find();
@@ -516,7 +521,7 @@ class MembersController extends FrontendController{
     }
 
     // 注册发送短信/找回密码 短信
-    public function reg_send_sms22(){
+    public function reg_send_sms(){
         /*
         $allow_origin = array(  
             'https://www.7ronghui.com',  
@@ -537,37 +542,50 @@ class MembersController extends FrontendController{
         $sms_type = I('post.sms_type','reg','trim');
         $rand=mt_rand(100000, 999999);
         $img_yzm = I('post.img_yzm','','trim');
-        // //if($img_yzm){
-        //     if (!R('index/check_verify',['code'=>$img_yzm,'id'=>'','type'=>'ceshi'])){
-        //     $this->ajaxReturn(0,'图片验证码错误！');
-        //         return;
-        //     }
-        // //}
+        if(!empty($img_yzm)){
+            if (!R('index/check_verify',['code'=>$img_yzm,'id'=>'','type'=>'ceshi'])){
+            $this->ajaxReturn(0,'图片验证码错误！');
+                return;
+            }
+        }
         switch ($sms_type) {
             case 'reg':
                 $sendSms['tpl']='set_register';
-                $sendSms['data']=array('code'=>$rand.'');
+                $sendSms['code']= $rand;
                 break;
             case 'gsou_reg':
                 $sendSms['tpl']='set_register';
-                $sendSms['data']=array('code'=>$rand.'');
+               $sendSms['code']= $rand;
                 break;
             case 'getpass':
                 $sendSms['tpl']='set_retrieve_password';
-                $sendSms['data']=array('code'=>$rand.'');
+                $sendSms['code']= $rand;
                 break;
             case 'login':
                 if(!$uid=M('Members')->where(array('mobile'=>$mobile))->getfield('uid')) $this->ajaxReturn(0,'您输入的手机号未注册会员');
                 $sendSms['tpl']='set_login';
-                $sendSms['data']=array('code'=>$rand.'');
+                $sendSms['code']= $rand;
                 break;
         }
         $smsVerify = session($sms_type.'_smsVerify');
         if($smsVerify && $smsVerify['mobile']==$mobile && time()<$smsVerify['time']+600) $this->ajaxReturn(0,'10分钟内仅能获取一次短信验证码,请稍后重试');
         $sendSms['mobile']=$mobile;
+
         //F('sendSms',$sendSms);
         if(true === $reg = D('Sms')->sendSms('captcha',$sendSms)){
             session($sms_type.'_smsVerify',array('code'=>substr(md5($rand), 8,16),'time'=>time(),'mobile'=>$mobile));
+
+            $sms_data['phone'] = $mobile;
+            $sms_data['state'] = 0;
+            $sms_data['type'] = $sms_type;
+            $sms_data['code'] = $rand;
+
+            $sms_data['time'] = time();
+            $sms_data['ip'] =  $_SERVER['REMOTE_ADDR'];
+            $sms_data['app_status'] = 'development';
+
+            $res = D('SmsCode') -> data($sms_data) -> add();
+
             $this->ajaxReturn(1,'手机验证码发送成功！');
         }else{
             $this->ajaxReturn(0,$reg);
@@ -575,7 +593,7 @@ class MembersController extends FrontendController{
     }
 
     
-    public function reg_send_sms(){
+    public function regSendSms(){
         header('Access-Control-Allow-Origin:*');
         if($uid = I('post.uid',0,'intval')){
             $mobile=M('Members')->where(array('uid'=>$uid))->getfield('mobile');

@@ -18,6 +18,7 @@ class sms
 		}
 		$this->_setting = unserialize($sms_list[$this->_type]['config']);
         $dd = include_once QSCMSLIB_PATH . "sms/{$this->_type}/{$this->_type}.class.php";
+        // print_r(QSCMSLIB_PATH);exit;
         $class = $this->_type . '_sms';
         $this->_sms = new $class($this->_setting);
     }

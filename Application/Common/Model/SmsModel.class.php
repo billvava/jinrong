@@ -55,6 +55,7 @@ class SmsModel extends Model{
 		if(!C('qscms_sms_open')) return L('sms_open_error');
 		$service = C('qscms_sms_'.$type.'_service');
 		$sms = new \Common\qscmslib\sms($service);
+		
 		if($option['tpl']){
 			if(false === $sms_list = F('sms_list')){
 				$sms_list = D('Sms')->sms_cache();
@@ -69,6 +70,7 @@ class SmsModel extends Model{
 			$tpl = $option['tplStr'];
 		}
 		$data = array('mobile'=>$option['mobile'],'tpl_value'=>$tpl_value,'tplId'=>$tplId,'data'=>$option['data']);
+		
 		if(false === $sms->sendTemplateSMS($type,$data)){
 			return  $sms->getError();
 		}
@@ -94,6 +96,7 @@ class SmsModel extends Model{
 			$tpl = $option['tplStr'];
 		}
 		$data = array('mobile'=>$option['mobile'],'tpl_value'=>$tpl_value,'tplId'=>$tplId,'data'=>$option['data']);
+
 		if(false === $sms->sendTemplateSMS2($type,$data)){
 			return  $sms->getError();
 		}

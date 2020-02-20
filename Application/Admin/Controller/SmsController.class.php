@@ -39,6 +39,7 @@ class SmsController extends ConfigbaseController{
     	if(IS_POST){
     		$mobile = I('post.mobile','','trim');
     		$type = I('post.type','captcha','trim');
+            // dump($this->_mod);exit;
     		if(!fieldRegex($mobile,'mobile')) $err = '手机号不合法！';
     		if(!$err){
     			if(true !== $reg = $this->_mod->sendSms($type,array('mobile'=>$mobile,'tpl'=>'set_testing'))){

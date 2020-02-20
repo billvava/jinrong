@@ -1,1 +1,0 @@
-<?php	return array ( 'juhe' => array ( 'alias' => 'juhe', 'id' => '1', 'name' => '聚合数据', 'filing' => '0', 'config' => '', ), ); ?>

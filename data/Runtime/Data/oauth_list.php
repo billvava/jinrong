@@ -1,1 +1,0 @@
-<?php	return array ( 'qq' => array ( 'alias' => 'qq', 'name' => '腾讯QQ', 'config' => 'a:2:{s:6:"app_id";s:10:"1106028601";s:7:"app_key";s:16:"gGKvaBKyK5khBW55";}', ), 'weixin' => array ( 'alias' => 'weixin', 'name' => '微信', 'config' => 'N;', ), ); ?>
