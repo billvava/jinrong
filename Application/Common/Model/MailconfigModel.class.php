@@ -37,6 +37,7 @@ class MailconfigModel extends Model{
     */
     public function send_mail($data,$replac=array()){
         $Email = new \Common\qscmslib\email();
+        
         if(!$data['send_type']) {
             if(false === $Email->smtp_mail($data['sendto_email'],$data['subject'],$data['body'])) return $Email->getError();
             return true;

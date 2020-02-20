@@ -12,13 +12,16 @@ class email
     public function __construct($name) {
         if(false === $this->mailconfig = F('mailconfig')) $this->mailconfig = D('Mailconfig')->get_cache();
     }
-    public function smtp_mail($sendto_email,$subject,$body,$From='',$FromName=''){  
+    public function smtp_mail($sendto_email,$subject,$body,$From='',$FromName=''){ 
+
         if($this->mailconfig['method'] == 1 && !$this->mailconfig['smtpservers']){
             $this->_error = '请配置邮箱参数！';
             return false;
         } 
         Vendor('PHPMailer.class#phpmailer');
         $mail = new \PHPMailer();
+
+        $mail->SMTPDebug = 1;
         $this->mailconfig['smtpservers']=explode('|-_-|',$this->mailconfig['smtpservers']);
         $this->mailconfig['smtpusername']=explode('|-_-|',$this->mailconfig['smtpusername']);
         $this->mailconfig['smtppassword']=explode('|-_-|',$this->mailconfig['smtppassword']);
@@ -48,12 +51,15 @@ class email
         $mail->Host = $this->mailconfig['smtpservers'];
         $mail->SMTPDebug= 0; 
         $mail->SMTPAuth = true;
+        // $mail->SMTPSecure = 'ssl';
         $mail->Username = $this->mailconfig['smtpusername']; 
         $mail->Password = $this->mailconfig['smtppassword']; 
         $mail->Port =$this->mailconfig['smtpport'];
         $mail->From =$this->mailconfig['smtpfrom']; 
         $mail->FromName =$FromName;
+         // dump($mail->Password);exit;
         }
+
         elseif($this->mailconfig['method']=="2")
         {
         $mail->IsSendmail();
@@ -70,7 +76,9 @@ class email
         $mail->Subject = $subject;
         $mail->Body = htmlspecialchars_decode($body);
         $mail->AltBody ="text/html";
-        if($mail->Send())
+        $result = $mail->Send();
+        // dump($mail);exit;
+        if($result)
         {
 
             setLog(array('_t'=>'sys_email_log','send_from'=>$this->mailconfig['smtpusername'],'send_to'=>$sendto_email,'subject'=>$subject,'body'=>addslashes($body),'state'=>1));
@@ -79,6 +87,7 @@ class email
         }
         else
         {
+            echo $mail->ErrorInfo;exit;
             setLog(array('_t'=>'syslog','l_type'=>2,'l_type_name'=>'MAIL','l_str'=>$mail->ErrorInfo));
             setLog(array('_t'=>'sys_email_log','send_from'=>$this->mailconfig['smtpusername'],'send_to'=>$sendto_email,'subject'=>$subject,'body'=>addslashes($body),'state'=>2));
             //$this->_error = $mail->ErrorInfo;
