@@ -1,0 +1,171 @@
+<include file="public:header" />
+<style>
+  #vtip img{width: 180px;}
+</style>
+  <div class="seltpye_x">
+    <div class="right">
+      <a href="{:P(array('status'=>''))}" <if condition="$Think.get.status eq ''">class="select"</if>>不限</a>
+      <a href="{:P(array('status'=>'1'))}" <if condition="$Think.get.status eq '1'">class="select"</if>>已审核</a>
+      <a href="{:P(array('status'=>'0'))}" <if condition="$Think.get.status eq '0'">class="select"</if>>未审核</a>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+
+  <form id="form1" name="form1" method="post" action="">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
+      <tr>
+        <td class="admin_list_tit admin_list_first" >
+          <label id="chkAll"><input type="checkbox" name=" " title="全选/反选" id="chk"/>姓名</label></td>
+          <td   class="admin_list_tit">email</td>
+          <td align="center"   class="admin_list_tit">认证类型</td>
+          <td    align="center"   class="admin_list_tit">单位名称</td>
+          <td    align="center"   class="admin_list_tit">授权人姓名</td>
+          <td   align="center"   class="admin_list_tit">身份证号码</td>
+
+          <td   align="center"   class="admin_list_tit">真实姓名</td>
+          <td   align="center"   class="admin_list_tit">营业执照编号</td>
+          <td   align="center"   class="admin_list_tit">法人</td>
+          <td   align="center"   class="admin_list_tit">开户行</td>
+          <td   align="center"   class="admin_list_tit">银行卡账号</td>
+          
+          <td   align="center"   class="admin_list_tit">是否通过</td>
+          <td  align="center"  class="admin_list_tit" >操作</td>
+        </tr>
+        <volist name="list" id="vo">
+        <tr>
+          <td align="center" class="admin_list">
+            {$vo['username']}
+          </td>
+          <td align="center" class="admin_list">
+            {$vo['email']}
+          </td>
+          <td align="center" class="admin_list">
+            {$vo['name']}
+          </td>
+          <td align="center" class="admin_list">
+            {$vo['company']}
+          </td>
+          <td align="center" class="admin_list"">
+            {$vo['empower_name']}
+          </td>
+          <td align="center" class="admin_list">
+            {$vo['id_card']}
+          </td>
+          <td align="center" class="admin_list">
+            {$vo['real_name']}
+          </td>
+          <td align="center" class="admin_list">
+            {$vo['business_license_no']}
+          </td>
+
+          <td align="center" class="admin_list">
+            {$vo['corporation']}
+          </td>
+          <td align="center" class="admin_list">
+            {$vo['opening_bank']}
+          </td>
+          <td align="center" class="admin_list">
+            {$vo['bank_card']}
+          </td>
+
+          <td align="center" class="admin_list">
+            <if condition="$vo['status'] eq 1">
+              <span style="color:blue">已通过</span>
+            <else/>
+             <span style="color:red">未审核</span>
+            </if>
+          </td>
+            <td align="center" class="admin_list">
+              <if condition="$vo['status'] eq 1">
+                无操作
+              <else/>
+              <a href="{:U('status_edit',array('id'=>$vo['id']))}">通过</a>
+              <a href="{:U('delete_data',array('id'=>$vo['id']))}">不通过</a>
+              &nbsp;
+            </if>
+              
+            
+            </td>
+          </tr>
+          </volist>
+        </table>
+        <span id="DelSel"></span>
+       <span id="OpPhotoresume"></span>
+      </form>
+      <if condition="!$list">
+      <div class="admin_list_no_info">没有任何信息！</div>
+      </if>
+   
+      <div class="qspage">{$page}</div>
+      
+    </div>
+    <include file="public:footer" />
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+  $(".ajax_send_sms").QSdialog({
+    DialogTitle:"发送短信",
+    DialogContentType:"url",
+    DialogContent:"{:U('Ajax/ajax_send_sms')}&"
+    });
+  $(".ajax_send_email").QSdialog({
+    DialogTitle:"发送邮件",
+    DialogContentType:"url",
+    DialogContent:"{:U('Ajax/ajax_send_email')}&"
+    });
+  showmenu("#key_type_cn","#sehmenu","#key_type");
+$("#ButDel").QSdialog({
+DialogAddObj:"#DelSel",
+DialogTitle:"请选择",
+DialogContent:"#GetDelInfo",
+DialogContentType:"id",
+DialogWidth:"500"
+});
+ $(".userinfo").QSdialog({
+  DialogTitle:"管理",
+  DialogContentType:"url",
+  DialogContent:"{:U('ajax/userinfo')}&"
+  });
+ $(".login_log").QSdialog({
+  DialogTitle:"最新5次登录记录",
+  DialogContentType:"url",
+  DialogContent:"{:U('ajax/login_log')}&"
+  });
+  $("#ButPhotoresume").QSdialog({
+  DialogAddObj:"#OpPhotoresume",
+  DialogTitle:"请选择",
+  DialogContent:"#PhotoresumeSet",
+  DialogContentType:"id"
+  });
+    $("#photo_submit").live('click',function(){
+      $("form[name=form1]").attr("action","{:U('set_photoaudit')}");
+      $("form[name=form1]").submit();
+    });
+    $('input[name="photoaudit"]').live('click',function(){
+      if($(this).val() == 3){
+        $('#is_del_img').show();
+      }else{
+        $('#is_del_img').hide();
+      }
+    });
+});
+</script>
+
+<script type="text/javascript" src="../public/js/jquery.ui.core.js"></script>
+<script type="text/javascript" src="../public/js/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="../public/js/jquery.ui.position.js"></script>
+<script type="text/javascript" src="../public/js/jquery.ui.autocomplete.js"></script>
+<script type="text/javascript">
+$(function(){
+$("#key").autocomplete({
+    source: "{:U('Ajax/ajax_kefu')}",
+    minLength: 1,
+    autoFocus: true
+});
+});
+</script>
+  </body>
+</html>

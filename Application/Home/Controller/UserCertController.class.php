@@ -77,8 +77,11 @@ class UserCertController extends FrontendController{
 				$one = M('Attest') -> where(['id' => $id]) ->find();
 				$name = $one['name'];
 				$type = $one['type'];
-				$uid=C('visitor.uid');
-			
+				$uid = C('visitor.uid');
+				
+				$username = M('Members') -> where(['uid' => $uid]) -> getField('realname');
+				$data['username'] = $username;
+
 				$data['id_card_img'] = json_encode($id_card_img);
 				$data['name'] = $name;
 				$data['id_card'] = $_POST['id_card'];
@@ -141,7 +144,8 @@ class UserCertController extends FrontendController{
 				$name = $one['name'];
 				$type = $one['type'];
 				$uid=C('visitor.uid');
-			
+				$username = M('Members') -> where(['uid' => $uid]) -> getField('realname');
+				$data['username'] = $username;
 				$data['enterpriseId_img'] = json_encode($enterpriseId_img);
 				$data['name'] = $name;
 				$data['company'] = $_POST['company'];
@@ -205,7 +209,8 @@ class UserCertController extends FrontendController{
 				$name = $one['name'];
 				$type = $one['type'];
 				$uid=C('visitor.uid');
-			
+				$username = M('Members') -> where(['uid' => $uid]) -> getField('realname');
+				$data['username'] = $username;
 				$data['bank_img'] = json_encode($bank_img);
 				$data['name'] = $name;
 
@@ -271,7 +276,8 @@ class UserCertController extends FrontendController{
 				$name = $one['name'];
 				$type = $one['type'];
 				$uid=C('visitor.uid');
-			
+				$username = M('Members') -> where(['uid' => $uid]) -> getField('realname');
+				$data['username'] = $username;
 				$data['honor_img'] = json_encode($honor_img);
 				$data['name'] = $name;
 				
@@ -334,7 +340,8 @@ class UserCertController extends FrontendController{
 				$name = $one['name'];
 				$type = $one['type'];
 				$uid=C('visitor.uid');
-			
+				$username = M('Members') -> where(['uid' => $uid]) -> getField('realname');
+				$data['username'] = $username;
 				$data['successfulCases_img'] = json_encode($successfulCases_img);
 				$data['name'] = $name;
 	
@@ -369,6 +376,8 @@ class UserCertController extends FrontendController{
 			$name = $one['name'];
 			$type = $one['type'];
 			$uid=C('visitor.uid');
+			$username = M('Members') -> where(['uid' => $uid]) -> getField('realname');
+			$data['username'] = $username;
 			$email = $_POST['email'];
 			$subject = '邮箱认证';
       $to = $email;
@@ -444,7 +453,8 @@ class UserCertController extends FrontendController{
 				$name = $one['name'];
 				$type = $one['type'];
 				$uid=C('visitor.uid');
-			
+				$username = M('Members') -> where(['uid' => $uid]) -> getField('realname');
+				$data['username'] = $username;
 				$data['government_img'] = json_encode($government_img);
 				$data['name'] = $name;
 				$data['company'] = $_POST['company'];
@@ -507,7 +517,8 @@ class UserCertController extends FrontendController{
 				$name = $one['name'];
 				$type = $one['type'];
 				$uid=C('visitor.uid');
-			
+				$username = M('Members') -> where(['uid' => $uid]) -> getField('realname');
+			  $data['username'] = $username;
 				$data['position_img'] = json_encode($position_img);
 				$data['name'] = $name;
 	

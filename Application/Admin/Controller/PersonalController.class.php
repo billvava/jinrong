@@ -238,6 +238,52 @@ class PersonalController extends BackendController{
         }
         return $list;
     }
+
+
+    public function auditAuthentication(){
+      $this->_name = 'UserAuth';
+      $where['id'] = array('neq',0);
+      $status = I('get.status');
+      if ($status >= 0){
+        switch($status){
+            case 0:
+                $where['status']= array('neq',1);
+                break;
+            case 1:
+                $where['status']= array('eq',1);
+                break;
+            default:
+                $where['status']= array('neq',1);
+                break;
+        }
+      }
+      $this->where = $where;
+      $this->_tpl = 'auditAuthentication';
+      parent::index();
+        
+    }
     
+    public function  status_edit(){
+      $id = $_GET['id'];
+      $data['status'] = 1;
+      $res = M('UserAuth') -> where("`id`= $id") -> save($data);
+      if($res){
+        $this -> success('操作成功！');
+      }else{
+        $this -> error('操作失败！');
+      }
+
+    }
+
+    public function  delete_data(){
+      $id = $_GET['id'];
+      $res = M('UserAuth') -> where("`id`= $id") -> delete();
+      if($res){
+        $this -> success('操作成功！');
+      }else{
+        $this -> error('操作失败！');
+      }
+
+    }
 }
 ?>
