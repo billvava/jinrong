@@ -51,7 +51,7 @@ class email
         $mail->Host = $this->mailconfig['smtpservers'];
         $mail->SMTPDebug= 0; 
         $mail->SMTPAuth = true;
-        // $mail->SMTPSecure = 'ssl';
+        $mail->SMTPSecure = 'ssl';
         $mail->Username = $this->mailconfig['smtpusername']; 
         $mail->Password = $this->mailconfig['smtppassword']; 
         $mail->Port =$this->mailconfig['smtpport'];
