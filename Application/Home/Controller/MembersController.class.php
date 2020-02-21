@@ -190,12 +190,12 @@ class MembersController extends FrontendController{
 
                 $result = D('SmsCode') -> verify($data['mobile'],$verifycode,'reg');
                 
-                if(!$result){
-                    $this->ajaxReturn(0,'验证码错误！');//验证码错误！
-                }
+                // if(!$result){
+                //     $this->ajaxReturn(0,'验证码错误！');//验证码错误！
+                // }
 
                 // $smsVerify = session('reg_smsVerify');
-                // if(!$smsVerify) $this->ajaxReturn(0,'验证码错误2！');
+                // if(!$smsVerify) $this->ajaxReturn(0,'验证码错误！');
 
                 // if($data['mobile'] != $smsVerify['mobile']) $this->ajaxReturn(0,'手机号不一致！',$smsVerify);//手机号不一致
                 // if(time()>$smsVerify['time']+60000) $this->ajaxReturn(0,'验证码过期！');//验证码过期
@@ -229,9 +229,10 @@ class MembersController extends FrontendController{
             if(false === $data = $passport->register($data)){
                
                 D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
+                if($user = $passport->get_status()) 
 
-                if($user = $passport->get_status()) $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('Home/personal/index')));
-                // $this->ajaxReturn(0,$passport->get_error());
+                    $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('Home/personal/index')));
+                 // $this->ajaxReturn(0,$passport->get_error());
             }
             //如果是推荐注册，赠送积分
             $incode = I('post.incode','','trim');

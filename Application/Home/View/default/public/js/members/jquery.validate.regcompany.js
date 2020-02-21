@@ -62,7 +62,7 @@
             data: $('#regMobileForm').serialize(),
             success: function (data) {
                 if(data.status == 1){
-                    window.location.href = data.data.url;
+                    $(window).attr('location','/index.php?m=&c=UserCert&a=index');
                 }else{
                     if ($('#regMobileForm input[name="agreement"]').is(':checked')) {
                         $('#btnMoilbPhoneRegister').val('注册').removeClass('btn_disabled').prop('disabled', 0);

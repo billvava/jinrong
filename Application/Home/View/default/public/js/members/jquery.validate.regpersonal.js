@@ -317,7 +317,7 @@
     // 发送手机验证码
     function toSetSms() {
         $.ajax({
-            url: qscms.root+'?m=Home&c=Members&a=regSendSms',
+            url: qscms.root+'?m=Home&c=Members&a=reg_send_sms',
             type: 'POST',
             dataType: 'json',
             data: {mobile: $.trim($('#mobile').val())}
@@ -366,7 +366,7 @@
             data: $('#regMobileForm').serialize(),
             success: function (data) {
                 if(data.status == 1){
-                    window.location.href = data.data.url;
+                    $(window).attr('location','/index.php?m=&c=UserCert&a=index');
                 }else{
                     if ($('#regMobileForm input[name="agreement"]').is(':checked')) {
                         $('#btnMoilbPhoneRegister').val('注册').removeClass('btn_disabled').prop('disabled', 0);

@@ -280,7 +280,9 @@ class MembersController extends MobileController{
 
                 D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
                 
-                if($user = $passport->get_status()) $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('Home/personal/index')));
+                if($user = $passport->get_status()) 
+                    
+                    $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('Home/personal/index')));
                 $this->ajaxReturn(0,$passport->get_error());
             }
             // 添加企业信息

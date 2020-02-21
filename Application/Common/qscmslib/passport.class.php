@@ -86,6 +86,7 @@ class passport
         //     if(true !== $tip = D('Mailconfig')->send_mail($email_data)) $this->_error = $tip;
         //     $this->_status = $user;
         // }
+        // $this -> success('注册成功');
         return $reg;
     }
 
