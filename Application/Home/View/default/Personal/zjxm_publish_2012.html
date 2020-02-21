@@ -124,6 +124,22 @@ selected="selected"
 </dl>
 
 <dl>
+<dt><i>*</i>开发商排名：</dt>
+<dd>
+<select name="funds_body" id="sel_funds_body" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['developer_rank']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['developer_rank'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="funds_body_info">
+<i class="icoPro16"></i>请选择开发商排名</em>
+</dd>
+</dl>
+
+<dl>
 <dt><i>*</i>所在地区：</dt>
 <dd>
 <span id="last_area_iddivAreaSelect"></span>

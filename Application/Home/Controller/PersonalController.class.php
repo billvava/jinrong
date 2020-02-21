@@ -287,8 +287,9 @@ class PersonalController extends FrontendController{
         $uid = C('visitor.uid');
         $id = I('request.id');
         $infos = M('BaseInfo')->field('id')->where(['uid'=>$uid])->select();
+
         $infos = array_multi_to_single($infos);
-        
+       
         if(is_array($infos)){
             foreach ($infos as $k => &$v){
                 $v = (int)($v);
@@ -446,6 +447,7 @@ class PersonalController extends FrontendController{
         $this->assign('category_list',$category_list);
         $s100 = M('Category')->where(['c_alias'=>'s100'])->select();
         $this->assign('s11',$s100);
+
         if($add){
             $data['info_type']=$add;
             $this->display('zjxm_publish_'.$add);

@@ -69,7 +69,7 @@ class SmsModel extends Model{
 		}else{
 			$tpl = $option['tplStr'];
 		}
-		$data = array('mobile'=>$option['mobile'],'tpl_value'=>$tpl_value,'tplId'=>$tplId,'data'=>$option['data']);
+		$data = array('mobile'=>$option['mobile'],'tpl_value'=>$tpl_value,'tplId'=>$tplId,'data'=>$option['data'],'code'=>$option['code']);
 		
 		if(false === $sms->sendTemplateSMS($type,$data)){
 			return  $sms->getError();

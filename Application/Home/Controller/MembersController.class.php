@@ -594,7 +594,7 @@ class MembersController extends FrontendController{
                 break;
         }
         $smsVerify = session($sms_type.'_smsVerify');
-        if($smsVerify && $smsVerify['mobile']==$mobile && time()<$smsVerify['time']+600) $this->ajaxReturn(0,'10分钟内仅能获取一次短信验证码,请稍后重试');
+        // if($smsVerify && $smsVerify['mobile']==$mobile && time()<$smsVerify['time']+600) $this->ajaxReturn(0,'10分钟内仅能获取一次短信验证码,请稍后重试');
         $sendSms['mobile']=$mobile;
 
         //F('sendSms',$sendSms);

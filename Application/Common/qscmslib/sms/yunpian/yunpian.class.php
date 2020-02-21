@@ -27,6 +27,7 @@ class yunpian_sms{
 	 * @return   boolean
 	 */
 	public function sendTemplateSMS($type='captcha',$option){
+		// dump($option);exit;
 		$apikey = $this->setting['appkey'];
 		$phone = $option['mobile'];
 		$code = $option['code'];
