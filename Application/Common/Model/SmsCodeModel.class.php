@@ -33,20 +33,23 @@ class SmsCodeModel extends Model{
 	
 		$code = rand(100000,999999);
 		
-		$sms_data['phone'] = $phone;
-		$sms_data['state'] = 0;
-		$sms_data['type'] = $type;
-		$sms_data['code'] = $code;
+		// 测试用
+		// $sms_data['phone'] = $phone;
+		// $sms_data['state'] = 0;
+		// $sms_data['type'] = $type;
+		// $sms_data['code'] = $code;
 
-		$sms_data['time'] = time();
-		$sms_data['ip'] =  $_SERVER['REMOTE_ADDR'];
-		$sms_data['app_status'] = 'development';
-		
-		
-		$this -> data($sms_data) -> add();
-    $data['success'] = true;
-		$data['msg'] = '短信发送成功';
-		return $data;
+		// $sms_data['time'] = time();
+		// $sms_data['ip'] =  $_SERVER['REMOTE_ADDR'];
+		// $sms_data['app_status'] = 'development';
+
+
+		// $this -> data($sms_data) -> add();
+  //   $data['success'] = true;
+		// $data['msg'] = '短信发送成功';
+		// return $data;
+
+
 		//调用发送短信方法 
     $result  = $this -> sendHuiYiSms($phone,$code);
     if ($result['code'] != 0){
