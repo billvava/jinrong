@@ -168,6 +168,7 @@ class MembersController extends FrontendController{
      * [register 会员注册]
      */
     public function register(){
+        // dump($_POST);exit;
         if(!I('get.org','','trim') && C('PLATFORM') == 'mobile' && $this->apply['Mobile']){
             redirect(build_mobile_url(array('c'=>'Members','a'=>'register')));
         }
@@ -179,6 +180,8 @@ class MembersController extends FrontendController{
             if(!$reg = $array[$data['reg_type']]) $this->ajaxReturn(0,'正确选择注册方式！');
             $data['utype'] = I('post.utype',0,'intval');
             if($data['utype'] != 1 && $data['utype'] != 2) $this->ajaxReturn(0,'请正确选择会员类型!');
+
+            // dump($_POST);exit;
             if($data['reg_type'] == 1){
                 $data['mobile'] = I('post.mobile',0,'trim');
                
@@ -186,13 +189,13 @@ class MembersController extends FrontendController{
                 $verifycode = I('post.mobile_vcode',0,'trim');
 
                 $result = D('SmsCode') -> verify($data['mobile'],$verifycode,'reg');
-                 // dump($result);exit;
+                
                 if(!$result){
                     $this->ajaxReturn(0,'验证码错误！');//验证码错误！
                 }
 
                 // $smsVerify = session('reg_smsVerify');
-                // if(!$smsVerify) $this->ajaxReturn(0,'验证码错误1！');
+                // if(!$smsVerify) $this->ajaxReturn(0,'验证码错误2！');
 
                 // if($data['mobile'] != $smsVerify['mobile']) $this->ajaxReturn(0,'手机号不一致！',$smsVerify);//手机号不一致
                 // if(time()>$smsVerify['time']+60000) $this->ajaxReturn(0,'验证码过期！');//验证码过期
@@ -212,6 +215,7 @@ class MembersController extends FrontendController{
                     $passwordVerify = I('post.emailpasswordVerify','','trim');
                 }
                 // $data['username'] = I('post.username','','trim,badword');
+
                 $data['utype']==1 && $data['mobile'] = I('post.telephone','','trim,badword');
                 C('qscms_check_reg_email') && $data['status'] = 0;
             }
@@ -221,12 +225,13 @@ class MembersController extends FrontendController{
             !$data['password'] && $this->ajaxReturn(0,'请输入密码!');
             $data['password'] != $passwordVerify && $this->ajaxReturn(0,'两次密码输入不一致!');
             $passport = $this->_user_server();
-            if(false === $data = $passport->register($data)){
 
+            if(false === $data = $passport->register($data)){
+               
                 D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
 
-                if($user = $passport->get_status()) $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('/')));
-                $this->ajaxReturn(0,$passport->get_error());
+                if($user = $passport->get_status()) $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('Home/personal/index')));
+                // $this->ajaxReturn(0,$passport->get_error());
             }
             //如果是推荐注册，赠送积分
             $incode = I('post.incode','','trim');
@@ -243,7 +248,7 @@ class MembersController extends FrontendController{
                 $user_bind_info = object_to_array(cookie('members_bind_info'));
                 $user_bind_info['uid'] = $data['uid'];
                 $oauth = new \Common\qscmslib\oauth($user_bind_info['type']);
-                $oauth->bindUser($user_bind_info);
+                //$oauth->bindUser($user_bind_info);
                 $this->_save_avatar($user_bind_info['temp_avatar'],$data['uid']);//临时头像转换
                 cookie('members_bind_info', NULL);//清理绑定COOKIE
             }
@@ -270,6 +275,26 @@ class MembersController extends FrontendController{
         }
     }
 
+     public function regSendSms(){
+        header('Access-Control-Allow-Origin:*');
+        if($uid = I('post.uid',0,'intval')){
+            $mobile=M('Members')->where(array('uid'=>$uid))->getfield('mobile');
+            !$mobile && $this->ajaxReturn(0,'用户不存在！');
+        }else{
+            $mobile = I('post.mobile','','trim');
+            !$mobile && $this->ajaxReturn(0,'请填手机号码！');
+        }
+        if(!fieldRegex($mobile,'mobile')) $this->ajaxReturn(0,'手机号错误！');
+
+        $result = D('SmsCode') -> sendSMS($mobile);
+        if($result['success']){
+            $data = (array('status' => 1,'msg' => $result['msg']));
+            $this->ajaxReturn(1,$result['msg'],$data);
+        }else{
+            $this->ajaxReturn(0,$result['msg']);
+        }
+       
+    }
     //注册测试
     function reg_test(){
         if(IS_POST && IS_AJAX){
@@ -353,7 +378,7 @@ class MembersController extends FrontendController{
             
             //dump($data);exit;
             if($result){
-                R('Home/Email/email_send',[$result]);
+                // R('Home/Email/email_send',[$result]);
                 $user = M('Members')->where(array('mobile'=>$data['mobile']))->find();
                 $uid = $user['uid'];
                 if(false === $this->visitor->login($uid, $expire)) $this->ajaxReturn(0,$this->visitor->getError());
@@ -593,26 +618,6 @@ class MembersController extends FrontendController{
     }
 
     
-    public function regSendSms(){
-        header('Access-Control-Allow-Origin:*');
-        if($uid = I('post.uid',0,'intval')){
-            $mobile=M('Members')->where(array('uid'=>$uid))->getfield('mobile');
-            !$mobile && $this->ajaxReturn(0,'用户不存在！');
-        }else{
-            $mobile = I('post.mobile','','trim');
-            !$mobile && $this->ajaxReturn(0,'请填手机号码！');
-        }
-        if(!fieldRegex($mobile,'mobile')) $this->ajaxReturn(0,'手机号错误！');
-
-        $result = D('SmsCode') -> sendSMS($mobile);
-        if($result['success']){
-            $data = (array('status' => 1,'msg' => $result['msg']));
-            $this->ajaxReturn(1,$result['msg'],$data);
-        }else{
-            $this->ajaxReturn(0,$result['msg']);
-        }
-       
-    }
 
     /**
      * 检测用户信息是否存在或合法

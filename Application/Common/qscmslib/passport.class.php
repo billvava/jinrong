@@ -67,24 +67,25 @@ class passport
             $this->_error = $this->_us->get_error();
             return false;
         }
+
         //添加到本地
         $reg = $this->_local_add($add_data);
-        if(false === $reg && $this->_error == L('members_unique_error_email')){
-            $user = M('Members')->where(array('email'=>$add_data['email']))->find();
-            if($user['status'] != 0 && $user['utype'] != 2) return false;
-            $time=time();
-            $key=substr(md5($user['email'].$time),8,16);
-            $str = encrypt(http_build_query(array('e'=>$user['email'],'k'=>$key,'t'=>$time,'p'=>$add_data['password'],'n'=>$add_data['username'])));
-            $email_str.="您好,请在24小时内点击以下链接完成注册：<br>";
-            $url = C('qscms_site_domain').U('members/activate',array('key'=>$str));
-            $email_str.="<a href='".$url."' target='_blank'>".$url."</a><br>";
-            $email_str.="如果链接无法点击,请复制粘贴到浏览器访问！<br>";
-            $email_str.="本邮件由系统发出,请勿回复！<br>";
-            $email_str.="如有任何疑问请联系网站官方：".C('qscms_top_tel')."";
-            $email_data = array('sendto_email'=>$user['email'],'subject'=>C('qscms_site_name')." - 会员注册",'body'=>$email_str);
-            if(true !== $tip = D('Mailconfig')->send_mail($email_data)) $this->_error = $tip;
-            $this->_status = $user;
-        }
+        // if(false === $reg && $this->_error == L('members_unique_error_email')){
+        //     $user = M('Members')->where(array('email'=>$add_data['email']))->find();
+        //     if($user['status'] != 0 && $user['utype'] != 2) return false;
+        //     $time=time();
+        //     $key=substr(md5($user['email'].$time),8,16);
+        //     $str = encrypt(http_build_query(array('e'=>$user['email'],'k'=>$key,'t'=>$time,'p'=>$add_data['password'],'n'=>$add_data['username'])));
+        //     $email_str.="您好,请在24小时内点击以下链接完成注册：<br>";
+        //     $url = C('qscms_site_domain').U('members/activate',array('key'=>$str));
+        //     $email_str.="<a href='".$url."' target='_blank'>".$url."</a><br>";
+        //     $email_str.="如果链接无法点击,请复制粘贴到浏览器访问！<br>";
+        //     $email_str.="本邮件由系统发出,请勿回复！<br>";
+        //     $email_str.="如有任何疑问请联系网站官方：".C('qscms_top_tel')."";
+        //     $email_data = array('sendto_email'=>$user['email'],'subject'=>C('qscms_site_name')." - 会员注册",'body'=>$email_str);
+        //     if(true !== $tip = D('Mailconfig')->send_mail($email_data)) $this->_error = $tip;
+        //     $this->_status = $user;
+        // }
         return $reg;
     }
 
@@ -167,7 +168,7 @@ class passport
             } else {
                 //写入会员日志
                 write_members_log(array('uid'=>$uid,'utype'=>$add_data['utype'],'username'=>$add_data['username']),1000);
-                R('Home/Email/email_send',[$uid]);
+                //R('Home/Email/email_send',[$uid]);
                 $add_data['uid'] = $uid;
                 return $add_data;
             }
