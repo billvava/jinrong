@@ -186,7 +186,8 @@
             data: $('#registerForm').serialize(),
             success: function (data) {
                 if(data.status == 1){
-                    window.location.href = data.data.url;
+                    //alert(data.url)
+                    window.location.href = data.url;
                 }else{
                     if ($('input[name="agreement"]').is(':checked')) {
                         $('#btnRegister').val('注册').removeClass('btn_disabled').prop('disabled', 0);

@@ -190,9 +190,9 @@ class MembersController extends FrontendController{
 
                 $result = D('SmsCode') -> verify($data['mobile'],$verifycode,'reg');
                 
-                // if(!$result){
-                //     $this->ajaxReturn(0,'验证码错误！');//验证码错误！
-                // }
+                if(!$result){
+                    $this->ajaxReturn(0,'验证码错误！');//验证码错误！
+                }
 
                 // $smsVerify = session('reg_smsVerify');
                 // if(!$smsVerify) $this->ajaxReturn(0,'验证码错误！');
@@ -225,18 +225,18 @@ class MembersController extends FrontendController{
             !$data['password'] && $this->ajaxReturn(0,'请输入密码!');
             $data['password'] != $passwordVerify && $this->ajaxReturn(0,'两次密码输入不一致!');
             $passport = $this->_user_server();
-
             if(false === $data = $passport->register($data)){
-               
+              
                 D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
                 if($user = $passport->get_status()) 
-
+                   
                     $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('Home/personal/index')));
                  // $this->ajaxReturn(0,$passport->get_error());
             }
             //如果是推荐注册，赠送积分
             $incode = I('post.incode','','trim');
             if($incode){
+               
                 if(preg_match('/^[a-zA-Z0-9]{8}$/',$incode)){  
                     $inviter_info = M('Members')->where(array('invitation_code'=>$incode))->find();
                     if($inviter_info){
@@ -256,11 +256,11 @@ class MembersController extends FrontendController{
             session('reg_smsVerify',null);
             D('Members')->user_register($data);
             $this->_correlation($data);
-            $result['url'] = $data['utype']==2 ? U('Home/personal/account') : U('Home/personal/index');
-
+            $result_data['url'] = $data['utype']==2 ? U('Home/personal/account') : U('Home/personal/index');
+             $result_data['status'] = 1;
              D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
 
-            $this->ajaxReturn(1,'会员注册成功！',$result);
+            $this->ajaxReturn(1,'会员注册成功！',$result_data);
         }else{
             $utype = I('get.utype',0,'intval');
             $utype == 0 && $type = 'reg';
