@@ -48,7 +48,7 @@ sendVerfy();
 function sendVerfy() {
 var mobileValue = $.trim($('input[name=mobile]').val());
 $.ajax({
-url: "{:U('Members/regSendSms')}",
+url: "{:U('Members/reg_send_sms')}",
 cache: false,
 async: false,
 type: 'post',
