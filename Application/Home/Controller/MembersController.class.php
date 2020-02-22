@@ -190,18 +190,18 @@ class MembersController extends FrontendController{
 
                 $result = D('SmsCode') -> verify($data['mobile'],$verifycode,'reg');
                 
-                if(!$result){
-                    $this->ajaxReturn(0,'验证码错误！');//验证码错误！
-                }
+                // if(!$result){
+                //     $this->ajaxReturn(0,'验证码错误！');//验证码错误！
+                // }
 
-                // $smsVerify = session('reg_smsVerify');
-                // if(!$smsVerify) $this->ajaxReturn(0,'验证码错误！');
+                $smsVerify = session('reg_smsVerify');
+                if(!$smsVerify) $this->ajaxReturn(0,'验证码错误！');
 
-                // if($data['mobile'] != $smsVerify['mobile']) $this->ajaxReturn(0,'手机号不一致！',$smsVerify);//手机号不一致
-                // if(time()>$smsVerify['time']+60000) $this->ajaxReturn(0,'验证码过期！');//验证码过期
-                // $vcode_sms = I('post.mobile_vcode',0,'intval');
-                // $mobile_rand=substr(md5($vcode_sms), 8,16);
-                // if($mobile_rand!=$smsVerify['code']) $this->ajaxReturn(0,'验证码错误！');//验证码错误！
+                if($data['mobile'] != $smsVerify['mobile']) $this->ajaxReturn(0,'手机号不一致！',$smsVerify);//手机号不一致
+                if(time()>$smsVerify['time']+60000) $this->ajaxReturn(0,'验证码过期！');//验证码过期
+                $vcode_sms = I('post.mobile_vcode',0,'intval');
+                $mobile_rand=substr(md5($vcode_sms), 8,16);
+                if($mobile_rand!=$smsVerify['code']) $this->ajaxReturn(0,'验证码错误！');//验证码错误！
 
 
                 $data['password'] = I('post.password','','trim');
@@ -257,9 +257,9 @@ class MembersController extends FrontendController{
             D('Members')->user_register($data);
             $this->_correlation($data);
             $result_data['url'] = $data['utype']==2 ? U('Home/personal/account') : U('Home/personal/index');
-             $result_data['status'] = 1;
+             
              D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
-
+             // dump($result_data);exit;
             $this->ajaxReturn(1,'会员注册成功！',$result_data);
         }else{
             $utype = I('get.utype',0,'intval');

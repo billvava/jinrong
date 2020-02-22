@@ -62,7 +62,7 @@
             data: $('#regMobileForm').serialize(),
             success: function (data) {
                 if(data.status == 1){
-                    $(window).attr('location','/index.php?m=&c=UserCert&a=index');
+                    window.location.href = data.data.url;
                 }else{
                     if ($('#regMobileForm input[name="agreement"]').is(':checked')) {
                         $('#btnMoilbPhoneRegister').val('注册').removeClass('btn_disabled').prop('disabled', 0);
@@ -186,8 +186,7 @@
             data: $('#registerForm').serialize(),
             success: function (data) {
                 if(data.status == 1){
-                    //alert(data.url)
-                    window.location.href = data.url;
+                    window.location.href = data.data.url;
                 }else{
                     if ($('input[name="agreement"]').is(':checked')) {
                         $('#btnRegister').val('注册').removeClass('btn_disabled').prop('disabled', 0);

@@ -353,8 +353,8 @@ class MembersController extends MobileController{
             }
             $this->_correlation($data);
             $points_rule = D('Task')->get_task_cache(2,1);
-            $result['url'] = $data['utype']==2 ? U('personal/resume_add',array('points'=>$points_rule['points'],'first'=>1)) : U('members/index');
-            $this->ajaxReturn(1,'会员注册成功！',$result);
+            $result_data['url'] = $data['utype']==2 ? U('personal/resume_add',array('points'=>$points_rule['points'],'first'=>1)) : U('members/index');
+            $this->ajaxReturn(1,'会员注册成功！',$result_data);
         }else{
             $utype = I('get.utype',0,'intval');
             $reg_type = I('get.regtype','mobile','trim');
