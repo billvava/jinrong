@@ -119,7 +119,7 @@ class ItemController extends FrontendController{
                 */
                 break;
             default:
-                $info_list = M('BaseInfo')->alias('bi')->join('LEFT JOIN __ITEM_INFO__ as ii on bi.id = ii.id')->field('bi.id,bi.trj_info_id,bi.title,bi.amount_interval_min,bi.amount_interval_max,bi.amount_interval_min_unit,bi.amount_interval_max_unit,bi.province_id,ii.industry_id,ii.xmrz_type,bi.info_type,bi.addtime,bi.updatetime')->limit($limit)->where($where)->where(['bi.type'=>2])->order($order)->select();
+                $info_list = M('BaseInfo')->alias('bi')->join('LEFT JOIN __ITEM_INFO__ as ii on bi.id = ii.id')->field('bi.id,bi.trj_info_id,bi.title,bi.amount_interval_min,bi.amount_interval_max,bi.amount_interval_min_unit,bi.amount_interval_max_unit,bi.province_id,ii.industry_id,ii.developer_rank,ii.xmrz_type,bi.info_type,bi.addtime,bi.updatetime')->limit($limit)->where($where)->where(['bi.type'=>2])->order($order)->select();
                 $member_list = M('Members')->field('uid,utype,username,realname,sex,province_id as u_province_id,city_id as u_city_id,area_id as u_area_id,last_area_id,trj_info_id,company_name,trj_company_id')->where(['utype'=>2])->select();
                 $info_list = array_link($info_list,array_key($member_list,'uid'),'uid');
                 foreach ($info_list as $k => &$v){
@@ -129,6 +129,7 @@ class ItemController extends FrontendController{
                     }
                     $info_list[$k]['amount_interval_min_unit'] =$category['money_unit_min'][$v['amount_interval_min_unit']];
                     $info_list[$k]['industry_id'] =$category['industry_id'][$v['industry_id']];
+                    $info_list[$k]['developer_rank'] =$category['developer_rank'][$v['developer_rank']];
                     $info_list[$k]['amount_interval_max_unit'] =$category['money_unit_min'][$v['amount_interval_max_unit']];
                     $info_list[$k]['province_id'] =$category['province'][$v['province_id']];
                     $info_list[$k]['xmrz_type'] = field_get_name($v['xmrz_type'],$field='xmrz_type');
@@ -147,6 +148,7 @@ class ItemController extends FrontendController{
         $this->assign('recommend_item',$recommend_item);
         $this->assign('category',$category);
         $this->assign('info_list',$info_list);
+        // dump($info_list);exit;
         $this->display('item_list_'.$info_type);
     }
 

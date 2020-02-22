@@ -152,6 +152,70 @@ $(function(){
 </dl>
 
 <dl>
+<dt><i>*</i>开发商排名：</dt>
+<dd>
+<select name="developer_rank" id="sel_funds_body" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['developer_rank']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['developer_rank'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="funds_body_info">
+<i class="icoPro16"></i>请选择开发商排名</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>开发商最高资质：</dt>
+<dd>
+<select name="developer_qualification" id="sel_funds_body" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['developer_qualification']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['developer_qualification'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="funds_body_info">
+<i class="icoPro16"></i>请选择开发商最高资质</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>开发所属阶段：</dt>
+<dd>
+<select name="development_phase" id="sel_funds_body" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['development_phase']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['development_phase'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="funds_body_info">
+<i class="icoPro16"></i>请选择开发所属阶段</em>
+</dd>
+</dl>
+
+<dl>
+<dt><i>*</i>项目获取方式：</dt>
+<dd>
+<select name="project_acquisition" id="sel_funds_body" data-rule="required" class="select">
+<option value="">请选择</option>
+<foreach name="category_list['project_acquisition']" item="vo">
+<option value="{$vo.c_id}" <if condition="$info['project_acquisition'] == $vo['c_id']">
+selected="selected"
+</if>>{$vo.c_name}</option>
+</foreach>
+</select>
+<em class="hide" etype="error_info" id="funds_body_info">
+<i class="icoPro16"></i>请选择项目获取方式</em>
+</dd>
+</dl>
+
+<dl>
 <dt><i>*</i>交易方式：</dt>
 <dd>
 <foreach name="category_list['trade_way']" item="vo">

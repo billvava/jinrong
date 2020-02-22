@@ -1,0 +1,1 @@
+<?php	return array ( 'btn' => array ( 0 => array ( 'id' => '752', 'name' => '新用户数量', 'menu_type' => '0', 'module_name' => 'Admin', 'controller_name' => 'Ajax', 'action_name' => 'get_news_custorm', 'data' => '', 'stat' => '', 'para' => '0', ), ), ); ?>

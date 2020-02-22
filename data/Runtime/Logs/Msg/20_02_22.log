@@ -1,0 +1,16 @@
+[ 2020-02-22T14:39:05+08:00 ] 127.0.0.1 /index.php?m=Msg&c=Api&a=msg_list&id=21206&uid=26080&pos=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000378s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000645s ]
+INFO: Run Common\Behavior\CheckIpbanBehavior [ RunTime:0.000974s ]
+NOTIC: [2] include(./Application/Msg/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(): Failed opening './Application/Msg/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 90 行.
+NOTIC: [2] include(./Application/Msg/Lang/zh-cn/empty.php): failed to open stream: No such file or directory D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] include(): Failed opening './Application/Msg/Lang/zh-cn/empty.php' for inclusion (include_path='.;C:\php\pear') D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 91 行.
+NOTIC: [2] array_merge(): Argument #4 is not an array D:\www\jinrong\Application\Common\Behavior\CheckLangBehavior.class.php 第 93 行.
+INFO: Run Common\Behavior\CheckLangBehavior [ RunTime:0.001702s ]
+INFO: Run Common\Behavior\IsMobileBehavior [ RunTime:0.000613s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004062s ]
+
