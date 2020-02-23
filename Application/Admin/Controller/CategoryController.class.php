@@ -88,6 +88,22 @@ class CategoryController extends BackendController {
         admin_write_log("后台成功删除分类 , 共删除".$return."行！", C('visitor.username'),3);
         $this->success("成功删除分类 , 共删除".$return."行！");
     }
+
+    /**
+     * 删除子分类
+     */
+    public function delete(){
+      $ids = I('request.c_id');
+  
+      $where['c_id'] = is_array($ids)? array('in',$ids): array('eq',$ids);
+      $res = M('Category') -> where($where) -> delete();
+      if($res){
+          $this->success('删除成功');exit;
+      }else{
+          $this->error('删除失败');
+      }
+    }
+
     /**
      * 分类
      */
@@ -146,11 +162,20 @@ class CategoryController extends BackendController {
         }
     }
     public function edit(){
-        $this->_name = 'Category';
-        if(!IS_POST){
-            $this->assign('group',D('CategoryGroup')->where(array('g_alias'=>I('get.alias')))->find());
+        if($_POST){
+          $c_id = I('get.c_id')?I('get.c_id'):$_POST['c_id'];
+          $data['c_name'] = $_POST['c_name'];
+          $data['c_order'] = $_POST['c_order'];
+          $res = M('Category') ->where(['c_id' => $c_id])->save($data); // 根据条件更新记录
+          if($res){
+            $this -> success('修改成功');exit;
+          }else{
+            $this -> error('修改失败');exit;
+          }
+        }else{
+          $this->assign('info',D('Category')->where(array('c_id'=>I('get.c_id')))->find());
         }
-        parent::edit();
+        $this->display();
     }
 }
 ?>
