@@ -8,11 +8,13 @@
 <meta name="keywords" content="项目融资,融资,天使投资,投资,投资项目,投资公司,项目,股权融资,债权融资,投融资,融资平台,金融网"/>
 <meta name="description"
           content="金融网（7ronghui.com）是中国最大的融资服务平台，拥有超百万的投融资机构、企业与个人用户入驻。金融网通过线上＋线下、标准化  ＋个性化的服务体系，为客户提供针对性的投融资信息对接和项目撮配服务，成功对接融资千余亿元。金融网凭借其强大、便捷的平台信息整合能力，大大提高企业投融资活动成功率，为中小微企业解决融资难问题。"/>
+<script src="../public/js/v2/lib/jquery-1.12.4.min.js"></script>
 <link rel="stylesheet" href="../public/css/v2/font/iconfont.css">
 <link rel="stylesheet" href="../public/css/v2/common.css"/>
 <link rel="stylesheet/less" type="text/css" href="../public/css/v2/less/combination/fund_list2.less"/>
 <script src="../public/css/v2/less/less_all.js"></script>
 <script>
+$(function () {
 var qrh = {
         base : "",
         keyUrlencode:"0",
@@ -24,6 +26,11 @@ $.getJSON("/index.php?m=Home&c=AjaxCommon&a=get_header_min",function(result){
             $('#top-fast-login').html(result.data.html);
         }
 });
+
+ $('.icon-search').click(function (){
+    $('#fund_form').submit()
+ })
+})
 </script>
 </head>
 <body>
@@ -150,7 +157,7 @@ $.getJSON("/index.php?m=Home&c=AjaxCommon&a=get_header_min",function(result){
                 </a>
                 <div>
                     <form id="fund_form" action="/Fund/fund_list">
-                    <a href="#">
+                    <a href="javascript:;">
                         <i class="iconfont icon-search"></i>
                     </a>
                     <input type="text" name="k" class="placeholder" tip="请输入搜索内容" value='<if condition="$Think.get.k neq ''">{$Think.get.k}<else />请输入搜索内容</if>'>

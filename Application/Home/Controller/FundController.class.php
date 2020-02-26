@@ -7,25 +7,29 @@ class FundController extends FrontendController{
     		parent::_initialize();
     }
 
+
     function fund_list($sort=''){
+      $utype = C('visitor.utype');//1-资金方，2-项目方
         if(!I('get.org','','trim') && C('PLATFORM') == 'mobile'&& $this->apply['Mobile']){
             redirect(build_mobile_url(array('c'=>'Fund','a'=>'fund_list')));
         }
-        $category = F('category');
+        
+        $category = F('category'); //分类管理
         $where = array();
         $info_type = I('get.info_type','2010');
-        $k=I('get.k','','trim');
-        $funds_body = I('get.funds_body','');
-        $province_id = I('get.province_id','');
+        $k=I('get.k','','trim'); //搜索内容
+        $funds_body = I('get.funds_body',''); //已选条件
+        $province_id = I('get.province_id',''); //所在地区
         $tz_industry = I('get.tz_industry','');
         $tz_area = I('get.tz_area','');
         $mo = I('get.mo','');
         $where['bi.type'] = 1;
+
         if(!empty($info_type)){
-            $where['bi.info_type'] = $info_type;
+          $where['bi.info_type'] = $info_type; //视图编号
         }
         if(!empty($k)){
-             $where['bi.title'] =array('like','%'.$k.'%');
+          $where['bi.title'] =array('like','%'.$k.'%');
         }
         if(!empty($funds_body)){
             $where['fi.funds_body'] = $funds_body;
@@ -90,9 +94,102 @@ class FundController extends FrontendController{
         $this->assign('category',$category);
         $this->assign('page', $page);
         $this->assign('count',$count);
+        //dump($info_type);exit;
         $this->display('fund_list_'.$info_type);
   }
 
+  //智能匹配
+  function compatible($sort=''){
+      $utype = C('visitor.utype');//1-资金方，2-项目方
+        if(!I('get.org','','trim') && C('PLATFORM') == 'mobile'&& $this->apply['Mobile']){
+            redirect(build_mobile_url(array('c'=>'Fund','a'=>'fund_list')));
+        }
+
+        $uid = C('visitor.uid');
+        $keywords_array = M('BaseInfo')-> where(['uid' => $uid]) -> field('keywords') -> order('id desc') -> find();
+        $keywords = $keywords_array['keywords'];
+  
+        $category = F('category'); //分类管理
+        $where = array();
+        $info_type = I('get.info_type','2010');
+        $k=I('get.k','','trim'); //搜索内容
+        $funds_body = I('get.funds_body',''); //已选条件
+        $province_id = I('get.province_id',''); //所在地区
+        $tz_industry = I('get.tz_industry','');
+        $tz_area = I('get.tz_area','');
+        $mo = I('get.mo','');
+        $where['bi.type'] = 1;
+
+        if(!empty($keywords)){
+            $where['bi.keywords'] = array('like','%'.$keywords.'%');
+        }
+        
+        if(!empty($info_type)){
+          $where['bi.info_type'] = $info_type; //视图编号
+        }
+        if(!empty($k)){
+          $where['bi.title'] =array('like','%'.$k.'%');
+        }
+        if(!empty($funds_body)){
+            $where['fi.funds_body'] = $funds_body;
+        }
+        if(!empty($province_id)){
+            $where['bi.province_id'] = $province_id;
+        }
+        if(!empty($tz_industry)){
+            $where['fi.tz_industry'] = $tz_industry;
+        }
+        if(!empty($tz_area)){
+            $where['fi.tz_area']  = array('like',"%$tz_area%");
+        }
+        if(!empty($mo)){
+            $where['bi.amount_range'] = $mo;
+        }
+        $where['bi.is_open'] = 1;
+        $count = M('BaseInfo')->alias('bi')->join('LEFT JOIN __FUND_INFO__ as fi on bi.id =fi.id')->where($where)->count();
+        $limit = $this->getPageLimit($count,20);
+        if($count>3000){
+            $count = '3000+';
+        }
+        $order = I('get.sort','');
+        if(!isset($order) || empty($order)){
+            $order = 'updatetime desc';
+        }
+        if($order=='rtime'){
+            $order = 'addtime desc';
+        }
+        $page = $this->getPageShow($pageMaps);
+        $fund_list = M('BaseInfo')->alias('bi')->join('LEFT JOIN __FUND_INFO__ as fi on bi.id =fi.id')->field('bi.id,bi.info_type,bi.title,fi.funds_body,fi.tz_industry,fi.tz_area,bi.amount_interval_min,bi.amount_interval_min_unit,bi.amount_interval_max,bi.amount_interval_max_unit,amount_range,addtime,updatetime,bi.trj_info_id,bi.uid')->where($where)->order($order)->limit($limit)->select();
+         
+          $member_list = M('Members')->field('uid,utype,username,realname,sex,province_id,city_id,area_id,last_area_id,trj_info_id,company_name,trj_company_id')->where(['utype'=>1])->select();
+          $fund_list = array_link($fund_list,array_key($member_list,'uid'),'uid');
+      foreach ($fund_list as $k => $v){
+            $fund_list[$k]['tz_industry'] =field_get_name($v['tz_industry'],$field='tz_industry',$ext_field='',$ext_condition=1);
+            $fund_list[$k]['tz_area'] =field_get_name($v['tz_area'],$field='tz_area',$ext_field='province',$ext_condition=1);
+            $fund_list[$k]['funds_body']=$category['funds_body'][$fund_list[$k]['funds_body']];
+            $fund_list[$k]['amount_interval_min_unit'] =$category['money_unit'][$v['amount_interval_min_unit']];
+            $fund_list[$k]['amount_interval_max_unit'] =$category['money_unit'][$v['amount_interval_max_unit']];
+            $fund_list[$k]['info_type'] =$category['info_type'][$v['info_type']];
+            $fund_list[$k]['addtime'] = date("Y-m-d",$v['addtime']);
+            if($v['updatetime'] != 0){
+                $fund_list[$k]['updatetime'] = date("Y-m-d",$v['updatetime']);
+            }
+      }
+        $where_1['type'] = 1;
+        $where_1['is_top'] = 1 ;
+        $recommend_funder = M('BaseInfo')->alias('bi')->join('LEFT JOIN __FUND_INFO__ as fi on bi.id =fi.id')->field('bi.id,bi.title,bi.addtime,bi.updatetime,bi.type,bi.is_top,bi.top_img,fi.tz_industry,fi.tz_area')->where($where_1)->limit(10)->select();
+        foreach ($recommend_funder as $k => $v) {
+            $recommend_funder[$k]['tz_industry'] =field_get_name($v['tz_industry'],$field='tz_industry',$ext_field='',$ext_condition=1);
+            $recommend_funder[$k]['tz_area'] =field_get_name($v['tz_area'],$field='tz_area',$ext_field='province',$ext_condition=1);
+        }
+        $this->assign('recommend_funder',$recommend_funder);
+        $this->assign('fund_list',$fund_list);
+        $this->assign('category',$category);
+        $this->assign('page', $page);
+        $this->assign('count',$count);
+        //dump($info_type);exit;
+        $this->display('fund_list_'.$info_type);
+  }
 
   function tag_list($id=''){
       $info = M('BaseInfo')->field('id,i_keywords')->where(['id'=>$id])->find();

@@ -156,6 +156,7 @@ class PersonalController extends FrontendController{
 
     function get_user_info(){
         $uid = C('visitor.uid');
+
         $name = M('Members')->getField('name');
         if(empty($name)){
             $res['data']='';
@@ -167,6 +168,8 @@ class PersonalController extends FrontendController{
     
     function index(){
         $user_info = $this->visitor->info;
+        $utype = C('visitor.utype');
+        
         if($user_info['utype']==0){
             $this->member_init();
             die();
@@ -178,6 +181,7 @@ class PersonalController extends FrontendController{
         $user_talk_num = R('AjaxCommon/user_talk_num');
         $user_message_num = R('AjaxCommon/user_message_num');
         $this->assign('user_talk_num',$user_talk_num);
+        $this -> assign('utype',$utype);
         $this->assign('user_message_num',$user_message_num);
         $this->display();
     }
@@ -204,6 +208,7 @@ class PersonalController extends FrontendController{
         $this->display('member_init');
     }
 
+    //发布信息
     public function publish(){
         $page_seo['title']='发布信息-用户中心';
         $this->assign('page_seo',$page_seo);
@@ -214,7 +219,20 @@ class PersonalController extends FrontendController{
                 exit;
             }
             $info = I('post.');
-            $info['utype']=C('visitor.utype');
+            
+            
+            $developer_str = $info['development_phase'].','.$info['developer_rank'].','.$info['developer_qualification'].',';
+            $info['utype']=C('visitor.utype');//1-资金方，2-项目方
+            if($info['utype'] == 2){
+                $province_id = $info['province_id'];//省份id
+                $sel_industry_id = $info['sel_industry_id']; //行业id
+                $keywords_str = $developer_str.$province_id.','.$sel_industry_id;
+            }else{
+                $keywords_str = $developer_str.$info['tz_industry'].$info['tz_area'];
+            }
+           
+
+
             $base_info['uid']= C('visitor.uid');
             $base_info['i_overview'] = trim($info['i_overview']);
             $base_info['i_introduce'] = trim($info['i_introduce']);
@@ -222,13 +240,16 @@ class PersonalController extends FrontendController{
             $base_info['i_pic'] = $info['i_pic'];
             $base_info['i_att'] = $info['i_att'];
 			$base_info['i_att_other'] = $info['i_att_other'];
+            
+          
+            $base_info['keywords'] = $keywords_str; //关键词用匹配
             $base_info['i_keywords'] = $info['i_keywords'];
             $base_info['addtime']=time();
             $base_info['updatetime']=time();
-            if($info['utype']=='1'){
+            if($info['utype']=='1'){ //资金方
                 $base_info['type'] =1;
                 $result = D('FundInfo')->process_info($info,$base_info);
-            }elseif($info['utype']=='2'){
+            }elseif($info['utype']=='2'){ //项目方
                 $base_info['type'] =2;
                 $result = D('ItemInfo')->process_info($info,$base_info);
             }
@@ -352,6 +373,7 @@ class PersonalController extends FrontendController{
             //事务总表处理
                 if($data['info_type']==1){
                     $result = D('ItemInfoZcjy')->saveData();
+                    
                 }
                 if($data['info_type']==200){
                     $result = D('ItemInfoZcjy')->saveData(); 
@@ -364,12 +386,26 @@ class PersonalController extends FrontendController{
                 }
             }else{
                 $result = D('FundInfo')->save_data($data);
+               
             }
-            if($result){
+
+            $developer_str = $data['development_phase'].','.$data['developer_rank'].','.$data['developer_qualification'].',';
+           //1-资金方，2-项目方
+            if($utype == 2){
+                $province_id = $data['province_id'];//省份id
+                $sel_industry_id = $data['sel_industry_id']; //行业id
+                $keywords_str = $developer_str.$province_id.','.$sel_industry_id;
+            }else{
+                $keywords_str = $developer_str.$data['tz_industry'].$data['tz_area'];
+            }
+            $new_array['keywords'] = $keywords_str;
+            $res = M('BaseInfo')->where(['id'=>$id])->save($new_data);
+            $res = M('BaseInfo')->where(['id'=>$id])->save($data);
+            if($res){
                 $this->success('信息修改成功');
                 die();
             }else{
-                $this->error('信息修改失败');
+                $this->error('信息修改失败1');
                 die();
             }
         }
