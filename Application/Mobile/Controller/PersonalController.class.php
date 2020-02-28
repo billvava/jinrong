@@ -31,6 +31,7 @@ class PersonalController extends MobileController{
 		$this->display();
 	}
 	
+
     /**
      * 意见反馈
      */

@@ -34,6 +34,7 @@ class BannerController extends BackendController {
 
             $upload = new \Common\ORG\UploadFile();
             $imgname = basename($url);
+
             $_FILES['banner']['name'] = $imgname;
             $upload->savePath = ROOT_PATH.str_replace(array($imgname), "", $url);
             $upload->saveRule = "";

@@ -6,7 +6,7 @@
 
             <span class="link_yellow loginno" <if condition="$login eq 1 ">style="display: none"</if> >欢迎登录{:C('qscms_site_name')}！请 <a href="{:U('home/members/login')}">登录</a> 或 <a href="{:U('home/members/register')}">免费注册</a></span>
 
-            <span class="link_yellow loginyes" <if condition="$login eq 0 ">style="display: none"</if> >欢迎登录{:C('qscms_site_name')}！</span>
+            <span class="link_yellow loginyes" <if condition="$login eq 0 ">style="display: none"</if> >{$visitor['username']} ，您好！  <a href="{:U('members/logout')}">[退出]</a></span>
 
         </div>
 

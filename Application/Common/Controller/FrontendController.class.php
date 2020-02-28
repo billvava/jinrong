@@ -25,6 +25,7 @@ class FrontendController extends BaseController {
     }
 
     protected function display($tpl){
+
         if(!$this->get('page_seo')){
             $page_seo = D('Page')->get_page();
             $this->_config_seo($page_seo[strtolower(MODULE_NAME).'_'.strtolower(CONTROLLER_NAME).'_'.strtolower(ACTION_NAME)],I('request.'));
@@ -69,6 +70,7 @@ class FrontendController extends BaseController {
     * 初始化访问者
     */
     protected function _init_visitor() {
+
         $this->visitor = new \Common\qscmslib\user_visitor();
         $visitor = $this->visitor->info;
         if($this->visitor->is_login){

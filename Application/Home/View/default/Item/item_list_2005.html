@@ -105,7 +105,7 @@
                 <li>
                     <div class="motif clearfix">
                         <div>
-                            <h3><a href="{:U('Item/show',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></h3>
+                            <h3><a href="{:U('Home/Item/show',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></h3>
                             <p>融资资金： <span>{$vo.amount_interval_min}{$vo.amount_interval_min_unit}<if condition="$vo.amount_interval_max neq ''">-{$vo.amount_interval_max}{$vo.amount_interval_max_unit}</if></span></p>
                         </div>
                         <div>

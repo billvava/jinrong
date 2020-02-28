@@ -71,7 +71,10 @@ class ItemController extends FrontendController{
         }
         switch ($info_type) {
             case 200:
-                $info_list = M('BaseInfo')->alias('bi')->join('LEFT JOIN __ITEM_INFO_ZCJY__ as iiz on bi.id = iiz.id')->field('bi.title,iiz.xmzc_assass,iiz.xmzc_assass_unit,iiz.transfer_price,iiz.transfer_price_unit,iiz.xmzc_type,iiz.developer_rank,iiz.trade_way,bi.id,bi.trj_info_id,bi.addtime,bi.updatetime,bi.province_id')->limit($limit)->where($where)->where(['bi.type'=>2,'bi.info_type'=>200])->order($order)->select();
+                
+                $info_list = M('BaseInfo')->alias('bi')->join('LEFT JOIN __ITEM_INFO_ZCJY__ as iiz on bi.id = iiz.id')->field('bi.title,iiz.xmzc_assass,iiz.xmzc_assass_unit,iiz.transfer_price,iiz.transfer_price_unit,iiz.xmzc_type,iiz.trade_way,bi.id,bi.trj_info_id,bi.addtime,bi.updatetime,bi.province_id')->limit($limit)->where($where)->where(['bi.type'=>2,'bi.info_type'=>200])->order($order)->select();
+               
+                // print_r($info_list);exit;
                 $member_list = M('Members')->field('uid,utype,username,realname,sex,province_id as u_province_id,city_id as u_city_id,area_id as u_area_id,last_area_id,trj_info_id,company_name,trj_company_id')->where(['utype'=>2])->select();
                 $info_list = array_link($info_list,array_key($member_list,'uid'),'uid');
                 foreach ($info_list as $k => &$v){
@@ -86,7 +89,7 @@ class ItemController extends FrontendController{
                 }
                 break;
             case 700:
-                $info_list = M('BaseInfo')->alias('bi')->join('LEFT JOIN __ITEM_INFO_ZCJY__ as iiz on bi.id = iiz.id')->field('bi.id,bi.title,bi.amount_interval_min,bi.amount_interval_max,bi.amount_interval_min_unit,bi.amount_interval_max_unit,iiz.xmf_zs_way,bi.addtime,bi.updatetime,bi.province_id,ii.developer_rank,iiz.xmf_zs_way')->limit($limit)->where($where)->where(['bi.type'=>2,'bi.info_type'=>700])->order($order)->select();
+                $info_list = M('BaseInfo')->alias('bi')->join('LEFT JOIN __ITEM_INFO_ZCJY__ as iiz on bi.id = iiz.id')->field('bi.id,bi.title,bi.amount_interval_min,bi.amount_interval_max,bi.amount_interval_min_unit,bi.amount_interval_max_unit,iiz.xmf_zs_way,bi.addtime,bi.updatetime,bi.province_id,iiz.xmf_zs_way')->limit($limit)->where($where)->where(['bi.type'=>2,'bi.info_type'=>700])->order($order)->select();
                 $item_info = M('ItemInfo')->field('id,industry_id')->select();
                 $info_list = array_link($info_list,array_key($item_info,'id'),'id');
                 $member_list = M('Members')->field('uid,utype,username,realname,sex,province_id as u_province_id,city_id as u_city_id,area_id as u_area_id,last_area_id,trj_info_id,company_name,trj_company_id')->where(['utype'=>2])->select();
@@ -156,7 +159,7 @@ class ItemController extends FrontendController{
         $this->assign('recommend_item',$recommend_item);
         $this->assign('category',$category);
         $this->assign('info_list',$info_list);
-        // dump($info_type);exit;
+        
         $this->display('item_list_'.$info_type);
     }
 
@@ -302,7 +305,7 @@ class ItemController extends FrontendController{
         $this->assign('recommend_item',$recommend_item);
         $this->assign('category',$category);
         $this->assign('info_list',$info_list);
-        // dump($info_type);exit;
+        dump($info_type);exit;
         $this->display('item_list_'.$info_type);
     }
     public function show($id){

@@ -183,6 +183,7 @@ class PersonalController extends FrontendController{
         $this->assign('user_talk_num',$user_talk_num);
         $this -> assign('utype',$utype);
         $this->assign('user_message_num',$user_message_num);
+        $this->assign('user_info',$user_info);
         $this->display();
     }
 
@@ -568,6 +569,7 @@ class PersonalController extends FrontendController{
 
         $ext_role = M('ExtRole')->where(['uid'=>$uid])->find();
         $userinfo = array_merge_multi($userinfo,$ext_role);
+        
         $userinfo['percent_info'] = R('Personal/member_percent',[$userinfo]);
         
         //print_r($userinfo['percent_info']);

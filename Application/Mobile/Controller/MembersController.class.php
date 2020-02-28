@@ -337,23 +337,26 @@ class MembersController extends MobileController{
             session('reg_smsVerify',null);
             D('Members')->user_register($data);
 
-            if($data['reg_type'] == 2 && C('qscms_check_reg_email')){//是否需要邮箱激活
-                $time=time();
-                $key=substr(md5($data['email'].$time),8,16);
-                $str = encrypt(http_build_query(array('e'=>$data['email'],'k'=>$key,'t'=>$time,'p'=>$data['password'],'n'=>$data['username'])));
-                $email_str.="您好,请在24小时内点击以下链接完成注册：<br>";
-                $url = C('qscms_site_domain').U('members/activate',array('key'=>$str));
-                $email_str.="<a href='".$url."' target='_blank'>".$url."</a><br>";
-                $email_str.="如果链接无法点击,请复制粘贴到浏览器访问！<br>";
-                $email_str.="本邮件由系统发出,请勿回复！<br>";
-                $email_str.="如有任何疑问请联系网站官方：".C('qscms_top_tel')."";
-                $email_data = array('sendto_email'=>$data['email'],'subject'=>C('qscms_site_name')." - 会员注册",'body'=>$email_str);
-                if(true !== $reg = D('Mailconfig')->send_mail($email_data)) $this->ajaxReturn(0,$reg);
-                $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('members/reg_email_activate',array('uid'=>$data['uid']))));
-            }
+            // if($data['reg_type'] == 2 && C('qscms_check_reg_email')){//是否需要邮箱激活
+            //     $time=time();
+            //     $key=substr(md5($data['email'].$time),8,16);
+            //     $str = encrypt(http_build_query(array('e'=>$data['email'],'k'=>$key,'t'=>$time,'p'=>$data['password'],'n'=>$data['username'])));
+            //     $email_str.="您好,请在24小时内点击以下链接完成注册：<br>";
+            //     $url = C('qscms_site_domain').U('members/activate',array('key'=>$str));
+            //     $email_str.="<a href='".$url."' target='_blank'>".$url."</a><br>";
+            //     $email_str.="如果链接无法点击,请复制粘贴到浏览器访问！<br>";
+            //     $email_str.="本邮件由系统发出,请勿回复！<br>";
+            //     $email_str.="如有任何疑问请联系网站官方：".C('qscms_top_tel')."";
+            //     $email_data = array('sendto_email'=>$data['email'],'subject'=>C('qscms_site_name')." - 会员注册",'body'=>$email_str);
+            //     if(true !== $reg = D('Mailconfig')->send_mail($email_data)) $this->ajaxReturn(0,$reg);
+            //     $this->ajaxReturn(1,'会员注册成功！',array('url'=>U('members/reg_email_activate',array('uid'=>$data['uid']))));
+            // }
             $this->_correlation($data);
             $points_rule = D('Task')->get_task_cache(2,1);
-            $result_data['url'] = $data['utype']==2 ? U('personal/resume_add',array('points'=>$points_rule['points'],'first'=>1)) : U('members/index');
+            // $result_data['url'] = $data['utype']==2 ? U('personal/resume_add',array('points'=>$points_rule['points'],'first'=>1)) : U('members/index');
+            D('SmsCode') -> where(['code' => $verifycode])->setField('state',1);
+            
+             $result_data['url'] = U('members/index');
             $this->ajaxReturn(1,'会员注册成功！',$result_data);
         }else{
             $utype = I('get.utype',0,'intval');
@@ -377,6 +380,7 @@ class MembersController extends MobileController{
             $this->assign('openid',I('get.openid','','trim'));
             $this->assign('company_repeat',C('qscms_company_repeat'));//企业注册名称是否可以重复
             $this->_config_seo(array('title'=>'会员注册 - '.C('qscms_site_name'),'header_title'=>'会员注册'));
+            // dump($type);exit;
             $this->display($type);
         }
     }

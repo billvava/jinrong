@@ -57,6 +57,7 @@ class BackendController extends BaseController{
      * 添加
      */
     public function add() {
+
         $mod = D($this->_name);
         $pk = $mod->getPk();
         if(IS_POST){
@@ -66,11 +67,13 @@ class BackendController extends BaseController{
             }
             if(method_exists($this,'_before_insert')) {
                 $data = $this->_before_insert($data);
+
             }
-            if(isset($data['addtime'])){
+            //if(isset($data['addtime'])){
                 $data['addtime'] = time();
-            }
+            //}
             //$data['is_vip'] = 0;
+           
             $field = $mod->getDbFields();
             if($id = $mod->add($data)){
                     if(method_exists($this,'_after_insert')){

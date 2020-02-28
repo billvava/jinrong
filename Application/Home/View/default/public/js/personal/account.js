@@ -519,6 +519,7 @@
 	    }
 
 		$('#J-preview-businesscard').bind('click', function () {
+	       	// alert();
 	        $('#contact_job_name,company,contact_name').each(function(){
 	             $('#J-preview-'+$(this).attr('id') ).html($(this).val());
 	        });
@@ -537,7 +538,7 @@
 	        else
 	        	$('#T-industry').html($('#industry_id option:selected').text());
 	        var win = dialog({
-		        title: '名片预览',
+		        title: '名片预览12',
 		        width:'320px',
 		        lock:true,
 		        fixed:true,

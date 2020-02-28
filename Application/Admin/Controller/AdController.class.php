@@ -24,6 +24,7 @@ class AdController extends BackendController{
     }
 
     public function _before_add(){
+      //
         if($this->apply['Subsite']){
             $subsite_id = I('request.subsite_id',0,'intval');
             $subsite_list = D('Subsite')->get_subsite_domain();

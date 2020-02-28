@@ -16,9 +16,12 @@ class NewsController extends FrontendController{
 	}
 	
 	public function show(){
+	  
 		if(!I('get.org','','trim') && C('PLATFORM') == 'mobile' && $this->apply['Mobile']){
+
             redirect(build_mobile_url(array('c'=>'News','a'=>'show','params'=>'id='.intval($_GET['id']))));
 		}
+
 		$this->display('news_show');
 	}
 

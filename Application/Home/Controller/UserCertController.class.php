@@ -8,9 +8,11 @@ class UserCertController extends FrontendController{
 	
 	public function index(){
 		$uid=C('visitor.uid');
-		
 		//会员身份
 		$type = M('ExtRole')->where(['uid'=>$uid]) -> getField('type');
+		if(!M('ExtRole')->where(['uid'=>$uid])->count()){
+			$this -> error('请先完善个人资料');
+		}
 
 		//认证内容
 		$list = M('Attest') -> where(['type' => $type]) -> order('id asc') -> select();

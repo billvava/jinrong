@@ -62,7 +62,7 @@ class AjaxPersonalController extends MobileController{
     /**
      * [resume_add 快速创简历，并登录帐号]
      */
-    public function resume_add(){
+    public function resume_addq(){
     	$jid = I('request.jid','','trim');
 		!$jid && $this->ajaxReturn(0,'开通会员后投递功能才能开启');
     	if (C('qscms_closereg')) $this->ajaxReturn(0,'网站暂停会员注册，请稍后再次尝试！');

@@ -46,7 +46,7 @@ class InvestorController extends BackendController{
                     'attach_exts' => 'bmp,png,gif,jpeg,jpg'
             ));
             if ($result['error']) {
-                $_POST['Small_img'] = $date.$result['info'][0]['savename'];
+                $_POST['small_img'] = $date.$result['info'][0]['savename'];
             } else {
                 $this->ajaxReturn(0, $result['info']);
             }

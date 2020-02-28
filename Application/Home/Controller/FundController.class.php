@@ -21,7 +21,7 @@ class FundController extends FrontendController{
         $funds_body = I('get.funds_body',''); //已选条件
         $province_id = I('get.province_id',''); //所在地区
         $tz_industry = I('get.tz_industry','');
-        $tz_area = I('get.tz_area','');
+        $tz_area = I('get.tz_area','');//投资地区
         $mo = I('get.mo','');
         $where['bi.type'] = 1;
 
@@ -41,7 +41,7 @@ class FundController extends FrontendController{
             $where['fi.tz_industry'] = $tz_industry;
         }
         if(!empty($tz_area)){
-            $where['fi.tz_area']  = array('like',"%$tz_area%");
+            $where['fi.tz_area']  = $tz_area;
         }
         if(!empty($mo)){
             $where['bi.amount_range'] = $mo;
@@ -96,6 +96,7 @@ class FundController extends FrontendController{
         $this->assign('count',$count);
         //dump($info_type);exit;
         $this->display('fund_list_'.$info_type);
+
   }
 
   //智能匹配

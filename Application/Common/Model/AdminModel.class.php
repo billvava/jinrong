@@ -7,7 +7,7 @@ class AdminModel extends RelationModel{
 			array('username','1,60','{%admin_username_length_error}',0,'length'),
 			array('password','4,16','{%admin_length_error_password}',0,'length',3),
 			array('role_id','number','{%admin_format_error_role_id}',0),
-			array('mobile','mobile','{%admin_format_error_email}'),
+			array('mobile','mobile','{%admin_format_error_mobile}'),
 			array('password','repassword','{%admin_equal_error_rpwd}',0,'confirm',3),
 			array('username','','{%admin_unique_error_username}',0,'unique')
 		);

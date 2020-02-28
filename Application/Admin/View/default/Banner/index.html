@@ -10,7 +10,7 @@
         </tr>
         <volist name="imgUrl" id="url">
             <tr>
-              <td  align="center"  class="admin_list"><img style="width:360px;height:90px;" src="{$url}"></td>
+              <td  align="center"  class="admin_list"><img style="width:360px;height:90px;" src="{$url}?<?php echo time(); ?>"></td>
               <td  align="center"  class="admin_list" style="width:500px;">{$url}</td>
               <td  align="center"  class="admin_list"><a href="{:U('banner/edit',array('url'=>$url))}">更换</a>
                   <a href="{:U('banner/del',array('url'=>$url))}" onclick="return confirm('你确定要删除吗？')">删除</a></td>
