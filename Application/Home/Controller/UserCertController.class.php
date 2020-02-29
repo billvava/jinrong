@@ -372,32 +372,34 @@ class UserCertController extends FrontendController{
 		$id = $_GET['id'];
 		if(IS_AJAX && IS_POST){
 
-			$id = $_POST['id'];
-			//认证内容
-			$one = M('Attest') -> where(['id' => $id]) ->find();
-			$name = $one['name'];
-			$type = $one['type'];
-			$uid=C('visitor.uid');
-			$username = M('Members') -> where(['uid' => $uid]) -> getField('realname');
-			$data['username'] = $username;
-			$email = $_POST['email'];
-			$subject = '邮箱认证';
-      $to = $email;
-      $data['email'] = $email;
-      $data['name'] = $name;
-      $data['uid'] = $uid;
-      $data['type'] = $type;
-      $data['attest_id'] = $id;
-      if(M('UserAuth') -> where("`uid` = $uid and `type` = $type") -> count()){
-      	echo json_encode(array('status' => 0,'msg' => '请勿重复提交'));exit;
-      }
+		$id = $_POST['id'];
+		//认证内容
+		$one = M('Attest') -> where(['id' => $id]) ->find();
+		$name = $one['name'];
+		$type = $one['type'];
+		$uid=C('visitor.uid');
+		$username = M('Members') -> where(['uid' => $uid]) -> getField('realname');
+		$data['username'] = $username;
+		$email = $_POST['email'];
+		$subject = '邮箱认证';
+    $to = $email;
+    $data['email'] = $email;
+    $data['name'] = $name;
+    $data['uid'] = $uid;
+    $data['type'] = $type;
+    $data['attest_id'] = $id;
+    if(M('UserAuth') -> where("`uid` = $uid and `type` = $type") -> count()){
+    	echo json_encode(array('status' => 0,'msg' => '请勿重复提交'));exit;
+    }
       $res = M('UserAuth') -> add($data);
 
       $url = 'http://'.$_SERVER['HTTP_HOST'].'/UserCert/emailConfirmed/id/'.$res;
      	$this -> assign('url',$url);
       $body = $this->fetch('Emailtpl/email_tpl');
-      $result = person_send_mail($to, $name='', $subject = $subject, $body = $body);
-      
+      $result = person_send_mail($to, $name, $subject, $body);
+      if(!$result){
+      	M('UserAuth') -> where("`id`= $res") -> delete();
+      }
       if($res){
       	echo json_encode(array('status' => 1,'msg' => '提交成功'));exit;
       }else{
@@ -414,7 +416,12 @@ class UserCertController extends FrontendController{
 	public function emailConfirmed(){
 		$id = $_GET['id'];
 		$data['status'] = 1;
-		M('UserAuth') -> where("`id`= $id") -> save($data);
+		$res = M('UserAuth') -> where("`id`= $id") -> save($data);
+		if($res){
+			echo '认证成功';exit;
+		}else{
+			echo '认证失败';exit;
+		}
 	}
 
 	//政府身份认证

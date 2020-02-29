@@ -1538,7 +1538,8 @@ function link_area($province_id,$city_id,$area_id){
 
 //使用个人邮箱发送邮件
 function person_send_mail($to, $name, $subject = '', $body = '', $attachment = null){
-    $config = ['SMTP_HOST'=>'smtp.qq.com','SMTP_PORT'=>'465','SMTP_USER'=>'123456@qq.com','SMTP_PASS'=>'','FROM_EMAIL'=>'123456@qq.com','FROM_NAME'=>'网站留言','REPLY_EMAIL'=>'','REPLY_NAME'=>''];
+    $mail_config = D('Mailconfig')->get_cache();
+    $config = ['SMTP_HOST'=>$mail_config['smtpservers'],'SMTP_PORT'=>$mail_config['smtpport'],'SMTP_USER'=>$mail_config['smtpusername'],'SMTP_PASS'=>$mail_config['smtppassword'],'FROM_EMAIL'=>$mail_config['smtpfrom'],'FROM_NAME'=>'邮件服务','REPLY_EMAIL'=>'','REPLY_NAME'=>''];
     vendor('PHPMailer.class#phpmailer');
     vendor('SMTP');
     $mail = new PHPMailer();
