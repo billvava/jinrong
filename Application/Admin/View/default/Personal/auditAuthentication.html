@@ -29,7 +29,7 @@
           <td   align="center"   class="admin_list_tit">法人</td>
           <td   align="center"   class="admin_list_tit">开户行</td>
           <td   align="center"   class="admin_list_tit">银行卡账号</td>
-          
+           <td   align="center"   class="admin_list_tit">图片</td>
           <td   align="center"   class="admin_list_tit">是否通过</td>
           <td  align="center"  class="admin_list_tit" >操作</td>
         </tr>
@@ -69,7 +69,11 @@
           <td align="center" class="admin_list">
             {$vo['bank_card']}
           </td>
-
+          <td align="center" class="admin_list">
+            <if condition="$vo['img_data'] neq ''">
+              <a href="/index.php?m=Admin&c=personal&a=getImgList&id={$vo.id}" target="_blank">查看</a>
+            </if>
+          </td>
           <td align="center" class="admin_list">
             <if condition="$vo['status'] eq 1">
               <span style="color:blue">已通过</span>

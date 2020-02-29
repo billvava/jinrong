@@ -232,10 +232,11 @@ th {
 <div class="main" id="news-info-tab">
 
 <div class="ui-tab-headd ui-tab-head-p ui-tab-head-box">
-<form action="__URL__/government" enctype="multipart/form-data" method="post" >
-<p>单位名称：<input type='text'  name='company'></p>
-<p>授权人姓名：<input type='text'  name='empower_name'></p>
-<p>单位授权书：<input type='file'  name='id_card_img[]'></p>
+<form action="__URL__/authData" enctype="multipart/form-data" method="post" >
+<p>法定代表人：<input type='text'  name='corporation'></p>
+<p>开户银行：<input type='text'  name='opening_bank'></p>
+<p>账号：<input type='text'  name='bank_card'></p>
+<p>银行开户证明：<input type='file'  name='id_card_img[]'></p>
 <input type="hidden" name="id" value="{$id}" >
 <input type="submit" class="submit" value="提交" >
 </form>

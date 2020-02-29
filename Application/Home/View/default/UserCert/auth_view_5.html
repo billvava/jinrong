@@ -10,6 +10,7 @@
 <script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
 <script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
 </head>
+
 <body>
 <include file="Personal:index_header" />
 <div class="user_main">
@@ -201,7 +202,7 @@ th {
     border-top: 1px dashed #c2c2c2;
     margin-top: -1px;
 }
-.submit{
+.submit,.add{
     background: #19b955;
     border: 0;
     
@@ -232,16 +233,28 @@ th {
 <div class="main" id="news-info-tab">
 
 <div class="ui-tab-headd ui-tab-head-p ui-tab-head-box">
-<form action="__URL__/idCard" enctype="multipart/form-data" method="post" >
-<p>真实姓名：<input type='text'  name='real_name'></p>
-<p>身份证号码：<input type='text'  name='id_card'></p>
-<p>身份证正面：<input type='file'  name='id_card_img[]'></p>
-<p>身份证反面：<input type='file'  name='id_card_img[]'></p>
-<p>半身照片：<input type='file'  name='id_card_img[]'></p>
+<form action="__URL__/authData" enctype="multipart/form-data" method="post" >
+
+<div class="main_img">
+<p class='anli' style="height: 25px;margin-top: 10px">成功案例：<input type='file'  name='id_card_img[]'></p>
+</div>
 <input type="hidden" name="id" value="{$id}" >
+<input type="button" class="add" value="添加更多成功案例" >
 <input type="submit" class="submit" value="提交" >
 </form>
 </div>
+
+
+
+<script type="text/javascript">
+$(function(){
+   $('.add').on('click',function(){
+      var htmladd="";
+      htmladd +="<p class='anli' style='height: 25px;margin-top: 10px'>成功案例：<input type='file'  name='id_card_img[]'></p>";
+      $(".main_img").append(htmladd);
+    })
+})
+</script>
 
 <div class="ui-tab-cont table-part-all table-part-hover fn-tac table-part-all-f">
 <div>

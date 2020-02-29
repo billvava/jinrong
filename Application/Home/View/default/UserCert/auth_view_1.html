@@ -232,11 +232,13 @@ th {
 <div class="main" id="news-info-tab">
 
 <div class="ui-tab-headd ui-tab-head-p ui-tab-head-box">
-<form action="__URL__/bankAccount" enctype="multipart/form-data" method="post" >
-<p>法定代表人：<input type='text'  name='corporation'></p>
-<p>开户银行：<input type='text'  name='opening_bank'></p>
-<p>账号：<input type='text'  name='bank_card'></p>
-<p>银行开户证明：<input type='file'  name='id_card_img[]'></p>
+<form action="__URL__/authData" enctype="multipart/form-data" method="post" >
+<p>真实姓名：<input type='text'  name='real_name'></p>
+<p>身份证号码：<input type='text'  name='id_card'></p>
+<p>身份证正面：<input type='file'  name='id_card_img[]'></p>
+<p>身份证反面：<input type='file'  name='id_card_img[]'></p>
+<p>半身照片：<input type='file'  name='id_card_img[]'></p>
+<p>手持身份证照片：<input type='file'  name='id_card_img[]'></p>
 <input type="hidden" name="id" value="{$id}" >
 <input type="submit" class="submit" value="提交" >
 </form>

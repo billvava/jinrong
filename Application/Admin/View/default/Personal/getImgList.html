@@ -1,0 +1,77 @@
+<include file="public:header" />
+<style>
+  #vtip img{width: 350px;}
+</style>
+  <div class="seltpye_x">
+  <volist name="list" id="vo">
+  <img style="margin-top:20px" src="/Uploads/imgs/{$vo}" /><br>
+  </volist>
+  </div>
+    <include file="public:footer" />
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+  $(".ajax_send_sms").QSdialog({
+    DialogTitle:"发送短信",
+    DialogContentType:"url",
+    DialogContent:"{:U('Ajax/ajax_send_sms')}&"
+    });
+  $(".ajax_send_email").QSdialog({
+    DialogTitle:"发送邮件",
+    DialogContentType:"url",
+    DialogContent:"{:U('Ajax/ajax_send_email')}&"
+    });
+  showmenu("#key_type_cn","#sehmenu","#key_type");
+$("#ButDel").QSdialog({
+DialogAddObj:"#DelSel",
+DialogTitle:"请选择",
+DialogContent:"#GetDelInfo",
+DialogContentType:"id",
+DialogWidth:"500"
+});
+ $(".userinfo").QSdialog({
+  DialogTitle:"管理",
+  DialogContentType:"url",
+  DialogContent:"{:U('ajax/userinfo')}&"
+  });
+ $(".login_log").QSdialog({
+  DialogTitle:"最新5次登录记录",
+  DialogContentType:"url",
+  DialogContent:"{:U('ajax/login_log')}&"
+  });
+  $("#ButPhotoresume").QSdialog({
+  DialogAddObj:"#OpPhotoresume",
+  DialogTitle:"请选择",
+  DialogContent:"#PhotoresumeSet",
+  DialogContentType:"id"
+  });
+    $("#photo_submit").live('click',function(){
+      $("form[name=form1]").attr("action","{:U('set_photoaudit')}");
+      $("form[name=form1]").submit();
+    });
+    $('input[name="photoaudit"]').live('click',function(){
+      if($(this).val() == 3){
+        $('#is_del_img').show();
+      }else{
+        $('#is_del_img').hide();
+      }
+    });
+});
+</script>
+
+<script type="text/javascript" src="../public/js/jquery.ui.core.js"></script>
+<script type="text/javascript" src="../public/js/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="../public/js/jquery.ui.position.js"></script>
+<script type="text/javascript" src="../public/js/jquery.ui.autocomplete.js"></script>
+<script type="text/javascript">
+$(function(){
+$("#key").autocomplete({
+    source: "{:U('Ajax/ajax_kefu')}",
+    minLength: 1,
+    autoFocus: true
+});
+});
+</script>
+  </body>
+</html>

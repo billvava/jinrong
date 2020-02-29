@@ -10,7 +10,6 @@
 <script src="../public/js/personal/jquery.common.js" type="text/javascript" language="javascript"></script>
 <script src="../public/js/jquery.cookie.js" type="text/javascript" language="javascript"></script>
 </head>
-
 <body>
 <include file="Personal:index_header" />
 <div class="user_main">
@@ -202,7 +201,7 @@ th {
     border-top: 1px dashed #c2c2c2;
     margin-top: -1px;
 }
-.submit,.add{
+.submit{
     background: #19b955;
     border: 0;
     
@@ -233,27 +232,16 @@ th {
 <div class="main" id="news-info-tab">
 
 <div class="ui-tab-headd ui-tab-head-p ui-tab-head-box">
-<form action="__URL__/position" enctype="multipart/form-data" method="post" >
-
-<div class="main_img">
-<p class='anli' style="height: 25px;margin-top: 10px">个人职务证明：<input type='file'  name='id_card_img[]'></p>
-</div>
+<form action="__URL__/authData" enctype="multipart/form-data" method="post" >
+<p>企业名称：<input type='text'  name='company'></p>
+<p>授权人姓名：<input type='text'  name='empower_name'></p>
+<p>营业执照编号：<input type='text'  name='business_license_no'></p>
+<p>企业授权书：<input type='file'  name='id_card_img[]'></p>
+<p>营业执照：<input type='file'  name='id_card_img[]'></p>
 <input type="hidden" name="id" value="{$id}" >
 <input type="submit" class="submit" value="提交" >
 </form>
 </div>
-
-
-
-<script type="text/javascript">
-$(function(){
-   $('.add').on('click',function(){
-      var htmladd="";
-      htmladd +="<p class='anli' style='height: 25px;margin-top: 10px'>成功案例：<input type='file'  name='id_card_img[]'></p>";
-      $(".main_img").append(htmladd);
-    })
-})
-</script>
 
 <div class="ui-tab-cont table-part-all table-part-hover fn-tac table-part-all-f">
 <div>

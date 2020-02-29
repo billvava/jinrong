@@ -263,6 +263,13 @@ class PersonalController extends BackendController{
         
     }
     
+    public function getImgList(){
+        $id = $_GET['id'];
+        $data = M('UserAuth') -> where(['id' => $id]) -> field('img_data') -> find();
+        $img_data = json_decode($data['img_data']);
+        $this -> assign('list',$img_data);
+        $this -> display();
+    }
     public function  status_edit(){
       $id = $_GET['id'];
       $data['status'] = 1;
