@@ -305,7 +305,7 @@ class ItemController extends FrontendController{
         $this->assign('recommend_item',$recommend_item);
         $this->assign('category',$category);
         $this->assign('info_list',$info_list);
-        dump($info_type);exit;
+        // dump($info_type);exit;
         $this->display('item_list_'.$info_type);
     }
     public function show($id){
