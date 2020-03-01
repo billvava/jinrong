@@ -18,7 +18,12 @@
 <div class="main">
 <div class="part-certification-hd">
 <div class="stars-part-all"><strong class="fn-vam">我的认证等级：</strong>
-<span class="stars-cur"></span><span class="stars-cur"></span><span class="stars-cur"></span><span></span><span></span>                              </div>
+<foreach name="list" item="vo" key="k" >	
+
+<span <if condition="$vo.status eq 1">class="stars-cur"</if>></span>
+</foreach>  
+
+                           </div>
 <p class="fn-mt-10 fn-mb-10"><strong>已通过的认证：</strong>
 手机认证&nbsp;&nbsp;
 </p>
