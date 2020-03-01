@@ -16,10 +16,10 @@ class ClearcacheController extends BackendController {
             {
                 $this->check_dir_access(RUNTIME_PATH);
                 rmdirs(RUNTIME_PATH.'Data',true);
-                $this->check_dir_access(QSCMS_DATA_PATH.'static');
-                rmdirs(QSCMS_DATA_PATH.'static');
-                $this->check_dir_access(QSCMS_DATA_PATH.'wxpay');
-                rmdirs(QSCMS_DATA_PATH.'wxpay');
+                // $this->check_dir_access(QSCMS_DATA_PATH.'static');
+                // rmdirs(QSCMS_DATA_PATH.'static');
+                // $this->check_dir_access(QSCMS_DATA_PATH.'wxpay');
+                // rmdirs(QSCMS_DATA_PATH.'wxpay');
             }
             if (in_array("logcache",I('post.type')))
             {
