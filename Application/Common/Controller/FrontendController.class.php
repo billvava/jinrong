@@ -22,6 +22,8 @@ class FrontendController extends BaseController {
         }else{
             $this->assign('login',0);
         }
+        $utype = C('visitor.utype');
+        $this -> assign('utype',$utype);
     }
 
     protected function display($tpl){

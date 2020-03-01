@@ -73,10 +73,11 @@
 <include file="Personal:index_left_nav" />
 <div class="mainbox">
 <div class="main">
+
 <div class="userinfo fn-clear">
 <div class="portrait">
 <span class="portrait-pic">
-<img id="user_head" src="{$visitor['avatars']}?{:time()}" alt="用户头像" height="100" width="100">
+<img id="user_head" src="{$visitor['avatars']}?{:time()}" alt="用户头像" width="100" height="100">
 </span>
 <span id="edit_user_head_span">
 <a href="{:U('personal/user_avatar')}" id="edit_user_head" class="portrait-edit">修改头像</a>
@@ -85,18 +86,21 @@
 <i class="icon-portrait-arrow-b"></i>
 </div>
 <div class="baseinfo baseinfo-w">
-<div class="username">欢迎您，<span class="username-nick">张三<i class="icoLv16_" title=""></i></span><span class="login-time">最近登录时间: 2017-04-07 09:18:21</span></div>
+<div class="username">欢迎您，<span class="username-nick" style="color:#c82a00;margin-right: 20px;">{$user_info.realname}<i class="icoLv16_" title=""></i></span><span class="login-time">最近登录时间: {:date('Y-m-d h:s:i',$user_info['last_login_time'])}</span></div>
+
 <div class="fn-font-14 fn-mt-20">
-<h5><span class="fn-vam">会员等级：</span><strong class="ui-text-red fn-vam">青铜勋章</strong></h5>
+<h5><span class="fn-vam">会员等级：</span><strong class="ui-text-red fn-vam">注册会员</strong></h5>
 <div class="vip-progress vip-left fn-mt-10">
-<span class="vip-progress-font">2700/3800</span>
-<i class="vip-progress-pillar" style="width: 71.05%"></i>
+<span class="vip-progress-font">1250/1500</span>
+<i class="vip-progress-pillar" style="width: 83.33%"></i>
 </div>
+
 <p class="fn-mt-10">
-差1100成长值升级为白银勋章</p>
+差250成长值升级为青铜勋章</p>
 </div>
 </div>
 </div>
+
 <div class="user-level">
 <header class="part-head-all-a">
 <h4 class="fn-left">成长值记录</h4>

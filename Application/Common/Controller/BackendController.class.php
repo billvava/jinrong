@@ -69,9 +69,10 @@ class BackendController extends BaseController{
                 $data = $this->_before_insert($data);
 
             }
-            //if(isset($data['addtime'])){
+        
+            if(isset($data['addtime'])){
                 $data['addtime'] = time();
-            //}
+            }
             //$data['is_vip'] = 0;
            
             $field = $mod->getDbFields();

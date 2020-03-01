@@ -100,54 +100,64 @@ class FundController extends FrontendController{
   }
 
   //智能匹配
-  function compatible($sort=''){
+  function compatible(){
       $utype = C('visitor.utype');//1-资金方，2-项目方
-        if(!I('get.org','','trim') && C('PLATFORM') == 'mobile'&& $this->apply['Mobile']){
-            redirect(build_mobile_url(array('c'=>'Fund','a'=>'fund_list')));
-        }
-
         $uid = C('visitor.uid');
-        $keywords_array = M('BaseInfo')-> where(['uid' => $uid]) -> field('keywords') -> order('id desc') -> find();
-        $keywords = $keywords_array['keywords'];
-  
-        $category = F('category'); //分类管理
-        $where = array();
-        $info_type = I('get.info_type','2010');
-        $k=I('get.k','','trim'); //搜索内容
-        $funds_body = I('get.funds_body',''); //已选条件
-        $province_id = I('get.province_id',''); //所在地区
-        $tz_industry = I('get.tz_industry','');
-        $tz_area = I('get.tz_area','');
-        $mo = I('get.mo','');
-        $where['bi.type'] = 1;
-
-        if(!empty($keywords)){
-            $where['bi.keywords'] = array('like','%'.$keywords.'%');
-        }
         
-        if(!empty($info_type)){
-          $where['bi.info_type'] = $info_type; //视图编号
+        $where_field = M('BaseInfo')-> where(['uid' => $uid]) -> field('developer_rank,developer_qualification,development_phase,investment_area,industry,amount_min,amount_max') -> order('id desc') -> find();
+        $developer_rank = $where_field['developer_rank'];
+        $developer_qualification = $where_field['developer_qualification'];
+        $development_phase = $where_field['development_phase'];
+        $investment_area = $where_field['investment_area'];
+        $industry = $where_field['industry'];
+        $amount_min = $where_field['amount_min'];
+        $amount_max = $where_field['amount_max'];
+
+        $where = '';
+        if(!empty($developer_rank) || !empty($developer_qualification) || !empty($development_phase) || !empty($investment_area) || !empty($industry) || !empty($amount_min) || !empty($amount_max)){
+
+          if(!empty($developer_rank)){
+            $where .= "bi.developer_rank = {$developer_rank} or ";
+          }
+          if(!empty($developer_qualification)){
+            $where .= "bi.developer_qualification = {$developer_qualification} or ";
+          }
+          
+          if(!empty($development_phase)){
+            $where .= "bi.development_phase = {$development_phase} or ";
+          }
+          
+          if(!empty($amount_min)){
+            $where .= "bi.amount_min = {$amount_min} or ";
+          }
+         
+          if(!empty($amount_max)){
+           $where .= "bi.amount_max = {$amount_max} or ";
+          }
+         
+          if(!empty($investment_area)){
+           
+            $where .= "bi.investment_area like '%{$investment_area}%' or ";
+          }
+         
+          if(!empty($industry)){
+          
+            $where .= "bi.industry like '%{$industry}%' ";
+          }
+          $where .="and (bi.type = 1 and bi.is_open = 1)";
+          
         }
-        if(!empty($k)){
-          $where['bi.title'] =array('like','%'.$k.'%');
+        if($where == ''){
+          $where['bi.id'] = -1;
         }
-        if(!empty($funds_body)){
-            $where['fi.funds_body'] = $funds_body;
-        }
-        if(!empty($province_id)){
-            $where['bi.province_id'] = $province_id;
-        }
-        if(!empty($tz_industry)){
-            $where['fi.tz_industry'] = $tz_industry;
-        }
-        if(!empty($tz_area)){
-            $where['fi.tz_area']  = array('like',"%$tz_area%");
-        }
-        if(!empty($mo)){
-            $where['bi.amount_range'] = $mo;
-        }
-        $where['bi.is_open'] = 1;
+       
+        $category = F('category'); //分类管理
+        $k=I('get.k','','trim'); //搜索内容
+        $mo = I('get.mo','');
+
         $count = M('BaseInfo')->alias('bi')->join('LEFT JOIN __FUND_INFO__ as fi on bi.id =fi.id')->where($where)->count();
+        // echo M()->_sql();exit;
+
         $limit = $this->getPageLimit($count,20);
         if($count>3000){
             $count = '3000+';
@@ -188,8 +198,7 @@ class FundController extends FrontendController{
         $this->assign('category',$category);
         $this->assign('page', $page);
         $this->assign('count',$count);
-        //dump($info_type);exit;
-        $this->display('fund_list_'.$info_type);
+        $this->display();
   }
 
   function tag_list($id=''){

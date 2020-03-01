@@ -15,12 +15,18 @@ class MemberLevelController extends FrontendController{
 	}
 
     function growth(){
+        $uid = C('visitor.uid');
+        $user_info = M('Members')->where(['uid'=>$uid])->find();
         $this->assign('personal_nav','lemberlevel');
+        $this->assign('user_info',$user_info);
         $this->display();
     }
 
     function growth_record(){
+        $uid = C('visitor.uid');
+        $user_info = M('Members')->where(['uid'=>$uid])->find();
         $this->assign('personal_nav','lemberlevel');
+        $this->assign('user_info',$user_info);
         $this->display();
     }
 }

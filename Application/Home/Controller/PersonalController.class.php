@@ -181,7 +181,7 @@ class PersonalController extends FrontendController{
         $user_talk_num = R('AjaxCommon/user_talk_num');
         $user_message_num = R('AjaxCommon/user_message_num');
         $this->assign('user_talk_num',$user_talk_num);
-        $this -> assign('utype',$utype);
+        
         $this->assign('user_message_num',$user_message_num);
         $this->assign('user_info',$user_info);
         $this->display();
@@ -221,15 +221,29 @@ class PersonalController extends FrontendController{
             }
             $info = I('post.');
             
-            
+            //dump($info);exit;
             $developer_str = $info['development_phase'].','.$info['developer_rank'].','.$info['developer_qualification'].',';
+            
             $info['utype']=C('visitor.utype');//1-资金方，2-项目方
+            
+            $base_info['developer_rank'] = $info['developer_rank'];
+            $base_info['developer_qualification'] = $info['developer_qualification'];
+            $base_info['development_phase'] = $info['development_phase'];
+
             if($info['utype'] == 2){
-                $province_id = $info['province_id'];//省份id
-                $sel_industry_id = $info['sel_industry_id']; //行业id
-                $keywords_str = $developer_str.$province_id.','.$sel_industry_id;
+
+                $base_info['investment_area'] = $info['province_id']; //所在地区
+                $base_info['industry'] = $info['industry_id']; //所属行业
+
+                $base_info['amount_min'] = $info['amount_interval_min']; //投资金额
+                $base_info['amount_max'] = $info['amount_interval_max']; //投资金额
+
             }else{
-                $keywords_str = $developer_str.$info['tz_industry'].$info['tz_area'];
+                $base_info['investment_area'] = $info['tz_area']; //所在地区
+                $base_info['industry'] = $info['tz_industry']; //所属行业
+
+                $base_info['amount_min'] = $info['amount_interval_min']; //投资金额
+                $base_info['amount_max'] = $info['amount_interval_max']; //投资金额
             }
            
 
