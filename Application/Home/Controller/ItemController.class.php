@@ -167,7 +167,8 @@ class ItemController extends FrontendController{
     function compatible(){
         
         $uid = C('visitor.uid');
-        $where_field = M('BaseInfo')-> where(['uid' => $uid]) -> field('developer_rank,developer_qualification,development_phase,investment_area,industry,amount_min,amount_max') -> order('id desc') -> find();
+        $bid = $_GET['bid'];
+        $where_field = M('BaseInfo')-> where(['id' => $bid]) -> field('developer_rank,developer_qualification,development_phase,investment_area,industry,amount_min,amount_max') -> find();
         $developer_rank = $where_field['developer_rank'];
         $developer_qualification = $where_field['developer_qualification'];
         $development_phase = $where_field['development_phase'];
@@ -175,42 +176,43 @@ class ItemController extends FrontendController{
         $industry = $where_field['industry'];
         $amount_min = $where_field['amount_min'];
         $amount_max = $where_field['amount_max'];
-        // dump();exit;
-        $where = '';
+        
         if(!empty($developer_rank) || !empty($developer_qualification) || !empty($development_phase) || !empty($investment_area) || !empty($industry) || !empty($amount_min) || !empty($amount_max)){
 
           if(!empty($developer_rank)){
-            $where .= "bi.developer_rank = {$developer_rank} or ";
+            $map['bi.developer_rank'] = $developer_rank;
           }
           if(!empty($developer_qualification)){
-            $where .= "bi.developer_qualification = {$developer_qualification} or ";
+            $map['bi.developer_qualification'] = $developer_qualification;
           }
           
           if(!empty($development_phase)){
-            $where .= "bi.development_phase = {$development_phase} or ";
+            $map['bi.development_phase'] = $development_phase;
           }
           
           if(!empty($amount_min)){
-            $where .= "bi.amount_min = {$amount_min} or ";
+            $map['bi.amount_min'] = $amount_min;
           }
          
           if(!empty($amount_max)){
-           $where .= "bi.amount_max = {$amount_max} or ";
+           $map['bi.amount_max'] = $amount_max;
           }
          
           if(!empty($investment_area)){
-
-            $where .= "bi.investment_area in ('{$investment_area}') or ";
+            $map['bi.investment_area'] = array('in',$investment_area);
           }
          
           if(!empty($industry)){
-          
-            $where .= "bi.industry in ('{$industry}') ";
+            $map['bi.industry'] = array('in',$industry);
+            
           }
-          $where .="and (bi.type = 2 and bi.is_open = 1)";
-          
+         
+          $map['_logic'] = 'or';
+          $where['bi.type'] = 2;
+          $where['bi.is_open'] = 1;
+          $where['_complex'] = $map;
         }
-        if($where == ''){
+        if(empty($where)){
           $where['bi.id'] = -1;
         }
         

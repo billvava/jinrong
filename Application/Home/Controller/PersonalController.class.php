@@ -169,7 +169,8 @@ class PersonalController extends FrontendController{
     function index(){
         $user_info = $this->visitor->info;
         $utype = C('visitor.utype');
-        
+        $uid = $user_info['uid'];
+        $user_mod = M('Members');
         if($user_info['utype']==0){
             $this->member_init();
             die();
@@ -181,9 +182,30 @@ class PersonalController extends FrontendController{
         $user_talk_num = R('AjaxCommon/user_talk_num');
         $user_message_num = R('AjaxCommon/user_message_num');
         $this->assign('user_talk_num',$user_talk_num);
+
+        $login_count = $user_mod -> where(['uid' => $uid]) -> getField('login_count');
+        session('login_count',$login_count);
+        // if(!session('?login_count')){
+        //       //设置session
+        // session('login_count',$login_count);
+        //     $user_mod -> where(['uid' => $uid]) -> setInc('login_count');
+        // }
+        if(session('login_count') == $login_count){
+            $is_login = 1;
+        }else{
+            $is_login = 0;
+        }
         
+        $base_info_list = M('BaseInfo')-> where(['uid' => $uid]) -> field('id,title') -> order('id desc') -> select();
+        if(!empty($base_info_list)){
+            $is_has = 1;
+        }
         $this->assign('user_message_num',$user_message_num);
         $this->assign('user_info',$user_info);
+        $this->assign('base_info_list',$base_info_list);
+        $this->assign('utype',$utype);
+        $this->assign('is_has',$is_has);
+        $this->assign('is_login',$is_login);
         $this->display();
     }
 
@@ -214,18 +236,69 @@ class PersonalController extends FrontendController{
         $page_seo['title']='发布信息-用户中心';
         $this->assign('page_seo',$page_seo);
         $user_info = $this->visitor->info;
+       
+
+        
         if(IS_POST){
+            $info = I('post.');
+
+            $info['utype'] = C('visitor.utype');//1-资金方，2-项目方
+            //标题处理
+            $area_arr = array_flip(F('province'));
+            $category = F('Category');
+            //dump($info);exit;
+            if($info['utype'] == 1){
+                $info_type_arr = array('2010' =>'股权投资','2011' =>'债权投资','2012' =>'金融投资','2013' =>'项目投资','2014' =>'其它投资',);
+                $info_type = $info_type_arr[$info['info_type']];
+                // 投资行业
+                $tz_industry = array_filter(explode(',', $info['tz_industry']));
+                
+                $tz_str = '';
+                foreach ($tz_industry as $tz_value) {
+                    $tz_str.= $category['tz_industry'][$tz_value].'/';
+                }
+                $tz_str = substr($tz_str,0,strlen($tz_str)-1);
+                
+                //投资区域
+                $tz_area_area = $info['tz_area_area'];
+                $area_str = ''; 
+                foreach ($tz_area_area as $area_value) {
+                    $area_str.= $area_arr[$area_value].'/';
+                }
+                $area_str = substr($area_str,0,strlen($area_str)-1);
+
+
+            }else{
+                $xmrz_type = $info['xmrz_type'];
+
+                foreach ($xmrz_type as $xmrz_type_value) {
+                  $info_type.= $category['xmrz_type'][$xmrz_type_value].'/';
+                }
+                $info_type = substr($info_type,0,strlen($info_type)-1);
+               
+                 //区域
+                $area_str = $area_arr[$info['province_id']];
+                //行业
+                $tz_str.= $category['industry_id'][$info['industry_id']];
+
+            }
             if(M('BaseInfo')->where(['uid'=>C('visitor.uid')])->count() >=3){
                 $this->error('免费会员最多只能发布3条信息!');
                 exit;
             }
-            $info = I('post.');
             
-            //dump($info);exit;
-            $developer_str = $info['development_phase'].','.$info['developer_rank'].','.$info['developer_qualification'].',';
+           
+            //单位（万元/亿元）
+            $amount_interval_max_unit = $info['amount_interval_max_unit'];
+            $unit_arr = array('1' => '万元','10000' => '亿元');
+
             
-            $info['utype']=C('visitor.utype');//1-资金方，2-项目方
             
+            $title = $area_str.'+'.$tz_str.'+'.$info_type.'+'.$info['amount_interval_min'].$unit_arr[$info['amount_interval_min_unit']].'~'.$info['amount_interval_max'].$unit_arr[$info['amount_interval_max_unit']];
+            
+            $base_info['title'] = $title;
+            //标题处理——end
+            //开发商
             $base_info['developer_rank'] = $info['developer_rank'];
             $base_info['developer_qualification'] = $info['developer_qualification'];
             $base_info['development_phase'] = $info['development_phase'];
@@ -254,13 +327,14 @@ class PersonalController extends FrontendController{
             $base_info['i_other_remark'] = trim($info['i_other_remark']);
             $base_info['i_pic'] = $info['i_pic'];
             $base_info['i_att'] = $info['i_att'];
-			$base_info['i_att_other'] = $info['i_att_other'];
+			      $base_info['i_att_other'] = $info['i_att_other'];
             
           
-            $base_info['keywords'] = $keywords_str; //关键词用匹配
+          
             $base_info['i_keywords'] = $info['i_keywords'];
             $base_info['addtime']=time();
             $base_info['updatetime']=time();
+           // dump($base_info);exit;
             if($info['utype']=='1'){ //资金方
                 $base_info['type'] =1;
                 $result = D('FundInfo')->process_info($info,$base_info);
@@ -268,6 +342,7 @@ class PersonalController extends FrontendController{
                 $base_info['type'] =2;
                 $result = D('ItemInfo')->process_info($info,$base_info);
             }
+
             if($result){
                 if($sql_data['xmzc_type']==505){
                     $sql_data['id'] = $result;
@@ -383,44 +458,105 @@ class PersonalController extends FrontendController{
         }
         if(IS_POST){
             $data = I('post.');
+
+            //标题处理
+            $area_arr = array_flip(F('province'));
+            $category = F('Category');
+  
+            if($utype == 1){
+                $info_type_arr = array('2010' =>'股权投资','2011' =>'债权投资','2012' =>'金融投资','2013' =>'项目投资','2014' =>'其它投资',);
+                $info_type = $info_type_arr[$data['info_type']];
+                // 投资行业
+                $tz_industry = array_filter(explode(',', $data['tz_industry']));
+                
+                $tz_str = '';
+                foreach ($tz_industry as $tz_value) {
+                    $tz_str.= $category['tz_industry'][$tz_value].'/';
+                }
+                $tz_str = substr($tz_str,0,strlen($tz_str)-1);
+                
+                //投资区域
+                $tz_area_area = $info['tz_area_area'];
+                $area_str = ''; 
+                foreach ($tz_area_area as $area_value) {
+                    $area_str.= $area_arr[$area_value].'/';
+                }
+                $area_str = substr($area_str,0,strlen($area_str)-1);
+
+
+            }else{
+                $xmrz_type = $data['xmrz_type'];
+
+                foreach ($xmrz_type as $xmrz_type_value) {
+                  $info_type.= $category['xmrz_type'][$xmrz_type_value].'/';
+                }
+                $info_type = substr($info_type,0,strlen($info_type)-1);
+               
+                 //区域
+                $area_str = $area_arr[$data['province_id']];
+                //行业
+                $tz_str.= $category['industry_id'][$data['industry_id']];
+
+            }
+           
+            
+           
+            //单位（万元/亿元）
+            //$amount_interval_max_unit = $data['amount_interval_max_unit'];
+            $unit_arr = array('1' => '万元','10000' => '亿元');
+
+            
+            
+            $title = $area_str.'+'.$tz_str.'+'.$info_type.'+'.$data['amount_interval_min'].$unit_arr[$data['amount_interval_min_unit']].'~'.$data['amount_interval_max'].$unit_arr[$data['amount_interval_max_unit']];
+            
+            $data['title'] = $title;
+            //标题处理——end
+
+            if($utype == 2){
+
+                $data['investment_area'] = $data['province_id']; //所在地区
+                $data['industry'] = $data['industry_id']; //所属行业
+
+                $data['amount_min'] = $data['amount_interval_min']; //投资金额
+                $data['amount_max'] = $data['amount_interval_max']; //投资金额
+
+            }else{
+                $data['investment_area'] = $data['tz_area']; //所在地区
+                $data['industry'] = $data['tz_industry']; //所属行业
+
+                $data['amount_min'] = $data['amount_interval_min']; //投资金额
+                $data['amount_max'] = $data['amount_interval_max']; //投资金额
+            }
+            //dump($data);exit;
             $data['is_open'] = 2;
             if($utype==2){
             //事务总表处理
                 if($data['info_type']==1){
-                    $result = D('ItemInfoZcjy')->saveData();
-                    
+                  $result = D('ItemInfoZcjy')->saveData();
                 }
                 if($data['info_type']==200){
-                    $result = D('ItemInfoZcjy')->saveData(); 
+                  $result = D('ItemInfoZcjy')->saveData(); 
                 }
                 if($data['info_type']==700){
-                    $result = D('ItemInfoZcjy')->saveData(); 
+                  $result = D('ItemInfoZcjy')->saveData(); 
                 }
                 if($data['info_type']==2005){
-                    $result = D('ItemInfoTzlc')->saveData(); 
+                  $result = D('ItemInfoTzlc')->saveData(); 
                 }
             }else{
                 $result = D('FundInfo')->save_data($data);
+                
                
             }
 
-            $developer_str = $data['development_phase'].','.$data['developer_rank'].','.$data['developer_qualification'].',';
-           //1-资金方，2-项目方
-            if($utype == 2){
-                $province_id = $data['province_id'];//省份id
-                $sel_industry_id = $data['sel_industry_id']; //行业id
-                $keywords_str = $developer_str.$province_id.','.$sel_industry_id;
-            }else{
-                $keywords_str = $developer_str.$data['tz_industry'].$data['tz_area'];
-            }
-            $new_array['keywords'] = $keywords_str;
-            $res = M('BaseInfo')->where(['id'=>$id])->save($new_data);
-            $res = M('BaseInfo')->where(['id'=>$id])->save($data);
-            if($res){
+         
+           
+            $result = M('BaseInfo')->where(['id'=>$id])->save($data);
+            if($result){
                 $this->success('信息修改成功');
                 die();
             }else{
-                $this->error('信息修改失败1');
+                $this->error('信息修改失败');
                 die();
             }
         }

@@ -151,7 +151,7 @@ class ItemInfoModel extends RelationModel{
 	public function process_info($info,$base_info){
 
         $base_info['info_type'] = I('post.info_type');
-        $base_info['title'] = I('post.title');
+        $base_info['title'] = $base_info['title'];
         $base_info['province_id'] = I('post.province_id');
         $base_info['city_id'] = I('post.city_id');
         $base_info['area_id'] = I('post.area_id');

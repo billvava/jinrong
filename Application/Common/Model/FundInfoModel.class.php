@@ -13,10 +13,11 @@ class FundInfoModel extends Model{
 	}
 
     public function process_info($info,$base_info){
+
         $info['S100'] = implode(',',I('post.S100'));
         $info['S201'] = implode(',',I('post.S201'));
         $base_info['info_type'] = I('post.info_type');
-        $base_info['title'] = I('post.title');
+        $base_info['title'] = $base_info['title'];
         $base_info['province_id'] = I('post.province_id');
         $base_info['city_id'] = I('post.city_id');
         $base_info['area_id'] = I('post.area_id');
@@ -48,6 +49,7 @@ class FundInfoModel extends Model{
         $base_info['amount_range']=$result['num'];
         M('BaseInfo')->startTrans();
         $res = M('BaseInfo')->add($base_info);
+        
         if(!empty($base_info['i_att'])){
             M('Attach')->where(['id'=>['in',$base_info['i_att']]])->data(['info_id'=>$res])->save();
         }

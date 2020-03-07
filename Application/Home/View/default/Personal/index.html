@@ -47,11 +47,12 @@
 
 <div class="fl w300">
 <ul>
-<li><label class="baseinfo-label">资料完整度：</label>
+<li>
+<!-- <label class="baseinfo-label">资料完整度：</label>
 <span class="baseinfo-value baseinfo-integrity">
 <strong class="popover-part ui-text-blue" id="Data-integrity" cont=" 低于8%的同行，请尽快完善资料。">
-73分</strong>
-<a href="{:U('home/personal/account')}">完善</a>
+73分</strong> -->
+<a href="{:U('home/personal/account')}">完善资料</a>
 </li>
 <!--
 <li><label class="baseinfo-label">认证状态：</label><span class="baseinfo-value baseinfo-authenticate">
@@ -172,6 +173,135 @@
 <div class="clear"></div>
 </div>
 -->
+<style>
+    #Math{
+        width: 70%;
+        /*height: 15rem;*/
+        border: #9bc2e6 solid 1px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    /*头部*/
+    #Math>.top{
+        position: relative;
+    }
+    #Math>.top>input{
+        width: 1.5rem;
+        height: 1.5rem;
+        background: url("../public/images/27.png") no-repeat bottom right;
+        background-size: 320%;
+        position: absolute;
+        top: -10%;
+        right: 3%;
+        border: none;
+        border-radius: 50px;
+    }
+    /*标题*/
+    #Math>.main>.title{
+        height: 2.5rem;
+        display: flex;
+        background: #9bc2e6;
+        border: #9bc2e6 solid 1px;
+    }
+    #Math>.main>.title>div{
+        width: 25%;
+        text-align: center;
+        border: #9bc2e6 solid 1px;
+        padding-top: .3rem;
+    }
+    #Math>.main>.title>.content{
+        width: 50%;
+    }
+    /*内容*/
+    #Math>.main>.con{
+        height: 2rem;
+        display: flex;
+    }
+    #Math>.main>.con>div{
+        width: 25%;
+        text-align: center;
+        border: #9bc2e6 solid 1px;
+        padding-top: .3rem;
+    }
+    #Math>.main>.con>.content{
+        width: 50%;
+    }
+    /*底部*/
+    #Math>.bottom{
+        width: 100%;
+        height: 2.5rem;
+        text-align: center;
+        background: #9bc2e6;
+        border: #9bc2e6 solid 1px;
+        font-size: 1rem;
+    }
+    .close{
+    	cursor: pointer;
+    }
+</style>
+<div id="Math" style="display: none;">
+    <!--头部-->
+    <div class="top">
+        <p>请选择您要匹配的信息</p>
+        <input type="button" class="close">
+        <!--<button onclick="close()"></button>-->
+       
+    </div>
+    <!--主体-->
+    <div class="main">
+        <!--标题-->
+        <div class="title">
+            <div>编号</div>
+            <div class="content">我的发布</div>
+            <div>选择</div>
+        </div>
+        <!--内容-->
+        <volist name ="base_info_list" id="v" key="k">
+        <div class="con">
+            <div>{$k}</div>
+            <div class="content" title="{$v.title}">{$v.title|substr=0,66}</div>
+            <div class="choose">
+            	<input name ='choose' type="radio" value="{$v.id}">
+            </div>
+        </div>
+       </volist>
+    </div>
+    <!--底部-->
+    <input type="button" class="bottom" value="确认" style="cursor: pointer;">
+</div>
+
+<input type="hidden" class="is_login" value="{$is_login}" />
+<input type="hidden" class="is_has" value="{$is_has}" />
+<input type="hidden" class="utype" value="{$utype}" />
+<script type="text/javascript">
+	$(function(){
+		var is_login = $('.is_login').val();
+		var is_has = $('.is_has').val();
+		var utype = $('.utype').val();
+		var link_url = ''
+		if(utype == 2){
+			link_url = "/index.php?m=&c=Fund&a=compatible&bid=";
+		}else{
+			link_url = "/index.php?m=&c=Item&a=compatible&bid=";
+		}
+		if(is_login && is_has){
+			$('#Math').show();
+		}
+
+		$('.bottom').click(function(){
+			var project_id =$('input:radio[name="choose"]:checked').val();
+			if(!project_id){
+				alert('请选择您要匹配的信息');return false;
+			}
+			var url = link_url+project_id;
+			window.location.href=url;
+		})
+
+		$('.close').click(function(){
+			$('#Math').hide();
+		})
+	})
+</script>
 <include file="index_footer" />
 </body>
 </html>

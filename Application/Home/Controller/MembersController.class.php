@@ -53,7 +53,7 @@ class MembersController extends FrontendController{
         if(!I('get.org','','trim') && C('PLATFORM') == 'mobile' && $this->apply['Mobile']){
             redirect(build_mobile_url(array('c'=>'Members','a'=>'login')));
         }
-        
+       
         if(IS_AJAX && IS_POST){
             $btype = I('get.btype','');
             $expire = I('post.expire',0,'intval');

@@ -93,6 +93,7 @@ class user_visitor {
             $this->_error = L('login_failed');
             return false;
         }
+        $user_mod -> where(['uid' => $uid]) -> setInc('login_count');
         //保持状态
         $this->assign_info($user_info);
         $this->remember($user_info, $remember);
